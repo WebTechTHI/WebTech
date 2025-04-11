@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR | Registrierung</title>
 </head>
 
@@ -53,14 +54,12 @@
     <br>
     <!-- Abbrechen-Button (Zurück zu Login Maske) -->
 
-    <button type="button" style="color:rgb(17, 0, 255);"
-        onclick='confirmAction("Sind Sie sicher, dass sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück
-        zur Startseite</button>
+    <button type="button" style="color:rgb(17, 0, 255);" onclick='confirmAction("Sind Sie sicher, dass sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurückzur Startseite</button>
 
     <script>
         function confirmAction(message) {
             if (confirm(message)) {
-                window.location.replace("login.html");
+                window.location.replace("../index.html");
             }
         }
     </script>
