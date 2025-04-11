@@ -47,8 +47,18 @@
 
  <!-- Abbrechen-Button (Zurück zu Login Maske) -->
  <a href="login.html"> 
-    <button type="button" style="color:rgb(17, 0, 255);" onclick="alert('Zurück zur Startseite? Änderungen werden nicht gespeichert.')">Abbruch</button>
+    <button type="button" style="color:rgb(17, 0, 255);" onclick='confirmAction("Sind sie sicher? Geänderte Daten werden nicht gespeichert")'>Abbruch</button>
              </a>
+
+             <script>
+                function confirmAction(message){
+                    if(confirm(message))
+                    window.location.replace(../index.html);
+                }
+
+
+
+             </script>
 
     </fieldset>
     </form>
