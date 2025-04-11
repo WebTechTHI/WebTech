@@ -15,16 +15,39 @@
     <h1 title="Please fill out the blanks" style="font-size: 60px;"> Registrierungsformular</h1>
     <h4 title="Please fill out the blanks" ein> Bitte erstellen sie einen Benutzer</h4>
 
+    
 <form action="registration.php" method="post"
     
 <fieldset>
-    <legend>df</legend>
-</fieldset>
+    <legend>Registrierungsformular</legend>
 
+    <label for="Benutzername">Benutzername</label>
+    <input type="text" name="variablefromuserpasswordregistration" id="usernameregistration">
 
+<br>
+<br>
+    <label for="Passwort" >Passwort:</label>
+    <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration">
+<br>
 
+<label for="Passwort" >Bestätigung Passwort:</label>
+<input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration">
+<br>
+<br>
 
+ <!-- Submit-Button (Daten an Server schicken) -->
+    <input type="submit" style="color:rgb(17, 0, 255);" value="Registrieren">
+<br>
+<br>
+<br>
 
+ <!-- Abbrechen-Button (Zurück zu Login Maske) -->
+ <a href="login.html"> 
+    <button type="button" style="color:rgb(17, 0, 255);" onclick="alert('Zurück zur Login Maske ?')">Abbruch</button>
+             </a>
+
+    </fieldset>
+    </form>
 
 
 
