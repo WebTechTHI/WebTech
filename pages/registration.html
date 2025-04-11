@@ -25,45 +25,38 @@
 <fieldset>
     <legend>Registrierungsformular</legend>
 
-    <label for="Benutzername">Benutzername:</label>
+    <label for="Benutzername">Benutzername</label>
     <input type="text" name="variablefromuserpasswordregistration" id="usernameregistration" placeholder="Benutzername" style="font-style:italic">
 
 <br>
 <br>
-    <label for="Passwort" >Passwort:</label>
+    <label for="Passwort" >Passwort</label>
     <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration" placeholder="Passwort" style="font-style:italic">
 <br>
 
-<label for="Passwort" >Bestätigung Passwort:</label>
+<label for="Passwort" >Passwort bestätigen</label>
 <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration" placeholder="Passwort bestätigen" style="font-style:italic" >
 <br>
 <br>
 
  <!-- Submit-Button (Daten an Server schicken) -->
     <input type="submit" style="color:rgb(17, 0, 255);" value="Registrieren">
-<br>
-<br>
-<br>
-
- <!-- Abbrechen-Button (Zurück zu Login Maske) -->
- <a href="login.html"> 
-    <button type="button" style="color:rgb(17, 0, 255);" onclick='confirmAction("Sind sie sicher? Geänderte Daten werden nicht gespeichert")'>Abbruch</button>
-             </a>
-
-             <script>
-                function confirmAction(message){
-                    if(confirm(message))
-                    window.location.replace(../index.html);
-                }
-
-
-
-             </script>
 
     </fieldset>
     </form>
 
+    <br>
+<!-- Abbrechen-Button (Zurück zu Login Maske) -->
 
+<button type="button" style="color:rgb(17, 0, 255);" onclick='confirmAction("Sind Sie sicher, dass sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück zur Startseite</button>
+
+<script>
+    function confirmAction(message){
+        if (confirm(message)) {
+            window.location.replace("login.html");
+        }
+    }
+</script>
 
     <footer>
         <hr>
