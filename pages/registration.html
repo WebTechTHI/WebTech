@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <title>MLR | Registrierung</title>
 </head>
-<body bgcolor="gray" >
 
-    <header>                                                                                       
+<body bgcolor="gray">
+
+    <header>
         <a href="../index.html">
-          <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" width="200"  style="margin-top: 20px">
+            <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" width="200" style="margin-top: 20px">
         </a>
     </header>
-    
+
 
     <h1 title="Please fill out the blanks" style="font-size: 60px;"> Registrierungsformular</h1>
     <h4 title="Please fill out the blanks" ein> Bitte erstellen sie einen Benutzer</h4>
 
-    
 
 
-        <!-- Ab Hier Registrieren Funktionen -->
-<form action="registration.php" method="post" >
-    
-<fieldset>
-    <legend>Registrierungsformular</legend>
 
-    <label for="Benutzername">Benutzername</label>
-    <input type="text" name="variablefromuserpasswordregistration" id="usernameregistration" placeholder="Benutzername" style="font-style:italic">
+    <!-- Ab Hier Registrieren Funktionen -->
+    <form action="registration.php" method="post">
 
-<br>
-<br>
-    <label for="Passwort" >Passwort</label>
-    <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration" placeholder="Passwort" style="font-style:italic">
-<br>
+        <fieldset>
+            <legend>Registrierungsformular</legend>
 
-<label for="Passwort" >Passwort bestätigen</label>
-<input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration" placeholder="Passwort bestätigen" style="font-style:italic" >
-<br>
-<br>
+            <label for="Benutzername">Benutzername</label>
+            <input type="text" name="variablefromuserpasswordregistration" id="usernameregistration"
+                placeholder="Benutzername" style="font-style:italic">
 
- <!-- Submit-Button (Daten an Server schicken) -->
-    <input type="submit" style="color:rgb(17, 0, 255);" value="Registrieren">
+            <br>
+            <br>
+            <label for="Passwort">Passwort</label>
+            <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration"
+                placeholder="Passwort" style="font-style:italic">
+            <br>
 
-    </fieldset>
+            <label for="Passwort">Passwort bestätigen</label>
+            <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration"
+                placeholder="Passwort bestätigen" style="font-style:italic">
+            <br>
+            <br>
+
+            <!-- Submit-Button (Daten an Server schicken) -->
+            <input type="submit" style="color:rgb(17, 0, 255);" value="Registrieren">
+
+        </fieldset>
     </form>
 
     <br>
-<!-- Abbrechen-Button (Zurück zu Login Maske) -->
+    <!-- Abbrechen-Button (Zurück zu Login Maske) -->
 
-<button type="button" style="color:rgb(17, 0, 255);" onclick='confirmAction("Sind Sie sicher, dass sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück zur Startseite</button>
+    <button type="button" style="color:rgb(17, 0, 255);"
+        onclick='confirmAction("Sind Sie sicher, dass sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück
+        zur Startseite</button>
 
-<script>
-    function confirmAction(message){
-        if (confirm(message)) {
-            window.location.replace("login.html");
+    <script>
+        function confirmAction(message) {
+            if (confirm(message)) {
+                window.location.replace("login.html");
+            }
         }
-    }
-</script>
+    </script>
 
     <footer>
         <hr>
@@ -66,4 +73,5 @@
 
     </footer>
 </body>
+
 </html>
