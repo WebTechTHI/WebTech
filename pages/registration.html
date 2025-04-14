@@ -31,24 +31,25 @@
 
 
             <div>
-                <label for="Benutzername">Benutzername</label>
-                <input type="text" name="variablefromuserpasswordregistration" id="usernameregistration"
-                    placeholder="Benutzername" style="font-style:italic" required maxlength="16">
+                <label for="usernameregistration">Benutzername</label>
+                <input type="text" name="fromusernameregistration" id="usernameregistration" placeholder="Benutzername"
+                    style="font-style:italic" required maxlength="16">
             </div>
 
             <br>
 
             <div>
-                <label for="Passwort">Passwort</label>
-                <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration"
+                <label for="userpasswordregistration">Passwort</label>
+                <input type="password" name="fromuserpasswordregistration" id="userpasswordregistration"
                     placeholder="Passwort" style="font-style:italic" required minlength="8" maxlength="16">
             </div>
 
             <br>
             <div>
-                <label for="Passwort">Passwort bestätigen</label>
-                <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration"
-                    placeholder="Passwort" style="font-style:italic"  required minlength="8" maxlength="16">
+                <label for="userpasswordregistrationconfirmation">Passwort bestätigen</label>
+                <input type="password" name="fromuserpasswordregistrationconfirmation"
+                    id="userpasswordregistrationconfirmation" placeholder="Passwort bestätigen"
+                    style="font-style:italic" required minlength="8" maxlength="16">
             </div>
 
             <br>
@@ -62,13 +63,23 @@
     <br>
     <!-- Abbrechen-Button (Zurück zu Login Maske) -->
 
-    <button type="button" style="color:rgb(17, 0, 255); border-radius: 5px;"
-        onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück zur Startseite</button>
+    <div>
 
+        <label for="registration_back_to_login_button">Haben Sie bereits einen Account?</label>
+        <button id="registration_back_to_login_button"><a href="login.html">Login</a></button>
+
+    </div>
+
+    <div>
+        <button type="button" style="color:rgb(17, 0, 255); border-radius: 5px;"
+            onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück
+            zur Startseite</button>
+
+    </div>
     <script>
         function confirmAction(message) {
             if (confirm(message)) {
-                window.location.replace("../index.html");
+                window.location = "../index.html";
             }
         }
     </script>
