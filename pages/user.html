@@ -82,6 +82,8 @@
                 newInfo = prompt("Bitte geben Sie einen gültigen Benutzernamen ein. Der Benutzername darf maximal 16 Zeichen lang sein.")
                 if (newInfo.length > 16) {
                     alert("Der eingegebene Benutzername ist zu lang. Der Benutzername darf maximal 16 Zeichen Lang sein");
+                } else if (newInfo.length < 1) {
+                    alert("Eingabe ungültig. Bitte geben sie einen Benutzernamen an.");
                 } else {
                     document.getElementById("username").value = newInfo;
                 }
