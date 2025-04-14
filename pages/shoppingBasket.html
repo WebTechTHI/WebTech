@@ -19,31 +19,48 @@
     </header>
 
     <h1>Warenkorb</h1>
-    <table border="1">
-      <tr>
-        <th>Produkt</th>
-        <th>Preis</th>
-      </tr>
-      <tr>
-        <td>Laptop</td>
-        <td>999€</td>
-      </tr>
-      <tr>
-        <td>Maus</td>
-        <td>29€</td>
-      </tr>
-      <tr>
-        <td><strong>Summe</strong></td>
-        <td>1028€</td>
-      </tr>
+    <table id="shoppingBasket" name="warenkorb" border="5" style="text-align: center;">
+      <div>
+        <tr>
+          <th>Produkt</th>
+          <th>Preis</th>
+        </tr>
+      </div>
+      <div>
+        <tr id="product1">
+          <td id="product1Label">Laptop</td>
+          <td id="product1Price">899€</td>
+        </tr>
+      </div>
+      <div>
+        <tr id="product2">
+          <td id="product2Label">Maus</td>
+          <td id="product2Price">19€</td>
+        </tr>
+      </div>
+      <div>
+        <tr id="sum">
+          <td><strong>Summe</strong></td>
+          <td id="sumAcc">1028€</td>
+        </tr>
+      </div>
     </table>
+
+
+
+    <script>
+
+      document.getElementById("sumAcc").innerHTML = parseFloat(document.getElementById("product1Price").innerHTML) + parseFloat(document.getElementById("product2Price").innerHTML) + "€";
+
+    </script>
+
 
     <footer>
       <hr>
       <nav>
-       <p>© 2025 MLR | <a href="about.html"><i>Impressum</i></a></p>
+        <p>© 2025 MLR | <a href="about.html"><i>Impressum</i></a></p>
       </nav>
-  </footer>
+    </footer>
 
   </body>
 

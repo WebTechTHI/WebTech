@@ -29,33 +29,41 @@
         <fieldset>
             <legend>Registrierungsformular</legend>
 
-            <label for="Benutzername">Benutzername</label>
-            <input type="text" name="variablefromuserpasswordregistration" id="usernameregistration"
-                placeholder="Benutzername" style="font-style:italic">
+
+            <div>
+                <label for="Benutzername">Benutzername</label>
+                <input type="text" name="variablefromuserpasswordregistration" id="usernameregistration"
+                    placeholder="Benutzername" style="font-style:italic" required maxlength="16">
+            </div>
 
             <br>
-            <br>
-            <label for="Passwort">Passwort</label>
-            <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration"
-                placeholder="Passwort" style="font-style:italic">
-            <br>
 
-            <label for="Passwort">Passwort bestätigen</label>
-            <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration"
-                placeholder="Passwort bestätigen" style="font-style:italic">
-            <br>
-            <br>
+            <div>
+                <label for="Passwort">Passwort</label>
+                <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration"
+                    placeholder="Passwort" style="font-style:italic" required minlength="8" maxlength="16">
+            </div>
 
-            <!-- Submit-Button (Daten an Server schicken) -->
-            <input type="submit" style="color:rgb(17, 0, 255);" value="Registrieren">
+            <br>
+            <div>
+                <label for="Passwort">Passwort bestätigen</label>
+                <input type="password" name="variablefromuserpasswordregistration" id="userpasswordregistration"
+                    placeholder="Passwort" style="font-style:italic" required minlength="8" maxlength="16">
+            </div>
 
+            <br>
+            <div>
+                <!-- Submit-Button (Daten an Server schicken) -->
+                <input type="submit" style="color:rgb(17, 0, 255);" value="Registrieren">
+            </div>
         </fieldset>
     </form>
 
     <br>
     <!-- Abbrechen-Button (Zurück zu Login Maske) -->
 
-    <button type="button" style="color:rgb(17, 0, 255);" onclick='confirmAction("Sind Sie sicher, dass sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück zur Startseite</button>
+    <button type="button" style="color:rgb(17, 0, 255);"
+        onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück zur Startseite</button>
 
     <script>
         function confirmAction(message) {
@@ -65,12 +73,12 @@
         }
     </script>
 
-<footer>
-    <hr>
-    <nav>
-     <p>© 2025 MLR | <a href="about.html"><i>Impressum</i></a></p>
-    </nav>
-</footer>
+    <footer>
+        <hr>
+        <nav>
+            <p>© 2025 MLR | <a href="about.html"><i>Impressum</i></a></p>
+        </nav>
+    </footer>
 </body>
 
 </html>

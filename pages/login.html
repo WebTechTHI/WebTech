@@ -24,37 +24,38 @@
     <form action="login.php" method="post">
         <fieldset>
             <legend>Login-Daten</legend>
-            <label for="Benutzername">Benutzername</label>
-            <input name="username" placeholder="Benutzername" type="text" name="variablefromuser" id="username">
 
-            <br>
+            <div>
+                <label for="Benutzername">Benutzername</label>
+                <input name="username" placeholder="Benutzername" type="text" name="variablefromusername" id="username">
+            </div>
 
-            <label for="Passwort">Passwort</label>
-            <input name="password"  type="password" name="variablefromuserpassword"
-                id="userpassword">
-            <br>
+            <div>
+                <label for="Passwort">Passwort</label>
+                <input name="password" placeholder="Passwort" type="password" name="variablefromuserpassword"
+                    id="userpassword">
+            </div>
+
             <br>
             <!-- Anmelden-Button -->
             <input type="submit" style="color:rgb(17, 0, 255);" value="Anmelden">
-            <br>
-            <br>
-            <br>
-
-
-            <p style="color:rgb(0, 0, 0);"> Noch keinen Account ?</p>
-
-            <!-- Registrieren-Button (Zu registrieren Seite) -->
-            <a href="registration.html">
-                <button type="button" style="color:rgb(17, 0, 255)">Zur Registrierung</button>
-            </a>
         </fieldset>
+
     </form>
 
+    <div>
+        <p style="color:rgb(0, 0, 0);"> Noch keinen Account ?</p>
+
+        <!-- Registrieren-Button (Zu registrieren Seite) -->
+        <a href="registration.html">
+            <button type="button" style="color:rgb(17, 0, 255)">Zur Registrierung</button>
+        </a>
+    </div>
 
     <footer>
         <hr>
         <nav>
-         <p>© 2025 MLR | <a href="about.html"><i>Impressum</i></a></p>
+            <p>© 2025 MLR | <a href="about.html"><i>Impressum</i></a></p>
         </nav>
     </footer>
 
