@@ -1,17 +1,1 @@
-
-
-.headline {color: crimson;}
-
-header {
-    height: 100px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    
-
-
-
-
-}
-
-
+<link rel="stylesheet" href="mystyle.css">
