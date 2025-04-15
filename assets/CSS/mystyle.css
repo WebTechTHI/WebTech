@@ -4,25 +4,42 @@
     margin-top: 20px;
     border: 10px;
     border-radius: 18px;
-    box-shadow: 0px 5px 13px 2px rgb(29, 25, 32);
+    box-shadow: 0px 5px 20px 2px rgb(29, 25, 32);
     height: 36px;
     width: 300px;
 }
 
 .userInformationInput {
-    text-align: center;
+    text-align: left;
+    text-indent: 20px;
+    word-spacing: 5px;
     height: 40px;
     width: 400px;
     border-radius: 25px;
-    font-family: 'Cambria Math';
+    font-family: 'Gill Sans MT';
     font-weight: 800;
     font-size: 24px;
     font-style: normal;
     margin-top: 10px;
     margin-bottom: 10px;
+    background:rgb(221, 221, 221)
+}
+
+.userInformationInput::placeholder{
+    color:rgba(212, 0, 0, 0.685);
+}
+
+.userInformationInput:hover{
+    background: rgb(197, 197, 197);
+}
+
+.submitButton:hover{
+    background: rgb(163, 12, 12);
 }
 
 .userInfoForm {
+    width: 600px;
+    height: 300px;
     text-align: center;
     padding-left: 1px;
     padding-right: 1px;
@@ -30,11 +47,14 @@
     padding-bottom: 50px;
     border: 12px;
     border-radius: 30px;
+    background: rgb(230, 230, 230);
 }
 
-.bodyPages {
-    
+.bodyPages{
+    background: gray;
+}
+
+.bodyLoginRegistration {
+    text-align: center;
     background-color: gray;
-
-
 }
