@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+    <link rel="stylesheet" href="/assets/CSS/mystyle.css">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +9,7 @@
     <link rel="icon" href="../assets/images/logo/favicon.png" type="image/x-icon">
 </head>
 
-<body bgcolor="gray">
+<body class="bodyPages">
 
     <header>
         <a href="../index.html">
@@ -17,47 +18,34 @@
     </header>
 
 
-    <h1 title="Please fill out the blanks" style="font-size: 60px;"> Registrierungsformular</h1>
+    <h1 title="Please fill out the blanks"> Registrierungsformular</h1>
     <h4 title="Please fill out the blanks" ein> Bitte erstellen sie einen Benutzer</h4>
 
 
 
 
     <!-- Ab Hier Registrieren Funktionen -->
-    <form action="registration.php" method="post">
-
-        <fieldset>
-            <legend>Registrierungsformular</legend>
-
+    <form class="userInfoForm" action="registration.php" method="post">
 
             <div>
-                <label for="usernameregistration">Benutzername</label>
-                <input type="text" name="fromusernameregistration" id="usernameregistration" placeholder="Benutzername"
-                    style="font-style:italic" required maxlength="16">
+                <input class="userInformationInput" type="text" name="fromusernameregistration" id="usernameregistration" placeholder="Benutzername" maxlength="20" required>
             </div>
-
-            <br>
 
             <div>
-                <label for="userpasswordregistration">Passwort</label>
-                <input type="password" name="fromuserpasswordregistration" id="userpasswordregistration"
-                    placeholder="Passwort" style="font-style:italic" required minlength="8" maxlength="16">
+                <input class="userInformationInput" type="password" name="fromuserpasswordregistration" id="userpasswordregistration"
+                    placeholder="Passwort" minlength="8" maxlength="16" required>
             </div>
 
-            <br>
             <div>
-                <label for="userpasswordregistrationconfirmation">Passwort bestätigen</label>
-                <input type="password" name="fromuserpasswordregistrationconfirmation"
-                    id="userpasswordregistrationconfirmation" placeholder="Passwort bestätigen"
-                    style="font-style:italic" required minlength="8" maxlength="16">
+                <input class="userInformationInput" type="password" name="fromuserpasswordregistrationconfirmation"
+                    id="userpasswordregistrationconfirmation" placeholder="Passwort bestätigen" minlength="8" maxlength="16" required>
             </div>
 
-            <br>
             <div>
                 <!-- Submit-Button (Daten an Server schicken) -->
-                <input type="submit" style="color:rgb(17, 0, 255); border-radius: 5px;" value="Registrieren">
+                <input class="submitButton" type="submit" value="Registrieren">
             </div>
-        </fieldset>
+
     </form>
 
     <br>

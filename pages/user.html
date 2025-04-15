@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
-
+    <link rel="stylesheet" href="/assets/CSS/mystyle.css">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <link rel="icon" href="../assets/images/logo/favicon.png" type="image/x-icon">
 </head>
 
-<body bgcolor="gray">
+<body class="bodyPages">
 
     <header>
         <a href="../index.html">
@@ -56,11 +57,11 @@
 
 <br>
     <div>
-        <button onclick="change(getElementById('userpassword'))" style="color:rgb(17, 0, 255); border-radius: 5px;">Passwort ändern</button>
+        <button onclick="change(getElementById('userpassword'))">Passwort ändern</button>
     </div>
 <br>
     <div>
-        <button onclick="change(getElementById('username'))" style="color:rgb(17, 0, 255); border-radius: 5px;">Benutzername ändern</button>
+        <button onclick="change(getElementById('username'))">Benutzername ändern</button>
     </div>
 
     <script>
@@ -79,9 +80,9 @@
                 }
 
             } else if (userinformation == username) {
-                newInfo = prompt("Bitte geben Sie einen gültigen Benutzernamen ein. Der Benutzername darf maximal 16 Zeichen lang sein.")
-                if (newInfo.length > 16) {
-                    alert("Der eingegebene Benutzername ist zu lang. Der Benutzername darf maximal 16 Zeichen Lang sein");
+                newInfo = prompt("Bitte geben Sie einen gültigen Benutzernamen ein. Der Benutzername darf maximal 20 Zeichen lang sein.")
+                if (newInfo.length > 20) {
+                    alert("Der eingegebene Benutzername ist zu lang. Der Benutzername darf maximal 20 Zeichen Lang sein");
                 } else if (newInfo.length < 1) {
                     alert("Eingabe ungültig. Bitte geben sie einen Benutzernamen an.");
                 } else {
