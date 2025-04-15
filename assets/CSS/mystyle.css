@@ -1,1 +1,17 @@
-.submitbutton{font-family: Georgia, 'Times New Roman', Times, serif;}
+
+
+.headline {color: crimson;}
+
+header {
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+
+
+
+
+}
+
+
