@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
-    <link rel="stylesheet" href="/assets/css/mystyle.css">
+    <link rel="stylesheet" href="/assets/CSS/mystyle.css">
 
 <head>
     <meta charset="UTF-8">
@@ -22,24 +22,18 @@
 
 
     <!-- Ab Hier Login Funktionen -->
-    <form action="login.php" method="post">
-        <fieldset>
-            <legend>Login-Daten</legend>
-
+    <form class="userInfoForm" action="login.php" method="post">
             <div>
-                <label for="username">Benutzername</label>
-                <input name="variablefromusername" id="username" type="text" placeholder="Benutzername">
+                <input class="userInformationInput" name="variablefromusername" id="username" type="text" placeholder="Benutzername">
             </div>
 
             <div>
-                <label for="userpassword">Passwort</label>
-                <input name="variableformpassword" id="userpassword" type="password" placeholder="Passwort">
+                <input class="userInformationInput" name="variableformpassword" id="userpassword" type="password" placeholder="Passwort">
             </div>
 
             <br>
             <!-- Anmelden-Button -->
-            <input class="submitbutton" type="submit" value="Anmelden">
-        </fieldset>
+            <input class="submitButton" type="submit" value="Anmelden">
 
     </form>
 
