@@ -1,10 +1,14 @@
-/* /1/ HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
+
 body {
     background: rgb(189,195,199);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+footer {
+    text-align: center;
+}
 
+/* /1/ HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
 .userInformationInput {
     text-align: left;
     text-indent: 20px;
@@ -221,8 +225,11 @@ a:hover {
 
 .product img {
     display: block;
-    margin:auto;
-    width: 75%;
+    margin: auto;
+    height: 180px; /* Fixed height for all images */
+    width: auto; /* Width will adjust automatically */
+    object-fit: contain; /* This ensures the image maintains its aspect ratio */
+    max-width: 75%;
 }
 
 .product h1 {
@@ -253,6 +260,7 @@ a:hover {
     border-radius: 50px;
     margin-top: auto;
     
+    
 }
 
 .product .more:hover {
@@ -269,6 +277,8 @@ a:hover {
     margin-bottom: 15px;
     font-weight: 400;
 }
+
+
 /* Rinor Produktübersichtseiten Ende */
 
 
