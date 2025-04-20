@@ -1,5 +1,5 @@
 
-/* Buttons um abzuschicken */
+/* HAUPTPUNKT Buttons um abzuschicken */
 .submitButton {
     text-align: center;
     font-size: 16px;
@@ -10,7 +10,8 @@
     height: 36px;
     width: 300px;
 }
-/* end of text */
+
+/* HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
 .userInformationInput {
     text-align: left;
     text-indent: 20px;
@@ -25,18 +26,19 @@
     margin-top: 10px;
     margin-bottom: 10px;
     background:rgb(221, 221, 221)
+    
 }
-
+/* UNTERPUNKT placeholder für eingabebereich also nur unter punkt */
 .userInformationInput::placeholder{
     color:rgba(90, 90, 90, 0.685);
 }
 
-/* Hover effekt der bei buttons gebraucht wird wenn man mit maus darüber geht */
+/* UNTERPUNKT Hover effekt der bei buttons gebraucht wird wenn man mit maus darüber geht */
 .userInformationInput:hover{
     background: rgb(197, 197, 197);
 }
 
-/* Für class submit button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is) */
+/* UNTERPUNKT Für class submit button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is) */
 .submitButton:hover{
     background: rgb(163, 12, 12);
     color:white;
@@ -45,7 +47,7 @@
     border-color: black;
 }
 
-/* Form bzw. Formular wird als ganzes in Form gebracht */
+/* HAUPTPUNKT Form bzw. Formular wird als ganzes in Form gebracht */
 .userInfoForm {
     position:relative;
     left:50%;
