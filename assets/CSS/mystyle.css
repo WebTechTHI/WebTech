@@ -73,6 +73,7 @@
     height: 36px;
     width: 300px;
     background-color: rgb(39, 174, 96);
+    
 }
 
 /* UNTERPUNKT Für direction button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
@@ -118,13 +119,13 @@
 
 
 
-/* hintergrundfarbe unserer gesamten jeweiligen oberfläche */
+/* GLAUBE LÖSCHEN DEN ABSCHNITT, DA WIR bodybackground BENUTZEN / hintergrundfarbe unserer gesamten jeweiligen oberfläche */
 .bodyPages{
     background-color: (189,195,199);
 }
 
 
-/* Body wird angepasst als gesamtes */
+/* HAUPTPUNKT HIER DAS ES EINHEITLICH BLEIBT. sollte auf jeder seite eig bei body class eingefügt werden/ Body wird angepasst als gesamtes */
 .bodyLoginRegistration {
     text-align: center;
     background-color: rgb(189,195,199);
