@@ -46,24 +46,32 @@
                 <input class="submitButton" type="submit" value="Registrieren">
             </div>
 
-    </form>
+<br>
 
-    <br>
-    <!-- Abbrechen-Button (Zurück zu Login Maske) -->
+<hr>
+<!-- Abbrechen-Button (Zurück zu Login Maske) -->
 
-    <div>
+            <label for="registration_back_to_login_button">Haben Sie bereits einen Account?</label>
+          <!--   <button  id="registration_back_to_login_button" ><a  href="login.html">Login</a></button> -->
+             <br>
+            <a href="login.html" ><button class="directionbutton" type="button">Login</button> </a>
 
-        <label for="registration_back_to_login_button">Haben Sie bereits einen Account?</label>
-        <button id="registration_back_to_login_button" style="color:rgb(17, 0, 255); border-radius: 5px"><a href="login.html">Login</a></button>
 
-    </div>
 
-    <div>
-        <button type="button" style="color:rgb(17, 0, 255); border-radius: 5px;"
+ <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->           
+<br>
+
+
+ <button class="directionbutton" type="button"
             onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück
             zur Startseite</button>
 
-    </div>
+
+
+    </form>
+    <br>
+        
+
     <script>
         function confirmAction(message) {
             if (confirm(message)) {

@@ -1,4 +1,4 @@
-/* HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
+/* /1/ HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
 .userInformationInput {
     text-align: left;
     text-indent: 20px;
@@ -62,8 +62,7 @@
 
 
 
-
-/* HAUPTPUNKT Buttons um zu anderen Orten / Links zu gelangen ! kein server*/
+/* HAUPTPUNKT Button (von login zu registrieren erc ) um zu anderen Orten / Links zu gelangen ! kein server*/
 .directionbutton {
     text-align: center;
     font-size: 16px;
@@ -76,6 +75,21 @@
     background-color: rgb(39, 174, 96);
 }
 
+/* UNTERPUNKT Für direction button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
+.directionbutton:hover{
+    background: rgb(30,132,73);
+    color:rgb(0, 0, 0);
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+}
+
+
+
+
+
+
+
 
 
 
@@ -85,7 +99,7 @@
     left:50%;
     translate: -50%;
     width: 600px;
-    height: 300px;
+    height: 385px;
     text-align: center;
     padding-left: 1px;
     padding-right: 1px;
@@ -95,6 +109,9 @@
     border-radius: 30px;
     background: rgb(230, 230, 230);
 }
+
+
+
 
 
 
@@ -117,7 +134,5 @@
 .bodybackground {
     background-color: rgb(189,195,199);
 }
-
-
 
 
