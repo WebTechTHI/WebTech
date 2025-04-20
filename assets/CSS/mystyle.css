@@ -1,20 +1,4 @@
-
-body {
-    background: gray;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-/* Buttons um abzuschicken */
-.submitButton {
-    text-align: center;
-    font-size: 16px;
-    margin-top: 20px;
-    border: 10px;
-    border-radius: 18px;
-    box-shadow: 0px 5px 20px 2px rgb(29, 25, 32);
-    height: 36px;
-    width: 300px;
-}
-/* end of text */
+/* /1/ HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
 .userInformationInput {
     text-align: left;
     text-indent: 20px;
@@ -31,6 +15,7 @@ body {
     background:rgb(221, 221, 221)
 
 }
+
 /* UNTERPUNKT placeholder für eingabebereich also nur unter punkt */
 .userInformationInput::placeholder{
     color:rgba(90, 90, 90, 0.685);
@@ -40,6 +25,20 @@ body {
 .userInformationInput:hover{
     background: rgb(244, 244, 244);
 }
+
+
+
+
+
+
+
+
+
+body {
+    background: gray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 
 
 
@@ -144,8 +143,36 @@ body {
 /* HAUPTPUNKT HIER DAS ES EINHEITLICH BLEIBT. sollte auf jeder seite eig bei body class eingefügt werden/ Body wird angepasst als gesamtes */
 .bodyLoginRegistration {
     text-align: center;
-    background-color: gray;
+    background-color: rgb(189,195,199);
 }
+
+/* Standartmäßige Hintergrundfarbe bei jeder Seite vom body*/
+.bodybackground {
+    background-color: rgb(189,195,199);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Rinor Produktübersichtseiten */
 .container {
