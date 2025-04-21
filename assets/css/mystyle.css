@@ -87,7 +87,7 @@ footer {
 }
 
 
-
+/* WOFÜR BRAUCHEN WIR DIE A ? HIER UND DAS DARUNTER ? Löschen?*/
 a {
     text-decoration: none;
     color: #0056b3
@@ -126,6 +126,34 @@ a:hover {
 
 
 
+
+
+
+
+
+/*HAUPTPUNKT BUTTON für Warenkorb bei produkten also zum einkaufen*/
+.warenkorbbutton {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    border: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 20px 2px rgb(82, 81, 81);
+    height: 40px;
+    width: 500px;
+    background-color: rgb(0, 155, 64);
+    color: rgb(255, 255, 255);
+    border: 3px outset #5fd4a7;
+}
+
+
+.warenkorbbutton:hover {
+    background: rgb(0, 71, 30);
+    color:rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
 
 
 
