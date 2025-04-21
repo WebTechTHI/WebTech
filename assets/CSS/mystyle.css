@@ -1,10 +1,46 @@
+
+body { 
+    background-color: #3d4444;
+    margin:0; 
+    padding:0; 
+    font-family:verdana,arial,helvetica,sans-serif; 
+    font-size:0.8em;
+}
+
+header{
+    position: sticky;
+}
+
+.logo{
+    width:120px;
+}
+
+.topNavHeader{
+    background: rgb(12, 12, 12);
+    display: flex;
+}
+
+.userNav{ 
+    flex: 1; 
+    text-align: right; 
+}
+.bottomNavHeader{
+    background-color: rgb(146, 27, 27);
+}
+
+.userIconHeader{
+    height: 50px;
+    margin-top: 35px;
+    margin-right: 22px;
+}
+
 .submitButton {
     text-align: center;
     font-size: 16px;
     margin-top: 20px;
-    border: 10px;
+    border: 3px solid;
+    border-color: rgb(156, 23, 23);
     border-radius: 18px;
-    box-shadow: 0px 5px 20px 2px rgb(29, 25, 32);
     height: 36px;
     width: 300px;
 }
@@ -15,23 +51,23 @@
     border-style: solid;
     border-width: 3px;
     border-color: black;
+    box-shadow: 0px 0px 20px 2px rgb(29, 25, 32);
 }
 
 .ankerForm{
-    color: brown;
+    background: brown;
     text-align: center;
     font-size: 16px;
     margin-top: 20px;
     border: 10px;
     border-radius: 18px;
-    box-shadow: 0px 5px 20px 2px rgb(29, 25, 32);
     height: 36px;
     width: 300px;
 
 }
 
 .ankerForm:hover{
-    
+    box-shadow: 0px 0px 20px 2px rgb(29, 25, 32);
 }
 
 .userInformationInput {
@@ -74,9 +110,7 @@
     background: rgb(230, 230, 230);
 }
 
-.bodyPages{
-    background: gray;
-}
+
 
 .bodyLoginRegistration {
     text-align: center;
