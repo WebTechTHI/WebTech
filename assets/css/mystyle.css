@@ -1,11 +1,58 @@
-
-body {
+body { 
     background: rgb(189,195,199);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+}
+
+/* Ab hier Header Klassen. */
+
+header{
+    position: sticky;
+}
+
+.topNavHeader{
+    background: rgb(12, 12, 12);
+    display: flex;
+}
+
+.userNav{ 
+    flex: 1; 
+    text-align: right; 
+}
+.bottomNavHeader{
+    background-color: rgb(146, 27, 27);
+}
+
+.logo{
+    width:120px;
 }
 
 footer {
     text-align: center;
+}
+
+/* Ab hier Footer Klassen. */
+
+
+.userIconHeader{
+    height: 50px;
+    margin-top: 35px;
+    margin-right: 22px;
+}
+
+.ankerForm{
+    background: brown;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    border: 10px;
+    border-radius: 18px;
+    height: 36px;
+    width: 300px;
+}
+
+.ankerForm:hover{
+    box-shadow: 0px 0px 20px 2px rgb(29, 25, 32);
 }
 
 /* /1/ HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
@@ -23,27 +70,15 @@ footer {
     margin-top: 10px;
     margin-bottom: 10px;
     background:rgb(221, 221, 221)
-
 }
 
-/* UNTERPUNKT placeholder für eingabebereich also nur unter punkt */
 .userInformationInput::placeholder{
     color:rgba(90, 90, 90, 0.685);
 }
 
-/* UNTERPUNKT Hover effekt der bei eingabebereich gebraucht wird wenn man mit maus darüber geht */
 .userInformationInput:hover{
-    background: rgb(244, 244, 244);
+    background: rgb(197, 197, 197);
 }
-
-
-
-
-
-
-
-
-
 
 /* HAUPTPUNKT Labels also Beschriftungen vor eingabebereichen um user zu zeigen wofür der eingabebereich ist (KEIN HOVER EFFEKT DAFÜR) */
 
@@ -68,22 +103,22 @@ footer {
     text-align: center;
     font-size: 16px;
     margin-top: 20px;
-    border: 10px;
+    border: 3px solid;
+    border-color: rgb(156, 23, 23);
     border-radius: 18px;
-    box-shadow: 0px 5px 20px 2px rgb(29, 25, 32);
     height: 36px;
     width: 300px;
-    background-color: rgb(39, 174, 96);
 }
 
 
 /* UNTERPUNKT Für class submit button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
 .submitButton:hover{
-    background: rgb(30,132,73);
-    color:rgb(0, 0, 0);
+    background: rgb(163, 12, 12);
+    color:white;
     border-style: solid;
     border-width: 3px;
     border-color: black;
+    box-shadow: 0px 0px 20px 2px rgb(29, 25, 32);
 }
 
 
@@ -167,7 +202,7 @@ a:hover {
     left:50%;
     translate: -50%;
     width: 600px;
-    height: 385px;
+    height: 300px;
     text-align: center;
     padding-left: 1px;
     padding-right: 1px;
@@ -195,15 +230,8 @@ a:hover {
 /* HAUPTPUNKT HIER DAS ES EINHEITLICH BLEIBT. sollte auf jeder seite eig bei body class eingefügt werden/ Body wird angepasst als gesamtes */
 .bodyLoginRegistration {
     text-align: center;
-    background-color: rgb(189,195,199);
+    background-color: gray;
 }
-
-/* Standartmäßige Hintergrundfarbe bei jeder Seite vom body*/
-.bodybackground {
-    background-color: rgb(189,195,199);
-}
-
-
 
 
 
