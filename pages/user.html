@@ -27,13 +27,12 @@
 
 
 
-    <form  action="user.html" method="post">
-        <fieldset>
-            <legend>Benutzerprofil</legend>
+    <form class="userInfoForm" action="user.html" method="post">
 
             <div>
                 <div>
-                    <label for="username">Benutzername: </label>
+                    <label  for="username">Benutzername </label>
+                    <br>
                     <input type="text" id="username" name="username" value="MaxMustermann" maxlength="16" disabled>
                 </div>
             </div>
@@ -41,7 +40,18 @@
             <br>
 
             <div>
-                <label for="password">Dein Passwort: </label>
+                <div>
+                    <label title="Mit deinem Richtigen Namen können deine Freunde dich leichter Finden" for="username2">Richtiger Name ⍰</label>
+                    <br>
+                    <input type="text" id="username2" name="username2" value="Max" maxlength="25" >
+                </div>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="password">Dein Passwort </label>
+                <br>
                 <input type="password" id="userpassword" name="password" value="123456789" minlength="8" maxlength="16"
                     disabled>
             </div>
@@ -50,19 +60,27 @@
 
 
 
-            <input type="submit" style="color:rgb(17, 0, 255); border-radius: 5px;" value="Sichern">
-        </fieldset>
+            <input class="submitButton" type="submit" value="Sichern">
+            <br><br>
+   <hr>
+
+
+
+            <div>
+                <button class="directionbutton" onclick="change(getElementById('userpassword'))">Passwort ändern</button>
+            </div>
+        <br>
+            <div>
+                <button class="directionbutton" onclick="change(getElementById('username'))">Benutzername ändern</button>
+            </div>
+
     </form>
 
 
 <br>
-    <div>
-        <button onclick="change(getElementById('userpassword'))">Passwort ändern</button>
-    </div>
-<br>
-    <div>
-        <button onclick="change(getElementById('username'))">Benutzername ändern</button>
-    </div>
+    
+
+
 
     <script>
 
