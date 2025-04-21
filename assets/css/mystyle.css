@@ -1,0 +1,326 @@
+
+body {
+    background: rgb(189,195,199);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer {
+    text-align: center;
+}
+
+/* /1/ HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
+.userInformationInput {
+    text-align: left;
+    text-indent: 20px;
+    word-spacing: 5px;
+    height: 40px;
+    width: 400px;
+    border-radius: 25px;
+    font-family: 'Gill Sans MT';
+    font-weight: 800;
+    font-size: 24px;
+    font-style: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background:rgb(221, 221, 221)
+
+}
+
+/* UNTERPUNKT placeholder für eingabebereich also nur unter punkt */
+.userInformationInput::placeholder{
+    color:rgba(90, 90, 90, 0.685);
+}
+
+/* UNTERPUNKT Hover effekt der bei eingabebereich gebraucht wird wenn man mit maus darüber geht */
+.userInformationInput:hover{
+    background: rgb(244, 244, 244);
+}
+
+
+
+
+
+
+
+
+
+
+/* HAUPTPUNKT Labels also Beschriftungen vor eingabebereichen um user zu zeigen wofür der eingabebereich ist (KEIN HOVER EFFEKT DAFÜR) */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* HAUPTPUNKT Buttons um abzuschicken / submit buttons für SERVER */
+.submitButton {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    border: 10px;
+    border-radius: 18px;
+    box-shadow: 0px 5px 20px 2px rgb(29, 25, 32);
+    height: 36px;
+    width: 300px;
+    background-color: rgb(39, 174, 96);
+}
+
+
+/* UNTERPUNKT Für class submit button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
+.submitButton:hover{
+    background: rgb(30,132,73);
+    color:rgb(0, 0, 0);
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+}
+
+
+/* WOFÜR BRAUCHEN WIR DIE A ? HIER UND DAS DARUNTER ? Löschen?*/
+a {
+    text-decoration: none;
+    color: #0056b3
+    
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #003d7a;
+}
+
+
+
+/* HAUPTPUNKT Button (von login zu registrieren erc ) um zu anderen Orten / Links zu gelangen ! kein server*/
+.directionbutton {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    border: 10px;
+    border-radius: 18px;
+    box-shadow: 0px 5px 20px 2px rgb(29, 25, 32);
+    height: 36px;
+    width: 300px;
+    background-color: rgb(39, 174, 96);
+    
+}
+
+/* UNTERPUNKT Für direction button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
+.directionbutton:hover{
+    background: rgb(30,132,73);
+    color:rgb(0, 0, 0);
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+}
+
+
+
+
+
+
+
+
+/*HAUPTPUNKT BUTTON für Warenkorb bei produkten also zum einkaufen*/
+.warenkorbbutton {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    border: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 20px 2px rgb(82, 81, 81);
+    height: 40px;
+    width: 500px;
+    background-color: rgb(0, 155, 64);
+    color: rgb(255, 255, 255);
+    border: 3px outset #5fd4a7;
+}
+
+
+.warenkorbbutton:hover {
+    background: rgb(0, 71, 30);
+    color:rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+
+
+
+
+
+
+/* HAUPTPUNKT Form bzw. Formular wird als ganzes in Form gebracht */
+.userInfoForm {
+    position:relative;
+    left:50%;
+    translate: -50%;
+    width: 600px;
+    height: 385px;
+    text-align: center;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 12px;
+    border-radius: 30px;
+    background: rgb(230, 230, 230);
+}
+
+
+
+
+
+
+
+
+
+/* GLAUBE LÖSCHEN DEN ABSCHNITT, DA WIR bodybackground BENUTZEN / hintergrundfarbe unserer gesamten jeweiligen oberfläche */
+.bodyPages{
+    background-color: (189,195,199);
+}
+
+
+/* HAUPTPUNKT HIER DAS ES EINHEITLICH BLEIBT. sollte auf jeder seite eig bei body class eingefügt werden/ Body wird angepasst als gesamtes */
+.bodyLoginRegistration {
+    text-align: center;
+    background-color: rgb(189,195,199);
+}
+
+/* Standartmäßige Hintergrundfarbe bei jeder Seite vom body*/
+.bodybackground {
+    background-color: rgb(189,195,199);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Rinor Produktübersichtseiten */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    
+    
+  }
+
+.product {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    width: 300px;   
+    
+    display: flex; 
+    flex-direction: column;
+     
+    
+}
+
+.product:hover {
+    background-color: hsl(0, 0%, 95%);
+    box-shadow: 0px 11px 23px 3px #000000;
+    
+}
+
+.product img {
+    display: block;
+    margin: auto;
+    height: 180px; /* Fixed height for all images */
+    width: auto; /* Width will adjust automatically */
+    object-fit: contain; /* This ensures the image maintains its aspect ratio */
+    max-width: 75%;
+}
+
+.product h1 {
+    font-size: 26px;
+    color: #333; 
+    text-align: center;
+    font-weight: 700; 
+}
+
+.product h2 {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.product .more {
+    display: block;
+    text-align: center;
+    background-color: #d31e07;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 50px;
+    margin-top: auto;
+    
+    
+}
+
+.product .more:hover {
+    background-color: rgb(131, 19, 5);
+    
+}
+
+
+.product p {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+
+/* Rinor Produktübersichtseiten Ende */
+
+
+  
+
+  
+ 
+  
+
+
+
