@@ -23,6 +23,10 @@ header{
     background-color: rgb(146, 27, 27);
 }
 
+.bottomNavHeader a{
+    color: white;
+}
+
 .logo{
     width:120px;
 }
