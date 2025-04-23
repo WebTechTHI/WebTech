@@ -23,6 +23,10 @@ header{
     background-color: rgb(146, 27, 27);
 }
 
+.bottomNavHeader a{
+    color: white;
+}
+
 .logo{
     width:120px;
 }
@@ -122,7 +126,7 @@ footer {
 }
 
 
-/* WOFÜR BRAUCHEN WIR DIE A ? HIER UND DAS DARUNTER ? Löschen?*/
+/* Ist dafür da das die Links nicht unterstrichen sind bei logout beispielsweise */
 a {
     text-decoration: none;
     color: #0056b3
@@ -308,7 +312,7 @@ a:hover {
     line-height: 1.4;
     margin-bottom: 15px;
     font-weight: 400;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 }
 
 .product .more {
