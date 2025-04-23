@@ -126,7 +126,7 @@ footer {
 }
 
 
-/* WOFÜR BRAUCHEN WIR DIE A ? HIER UND DAS DARUNTER ? Löschen?*/
+/* Ist dafür da das die Links nicht unterstrichen sind bei logout beispielsweise */
 a {
     text-decoration: none;
     color: #0056b3
