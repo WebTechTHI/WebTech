@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
-    <link rel="stylesheet" href="../assets/CSS/mystyle.css">
-    
-    <link rel="stylesheet" href="../assets/css/mystyle.css">
+<link rel="stylesheet" href="../assets/CSS/mystyle.css">
+
+<link rel="stylesheet" href="../assets/css/mystyle.css">
 
 <head>
     <meta charset="UTF-8">
@@ -29,48 +29,54 @@
 
     <!-- Ab Hier Registrieren Funktionen -->
     <form class="userInfoForm" action="registration.php" method="post">
-        <legend>
-            <div>
-                <input class="userInformationInput" type="text" name="fromusernameregistration" id="usernameregistration" placeholder="Benutzername" maxlength="20" required>
-            </div>
+        <div>
+            <input class="userInformationInput" type="text" name="fromusernameregistration" id="usernameregistration"
+                placeholder="Benutzername" maxlength="20" required>
+        </div>
 
-            <div>
-                <input class="userInformationInput" type="password" name="fromuserpasswordregistration" id="userpasswordregistration"
-                    placeholder="Passwort" minlength="8" maxlength="16" required>
-            </div>
+        <div>
+            <input class="userInformationInput" type="password" name="fromuserpasswordregistration"
+                id="userpasswordregistration" placeholder="Passwort" minlength="8" maxlength="16" required>
+        </div>
 
-            <div>
-                <input class="userInformationInput" type="password" name="fromuserpasswordregistrationconfirmation"
-                    id="userpasswordregistrationconfirmation" placeholder="Passwort bestätigen" minlength="8" maxlength="16" required>
-            </div>
+        <div>
+            <input class="userInformationInput" type="password" name="fromuserpasswordregistrationconfirmation"
+                id="userpasswordregistrationconfirmation" placeholder="Passwort bestätigen" minlength="8" maxlength="16"
+                required>
+        </div>
 
-            <div>
-                <!-- Submit-Button (Daten an Server schicken) -->
-                <input class="submitButton" type="submit" value="Registrieren">
-            </div>
+        <div>
+            <!-- Submit-Button (Daten an Server schicken) -->
+            <input class="submitButton" type="submit" value="Registrieren">
+        </div>
 
-<!-- Abbrechen-Button (Zurück zu Login Maske) -->
-
-            <label for="registration_back_to_login_button" title="Wenn sie bereits einen Account haben können sie mit dem Login Button sich einloggen!">Haben Sie bereits einen Account? ⍰</label>
-          <!--   <button  id="registration_back_to_login_button" ><a  href="login.html">Login</a></button> -->
-             <br>
-            <a href="login.html" ><button class="directionbutton" type="button">Login</button> </a>
+        <!-- Abbrechen-Button (Zurück zu Login Maske) -->
 
 
-
- <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->           
+        <!--   <button  id="registration_back_to_login_button" ><a  href="login.html">Login</a></button> -->
+        <br>
 
 
 
- <button class="directionbutton" type="button"
-            onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück
-            zur Startseite</button>
+
+        <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->
+
+
 
 
 
     </form>
-    <br>
-        
+
+    <label for="registration_back_to_login_button"
+        title="Wenn sie bereits einen Account haben können sie mit dem Login Button sich einloggen!">Haben Sie
+        bereits einen Account? ⍰</label>
+
+    <a href="login.html"><button class="directionbutton" type="button">Login</button> </a>
+
+    <button name="registration_back_to_login_button" class="directionbutton" type="button"
+        onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück
+        zur Startseite</button>
+
 
     <script>
         function confirmAction(message) {
