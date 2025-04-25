@@ -282,7 +282,7 @@ a:hover {
     
     display: flex; 
     flex-direction: column;
-    /*transition: 0.3s ease*/ 
+    transition: 0.3s ease 
 }
 
 
@@ -290,7 +290,7 @@ a:hover {
 
 .product:hover {
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.75);
-   /* transform: translateY(-5px); /* Box wird beim Hover-Effekt leicht angehoben */
+   transform: translateY(-5px); /* Box wird beim Hover-Effekt leicht angehoben */
 }
 
 
@@ -307,7 +307,7 @@ a:hover {
 }
 
 .product:hover img {
-    transform: scale(1.1)
+    transform: scale(1.05)
 }
 
 /* Hauptüberschirft in Produktbox */
