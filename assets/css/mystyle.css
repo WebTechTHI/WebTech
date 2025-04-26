@@ -36,15 +36,8 @@ header{
     width:120px;
 }
 
-footer {
-    text-align: center;
-}
-
-
 
 /* Ab hier Footer Klassen. */
-
-
 footer {
     margin-top: 50px;
     padding: 20px;
@@ -53,6 +46,7 @@ footer {
     text-align: center;
 }
 
+/*Footer Paragraphen (Text im Footer/ Fußzeile)*/
 footer p {
     margin: 0;
     font-size: 14px;
@@ -104,12 +98,6 @@ a:hover {
 
 
 
-/* GLAUBE LÖSCHEN DEN ABSCHNITT, DA WIR bodybackground BENUTZEN / hintergrundfarbe unserer gesamten jeweiligen oberfläche */
-.bodyPages{
-    background-color: (189,195,199);
-}
-
-
 /* HAUPTPUNKT HIER DAS ES EINHEITLICH BLEIBT. sollte auf jeder seite eig bei body class eingefügt werden/ Body wird angepasst als gesamtes */
 .bodyLoginRegistration {
     text-align: center;
@@ -139,6 +127,11 @@ hr {
 
 }
 
+
+.logoutMessage {
+    font-size: 20px;
+    margin-top: 20px;
+}
 
 
 
