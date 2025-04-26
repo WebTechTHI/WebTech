@@ -224,28 +224,40 @@ hr {
 
 /* /1/ HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
 .userInformationInput {
-    text-align: left;
-    text-indent: 20px;
-    word-spacing: 5px;
-    height: 40px;
-    width: 400px;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: 45px;
+    margin: 10px auto;
+    padding-left: 20px;
+    
+    font-family: 'Gill Sans MT', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #333;
+    
+    background-color: rgb(238, 238, 238);
+    border: 2px solid transparent;
     border-radius: 25px;
-    font-family: 'Gill Sans MT';
-    font-weight: 800;
-    font-size: 24px;
-    font-style: normal;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background:rgb(221, 221, 221)
+    transition: all 0.3s ease;
 }
 
-/*Placeholder ist dafür da das im label wo benutzer was eingibt schon die beschriftung für das label drinnen steht*/
-.userInformationInput::placeholder{
-    color:rgba(90, 90, 90, 0.685);
+/* Placeholder */
+.userInformationInput::placeholder {
+    color: rgba(90, 90, 90, 0.685);
 }
 
-.userInformationInput:hover{
-    background: rgb(197, 197, 197);
+/* Hover */
+.userInformationInput:hover {
+    background-color: rgb(230, 230, 230);
+    border: 2px solid rgb(39, 174, 96); /* leichter grüner Rand beim Hover */
+}
+
+/* Focus (wenn man klickt und tippt) */
+.userInformationInput:focus {
+    background-color: #fff;
+    border: 2px solid rgb(30, 132, 73); /* stärkerer grüner Rand beim Fokus */
+    outline: none; /* keine hässliche Standard-Outline vom Browser */
 }
 
 
