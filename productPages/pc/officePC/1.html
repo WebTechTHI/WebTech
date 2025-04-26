@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="de">
-    <link rel="stylesheet" href="../../../assets/css/mystyle.css">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MLR | Office-PC</title>
-        <link rel="icon" href="../../../assets/images/logo/favicon.png" type="image/x-icon">
-    </head>
+<link rel="stylesheet" href="../../../assets/css/mystyle.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLR | Office-PC</title>
+    <link rel="icon" href="../../../assets/images/logo/favicon.png" type="image/x-icon">
+</head>
+
 <body>
 
     <header>
 
         <div>
             <div>
-                <a href='../../../index.html'><img src='../../../assets/images/logo/logoDarkmode.png' alt="logo.png" width="200"
-                        style="margin-top: 20px"></a>
+                <a href='../../../index.html'><img src='../../../assets/images/logo/logoDarkmode.png' alt="logo.png"
+                        width="200" style="margin-top: 20px"></a>
                 <nav>
                     <a href="../../../pages/login.html">Login</a>&emsp;
                     <a href="../../../pages/registration.html">Registrierung</a> &emsp;
                     <a href="../../../pages/logout.html">Logout</a>&emsp;
-                    <a href="../../../pages/shoppingBasket.html"><img src="../../../assets/images/icons/shoppingcart.png" alt="Warenkorb"
+                    <a href="../../../pages/shoppingBasket.html"><img
+                            src="../../../assets/images/icons/shoppingcart.png" alt="Warenkorb"
                             style="height: 50px; width: 50px"></a>&emsp;
                     <a href="../../../pages/user.html"><img src="../../../assets/images/icons/user.png" alt="Konto"
                             style="height: 50px; width: 50px"></a>&emsp;
@@ -28,30 +31,63 @@
         </div>
     </header>
 
-     
+    <div class="productContainer">
 
-    
-    <h1>OFFICE PC</h1>
-    <h2>Intel Core i7-12700K, 12x 3.60GHz | 32GB DDR4 | Intel UHD Grafik | 1TB M.2 SSD</h2>
+        <div class="productHeader">
+            <h1>OFFICE PC</h1>
+            <h2>Intel Core i7-12700K, 12x 3.60GHz | 32GB DDR4 | Intel UHD Grafik | 1TB M.2 SSD</h2>
+        </div>
 
-    <img src='../../../assets/images/products/pc/1/vorne.png' alt="id-1.png" width="200">
-    <img src='../../../assets/images/products/pc/1/seitlich.png' alt="id-1.png" width="200">
-    <img src='../../../assets/images/products/pc/1/seitlichOffen.png' alt="id-1.png" width="200">
+        <div class="productPictures">
+            <img src='../../../assets/images/products/pc/1/vorne.png' alt="id-1.png" width="200">
+            <img src='../../../assets/images/products/pc/1/seitlich.png' alt="id-1.png" width="200">
+            <img src='../../../assets/images/products/pc/1/seitlichOffen.png' alt="id-1.png" width="200">
+        </div>
 
-    <p><strong>Preis: </strong> 589 €</p>
+        <div class="productInfo">
+            
 
-    <h3>Beschreibung</h3>
-    <p>Der MLR Office-PC ist ein leistungsstarker und zukunftssicherer Arbeitsrechner, der speziell für den Einsatz im Home-Office oder Büro konzipiert wurde. Ausgestattet mit einem Intel Core i7-12700K, 1000 GB SSD, ausreichend RAM und integrierter Intel-Grafik bietet er flüssige Performance für Multitasking, UHD-Streaming und gängige Office- sowie Multimedia-Anwendungen. Hochwertige Komponenten, moderne Anschlüsse (u.a. M.2, USB 3.0, HDMI) und eine effiziente Zusammenstellung sorgen für Stabilität und niedrigen Stromverbrauch. Jeder PC wird individuell in Deutschland gefertigt, getestet und ist über einen Konfigurator flexibel anpassbar</p>
+            <h3>Beschreibung</h3>
+            <p class="beschreibung">Der MLR Office-PC ist ein leistungsstarker und zukunftssicherer Arbeitsrechner, der
+                speziell für den Einsatz im Home-Office oder Büro konzipiert wurde. Ausgestattet mit einem Intel Core
+                i7-12700K, 1000 GB SSD, ausreichend RAM und integrierter Intel-Grafik bietet er flüssige Performance für
+                Multitasking, UHD-Streaming und gängige Office- sowie Multimedia-Anwendungen. Hochwertige Komponenten,
+                moderne Anschlüsse (u.a. M.2, USB 3.0, HDMI) und eine effiziente Zusammenstellung sorgen für Stabilität
+                und niedrigen Stromverbrauch. Jeder PC wird individuell in Deutschland gefertigt, getestet und ist über
+                einen Konfigurator flexibel anpassbar</p>
 
-    <button class="warenkorbbutton">Zum Warenkorb hinzufügen</button>
+                <h3>Technische Details</h3>
 
+                <table class="technicalDetails">
+                    <tr><td><strong>Prozessor:</strong></td><td>Intel Core i7-12700K, 12x 3.60GHz</td></tr>
+                    <tr><td><strong>RAM:</strong></td><td>32GB DDR4</td></tr>
+                    <tr><td><strong>Grafik:</strong></td><td>Intel UHD Grafik</td></tr>
+                    <tr><td><strong>Speicher:</strong></td><td>1TB M.2 SSD</td></tr>
+                    <tr><td><strong>Betriebssystem:</strong></td><td>Windows 11 Pro</td></tr>
+                    <tr><td><strong>Netzwerk:</strong></td><td>Gigabit LAN, WLAN optional</td></tr>
+                    <tr><td><strong>Anschlüsse:</strong></td><td>USB 3.0, HDMI, DisplayPort, Audio In/Out</td></tr>
+                </table>
+
+                <div class="kaufContainer">
+                    <button class="warenkorbButton">Zum Warenkorb hinzufügen</button>
+                    <div class="anzahlContainer">
+                      <button class="anzahlButton" id="decrease">-</button>
+                      <input type="number" class="anzahl" value="1" min="1">
+                      <button class="anzahlButton" id="increase">+</button>
+                    </div>
+                    
+                </div>
+                <p class="price"><strong>Preis: </strong> 589 €</p> 
+        </div>
+    </div>
     <footer>
         <hr>
         <nav>
-         <p>© 2025 MLR | <a href="../../../pages/about.html"><i>Impressum</i></a></p>
+            <p>© 2025 MLR | <a href="../../../pages/about.html"><i>Impressum</i></a></p>
         </nav>
     </footer>
 
 
 </body>
+
 </html>
