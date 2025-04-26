@@ -632,7 +632,6 @@ label {
   .productHeader h1 {
     font-size: 35px;
     margin-bottom: 10px;
-    color: var(--secondary-color);
   }
   
   .productHeader h2 {
@@ -652,7 +651,6 @@ label {
   
   .price {
     font-size: 1.8rem;
-    color: var(--accent-color);
     margin-bottom: 20px;
   }
   
