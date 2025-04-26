@@ -286,22 +286,28 @@ hr {
 .submitButton {
     display: inline-block; /* wichtig für Breite und Padding */
     text-align: center;
+
     font-size: 16px;
     font-weight: 600; /* leichte Betonung, wie bei directionbutton */
+
     margin-top: 20px;
     margin-bottom: 20px;
+
     padding-top: 10px;
     padding-right: 20px;
     padding-bottom: 10px;
     padding-left: 20px; /* statt fixem height → besserer Abstand innen */
+
     width: 300px;
     max-width: 90%;
+
     border: none; 
     border-radius: 18px;
     background-color: rgb(200, 0, 0); /* kräftiges Rot für wichtige Buttons */
     color: white;
+
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); 
-    transition: all 0.3s ease; /* weiche Animation */
+   
 }
 
 /* UNTERPUNKT Für class submit button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
@@ -310,8 +316,8 @@ hr {
     color: white;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* stärkerer Hover-Schatten */
     transform: translateY(-2px); /* leicht anheben beim Überfahren */
+     transition: all 0.3s ease; /* weiche Animation */
 }
-
 
 
 
@@ -326,7 +332,10 @@ hr {
     font-size: 16px;
     font-weight: 600;
     margin-top: 20px;
-    padding: 10px 20px; 
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
     
     /* Button-Form */
     border: none; 
@@ -339,7 +348,10 @@ hr {
     background-color: rgb(39, 174, 96);
     
     /* Breite */
-    width: 300px; 
+    width: 300px;
+    max-width: 90%;
+
+    
 }
 
 
@@ -351,6 +363,10 @@ hr {
     transform: translateY(-2px); /* Button hebt sich leicht an */
     transition: all 0.3s ease; /* schöne weiche Animation beim Überfahren */
 }
+
+
+
+
 
 
 
