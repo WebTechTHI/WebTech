@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="de">
-    <link rel="stylesheet" href="../assets/css/mystyle.css">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR | Login</title>
     <link rel="icon" href="../assets/images/logo/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 
 <body class="bodyLoginRegistration">
 
     <header>
         <a href="../index.html">
-            <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" width="200" style="margin-top: 20px">
+            <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
         </a>
     </header>
 
-    <h1 title="Please fill out the blanks"> Login</h1>
-    <hr>
+   
+
+    <!-- Ab Hier Login Funktionen -->
+    <form class="userInfoFormlogin" action="login.php" method="post">
+        <h1 title="Please fill out the blanks"> Login</h1>
+        
     <h4 title="Please fill out the blanks"> Bitte geben sie ihre Anmeldeinformationen ein.</h4>
 
 
-    <!-- Ab Hier Login Funktionen -->
-    <form class="userInfoForm" action="login.php" method="post">
+
         <div>
             <input class="userInformationInput" name="variablefromusername" id="username" type="text"
                 placeholder="Benutzername">
@@ -35,13 +39,14 @@
 
         <input class="submitButton" type="submit" value="Anmelden">
 
-            <br><br><br>
-
+            
+<hr>
             <div>
         <label title="Wenn sie noch keinen einen Account haben können sie mit dem Registrieren Button einen erstellen!">Noch keinen Account ? ⍰</label>
         <br>
 
-        <a href="registration.html"><button class="directionbutton" type="button">Zur Registrierung</button></a>
+        <a class="directionbutton" href="registration.html">Zur Registrierung</a>
+
     </div>
 
     </form>
@@ -49,9 +54,9 @@
 
 
     <footer>
-        <hr>
+        
         <nav>
-            <p>© 2025 MLR | <a href="about.html"><i>Impressum</i></a></p>
+            <p>© 2025 MLR | <a href="about.html">Impressum</a></p>
         </nav>
     </footer>
 

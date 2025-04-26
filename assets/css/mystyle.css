@@ -2,9 +2,14 @@ body {
     background: rgb(199, 199, 197);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    
+    
 }
 
+
+
 /* Ab hier Header Klassen. */
+
 
 header{
     position: sticky;
@@ -35,7 +40,26 @@ footer {
     text-align: center;
 }
 
+
+
 /* Ab hier Footer Klassen. */
+
+
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #314861;
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    font-style: italic;
+}
+
+
 
 
 .userIconHeader{
@@ -59,6 +83,145 @@ footer {
     box-shadow: 0px 0px 20px 2px rgb(29, 25, 32);
 }
 
+
+
+
+
+/* MÜSSEN WIR LÖSCHEN SPÄTER! -Ist dafür da das die Links nicht unterstrichen sind bei logout beispielsweise */
+a {
+    text-decoration: none;
+    color: #0056b3   
+}
+a:hover {
+    text-decoration: underline;
+    color: #003d7a;
+}
+
+
+
+
+
+
+
+
+/* GLAUBE LÖSCHEN DEN ABSCHNITT, DA WIR bodybackground BENUTZEN / hintergrundfarbe unserer gesamten jeweiligen oberfläche */
+.bodyPages{
+    background-color: (189,195,199);
+}
+
+
+/* HAUPTPUNKT HIER DAS ES EINHEITLICH BLEIBT. sollte auf jeder seite eig bei body class eingefügt werden/ Body wird angepasst als gesamtes */
+.bodyLoginRegistration {
+    text-align: center;
+    background-color: rgb(128, 128, 128);
+    height: 100%;
+}
+
+
+
+
+
+/* Hier jetzt ein paar sachen für html in css auslagern*/
+.logoHeader {
+    margin-top: 20px;
+    width: 200px;
+}
+
+
+hr {
+    width: 100%;
+    border: none;
+    border-top: 2px solid #ccc;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* HAUPTPUNKT Form bzw. Formular wird als ganzes in Form gebracht für login */
+.userInfoFormlogin {
+    position:relative;
+    left:50%;
+    transform: translate(-50%, 0);
+
+    max-width: 600px;
+    width: 90%;
+
+    text-align: center;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 5px;
+    padding-bottom: 80px;
+    border: 12px;
+    border-radius: 30px;
+    border: 2px solid #1C6EA4;
+    background: rgb(245, 245, 245);
+    -webkit-box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36); 
+    box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36);
+ /* moderner, weicher Schatten */
+}
+
+
+
+
+/* HAUPTPUNKT Form bzw. Formular als ganzes in form gebracht für registration*/
+.userInfoFormregistration {
+    position:relative;
+    left:50%;
+    transform: translate(-50%, 0);
+
+    max-width: 600px;
+    width: 90%;
+
+    text-align: center;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 5px;
+    padding-bottom: 80px;
+    border: 12px;
+    border-radius: 30px;
+    border: 2px solid #1C6EA4;
+    background: rgb(245, 245, 245);
+    -webkit-box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36); 
+    box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36);
+ /* moderner, weicher Schatten */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* /1/ HAUPTPUNKT Eingabebereich von benutzer für daten etc. */
 .userInformationInput {
     text-align: left;
@@ -76,6 +239,7 @@ footer {
     background:rgb(221, 221, 221)
 }
 
+/*Placeholder ist dafür da das im label wo benutzer was eingibt schon die beschriftung für das label drinnen steht*/
 .userInformationInput::placeholder{
     color:rgba(90, 90, 90, 0.685);
 }
@@ -83,6 +247,7 @@ footer {
 .userInformationInput:hover{
     background: rgb(197, 197, 197);
 }
+
 
 /* HAUPTPUNKT Labels also Beschriftungen vor eingabebereichen um user zu zeigen wofür der eingabebereich ist (KEIN HOVER EFFEKT DAFÜR) */
 
@@ -102,71 +267,78 @@ footer {
 
 
 
-/* HAUPTPUNKT Buttons um abzuschicken / submit buttons für SERVER */
+
+
+
+/* HAUPTPUNKT Buttons !um abzuschicken / submit buttons für SERVER */
 .submitButton {
+    display: inline-block; /* wichtig für Breite und Padding */
     text-align: center;
     font-size: 16px;
+    font-weight: 600; /* leichte Betonung, wie bei directionbutton */
     margin-top: 20px;
-    border: 3px solid;
-    border-color: rgb(156, 23, 23);
-    border-radius: 18px;
-    height: 36px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px; /* statt fixem height → besserer Abstand innen */
     width: 300px;
+    max-width: 90%;
+    border: none; 
+    border-radius: 18px;
+    background-color: rgb(200, 0, 0); /* kräftiges Rot für wichtige Buttons */
+    color: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); 
+    transition: all 0.3s ease; /* weiche Animation */
 }
-
 
 /* UNTERPUNKT Für class submit button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
-.submitButton:hover{
-    background: rgb(163, 12, 12);
-    color:white;
-    border-style: solid;
-    border-width: 3px;
-    border-color: black;
-    box-shadow: 0px 0px 20px 2px rgb(29, 25, 32);
+.submitButton:hover {
+    background-color: rgb(163, 12, 12); /* etwas dunkleres Rot beim Hover */
+    color: white;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* stärkerer Hover-Schatten */
+    transform: translateY(-2px); /* leicht anheben beim Überfahren */
 }
-
-
-
-
-/* Ist dafür da das die Links nicht unterstrichen sind bei logout beispielsweise */
-a {
-    text-decoration: none;
-    color: #0056b3   
-}
-a:hover {
-    text-decoration: underline;
-    color: #003d7a;
-}
-
 
 
 
 
 /* HAUPTPUNKT Button (von login zu registrieren erc ) um zu anderen Orten / Links zu gelangen ! kein server*/
 .directionbutton {
+    display: inline-block; /* Bleibt, damit Breite und Höhe funktionieren */
+    text-decoration: none; /* Keine Unterstreichung */
+    color: white;
+    
+    /* Layout und Schrift */
     text-align: center;
     font-size: 16px;
+    font-weight: 600;
     margin-top: 20px;
-    border: 10px;
+    padding: 10px 20px; 
+    
+    /* Button-Form */
+    border: none; 
     border-radius: 18px;
-    box-shadow: 0px 5px 20px 2px rgb(29, 25, 32);
-    height: 36px;
-    width: 300px;
+   
+    /* Schatten und Tiefe */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); 
+    
+    /* Hintergrund */
     background-color: rgb(39, 174, 96);
     
+    /* Breite */
+    width: 300px; 
 }
+
 
 /* UNTERPUNKT Für direction button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
-.directionbutton:hover{
-    background: rgb(30,132,73);
-    color:rgb(0, 0, 0);
-    border-style: solid;
-    border-width: 3px;
-    border-color: black;
+.directionbutton:hover {
+    background-color: rgb(30, 132, 73); /* leicht dunkleres Grün beim Überfahren */
+    color: white; /* Schrift lassen wir weiß, besser lesbar */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* etwas stärkerer Schatten beim Hover */
+    transform: translateY(-2px); /* Button hebt sich leicht an */
+    transition: all 0.3s ease; /* schöne weiche Animation beim Überfahren */
 }
-
-
-
 
 
 
@@ -187,7 +359,6 @@ a:hover {
     border: 3px outset #5fd4a7;
 }
 
-
 .warenkorbbutton:hover {
     background: rgb(0, 71, 30);
     color:rgb(255, 255, 255);
@@ -202,42 +373,8 @@ a:hover {
 
 
 
-/* HAUPTPUNKT Form bzw. Formular wird als ganzes in Form gebracht */
-.userInfoForm {
-    position:relative;
-    left:50%;
-    translate: -50%;
-    width: 600px;
-    height: 300px;
-    text-align: center;
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    border: 12px;
-    border-radius: 30px;
-    background: rgb(230, 230, 230);
-}
 
 
-
-
-
-
-
-
-
-/* GLAUBE LÖSCHEN DEN ABSCHNITT, DA WIR bodybackground BENUTZEN / hintergrundfarbe unserer gesamten jeweiligen oberfläche */
-.bodyPages{
-    background-color: (189,195,199);
-}
-
-
-/* HAUPTPUNKT HIER DAS ES EINHEITLICH BLEIBT. sollte auf jeder seite eig bei body class eingefügt werden/ Body wird angepasst als gesamtes */
-.bodyLoginRegistration {
-    text-align: center;
-    background-color: gray;
-}
 
 
 
@@ -368,6 +505,3 @@ a:hover {
   
  
   
-
-
-

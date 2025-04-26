@@ -2,7 +2,6 @@
 <html lang="de">
 <link rel="stylesheet" href="../assets/CSS/mystyle.css">
 
-<link rel="stylesheet" href="../assets/css/mystyle.css">
 
 <head>
     <meta charset="UTF-8">
@@ -15,20 +14,23 @@
 
     <header>
         <a href="../index.html">
-            <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" width="200" style="margin-top: 20px">
+            <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
         </a>
     </header>
 
 
-    <h1 title="Please fill out the blanks"> Registrierungsformular</h1>
-    <hr>
-    <h4 title="Please fill out the blanks" ein> Bitte erstellen sie einen Benutzer</h4>
 
 
 
 
     <!-- Ab Hier Registrieren Formular -->
-    <form class="userInfoForm" action="registration.php" method="post">
+    <form class="userInfoFormregistration" action="registration.php" method="post">
+
+        <h1 title="Please fill out the blanks"> Registrierungsformular</h1>
+        
+        <h4 title="Please fill out the blanks" ein> Bitte erstellen sie einen Benutzer</h4>
+    
+
         <div>
             <input class="userInformationInput" type="text" name="fromusernameregistration" id="usernameregistration"
                 placeholder="Benutzername" maxlength="20" required>
@@ -50,16 +52,9 @@
             <input class="submitButton" type="submit" value="Registrieren">
         </div>
 
-        <!-- Abbrechen-Button (Zurück zu Login Maske) -->
+       
 
 
-        <!--   <button  id="registration_back_to_login_button" ><a  href="login.html">Login</a></button> -->
-        <br>
-
-
-
-
-        <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->
 
 
 
@@ -70,9 +65,13 @@
     <label for="registration_back_to_login_button"
         title="Wenn sie bereits einen Account haben können sie mit dem Login Button sich einloggen!">Haben Sie
         bereits einen Account? ⍰</label>
+    <br>
 
-    <a href="login.html"><button class="directionbutton" type="button">Login</button> </a>
+ <!-- Abbrechen-Button (Zurück zu Login Maske) -->
+    <a href="login.html" class="directionbutton">Login</a>
 
+
+ <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->
     <button name="registration_back_to_login_button" class="directionbutton" type="button"
         onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück
         zur Startseite</button>
