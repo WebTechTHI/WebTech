@@ -1,5 +1,5 @@
 body { 
-    background: rgb(189,195,199);
+    background: rgb(199, 199, 197);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
 }
@@ -126,17 +126,19 @@ footer {
 }
 
 
+
+
 /* Ist dafür da das die Links nicht unterstrichen sind bei logout beispielsweise */
 a {
     text-decoration: none;
-    color: #0056b3
-    
+    color: #0056b3   
 }
-
 a:hover {
     text-decoration: underline;
     color: #003d7a;
 }
+
+
 
 
 
