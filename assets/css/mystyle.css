@@ -37,31 +37,101 @@ header{
 }
 
 
-/* Ab hier Footer Klassen. */
-footer {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #314861;
-    color: white;
-    text-align: center;
-}
-
-/*Footer Paragraphen (Text im Footer/ Fußzeile)*/
-footer p {
-    margin: 0;
-    margin-top: 50px;
-    font-size: 14px;
-    font-style: italic;
-}
-
-
-
-
 .userIconHeader{
     height: 50px;
     margin-top: 35px;
     margin-right: 22px;
 }
+
+.logoHeader {
+    margin-top: 20px;
+    width: 200px;
+}
+
+
+.topNavHeader {
+    background-color: #0c0c0c;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+  }
+  
+  .userIconHeader {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+  }
+  
+  .bottomNavHeader {
+    background-color: #921b1b;
+  }
+  
+  .navMenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navItem {
+    position: relative;
+  }
+  
+  .navItem > a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .subMenu {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #b52b2b;
+    padding: 0;
+    margin: 0;
+    display: none;
+  }
+  
+  .subMenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navItem:hover .subMenu {
+    display: block;
+  }
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .ankerForm{
     background: brown;
@@ -79,6 +149,23 @@ footer p {
 }
 
 
+
+/* Ab hier Footer Klassen. */
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #314861;
+    color: white;
+    text-align: center;
+}
+
+/*Footer Paragraphen (Text im Footer/ Fußzeile)*/
+footer p {
+    margin: 0;
+    margin-top: 50px;
+    font-size: 14px;
+    font-style: italic;
+}
 
 
 
@@ -111,10 +198,7 @@ a:hover {
 
 
 /* Hier jetzt ein paar sachen für html in css auslagern*/
-.logoHeader {
-    margin-top: 20px;
-    width: 200px;
-}
+
 
 
 hr {
@@ -484,29 +568,6 @@ label {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Rinor Produktübersichtseiten */
 
 /* Das ist ein Container um die ganzen Boxen (Produkte) */
@@ -767,6 +828,4 @@ label {
 
   
 
-  
- 
   
