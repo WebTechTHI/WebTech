@@ -67,57 +67,6 @@ header{
     background-color: #921b1b;
   }
   
-  .navMenu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .navItem {
-    position: relative;
-  }
-  
-  .navItem > a {
-    display: block;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-  }
-  
-  .subMenu {
-    list-style: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #b52b2b;
-    padding: 0;
-    margin: 0;
-    display: none;
-  }
-  
-  .subMenu li a {
-    display: block;
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-  }
-  
-  .navItem:hover .subMenu {
-    display: block;
-  }
-  
- 
-
-
-
-
-
-
-
-
-
-
 
 
 
