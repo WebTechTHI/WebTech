@@ -15,61 +15,131 @@ header{
     position: sticky;
 }
 
+/* Top Header (user links) */
+
 .topNavHeader{
     background: rgb(12, 12, 12);
     display: flex;
+    align-items: center;
+    
+}
+
+.logo > img{
+    width:120px;
 }
 
 .userNav{ 
     flex: 1; 
     text-align: right; 
+    
 }
-.bottomNavHeader{
-    background-color: rgb(146, 27, 27);
-}
-
-.bottomNavHeader a{
-    color: white;
-}
-
-.logo{
-    width:120px;
-}
-
 
 .userIconHeader{
     height: 50px;
-    margin-top: 35px;
-    margin-right: 22px;
+    margin: 0px 32px 0px 0px;
 }
+
+/*Bottom Header (Links zum Shop-Browsen)*/
+
+.bottomNavHeader{
+    background-color: rgb(75, 74, 74);
+}
+
+.bottomNavHeader > ul {
+    list-style: none;
+    flex-direction: row;
+    display: flex;  
+    justify-content: center;
+    margin:0px;
+}
+
+.bottomNavHeader > ul > li{
+    position: relative;
+    padding: 7px 20px 7px;
+}
+
+.bottomNavHeader > ul > li:hover{
+    background-color: rgb(61, 63, 63);
+}
+
+.bottomNavHeader > ul > li > a{
+    color: rgb(255, 255, 255);
+    font-size: 27px;
+    text-decoration: none;
+}
+
+/* Ab hier kommt das Untermenü*/
+
+.bottomNavHeader .subMenu{
+    display: none;
+    list-style: none;
+    text-decoration: none;
+    position: absolute;
+    flex-direction: column;
+    background-color: rgb(63, 60, 60);
+    border-radius: 0 0 3px 3px;
+    white-space: nowrap;
+    padding: 0;
+    z-index: 5;
+}
+
+.bottomNavHeader > ul > li:hover > .subMenu{
+    display:flex;
+    position:absolute;
+    left:0px;
+    top:50px;
+    font-size: 22px;
+}
+
+/* Spezifikationen für Einträge des Untermenüs und Interaktionsverhalten */
+
+.subMenu li{
+    padding:0 10px 7px 10px;
+}
+
+.subMenu li:hover{
+    background-color: rgb(219, 219, 219);
+}
+
+.subMenu li:hover > a{
+    color:rgb(46, 45, 45);
+}
+
+.subMenu li a {
+    text-decoration: none;
+    color:white;
+}
+
+.subMenu li a:hover {
+    color:rgb(46, 45, 45);
+}
+
+/* Angebote Butten (Animation gradient border folgt)*/
+
+.headerDeals{
+    background-color: #3d3f3f;
+    margin: 0 0 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DIESES LOGO HAT NICHTS MIT DEM HEADER AUF NORMALEN SEITEN ZU TUN, DIE SPEZIFIKATIONEN DIESER KLASSE TREFFEN NUR AUF DAS ICON AUF FOLGENDEN SEITEN ZU: 
+LOGIN, LOGOUT, REGISTRIERUNG, USER, IMPRESSUM, WARENKORB*/
 
 .logoHeader {
     margin-top: 20px;
     width: 200px;
 }
-
-
-.topNavHeader {
-    background-color: #0c0c0c;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    align-items: center;
-  }
-  
-  .userIconHeader {
-    width: 30px;
-    height: 30px;
-    margin-left: 15px;
-  }
-  
-  .bottomNavHeader {
-    background-color: #921b1b;
-  }
-  
-
-
-
 
 
 
