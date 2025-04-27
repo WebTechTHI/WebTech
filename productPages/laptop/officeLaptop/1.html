@@ -1,57 +1,117 @@
 <!DOCTYPE html>
 <html lang="de">
-    <link rel="stylesheet" href="../../../assets/css/mystyle.css">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MLR | HP 255 G9</title>
-        <link rel="icon" href="../../../assets/images/logo/favicon.png" type="image/x-icon">
-    </head>
+<link rel="stylesheet" href="../../../assets/css/mystyle.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLR | HP 255 G9</title>
+    <link rel="icon" href="../../../assets/images/logo/favicon.png" type="image/x-icon">
+</head>
+
 <body>
 
     <header>
+        <div class="topNavHeader">
+            <a class="logo" href='../../../index.html'><img src='../../../assets/images/logo/logoDarkmode.png' alt="Logo"></a>
 
-        <div>
-            <div>
-                <a href='../../../index.html'><img src='../../../assets/images/logo/logoDarkmode.png' alt="logo.png" width="200"
-                        style="margin-top: 20px"></a>
-                <nav>
-                    <a href="../../../pages/login.html">Login</a>&emsp;
-                    <a href="../../../pages/registration.html">Registrierung</a> &emsp;
-                    <a href="../../../pages/logout.html">Logout</a>&emsp;
-                    <a href="../../../pages/shoppingBasket.html"><img src="../../../assets/images/icons/shoppingcart.png" alt="Warenkorb"
-                            style="height: 50px; width: 50px"></a>&emsp;
-                    <a href="../../../pages/user.html"><img src="../../../assets/images/icons/user.png" alt="Konto"
-                            style="height: 50px; width: 50px"></a>&emsp;
-                </nav>
-            </div>
+            <nav class="userNav">
+                <a href="../../../pages/login.html"><img class="userIconHeader" src="../../../assets/images/icons/login.png" alt="Login"></a>
+                <a href="../../../pages/registration.html"><img class="userIconHeader" src="../../../assets/images/icons/register.png" alt="Registrierung"></a>
+                <a href="../../../pages/logout.html"><img class="userIconHeader" src="../../../assets/images/icons/logout.png" alt="Logout"></a>
+                <a href="../../../pages/shoppingBasket.html"><img class="userIconHeader" src="../../../assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
+                <a href="../../../pages/user.html"><img class="userIconHeader" src="../../../assets/images/icons/user.png" alt="Benutzerkonto"></a>
+            </nav>
+        </div>
+
+        <div class="bottomNavHeader">
+            <ul>
+                <li>
+                    <a href="../../../productLists/desktopPcList.html">Desktop-PCs</a>
+                    <ul class="subMenu">
+                        <li><a href="../../../productLists/gamingPcList.html">Gaming-PCs</a></li>
+                        <li><a href="../../../productLists/officePcList.html">Office-PCs</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="../../../productLists/laptopList.html">Laptops</a>
+                    <ul class="subMenu">
+                        <li><a href="../../../productLists/gamingLaptopList.html">Gaming Laptops</a></li>
+                        <li><a href="../../../productLists/officeLaptopList.html">Office Laptops</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="../../../productLists/zubehörList.html">Zubehör</a>
+                    <ul class="subMenu">
+                        <li><a href="../../../productLists/monitorList.html">Monitore</a></li>
+                        <li><a href="../../../productLists/mausList.html">Mäuse</a></li>
+                        <li><a href="../../../productLists/tastaturList.html">Tastaturen</a></li>
+                    </ul>
+                </li>
+
+                <li class="headerDeals">
+                    <a href="../../../productLists/deals.html">Angebote</a>
+                </li>
+            </ul>
         </div>
     </header>
 
-     
+    <div class="productContainer">
 
-    
-    <h1>HP 255 G9</h1>
-    <h2>AMD Athlon Gold 3150U | Radeon Graphics | 8GB RAM | 512GB SSD | Windows 11 Pro</h2>
-    <img src='../../../assets/images/products/laptop/1/vorne.png' alt="id-1.png" width="200">
-    <img src='../../../assets/images/products/laptop/1/zugeklappt.png' alt="id-1.png" width="200">
-    <img src='../../../assets/images/products/laptop/1/seitlich1.png' alt="id-1.png" width="200">
-    <img src='../../../assets/images/products/laptop/1/seitlich2.png' alt="id-1.png" width="200">
+        <div class="productHeader">
+            <h1>HP 255 G9</h1>
+            <h2>AMD Athlon Gold 3150U | Radeon Graphics | 8GB RAM | 512GB SSD | Windows 11 Pro</h2>
 
-    <p><strong>Preis: </strong> 299 €</p>
+            <span class="topPrice">299 €</span>
+        </div>
 
-    <h3>Beschreibung</h3>
-    <p>Kompakt, leistungsfähig und vielseitig – dieses 15,6" Notebook mit AMD Athlon Gold 3150U, 8GB RAM und 512GB SSD ist ideal für Arbeit und Multimedia unterwegs. Dank FullHD-Display, Wi-Fi 6, Windows 11 Pro und solider Anschlussvielfalt bist Du bestens für den mobilen Alltag gerüstet.</p>
+        <div class="productPictures">
+            <img src='../../../assets/images/products/laptop/1/vorne.png' alt="HP 255 G9 vorne" width="200">
+            <img src='../../../assets/images/products/laptop/1/zugeklappt.png' alt="HP 255 G9 zugeklappt" width="200">
+            <img src='../../../assets/images/products/laptop/1/seitlich1.png' alt="HP 255 G9 seitlich 1" width="200">
+            <img src='../../../assets/images/products/laptop/1/seitlich2.png' alt="HP 255 G9 seitlich 2" width="200">
+        </div>
 
-    <button>Zum Warenkorb hinzufügen</button>
+        <div class="productInfo">
+            <h3>Beschreibung</h3>
+            <p class="beschreibung">
+                Kompakt, leistungsfähig und vielseitig – dieses 15,6" Notebook mit AMD Athlon Gold 3150U, 8GB RAM und 512GB SSD ist ideal für Arbeit und Multimedia unterwegs. Dank FullHD-Display, Wi-Fi 6, Windows 11 Pro und solider Anschlussvielfalt bist Du bestens für den mobilen Alltag gerüstet.
+            </p>
+
+            <h3>Technische Details</h3>
+            <table class="technicalDetails">
+                <tr><td><strong>Prozessor:</strong></td><td>AMD Athlon Gold 3150U</td></tr>
+                <tr><td><strong>RAM:</strong></td><td>8GB DDR4</td></tr>
+                <tr><td><strong>Grafik:</strong></td><td>Radeon Graphics</td></tr>
+                <tr><td><strong>Speicher:</strong></td><td>512GB SSD</td></tr>
+                <tr><td><strong>Display:</strong></td><td>15,6" FHD</td></tr>
+                <tr><td><strong>Betriebssystem:</strong></td><td>Windows 11 Pro</td></tr>
+                <tr><td><strong>Netzwerk:</strong></td><td>Wi-Fi 6</td></tr>
+                <tr><td><strong>Besonderheiten:</strong></td><td>Leicht & Mobil</td></tr>
+            </table>
+
+            <div class="kaufContainer">
+                <p class="price"><strong>Preis: </strong>299 €</p>
+                <button class="warenkorbButton">Zum Warenkorb hinzufügen</button>
+                <div class="anzahlContainer">
+                    <button class="anzahlButton" id="decrease">-</button>
+                    <input type="number" class="anzahl" value="1" min="1">
+                    <button class="anzahlButton" id="increase">+</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <footer>
         <hr>
         <nav>
-         <p>© 2025 MLR | <a href="../../../pages/about.html"><i>Impressum</i></a></p>
+            <p>© 2025 MLR | <a href="../../../pages/about.html"><i>Impressum</i></a></p>
         </nav>
     </footer>
 
-
 </body>
+
 </html>

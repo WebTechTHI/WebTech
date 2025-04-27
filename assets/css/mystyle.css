@@ -713,6 +713,7 @@ label {
     font-size: 35px;
     text-decoration: underline;
     margin-bottom: 10px;
+    text-transform: uppercase;
   }
   
   .productHeader h2 {
@@ -731,8 +732,6 @@ label {
 }
 
   .productPictures {
-    
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     gap: 50px;
@@ -741,8 +740,9 @@ label {
 
   .productPictures img {
     width: 100%;
-    max-width: 250px; /* Maximale Breite der Bilder */
+    max-width: 200px; /* Maximale Breite der Bilder */
     height: auto; /* Höhe automatisch anpassen */
+    object-fit: contain; 
     transition: transform 0.3s ease; 
   }
 
