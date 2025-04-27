@@ -704,13 +704,14 @@ label {
   /* Produkt-Header Styling */
   .productHeader {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     padding: 20px 0;
     border-bottom: 3px solid #ddd;
   }
   
   .productHeader h1 {
     font-size: 35px;
+    text-decoration: underline;
     margin-bottom: 10px;
   }
   
@@ -719,6 +720,15 @@ label {
     font-weight: normal;
     color: #6e6e6e;
   }
+
+
+
+.topPrice {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;    
+
+}
 
   .productPictures {
     
@@ -751,18 +761,15 @@ label {
     box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
   }
+
   
-  .price {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
+  
   
   .productInfo h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
     border-bottom: 2px solid black;
-    padding-bottom: 8px;
+     padding-bottom: 8px;
   }
   
   .beschreibung {
@@ -796,6 +803,12 @@ label {
     align-items: center;
     margin-top: 50px;
   }
+
+  .price {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
   
   .warenkorbButton {
     background-color: #000000;
@@ -825,6 +838,8 @@ label {
     background-color: #4e4e4e;
     transform: translateY(1px);
   }
+
+
   
 .anzahlContainer {
     display: flex;
