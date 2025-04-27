@@ -277,7 +277,7 @@ label {
     background: rgb(245, 245, 245);
     -webkit-box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36); 
     box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36);
- /* moderner, weicher Schatten */
+ 
 }
 
 
@@ -303,7 +303,7 @@ label {
     background: rgb(245, 245, 245);
     -webkit-box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36); 
     box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36);
- /* moderner, weicher Schatten */
+ 
 }
 
 
@@ -311,62 +311,62 @@ label {
 
 /* HAUPTPUNKT Form bzw. Formular wird als ganzes in Form gebracht für USER */
 .userInfoFormuser {
-    /* Positionieren in der Mitte */
+    
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
 
     /* Breite des Formulars */
-    max-width: 1200px; /* Maximale Breite auf großen Bildschirmen */
-    width: 95%; /* Auf kleineren Bildschirmen anpassbar */
+    max-width: 1200px; 
+    width: 95%; 
 
-    /* Layout */
-    text-align: center; /* Inhalte im Formular zentrieren */
+    
+    text-align: center; 
 
-    /* Innenabstände */
+    
     padding-top: 30px;
     padding-right: 40px;
     padding-bottom: 30px;
     padding-left: 40px;
 
-    /* Rahmen und Hintergrund */
-    border: 2px solid #1C6EA4; /* Blauer Rahmen */
-    border-radius: 30px; /* Runde Ecken */
-    background-color: rgb(245, 245, 245); /* Helles Grau als Hintergrund */
+   
+    border: 2px solid #1C6EA4; 
+    border-radius: 30px; 
+    background-color: rgb(245, 245, 245); 
 
-    /* Schatten für Tiefe */
+   
     box-shadow: 10px 5px 9px 5px rgba(0, 0, 0, 0.36);
 }
 
 /* Persönlicher Informationen-Block*/
 .infoBlockWide {
-    /* Hintergrundfarbe */
+   
     background-color: white;
 
-    /* Rahmen */
-    border: 1px solid #cccccc; /* Dezenter grauer Rahmen */
-    border-radius: 12px; /* Runde Ecken */
+   
+    border: 1px solid #cccccc; 
+    border-radius: 12px; 
 
-    /* Innenabstände */
+   
     padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
 
-    /* Außenabstände */
+
     margin-top: 20px;
     margin-right: 0px;
     margin-bottom: 20px;
     margin-left: 0px;
 
-    /* Leichter Schattierungseffekt */
+
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 
 /* Container für zwei nebeneinanderliegende Blöcke*/
 .infoRow {
-    /* Flexbox aktivieren */
+    /* Flexbox aktivieren hier */
     display: flex;
 
     /* Umbruch erlauben, falls Bildschirm zu klein */
@@ -375,7 +375,6 @@ label {
     /* Abstand zwischen den kleinen Blöcken */
     gap: 20px;
 
-    /* Zentrierung */
     justify-content: center;
 }
 
@@ -386,29 +385,29 @@ label {
     /* Flex-Verhalten */
     flex: 1 1 45%; /* Jeder Block nimmt etwa 45% der verfügbaren Breite ein */
 
-    /* Hintergrund */
+    
     background-color: white;
 
-    /* Rahmen */
+   
     border: 1px solid #cccccc;
     border-radius: 12px;
 
-    /* Innenabstände */
+   
     padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
 
-    /* Leichter Schattierungseffekt */
+ 
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Überschrift- Design in jedem Block*/
+/* Überschrift- Design in jedem Block (die kleinen blöcke )*/
 .infoBlockWide h2,
 .infoBlockSmall h2 {
-    font-size: 22px; /* Etwas größere Überschriften */
-    color: #1E2A38; /* Dunkles, ruhiges Blau für Schrift */
-    margin-bottom: 20px; /* Abstand nach unten */
+    font-size: 22px; 
+    color: #1E2A38; 
+    margin-bottom: 20px; 
 }
 
 
@@ -456,7 +455,7 @@ label {
 /* Hover */
 .userInformationInput:hover {
     background-color: rgb(230, 230, 230);
-    border: 2px solid rgb(39, 174, 96); /* leichter grüner Rand beim Hover */
+    border: 2px solid rgb(39, 174, 96); 
 }
 
 /* Focus (wenn man klickt und tippt) */
