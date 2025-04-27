@@ -13,6 +13,8 @@ body {
 
 header{
     position: sticky;
+    top: 0%;
+    z-index: 5;
 }
 
 /* Top Header (user links) */
@@ -42,7 +44,7 @@ header{
 /*Bottom Header (Links zum Shop-Browsen)*/
 
 .bottomNavHeader{
-    background-color: rgb(75, 74, 74);
+    background-color: rgb(150, 35, 35);
 }
 
 .bottomNavHeader > ul {
@@ -59,7 +61,7 @@ header{
 }
 
 .bottomNavHeader > ul > li:hover{
-    background-color: rgb(61, 63, 63);
+    background-color: rgb(63, 61, 61);
 }
 
 .bottomNavHeader > ul > li > a{
