@@ -765,7 +765,7 @@ label {
     max-height: 180px;
     max-width: 100%;
     object-fit: contain;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .product:hover img {
@@ -780,20 +780,15 @@ label {
     flex-direction: column;
 }
 
-
-.productTitle{
-    display:inline-block;
-    padding: 0;
-}
-
 .product h1 {
     font-size: 30px;
     font-weight: 700;
     color: #222;
-    margin: 0 0 10px 0;
+    margin: 0;
     text-align: center;
     padding: 0;
     line-height: 1.3;
+    margin-bottom: 10px;
 }
 
 .product h2 {
@@ -803,13 +798,10 @@ label {
     text-align: center;
     line-height: 1.4;
     font-weight: 400;
-    border-bottom: #000000 2px solid;
-
-
 }
 
 
-.product p:not(.productPrice) {
+.productDetails > p {
     font-size: 16px;
     color: #666;
     margin: 8px 0;
@@ -820,7 +812,7 @@ label {
 }
 
 
-.product p:not(.productPrice)::before {
+.productDetails > p::before {
     content: ">";
     color: #d31e07;
     font-weight: bold;
