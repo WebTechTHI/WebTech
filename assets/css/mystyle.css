@@ -1,72 +1,152 @@
-body { 
+body {
     background: rgb(199, 199, 197);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
-    
-    
+
+
 }
+
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* code snippets von https://www.coding2go.com/ */
+/* TESTOBJECT INDEX BIGBOX*/
+
+.testObject {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color:rgb(238, 230, 230);
+    margin: 200px 0;
+    padding: 2em;
+    width: 700px;
+    height: 900px;
+    background: #1c1f2b;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+
+}
+
+.testObject::after,
+.testObject::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #c40808, #7007e9, #006aff, #73ff00, #c40808);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 5px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.testObject::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@property --angle {
+
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 
 
 
 /* Ab hier Header Klassen. */
 
 
-header{
-    position: sticky;
-    top: 0%;
+header {
+    position: fixed;
     z-index: 5;
+    top: 0;
+    width: 100%;
+    transition: top 0.35s ease-in-out;
+}
+
+/* Klasse zum verschieben des Headers, jskript befindet sich aktuell noch im index.html-Dokument */
+
+.hideHeader {
+    top: -125px;
 }
 
 /* Top Header (user links) */
 
-.topNavHeader{
+.topNavHeader {
     background: rgb(12, 12, 12);
     display: flex;
     align-items: center;
 }
 
-.logo{
+.logo {
     margin: 0 0 0 20px;
 }
 
-.logo > img{
-    width:120px;
+.logo>img {
+    width: 120px;
 }
 
-.userNav{ 
-    flex: 1; 
-    text-align: right; 
+.userNav {
+    flex: 1;
+    text-align: right;
 }
 
-.userIconHeader{
+.userIconHeader {
     height: 50px;
     margin: 0px 32px 0px 0px;
 }
 
 /*Bottom Header (Links zum Shop-Browsen)*/
 
-.bottomNavHeader{
+.bottomNavHeader {
     background-color: rgb(150, 35, 35);
 }
 
-.bottomNavHeader > ul {
+.bottomNavHeader>ul {
     list-style: none;
     flex-direction: row;
-    display: flex;  
+    display: flex;
     justify-content: center;
-    margin:0px;
+    margin: 0px;
 }
 
-.bottomNavHeader > ul > li{
+.bottomNavHeader>ul>li {
     position: relative;
     padding: 7px 20px 7px;
 }
 
-.bottomNavHeader > ul > li:hover{
+.bottomNavHeader>ul>li:hover {
     background-color: rgb(63, 61, 61);
 }
 
-.bottomNavHeader > ul > li > a{
+.bottomNavHeader>ul>li>a {
     color: rgb(255, 255, 255);
     font-size: 27px;
     text-decoration: none;
@@ -74,7 +154,7 @@ header{
 
 /* Ab hier kommt das Untermenü*/
 
-.bottomNavHeader .subMenu{
+.bottomNavHeader .subMenu {
     display: none;
     list-style: none;
     text-decoration: none;
@@ -87,40 +167,40 @@ header{
     z-index: 5;
 }
 
-.bottomNavHeader > ul > li:hover > .subMenu{
-    display:flex;
-    position:absolute;
-    left:0px;
-    top:50px;
+.bottomNavHeader>ul>li:hover>.subMenu {
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 50px;
     font-size: 22px;
 }
 
 /* Spezifikationen für Einträge des Untermenüs und Interaktionsverhalten */
 
-.subMenu li{
-    padding:0 10px 7px 10px;
+.subMenu li {
+    padding: 0 10px 7px 10px;
 }
 
-.subMenu li:hover{
+.subMenu li:hover {
     background-color: rgb(219, 219, 219);
 }
 
-.subMenu li:hover > a{
-    color:rgb(46, 45, 45);
+.subMenu li:hover>a {
+    color: rgb(46, 45, 45);
 }
 
 .subMenu li a {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
 .subMenu li a:hover {
-    color:rgb(46, 45, 45);
+    color: rgb(46, 45, 45);
 }
 
 /* Angebote Butten (Animation gradient border folgt)*/
 
-.headerDeals{
+.headerDeals {
     background-color: #3d3f3f;
     margin: 0 0 0 10px;
 }
@@ -156,7 +236,7 @@ LOGIN, LOGOUT, REGISTRIERUNG, USER, IMPRESSUM, WARENKORB*/
 
 
 
-.ankerForm{
+.ankerForm {
     background: brown;
     text-align: center;
     font-size: 16px;
@@ -167,7 +247,7 @@ LOGIN, LOGOUT, REGISTRIERUNG, USER, IMPRESSUM, WARENKORB*/
     width: 300px;
 }
 
-.ankerForm:hover{
+.ankerForm:hover {
     box-shadow: 0px 0px 20px 2px rgb(29, 25, 32);
 }
 
@@ -195,8 +275,9 @@ footer p {
 /* MÜSSEN WIR LÖSCHEN SPÄTER! -Ist dafür da das die Links nicht unterstrichen sind bei logout beispielsweise */
 a {
     text-decoration: none;
-    color: #0056b3   
+    color: #0056b3
 }
+
 a:hover {
     text-decoration: underline;
     color: #003d7a;
@@ -263,8 +344,8 @@ label {
 
 /* HAUPTPUNKT Form bzw. Formular wird als ganzes in Form gebracht für login */
 .userInfoFormlogin {
-    position:relative;
-    left:50%;
+    position: relative;
+    left: 50%;
     transform: translate(-50%, 0);
 
     max-width: 600px;
@@ -279,9 +360,9 @@ label {
     border-radius: 30px;
     border: 2px solid #1C6EA4;
     background: rgb(245, 245, 245);
-    -webkit-box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36); 
-    box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36);
- 
+    -webkit-box-shadow: 10px 5px 9px 5px rgba(0, 0, 0, 0.36);
+    box-shadow: 10px 5px 9px 5px rgba(0, 0, 0, 0.36);
+
 }
 
 
@@ -289,8 +370,8 @@ label {
 
 /* HAUPTPUNKT Form bzw. Formular als ganzes in form gebracht für registration*/
 .userInfoFormregistration {
-    position:relative;
-    left:50%;
+    position: relative;
+    left: 50%;
     transform: translate(-50%, 0);
 
     max-width: 600px;
@@ -305,9 +386,9 @@ label {
     border-radius: 30px;
     border: 2px solid #1C6EA4;
     background: rgb(245, 245, 245);
-    -webkit-box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36); 
-    box-shadow: 10px 5px 9px 5px rgba(0,0,0,0.36);
- 
+    -webkit-box-shadow: 10px 5px 9px 5px rgba(0, 0, 0, 0.36);
+    box-shadow: 10px 5px 9px 5px rgba(0, 0, 0, 0.36);
+
 }
 
 
@@ -315,43 +396,43 @@ label {
 
 /* HAUPTPUNKT Form bzw. Formular wird als ganzes in Form gebracht für USER */
 .userInfoFormuser {
-    
+
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
 
     /* Breite des Formulars */
-    max-width: 1200px; 
-    width: 95%; 
+    max-width: 1200px;
+    width: 95%;
 
-    
-    text-align: center; 
 
-    
+    text-align: center;
+
+
     padding-top: 30px;
     padding-right: 40px;
     padding-bottom: 30px;
     padding-left: 40px;
 
-   
-    border: 2px solid #1C6EA4; 
-    border-radius: 30px; 
-    background-color: rgb(245, 245, 245); 
 
-   
+    border: 2px solid #1C6EA4;
+    border-radius: 30px;
+    background-color: rgb(245, 245, 245);
+
+
     box-shadow: 10px 5px 9px 5px rgba(0, 0, 0, 0.36);
 }
 
 /* Persönlicher Informationen-Block*/
 .infoBlockWide {
-   
+
     background-color: white;
 
-   
-    border: 1px solid #cccccc; 
-    border-radius: 12px; 
 
-   
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+
+
     padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
@@ -387,31 +468,32 @@ label {
 /* Kleine Blöcke (Weitere Infos + Verschiedenes)*/
 .infoBlockSmall {
     /* Flex-Verhalten */
-    flex: 1 1 45%; /* Jeder Block nimmt etwa 45% der verfügbaren Breite ein */
+    flex: 1 1 45%;
+    /* Jeder Block nimmt etwa 45% der verfügbaren Breite ein */
 
-    
+
     background-color: white;
 
-   
+
     border: 1px solid #cccccc;
     border-radius: 12px;
 
-   
+
     padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
 
- 
+
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* Überschrift- Design in jedem Block (die kleinen blöcke )*/
 .infoBlockWide h2,
 .infoBlockSmall h2 {
-    font-size: 22px; 
-    color: #1E2A38; 
-    margin-bottom: 20px; 
+    font-size: 22px;
+    color: #1E2A38;
+    margin-bottom: 20px;
 }
 
 
@@ -439,12 +521,12 @@ label {
     height: 45px;
     margin: 10px auto;
     padding-left: 20px;
-    
+
     font-family: 'Gill Sans MT', sans-serif;
     font-weight: 600;
     font-size: 18px;
     color: #333;
-    
+
     background-color: rgb(238, 238, 238);
     border: 2px solid transparent;
     border-radius: 25px;
@@ -459,14 +541,16 @@ label {
 /* Hover */
 .userInformationInput:hover {
     background-color: rgb(230, 230, 230);
-    border: 2px solid rgb(39, 174, 96); 
+    border: 2px solid rgb(39, 174, 96);
 }
 
 /* Focus (wenn man klickt und tippt) */
 .userInformationInput:focus {
     background-color: #fff;
-    border: 2px solid rgb(30, 132, 73); /* stärkerer grüner Rand beim Fokus */
-    outline: none; /* keine hässliche Standard-Outline vom Browser */
+    border: 2px solid rgb(30, 132, 73);
+    /* stärkerer grüner Rand beim Fokus */
+    outline: none;
+    /* keine hässliche Standard-Outline vom Browser */
 }
 
 
@@ -493,11 +577,13 @@ label {
 
 /* HAUPTPUNKT Buttons !um abzuschicken / submit buttons für SERVER */
 .submitButton {
-    display: inline-block; /* wichtig für Breite und Padding */
+    display: inline-block;
+    /* wichtig für Breite und Padding */
     text-align: center;
 
     font-size: 16px;
-    font-weight: 600; /* leichte Betonung, wie bei directionbutton */
+    font-weight: 600;
+    /* leichte Betonung, wie bei directionbutton */
 
     margin-top: 20px;
     margin-bottom: 20px;
@@ -505,37 +591,45 @@ label {
     padding-top: 10px;
     padding-right: 20px;
     padding-bottom: 10px;
-    padding-left: 20px; /* statt fixem height → besserer Abstand innen */
+    padding-left: 20px;
+    /* statt fixem height → besserer Abstand innen */
 
     width: 300px;
     max-width: 90%;
 
-    border: none; 
+    border: none;
     border-radius: 18px;
-    background-color: rgb(200, 0, 0); /* kräftiges Rot für wichtige Buttons */
+    background-color: rgb(200, 0, 0);
+    /* kräftiges Rot für wichtige Buttons */
     color: white;
 
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); 
-   
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+
 }
 
 /* UNTERPUNKT Für class submit button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
 .submitButton:hover {
-    background-color: rgb(163, 12, 12); /* etwas dunkleres Rot beim Hover */
+    background-color: rgb(163, 12, 12);
+    /* etwas dunkleres Rot beim Hover */
     color: white;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* stärkerer Hover-Schatten */
-    transform: translateY(-2px); /* leicht anheben beim Überfahren */
-     transition: all 0.3s ease; /* weiche Animation */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    /* stärkerer Hover-Schatten */
+    transform: translateY(-2px);
+    /* leicht anheben beim Überfahren */
+    transition: all 0.3s ease;
+    /* weiche Animation */
 }
 
 
 
 /* HAUPTPUNKT Button (von login zu registrieren erc ) um zu anderen Orten / Links zu gelangen ! kein server*/
 .directionbutton {
-    display: inline-block; /* Bleibt, damit Breite und Höhe funktionieren */
-    text-decoration: none; /* Keine Unterstreichung */
+    display: inline-block;
+    /* Bleibt, damit Breite und Höhe funktionieren */
+    text-decoration: none;
+    /* Keine Unterstreichung */
     color: white;
-    
+
     /* Layout und Schrift */
     text-align: center;
     font-size: 16px;
@@ -545,32 +639,37 @@ label {
     padding-right: 20px;
     padding-bottom: 10px;
     padding-left: 20px;
-    
+
     /* Button-Form */
-    border: none; 
+    border: none;
     border-radius: 18px;
-   
+
     /* Schatten und Tiefe */
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); 
-    
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+
     /* Hintergrund */
     background-color: rgb(39, 174, 96);
-    
+
     /* Breite */
     width: 300px;
     max-width: 90%;
 
-    
+
 }
 
 
 /* UNTERPUNKT Für direction button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
 .directionbutton:hover {
-    background-color: rgb(30, 132, 73); /* leicht dunkleres Grün beim Überfahren */
-    color: white; /* Schrift lassen wir weiß, besser lesbar */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* etwas stärkerer Schatten beim Hover */
-    transform: translateY(-2px); /* Button hebt sich leicht an */
-    transition: all 0.3s ease; /* schöne weiche Animation beim Überfahren */
+    background-color: rgb(30, 132, 73);
+    /* leicht dunkleres Grün beim Überfahren */
+    color: white;
+    /* Schrift lassen wir weiß, besser lesbar */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    /* etwas stärkerer Schatten beim Hover */
+    transform: translateY(-2px);
+    /* Button hebt sich leicht an */
+    transition: all 0.3s ease;
+    /* schöne weiche Animation beim Überfahren */
 }
 
 
@@ -595,18 +694,22 @@ label {
 /* Das ist ein Container um die ganzen Boxen (Produkte) */
 
 .categoryNameContainer {
-text-align: center;
+    text-align: center;
 }
+
 .categoryName {
     font-size: 50px;
     margin-top: 30px;
     margin-bottom: 40px;
-    color: #333; 
-    font-weight: 700; 
-    border-bottom: rgba(0,0,0,0.3) 2px solid; /* unterstrichen */
-    display: inline-block; /* damit der unterstrich nicht die ganze breite hat */
-    padding-bottom: 20px; /* Abstand zwischen Text und Linie */
-    padding-left: 300px; 
+    color: #333;
+    font-weight: 700;
+    border-bottom: rgba(0, 0, 0, 0.3) 2px solid;
+    /* unterstrichen */
+    display: inline-block;
+    /* damit der unterstrich nicht die ganze breite hat */
+    padding-bottom: 20px;
+    /* Abstand zwischen Text und Linie */
+    padding-left: 300px;
     padding-right: 300px
 }
 
@@ -616,31 +719,33 @@ text-align: center;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    max-width: 1600px;                  /* so passen vier boxen rein, mit 1200 zum beispiel nur 3 */
+    max-width: 1600px;
+    /* so passen vier boxen rein, mit 1200 zum beispiel nur 3 */
     margin: auto;
     padding: 20px;
-    
-    
-  }
+
+
+}
 
 /* Das ist die Box für ein einzlenes Produkt */
 .product {
     background-color: #ffffff;
     border-radius: 10px;
     padding: 25px;
-    width: 300px;   
-    
-    display: flex; 
+    width: 300px;
+
+    display: flex;
     flex-direction: column;
-    transition: 0.3s ease 
+    transition: 0.3s ease
 }
 
 
 
 
 .product:hover {
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.75);
-   transform: translateY(-5px); /* Box wird beim Hover-Effekt leicht angehoben */
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.75);
+    transform: translateY(-5px);
+    /* Box wird beim Hover-Effekt leicht angehoben */
 }
 
 
@@ -649,11 +754,12 @@ text-align: center;
 .product img {
     display: block;
     margin: auto;
-    height: 180px; 
-    width: auto; 
-    object-fit: contain; 
+    height: 180px;
+    width: auto;
+    object-fit: contain;
     max-width: 75%;
-    transition: transform 0.3s ease; /* Animation für den Hover-Effekt */
+    transition: transform 0.3s ease;
+    /* Animation für den Hover-Effekt */
 }
 
 .product:hover img {
@@ -663,9 +769,9 @@ text-align: center;
 /* Hauptüberschirft in Produktbox */
 .product h1 {
     font-size: 26px;
-    color: #333; 
+    color: #333;
     text-align: center;
-    font-weight: 700; 
+    font-weight: 700;
 }
 
 .product h2 {
@@ -675,8 +781,9 @@ text-align: center;
     line-height: 1.4;
     margin-bottom: 15px;
     font-weight: 400;
-    
+
 }
+
 /* das ist der Button (a) um Mehr über das Produkt zu erfahren */
 .product .more {
     display: block;
@@ -688,13 +795,13 @@ text-align: center;
     font-size: 18px;
     border-radius: 50px;
     margin-top: auto;
-    
-    
+
+
 }
 
 .product .more:hover {
     background-color: rgb(131, 19, 5);
-    
+
 }
 
 
@@ -720,85 +827,87 @@ text-align: center;
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-  }
-  
-  /* Produkt-Header Styling */
-  .productHeader {
+}
+
+/* Produkt-Header Styling */
+.productHeader {
     text-align: center;
     margin-bottom: 10px;
     padding: 20px 0;
     border-bottom: 3px solid #ddd;
-  }
-  
-  .productHeader h1 {
+}
+
+.productHeader h1 {
     font-size: 35px;
     text-decoration: underline;
     margin-bottom: 10px;
     text-transform: uppercase;
-  }
-  
-  .productHeader h2 {
+}
+
+.productHeader h2 {
     font-size: 20px;
     font-weight: normal;
     color: #6e6e6e;
-  }
+}
 
 
 
 .topPrice {
     font-size: 24px;
     font-weight: bold;
-    color: #000000;    
+    color: #000000;
 
 }
 
-  .productPictures {
+.productPictures {
     display: flex;
     justify-content: center;
     gap: 50px;
     margin-bottom: 20px;
-  }
+}
 
-  .productPictures img {
+.productPictures img {
     width: 100%;
-    max-width: 200px; /* Maximale Breite der Bilder */
-    height: auto; /* Höhe automatisch anpassen */
-    object-fit: contain; 
-    transition: transform 0.3s ease; 
-  }
+    max-width: 200px;
+    /* Maximale Breite der Bilder */
+    height: auto;
+    /* Höhe automatisch anpassen */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
 
-  .productPictures img:hover {
-    transform: scale(1.05); 
-    
-  }
+.productPictures img:hover {
+    transform: scale(1.05);
+
+}
 
 
-  
-  /* Produkt-Informationen */
-  .productInfo {
+
+/* Produkt-Informationen */
+.productInfo {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-  }
+}
 
-  
-  
-  
-  .productInfo h3 {
+
+
+
+.productInfo h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
     border-bottom: 2px solid black;
-     padding-bottom: 8px;
-  }
-  
-  .beschreibung {
+    padding-bottom: 8px;
+}
+
+.beschreibung {
     line-height: 2;
     text-align: justify;
-  }
+}
 
-  .technicalDetails {
+.technicalDetails {
     width: 100%;
     border-collapse: collapse;
     margin: 15px 0;
@@ -810,7 +919,7 @@ text-align: center;
 }
 
 .technicalDetails td:first-child {
-    width: 150px; 
+    width: 150px;
     font-weight: normal;
 }
 
@@ -823,20 +932,20 @@ text-align: center;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-  }
+}
 
-  .price {
+.price {
     font-size: 1.8rem;
     margin-bottom: 20px;
     text-align: center;
-  }
-  
-  .warenkorbButton {
+}
+
+.warenkorbButton {
     background-color: #000000;
     display: block;
     border-radius: 50px;
     width: 50%;
-    max-width:fit-content;
+    max-width: fit-content;
     margin: 0 auto 20px;
     padding: 15px 25px;
     color: white;
@@ -846,31 +955,31 @@ text-align: center;
     transition: 0.3s ease;
     text-transform: uppercase;
     font-weight: bold;
-    
-    
-  }
-  
-  .warenkorbButton:hover {
+
+
+}
+
+.warenkorbButton:hover {
     background-color: #333333;
     transform: translateY(-2px);
-  }
-  
-  .warenkorbButton:active {
+}
+
+.warenkorbButton:active {
     background-color: #4e4e4e;
     transform: translateY(1px);
-  }
+}
 
 
-  
+
 .anzahlContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 40px;
     max-width: fit-content;
-  }
-  
-  .anzahlButton {
+}
+
+.anzahlButton {
     background-color: #e0e0e0;
     border: none;
     width: 30px;
@@ -881,17 +990,18 @@ text-align: center;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    
-  }
-  
-  .anzahlButton:hover {
+
+}
+
+.anzahlButton:hover {
     background-color: #cccccc;
-  }
-  
-  .anzahlButton:active {
+}
+
+.anzahlButton:active {
     background-color: #aaaaaa;
-  }
-  .anzahl {
+}
+
+.anzahl {
     width: 50px;
     text-align: center;
     font-size: 16px;
@@ -899,16 +1009,11 @@ text-align: center;
     border-radius: 4px;
     margin: 0 10px;
     padding: 5px;
-  }
-  
- 
-  
+}
 
-  
-  
+
+
+
+
+
 /* Rinor Produktübersichtseiten Ende */
-
-
-  
-
-  

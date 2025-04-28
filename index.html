@@ -11,8 +11,8 @@
 
 <body>
 
-    <header>
-        <div class="topNavHeader">
+    <header id="header">
+        <div id="topHeader" class="topNavHeader">
             <a class="logo" href='index.html'><img src='assets/images/logo/logoDarkmode.png'></a>
 
             <nav class="userNav">
@@ -60,15 +60,48 @@
             </ul>
         </div>
     </header>
-    
+
     <!--headline und alpha in css implementieren (headline ist jede überschrift und alpha als haupt und nicht unter überschrift)-->
     <h1 class="headline alpha">Starteite MLR</h1>
 
 
 
+    <!-- Testobjekt zur Darstellung des dynamischen Headers -->
+<div style="display:flex;justify-content: center;">
+    <div  class="testObject">content filler (placeholder for enabling scrolling)</div>
+</div>
+
+<!----------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------>
+
+    <!-- skript zum verschieben des Headers -->
+
+    <script>
+
+        var oldPos = 0;
+        window.onscroll = function () {
+
+            var position = window.pageYOffset;
+
+            if (position - oldPos > 50) {
+
+                document.getElementById("header").classList.add("hideHeader");
+                oldPos = position;
+
+            } else if (position - oldPos < -50) {
+
+                document.getElementById("header").classList.remove("hideHeader");
+                oldPos = position;
+            } 
+        }
+    </script>
 
 
- 
+<!----------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------>
+
     <main>
         <p>Willkommen auf der Startseite des MLR PC-Konfigurators. Wähle eine Kategorie aus, um passende Produkte zu
             finden.</p>
@@ -86,4 +119,3 @@
 </body>
 
 </html>
-
