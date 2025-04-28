@@ -82,7 +82,7 @@ body {
 
 
 .normalHeader {
-    position: fixed;
+    position: sticky;
     z-index: 5;
     top: 0;
     width: 100%;
@@ -704,8 +704,6 @@ label {
 
 .categoryNameContainer {
     text-align: center;
-    margin-top: 150px; 
-    padding-top: 30px;
 }
 
 .categoryName {
