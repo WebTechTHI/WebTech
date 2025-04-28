@@ -83,7 +83,7 @@ body {
 /* Ab hier Header Klassen. */
 
 
-header {
+.normalHeader {
     position: fixed;
     z-index: 5;
     top: 0;
@@ -224,8 +224,6 @@ LOGIN, LOGOUT, REGISTRIERUNG, USER, IMPRESSUM, WARENKORB*/
     margin-top: 20px;
     width: 200px;
 }
-
-
 
 
 
