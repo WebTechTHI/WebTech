@@ -700,8 +700,6 @@ label {
 /* Rinor Produktübersichtseiten */
 
 
-
-
 .categoryNameContainer {
     text-align: center;
     margin-top: 150px; 
@@ -817,8 +815,9 @@ label {
     color: #d31e07;
     font-weight: bold;
     position: absolute;
-    left: 0;
+    left: 3px;
     font-size: 18px;
+    top: -3px;
 }
 
 .productPrice {
