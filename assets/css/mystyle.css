@@ -111,7 +111,7 @@ body {
 }
 
 .userIconHeader {
-    height: 50px;
+    height: 40px;
     margin: 0px 32px 0px 0px;
 }
 
@@ -121,7 +121,7 @@ body {
     background-color: rgb(150, 35, 35);
 }
 
-.bottomNavHeader>ul {
+.bottomNavHeader>ul{
     list-style: none;
     flex-direction: row;
     display: flex;
@@ -200,15 +200,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
 /* DIESES LOGO HAT NICHTS MIT DEM HEADER AUF NORMALEN SEITEN ZU TUN, DIE SPEZIFIKATIONEN DIESER KLASSE TREFFEN NUR AUF DAS ICON AUF FOLGENDEN SEITEN ZU: 
 LOGIN, LOGOUT, REGISTRIERUNG, USER, IMPRESSUM, WARENKORB*/
 
@@ -216,14 +207,6 @@ LOGIN, LOGOUT, REGISTRIERUNG, USER, IMPRESSUM, WARENKORB*/
     margin-top: 20px;
     width: 200px;
 }
-
-
-
-
-
-
-
-
 
 
 .ankerForm {
