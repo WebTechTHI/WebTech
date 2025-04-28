@@ -467,7 +467,9 @@ label {
 .infoBlockSmall {
     /* Flex-Verhalten */
     flex: 1 1 45%;
-    /* Jeder Block nimmt etwa 45% der verfügbaren Breite ein */
+    /* Flex grow(erste 1) ist für wie groß element wachsen darf
+     zweite für flex shrink(schrumpfen) 
+    Jeder Block nimmt etwa 45% der verfügbaren Breite ein */
 
 
     background-color: white;
@@ -608,12 +610,12 @@ label {
 /* UNTERPUNKT Für class submit button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
 .submitButton:hover {
     background-color: rgb(163, 12, 12);
-    /* etwas dunkleres Rot beim Hover */
+    
     color: white;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
-    /* stärkerer Hover-Schatten */
+
     transform: translateY(-2px);
-    /* leicht anheben beim Überfahren */
+    /* leicht anheben beim Überfahren durch des Y am ende */
     transition: all 0.3s ease;
     /* weiche Animation */
 }
@@ -623,12 +625,12 @@ label {
 /* HAUPTPUNKT Button (von login zu registrieren erc ) um zu anderen Orten / Links zu gelangen ! kein server*/
 .directionbutton {
     display: inline-block;
-    /* Bleibt, damit Breite und Höhe funktionieren */
+    
     text-decoration: none;
-    /* Keine Unterstreichung */
+    
     color: white;
 
-    /* Layout und Schrift */
+
     text-align: center;
     font-size: 16px;
     font-weight: 600;
@@ -638,17 +640,17 @@ label {
     padding-bottom: 10px;
     padding-left: 20px;
 
-    /* Button-Form */
+  
     border: none;
     border-radius: 18px;
 
-    /* Schatten und Tiefe */
+    
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 
-    /* Hintergrund */
+ 
     background-color: rgb(39, 174, 96);
 
-    /* Breite */
+  
     width: 300px;
     max-width: 90%;
 
@@ -659,15 +661,24 @@ label {
 /* UNTERPUNKT Für direction button wird der hover effekt hier festgelegt (ist ein anderer als bei userinformation da das kein button is sondern ein EINGABEFELD) */
 .directionbutton:hover {
     background-color: rgb(30, 132, 73);
-    /* leicht dunkleres Grün beim Überfahren */
+ 
     color: white;
-    /* Schrift lassen wir weiß, besser lesbar */
+   
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
-    /* etwas stärkerer Schatten beim Hover */
+ 
     transform: translateY(-2px);
-    /* Button hebt sich leicht an */
-    transition: all 0.3s ease;
-    /* schöne weiche Animation beim Überfahren */
+    /* Button hebt sich leicht an da Y am ende
+    --> transform verändert das Aussehen oder die Position eines Elements – ohne das Layout drumherum zu beeinflussen! */
+    transition: all 0.3s linear;
+    /*  weiche Animation beim Überfahren
+    --> transition sorgt dafür, dass Veränderungen nicht abrupt, sondern sanft über eine Zeitspanne passieren.
+    --> Übergang zwischen zwei Zuständen sanft ablaufen lassen 
+   
+    all meint das es eben alles animiert werden soll also so farbe background color etc
+    
+    Aufbau so allgemein:
+    transition: [Eigenschaft] [Dauer] [Timing-Funktion] [Verzögerung];
+ */
 }
 
 
