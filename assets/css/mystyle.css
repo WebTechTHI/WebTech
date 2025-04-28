@@ -289,7 +289,7 @@ a:hover {
 /* HAUPTPUNKT HIER DAS ES EINHEITLICH BLEIBT. sollte auf jeder seite eig bei body class eingefügt werden/ Body wird angepasst als gesamtes */
 .bodyLoginRegistration {
     text-align: center;
-    background-color: rgb(128, 128, 128);
+    background-color: rgb(199, 199, 197);
     height: 100%;
 }
 
