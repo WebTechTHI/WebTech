@@ -5,14 +5,14 @@ window.onscroll = function () {
 
     var position = window.pageYOffset;
 
-    if (position - oldPos > 50) {
+    if (position - oldPos > 123) {
 
-        document.getElementById("header").classList.add("hideHeader");
+        document.getElementById("header").style.top = "-124px";
         oldPos = position;
 
-    } else if (position - oldPos < -50) {
+    } else if (position - oldPos < -123) {
 
-        document.getElementById("header").classList.remove("hideHeader");
+        document.getElementById("header").style.top = "0px";
         oldPos = position;
     }
 }

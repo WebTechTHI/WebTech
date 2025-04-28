@@ -82,17 +82,11 @@ body {
 
 
 .normalHeader {
-    position: fixed;
+    position: sticky;
     z-index: 5;
     top: 0;
     width: 100%;
-    transition: top 0.35s ease-in-out;
-}
-
-/* Klasse zum verschieben des Headers, jskript befindet sich aktuell noch im index.html-Dokument */
-
-.hideHeader {
-    top: -125px;
+    transition: 0.35s ease-in-out;
 }
 
 /* Top Header (user navigation) */
@@ -702,8 +696,6 @@ label {
 
 .categoryNameContainer {
     text-align: center;
-    margin-top: 150px; 
-    padding-top: 30px;
 }
 
 .categoryName {
