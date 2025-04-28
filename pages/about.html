@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
-<link rel="stylesheet" href="../assets/CSS/mystyle.css">
+
 
     <link rel="stylesheet" href="../assets/css/mystyle.css">
 <head>
@@ -12,10 +12,54 @@
 
 <body>
 
-    <header>
-        <a href="../index.html">
-            <img class="logo" src="../assets/images/logo/logoDarkmode.png" alt="logo.png">
-        </a>
+    <header class="normalHeader" id="header">
+        <div class="topNavHeader">
+            <a class="logo" href='../index.html'><img src='../assets/images/logo/logoDarkmode.png'></a>
+
+            <nav class="userNav">
+                <a href="../pages/login.html"><img class="userIconHeader" src="../assets/images/icons/login.png"
+                        alt="Login"></a>
+                <a href="../pages/registration.html"><img class="userIconHeader" src="../assets/images/icons/register.png"
+                        alt="Registrierung"></a>
+                <a href="../pages/logout.html"><img class="userIconHeader" src="../assets/images/icons/logout.png"
+                        alt="Logout"></a>
+                <a href="../pages/shoppingBasket.html"><img class="userIconHeader"
+                        src="../assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
+                <a href="../pages/user.html"><img class="userIconHeader" src="../assets/images/icons/user.png"></a>
+            </nav>
+        </div>
+
+        <div class="bottomNavHeader">
+            <ul>
+                <li>
+                    <a href="../productLists/desktopPcList.html">Desktop-PCs</a>
+                    <ul class="subMenu">
+                        <li><a href="../productLists/gamingPcList.html">Gaming-PCs</a></li>
+                        <li><a href="../productLists/officePcList.html">Office-PCs</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="../productLists/laptopList.html">Laptops</a>
+                    <ul class="subMenu">
+                        <li><a href="../productLists/gamingLaptopList.html">Gaming Laptops</a></li>
+                        <li><a href="../productLists/officeLaptopList.html">Office Laptops</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="../productLists/zubehörList.html">Zubehör</a>
+                    <ul class="subMenu">
+                        <li><a href="../productLists/monitorList.html">Monitore</a></li>
+                        <li><a href="../productLists/mausList.html">Mäuse</a></li>
+                        <li><a href="../productLists/tastaturList.html">Tastaturen</a></li>
+                    </ul>
+                </li>
+                <li class="headerDeals">
+                    <a href="../productLists/deals.html">Angebote</a>
+                </li>
+            </ul>
+        </div>
     </header>
 
     <h1>
