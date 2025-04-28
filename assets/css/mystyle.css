@@ -2,8 +2,6 @@ body {
     background: rgb(199, 199, 197);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
-
-
 }
 
 /* -----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -45,7 +43,7 @@ body {
     z-index: -1;
     padding: 5px;
     border-radius: 10px;
-    animation: 3s spin linear infinite;
+    animation: 2.5s spin linear infinite;
 }
 
 .testObject::before {
@@ -97,7 +95,7 @@ body {
     top: -125px;
 }
 
-/* Top Header (user links) */
+/* Top Header (user navigation) */
 
 .topNavHeader {
     background: rgb(12, 12, 12);
