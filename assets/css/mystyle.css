@@ -86,7 +86,7 @@ body {
     z-index: 5;
     top: 0;
     width: 100%;
-    transition: top 0.35s ease-in-out;
+    transition: 0.35s ease-in-out;
 }
 
 /* Klasse zum verschieben des Headers, jskript befindet sich aktuell noch im index.html-Dokument */
