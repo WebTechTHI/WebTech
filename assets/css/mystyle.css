@@ -443,7 +443,7 @@ label {
 .infoBlockSmall {
     /* Flex-Verhalten */
     flex: 1 1 45%;
-    /* Flex grow(erste 1) ist für wie groß element wachsen darf
+    /* Flex grow(erste 1) ist das element wachsen darf wenn platz ist
      zweite für flex shrink(schrumpfen) 
     Jeder Block nimmt etwa 45% der verfügbaren Breite ein */
 
