@@ -4,7 +4,7 @@ header {
     top: 0;
     width: 100%;
     transition: 0.35s ease-in-out;
-    flex: 1;
+    align-self: flex-start;
 }
 
 /* Top Header (user navigation) */

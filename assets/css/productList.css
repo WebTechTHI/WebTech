@@ -17,6 +17,7 @@
 
 .productMainContainer {
     display: flex;
+    flex: 1;;
     flex-direction: column;
     gap: 25px;
     max-width: 1100px;
@@ -24,6 +25,7 @@
     padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
+    
 }
 
 .product {
