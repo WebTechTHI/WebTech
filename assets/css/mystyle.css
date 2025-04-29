@@ -208,7 +208,7 @@ LOGIN, LOGOUT, REGISTRIERUNG, USER, IMPRESSUM, WARENKORB*/
     width: 200px;
 }
 
-
+/*  
 .ankerForm {
     background: brown;
     text-align: center;
@@ -223,7 +223,7 @@ LOGIN, LOGOUT, REGISTRIERUNG, USER, IMPRESSUM, WARENKORB*/
 .ankerForm:hover {
     box-shadow: 0px 0px 20px 2px rgb(29, 25, 32);
 }
-
+*/
 
 
 /* Ab hier Footer Klassen. */
