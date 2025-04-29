@@ -39,7 +39,7 @@
 
 @media (max-width: 768px) {
     .product {
-        flex-direction: column; /* Stack elements on small screens */
+        flex-direction: column; 
     }
 }
 
@@ -63,7 +63,8 @@
 @media (max-width: 768px) {
     .productPictureContainer {
         width: 100%;
-        border-radius: 25px 25px 0 0; /* Fix border radius for column layout */
+        border-radius: 25px 25px 0 0;
+        box-sizing: border-box /* Fix border radius for column layout */
     }
 }
 
@@ -150,6 +151,10 @@
 @media (max-width: 480px) {
     .buttonContainer {
         justify-content: center;
+    }
+
+    .productPrice{
+        text-align: center;
     }
 }
 
