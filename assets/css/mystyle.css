@@ -387,8 +387,9 @@ label {
     padding-bottom: 30px;
     padding-left: 40px;
 
-
-    border: 2px solid #1C6EA4;
+   
+    border: 2px solid;
+    border-color: #1C6EA4;
     border-radius: 30px;
     background-color: rgb(245, 245, 245);
 
