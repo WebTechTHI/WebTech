@@ -1,0 +1,147 @@
+header {
+    position: sticky;
+    z-index: 5;
+    top: 0;
+    width: 100%;
+    transition: 0.35s ease-in-out;
+    flex: 1;
+}
+
+/* Top Header (user navigation) */
+.topNavHeader {
+    background: rgb(12, 12, 12);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.logo {
+    margin: 0 0 0 20px;
+}
+
+.logo > img {
+    width: 100%;
+    max-width: 120px;
+}
+
+.userNav {
+    flex: 1;
+    text-align: right;
+}
+
+.userIconHeader {
+    max-height: 40px;
+    margin: 0 20px 0 0;
+}
+
+/* Bottom Header (Links zum Shop-Browsen) - Made responsive */
+.bottomNavHeader {
+    background-color: rgb(150, 35, 35);
+}
+
+.bottomNavHeader > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.bottomNavHeader > ul > li {
+    position: relative;
+    padding: 7px 15px;
+}
+
+.bottomNavHeader > ul > li:hover {
+    background-color: rgb(63, 61, 61);
+}
+
+.bottomNavHeader > ul > li > a {
+    color: rgb(255, 255, 255);
+    font-size: clamp(16px, 2.5vw, 27px); /* Responsive font size */
+    text-decoration: none;
+}
+
+/* Responsive submenu */
+.bottomNavHeader .subMenu {
+    display: none;
+    list-style: none;
+    text-decoration: none;
+    position: absolute;
+    flex-direction: column;
+    background-color: rgb(63, 60, 60);
+    border-radius: 0 0 3px 3px;
+    white-space: nowrap;
+    padding: 0;
+    z-index: 5;
+    width: 200px; /* Fixed width for better mobile experience */
+}
+
+.bottomNavHeader > ul > li:hover > .subMenu {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 100%; /* Position relative to parent */
+    font-size: clamp(16px, 2vw, 22px); /* Responsive font size */
+}
+
+/* Media query for small screens - Convert menu to mobile-friendly version */
+@media (max-width: 768px) {
+    .bottomNavHeader > ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bottomNavHeader > ul > li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .bottomNavHeader > ul > li:hover > .subMenu {
+        position: relative;
+        width: 100%;
+        top: 0;
+    }
+    
+    .subMenu {
+        width: 100% !important;
+    }
+}
+
+/* Submenu item styles */
+.subMenu li {
+    padding: 7px 10px;
+}
+
+.subMenu li:hover {
+    background-color: rgb(219, 219, 219);
+}
+
+.subMenu li:hover > a {
+    color: rgb(46, 45, 45);
+}
+
+.subMenu li a {
+    text-decoration: none;
+    color: white;
+    display: block; /* Make the entire area clickable */
+}
+
+.subMenu li a:hover {
+    color: rgb(46, 45, 45);
+}
+
+/* Offers button */
+.headerDeals {
+    background-color: #3d3f3f;
+    margin: 0 0 0 10px;
+}
+
+/* Logo for special pages */
+.logoHeader {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 200px;
+}

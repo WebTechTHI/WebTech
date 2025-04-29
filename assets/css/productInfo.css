@@ -1,0 +1,225 @@
+.productContainer {
+    max-width: 1200px;
+    margin: 20px auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.productHeader {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 20px 0;
+    border-bottom: 3px solid #ddd;
+    
+    
+}
+
+.productHeader h1 {
+    font-size: clamp(24px, 4vw, 35px); /* Responsive font size */
+    text-decoration: underline;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.productHeader h2 {
+    font-size: clamp(16px, 2vw, 20px); /* Responsive font size */
+    font-weight: normal;
+    color: #6e6e6e;
+}
+
+.topPrice {
+    font-size: clamp(18px, 2.5vw, 24px); /* Responsive font size */
+    font-weight: bold;
+    color: #000000;
+}
+
+.productPictures {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 50px); /* Responsive gap */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.productPictures img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.productPictures img:hover {
+    transform: scale(1.05);
+}
+
+.productInfo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.productInfo h3 {
+    font-size: clamp(18px, 2vw, 1.5rem); /* Responsive font size */
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
+    padding-bottom: 8px;
+}
+
+.beschreibung {
+    line-height: 2;
+    text-align: justify;
+}
+
+.technicalDetails {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.technicalDetails td {
+    padding: 8px 0;
+    vertical-align: top;
+}
+
+.technicalDetails td:first-child {
+    width: clamp(100px, 20%, 150px); /* Responsive width */
+    font-weight: normal;
+}
+
+.technicalDetails tr:not(:last-child) td {
+    border-bottom: 1px solid #eee;
+}
+
+.kaufContainer {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.price {
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem); /* Responsive font size */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.warenkorbButton {
+    background-color: #000000;
+    display: block;
+    border-radius: 50px;
+    width: 100%;
+    max-width: fit-content;
+    margin: 0 auto 20px;
+    padding: 15px 25px;
+    color: white;
+    border: none;
+    font-size: clamp(16px, 2vw, 18px); /* Responsive font size */
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.warenkorbButton:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+}
+
+.warenkorbButton:active {
+    background-color: #4e4e4e;
+    transform: translateY(1px);
+}
+
+.anzahlContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 40px;
+    max-width: fit-content;
+}
+
+.anzahlButton {
+    background-color: #e0e0e0;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 25%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.anzahlButton:hover {
+    background-color: #cccccc;
+}
+
+.anzahlButton:active {
+    background-color: #aaaaaa;
+}
+
+.anzahl {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 10px;
+    padding: 5px;
+}
+
+/* Additional responsive breakpoints */
+@media (max-width: 480px) {
+    .bottomNavHeader > ul > li > a {
+        font-size: 16px;
+    }
+    
+    .categoryName {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .productHeader h1 {
+        font-size: 22px;
+    }
+    
+    .warenkorbButton {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Make tables responsive */
+@media screen and (max-width: 600px) {
+    .technicalDetails {
+        display: block;
+    }
+    
+    .technicalDetails tbody, 
+    .technicalDetails tr, 
+    .technicalDetails td {
+        display: block;
+        width: 100%;
+    }
+    
+    .technicalDetails td:first-child {
+        font-weight: bold;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    
+    .technicalDetails tr {
+        margin-bottom: 15px;
+    }
+    
+    .technicalDetails tr:not(:last-child) td:last-child {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+    }
+}

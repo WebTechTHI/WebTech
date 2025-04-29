@@ -1,0 +1,168 @@
+
+
+/* Forms and user interface elements - Made responsive */
+.bodyLoginRegistration {
+    text-align: center;
+    min-height: 100vh;
+}
+
+
+/* Responsive form styles */
+.userInfoFormlogin,
+.userInfoFormregistration,
+.userInfoFormuser {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 5px 1px 80px;
+    border-radius: 30px;
+    border: 2px solid #1C6EA4;
+    background: rgb(245, 245, 245);
+    box-shadow: 10px 5px 9px 5px rgba(0, 0, 0, 0.36);
+    margin-top: 50px;
+}
+
+
+.userInfoFormuser {
+    max-width: 1200px;
+    padding: 30px 20px; /* Reduced side padding for small screens */
+}
+
+/* Responsive info blocks */
+.infoBlockWide {
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.infoRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.infoBlockSmall {
+    flex: 1 1 calc(50% - 20px); /* Responsive width with gap consideration */
+    min-width: 250px; /* Minimum width before wrapping */
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+
+.infoBlockWide h2,
+.infoBlockSmall h2 {
+    font-size: clamp(18px, 2vw, 22px); /* Responsive font size */
+    color: #1E2A38;
+    margin-bottom: 20px;
+}
+
+
+/* Responsive input fields */
+.userInformationInput {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: 45px;
+    margin: 10px auto;
+    padding-left: 20px;
+    font-family: 'Gill Sans MT', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #333;
+    background-color: rgb(238, 238, 238);
+    border: 2px solid transparent;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.userInformationInput::placeholder {
+    color: rgba(90, 90, 90, 0.685);
+}
+
+.userInformationInput:hover {
+    background-color: rgb(230, 230, 230);
+    border: 2px solid rgb(39, 174, 96);
+}
+
+.userInformationInput:focus {
+    background-color: #fff;
+    border: 2px solid rgb(30, 132, 73);
+    outline: none;
+}
+
+
+
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+
+@media (max-width: 768px) {
+    .infoBlockSmall {
+        flex: 1 1 100%; /* Full width on small screens */
+    }
+}
+
+
+
+
+/* Responsive buttons */
+.submitButton,
+.directionbutton {
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 300px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.submitButton {
+    background-color: rgb(200, 0, 0);
+    color: white;
+}
+
+.submitButton:hover {
+    background-color: rgb(163, 12, 12);
+    color: white;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.directionbutton {
+    background-color: rgb(39, 174, 96);
+    color: white;
+    text-decoration: none;
+}
+
+.directionbutton:hover {
+    background-color: rgb(30, 132, 73);
+    color: white;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+    transition: all 0.3s linear;
+}
