@@ -92,11 +92,14 @@
 .technicalDetails td:first-child {
     width: clamp(100px, 20%, 150px); /* Responsive width */
     font-weight: normal;
+    
 }
 
 .technicalDetails tr:not(:last-child) td {
     border-bottom: 1px solid #eee;
 }
+
+
 
 .kaufContainer {
     display: block;

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produkt</title>
+  <link rel="icon" href="../../../assets/images/logo/favicon.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="../../../assets/css/mystyle.css">
+  <link rel="stylesheet" href="../../../assets/css/shopHeader.css">
+  <link rel="stylesheet" href="../../../assets/css/footer.css">
+  <link rel="stylesheet" href="../../../assets/css/productInfo.css">
+  <script src="../assets/javascript/base.js"></script>
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="topNavHeader">
+            <a class="logo" href='../index.html'><img src='../assets/images/logo/logoDarkmode.png'></a>
+
+            <nav class="userNav">
+                <a href="../pages/login.html"><img class="userIconHeader" src="../assets/images/icons/login.png"
+                        alt="Login"></a>
+                <a href="../pages/registration.html"><img class="userIconHeader"
+                        src="../assets/images/icons/register.png" alt="Registrierung"></a>
+                <a href="../pages/logout.html"><img class="userIconHeader" src="../assets/images/icons/logout.png"
+                        alt="Logout"></a>
+                <a href="../pages/shoppingBasket.html"><img class="userIconHeader"
+                        src="../assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
+                <a href="../pages/user.html"><img class="userIconHeader" src="../assets/images/icons/user.png"></a>
+            </nav>
+        </div>
+
+        <div class="bottomNavHeader">
+            <ul>
+                <li>
+                    <a href="../productLists/desktopPcList.html">Desktop-PCs</a>
+                    <ul class="subMenu">
+                        <li><a href="../productLists/gamingPcList.html">Gaming-PCs</a></li>
+                        <li><a href="../productLists/officePcList.html">Office-PCs</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="../productLists/laptopList.html">Laptops</a>
+                    <ul class="subMenu">
+                        <li><a href="../productLists/gamingLaptopList.html">Gaming Laptops</a></li>
+                        <li><a href="../productLists/officeLaptopList.html">Office Laptops</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="../productLists/zubehörList.html">Zubehör</a>
+                    <ul class="subMenu">
+                        <li><a href="../productLists/monitorList.html">Monitore</a></li>
+                        <li><a href="../productLists/mausList.html">Mäuse</a></li>
+                        <li><a href="../productLists/tastaturList.html">Tastaturen</a></li>
+                    </ul>
+                </li>
+                <li class="headerDeals">
+                    <a href="../productLists/deals.html">Angebote</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+<div class="productContainer">
+  <div class="productHeader">
+    <h1 class="produktName">Produktname</h1>
+    <h2 class="kurzbeschreibung">Kurzbeschreibung</h2>
+    <span class="topPrice preis">Preis</span>
+  </div>
+
+  <div class="productPictures">
+    <!-- Bilder werden per JS eingefügt -->
+  </div>
+
+  <div class="productInfo">
+    <h3>Beschreibung</h3>
+    <p class="beschreibung">Beschreibungstext</p>
+
+    <h3>Technische Details</h3>
+    <table class="technicalDetails technischeDetails">
+      <!-- Technische Details werden per JS eingefügt -->
+    </table>
+
+    <div class="kaufContainer">
+      <p class="price kaufpreis"><strong>Preis:</strong> Preis</p>
+      <button class="warenkorbButton">Zum Warenkorb hinzufügen</button>
+      <div class="anzahlContainer">
+        <button class="anzahlButton" id="decrease">-</button>
+        <input type="number" class="anzahl" value="1" min="1">
+        <button class="anzahlButton" id="increase">+</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <nav>
+    <p>© 2025 MLR | <a href="../../../pages/about.html"><i>Impressum</i></a></p>
+  </nav>
+</footer>
+
+<!-- Dein JS am Ende -->
+<script>
+    // Produktdaten laden und anzeigen
+    document.addEventListener("DOMContentLoaded", async () => {
+      const params = new URLSearchParams(window.location.search);
+      const produktId = parseInt(params.get("id"));
+  
+      if (!produktId) {
+        console.error("Keine Produkt-ID in der URL gefunden (z. B. ?id=1)");
+        return;
+      }
+  
+      try {
+        const response = await fetch("../assets/json/productList.json");
+        const produkte = await response.json();
+  
+        const produkt = produkte.find(p => p.id === produktId);
+        if (!produkt) {
+          console.error(`Kein Produkt mit ID ${produktId} gefunden.`);
+          return;
+        }
+  
+        // Seite mit Produktdaten füllen
+        document.title = `MLR | ${produkt.name}`;
+        document.querySelectorAll(".produktName").forEach(el => el.textContent = produkt.name);
+        document.querySelector(".kurzbeschreibung").textContent = produkt.kurzbeschreibung;
+        document.querySelector(".beschreibung").textContent = produkt.beschreibung;
+        document.querySelector(".topPrice").textContent = `${produkt.preis} €`;
+        document.querySelector(".kaufpreis").innerHTML = `<strong>Preis: </strong> ${produkt.preis} €`;
+  
+        // Bilder einfügen
+        const bilderContainer = document.querySelector(".productPictures");
+
+        bilderContainer.innerHTML = "";
+        produkt.bild.forEach(src => {
+          const img = document.createElement("img");
+          img.src = "../" + src;
+          img.alt = produkt.alt || produkt.name;
+          img.width = 200;
+          bilderContainer.appendChild(img);
+        });
+  
+        // Technische Details einfügen
+        const technikTabelle = document.querySelector(".technicalDetails");
+        technikTabelle.innerHTML = "";
+        produkt.technischeDetails.forEach(detail => {
+          const [key, value] = Object.entries(detail)[0];
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td><strong>${key}:</strong></td><td>${value}</td>`;
+          technikTabelle.appendChild(tr);
+        });
+  
+      } catch (err) {
+        console.error("Fehler beim Laden der Produktdaten:", err);
+      }
+    });
+  </script>
+  
+
+</body>
+</html>
