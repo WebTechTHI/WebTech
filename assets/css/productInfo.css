@@ -80,10 +80,10 @@
 
 .technicalDetails {
     width: 100%;
-    max-width: 800px; /* Optional: begrenzt die Gesamttabellenbreite */
+    max-width: 800px; 
     border-collapse: collapse;
     margin: 10px 0;
-    table-layout: auto; /* Ermöglicht flexibleres Spaltenverhalten */
+    table-layout: auto; 
 }
 
 .technicalDetails td {
@@ -91,12 +91,12 @@
     vertical-align: top;
 }
 
-/* Erste Spalte (linke Seite) */
+
 .technicalDetails td:first-child {
-    width: 120px;         /* Feste, bewährte Breite */
-    max-width: 120px;     /* Sicherstellen, dass sie nicht größer wird */
-    white-space: nowrap;  /* Verhindert Zeilenumbruch bei kurzen Werten */
-    padding-right: 50px; /* Abstand zwischen den Spalten */
+    width: 120px;         
+    max-width: 120px;     
+    white-space: nowrap;  
+    padding-right: 40px; 
 }
 
 /* Zweite Spalte (rechte Seite) */
@@ -143,7 +143,7 @@
 
 .warenkorbButton:hover {
     background-color: #333333;
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .warenkorbButton:active {
