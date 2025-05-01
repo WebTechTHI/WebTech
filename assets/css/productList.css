@@ -271,12 +271,15 @@
 .product.sale::before {
     content: 'SALE %';
     position: absolute;
+    width: 80px;
+    height: 25px;
+    text-align: center;
     top: 15px;
     right: 15px;
     background-color: #d31e07;
     color: white;
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 600;
     border-radius: 25px;
     z-index: 1;
