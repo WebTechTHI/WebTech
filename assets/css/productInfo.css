@@ -190,6 +190,10 @@
     padding: 5px;
 }
 
+.anzahl[readonly] {
+    pointer-events: none;
+  }
+
 /* Additional responsive breakpoints */
 @media (max-width: 480px) {
     .bottomNavHeader > ul > li > a {
