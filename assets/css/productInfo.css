@@ -74,14 +74,16 @@
 }
 
 .beschreibung {
-    line-height: 2;
+    line-height: 2.3;
     text-align: justify;
 }
 
 .technicalDetails {
     width: 100%;
+    max-width: 800px; /* Optional: begrenzt die Gesamttabellenbreite */
     border-collapse: collapse;
-    margin: 15px 0;
+    margin: 10px 0;
+    table-layout: auto; /* Ermöglicht flexibleres Spaltenverhalten */
 }
 
 .technicalDetails td {
@@ -89,15 +91,23 @@
     vertical-align: top;
 }
 
+/* Erste Spalte (linke Seite) */
 .technicalDetails td:first-child {
-    width: clamp(100px, 20%, 150px); /* Responsive width */
-    font-weight: normal;
-    
+    width: 120px;         /* Feste, bewährte Breite */
+    max-width: 120px;     /* Sicherstellen, dass sie nicht größer wird */
+    white-space: nowrap;  /* Verhindert Zeilenumbruch bei kurzen Werten */
+    padding-right: 50px; /* Abstand zwischen den Spalten */
+}
+
+/* Zweite Spalte (rechte Seite) */
+.technicalDetails td:nth-child(2) {
+    padding-left: 5px;
 }
 
 .technicalDetails tr:not(:last-child) td {
     border-bottom: 1px solid #eee;
 }
+
 
 
 

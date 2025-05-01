@@ -4,6 +4,7 @@
     "name": "OFFICE PC",
     "kurzbeschreibung": "Intel Core i7-12700K, 12x 3.60GHz | 32GB DDR4 | Intel UHD Grafik | 1TB M.2 SSD",
     "preis": 589,
+    "sale": true,
     "kategorie": "pc",
     "unterkategorie": "officePC",
     "bild": [
@@ -35,6 +36,7 @@
     "name": "Oblivion Beast",
     "kurzbeschreibung": "AMD Ryzen 5 5600X 6x3.70GHz | 16GB DDR4 | RX 6750 XT 12GB | 1TB M.2 SSD",
     "preis": 869,
+    "sale": false,
     "kategorie": "pc",
     "unterkategorie": "gamingPC",
     "bild": [
@@ -67,6 +69,7 @@
     "name": "MSI Katana 17",
     "kurzbeschreibung": "NVIDIA RTX 4060 | Intel Core i7-13620H | 16GB RAM | 2TB SSD | Windows 11 Pro | DE-Layout (QWERTZ)",
     "preis": 1409,
+    "sale": false,
     "kategorie": "laptop",
     "unterkategorie": "gamingLaptop",
     "bild": [
@@ -99,6 +102,7 @@
     "name": "Laptop HP 255 G9",
     "kurzbeschreibung": "AMD Athlon Gold 3150U | Radeon Graphics | 8GB RAM | 512GB SSD | Windows 11 Pro | DE-Layout (QWERTZ)",
     "preis": 299,
+    "sale": true,
     "kategorie": "laptop",
     "unterkategorie": "officeLaptop",
     "bild": [
@@ -133,6 +137,7 @@
     "name": "Cooler Master GA2501",
     "kurzbeschreibung": "Gaming Monitor mit hoher Bildwiederholrate",
     "preis": 100,
+    "sale": true,
     "kategorie": "zubehör",
     "unterkategorie": "monitor",
     "bild": [
@@ -165,6 +170,7 @@
     "name": "Sharkoon Shark Force II",
     "kurzbeschreibung": "Ergonomische Gaming-Maus mit präzisem Sensor",
     "preis": 17,
+    "sale": false,
     "kategorie": "zubehör",
     "unterkategorie": "maus",
     "bild": [
@@ -192,6 +198,7 @@
   "name": "Cherry KC 1000 | DE (QWERTZ)",
   "kurzbeschreibung": "Hochwertige Office-Tastatur für effizientes Arbeiten",
   "preis": 20,
+  "sale": false,
   "kategorie": "zubehör",
   "unterkategorie": "tastatur",
   "bild": [
