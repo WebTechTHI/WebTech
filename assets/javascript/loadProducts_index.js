@@ -1,6 +1,6 @@
 async function loadProducts() {
     try {
-        const response = await fetch('/assets/json/productList.json');
+        const response = await fetch('assets/json/productList.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
