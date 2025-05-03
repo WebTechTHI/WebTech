@@ -1,75 +1,105 @@
 .productContainer {
-    max-width: 1200px;
+    display: grid;
+    max-width: 1300px;
     margin: 0 auto; 
+    margin-top: 50px;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     flex: 1;
     width: 100%;
     box-sizing: border-box;
+    background-color: white;
+    border-radius: 1rem;
+    border: #d3d3d3 2px solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .productHeader {
+    grid-column: span 2;
     text-align: center;
-    margin-bottom: 10px;
+    margin-top: 10px;
     padding: 10px 0;
-    border-bottom: 3px solid #ddd;
-    
-    
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 .productHeader h1 {
-    font-size: clamp(24px, 4vw, 35px); /* Responsive font size */
-    text-decoration: underline;
+    font-size: clamp(24px, 4vw, 35px);
     margin-bottom: 10px;
     text-transform: uppercase;
 }
 
 .productHeader h2 {
-    font-size: clamp(16px, 2vw, 20px); /* Responsive font size */
+    font-size: clamp(16px, 2vw, 20px);
     font-weight: normal;
     color: #6e6e6e;
 }
 
 .topPrice {
-    font-size: clamp(18px, 2.5vw, 24px); /* Responsive font size */
+    font-size: clamp(18px, 2.5vw, 24px);
     font-weight: bold;
     color: #000000;
 }
 
-.productPictures {
+.productGallery {
+    grid-column: 1;
     display: flex;
-    justify-content: center;
-    gap: clamp(10px, 3vw, 50px); /* Responsive gap */
-    margin-bottom: 20px;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-direction: column;
+    max-width: 80%;
+    margin: 50px auto;
+    gap: 1rem;
 }
 
-.productPictures img {
-    width: 100%;
-    max-width: 200px;
+.productImage.mainImage {
+    border: 1px solid #dee2e6;
+    border-radius: 25px;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    max-width: 100%;
     height: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
+    margin: 0 auto;
 }
 
-.productPictures img:hover {
+.thumbnailContainer {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.productImage.thumbnail {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.7;
+}
+
+.productImage.thumbnail:hover {
+    opacity: 1;
     transform: scale(1.05);
 }
 
+.productImage.thumbnail.active {
+    border-color: #d31e07;
+    opacity: 1;
+}
+
 .productInfo {
-    background-color: white;
+    grid-column: 2;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
     width: 100%;
     box-sizing: border-box;
 }
 
 .productInfo h3 {
-    font-size: clamp(18px, 2vw, 1.5rem); /* Responsive font size */
+    
+    font-size: clamp(18px, 2vw, 1.5rem);
     margin-bottom: 10px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #b0b0b0;
     padding-bottom: 8px;
 }
 
@@ -80,10 +110,10 @@
 
 .technicalDetails {
     width: 100%;
-    max-width: 800px; 
+    max-width: 800px;
     border-collapse: collapse;
     margin: 10px 0;
-    table-layout: auto; 
+    table-layout: auto;
 }
 
 .technicalDetails td {
@@ -91,15 +121,13 @@
     vertical-align: top;
 }
 
-
 .technicalDetails td:first-child {
-    width: 120px;         
-    max-width: 120px;     
-    white-space: nowrap;  
-    padding-right: 40px; 
+    width: 120px;
+    max-width: 120px;
+    white-space: nowrap;
+    padding-right: 40px;
 }
 
-/* Zweite Spalte (rechte Seite) */
 .technicalDetails td:nth-child(2) {
     padding-left: 5px;
 }
@@ -108,18 +136,18 @@
     border-bottom: 1px solid #eee;
 }
 
-
-
-
 .kaufContainer {
+    background-color: #f9f9f9;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    grid-column: span 2;
     display: block;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
 }
 
 .price {
-    font-size: clamp(1.5rem, 2.5vw, 1.8rem); /* Responsive font size */
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -134,7 +162,7 @@
     padding: 15px 25px;
     color: white;
     border: none;
-    font-size: clamp(16px, 2vw, 18px); /* Responsive font size */
+    font-size: clamp(16px, 2vw, 18px);
     cursor: pointer;
     transition: 0.15s ease;
     text-transform: uppercase;
@@ -192,9 +220,8 @@
 
 .anzahl[readonly] {
     pointer-events: none;
-  }
+}
 
-/* Additional responsive breakpoints */
 @media (max-width: 480px) {
     .bottomNavHeader > ul > li > a {
         font-size: 16px;
@@ -215,7 +242,6 @@
     }
 }
 
-/* Make tables responsive */
 @media screen and (max-width: 600px) {
     .technicalDetails {
         display: block;
@@ -241,5 +267,82 @@
     .technicalDetails tr:not(:last-child) td:last-child {
         border-bottom: 1px solid #eee;
         padding-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .productContainer {
+        grid-template-columns: 1fr 1fr; /* Beibehalten, aber mit angepassten Größen */
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .productGallery {
+        margin: 30px auto;
+    }
+}
+
+/* Mobile-Ansicht */
+@media screen and (max-width: 768px) {
+    .productContainer {
+        grid-template-columns: 1fr; /* Auf eine Spalte umstellen */
+        padding: 10px;
+    }
+    
+    .productHeader,
+    .productGallery,
+    .productInfo,
+    .kaufContainer {
+        grid-column: 1; /* Alle Elemente nehmen eine volle Spalte ein */
+    }
+    
+    .productGallery {
+        margin: 20px auto;
+        max-width: 90%;
+    }
+    
+    .technicalDetails td:first-child {
+        width: 100%;
+        padding-right: 0;
+    }
+}
+
+/* Verbesserte Galerieansicht für mobile Geräte */
+@media screen and (max-width: 480px) {
+    .thumbnailContainer {
+        gap: 0.5rem;
+    }
+    
+    .productImage.thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .price {
+        font-size: 1.3rem;
+    }
+    
+    .beschreibung {
+        line-height: 1.8;
+    }
+}
+
+/* Verbesserte Abstände und Lesbarkeit auf sehr kleinen Geräten */
+@media screen and (max-width: 360px) {
+    .productHeader h1 {
+        font-size: 20px;
+    }
+    
+    .productHeader h2 {
+        font-size: 14px;
+    }
+    
+    .anzahlContainer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .anzahl {
+        margin: 10px 0;
     }
 }
