@@ -73,9 +73,16 @@
       <span class="topPrice preis">Preis</span>
     </div>
 
-    <div class="productPictures">
-      <!-- Bilder werden per JS eingefügt -->
-    </div>
+    <div class="productGallery"> 
+      <!-- Hauptbild -->
+      <img src="" alt="Produktbild" class="productImage mainImage">
+  
+      <!-- Thumbnail-Vorschau -->
+      <div class="thumbnailContainer"> 
+          <!-- Hier fügt das Skript dynamisch Thumbnails ein -->
+      </div>
+  </div>
+  
 
     <div class="productInfo">
       <h3>Beschreibung</h3>
@@ -85,15 +92,15 @@
       <table class="technicalDetails technischeDetails">
         <!-- Technische Details werden per JS eingefügt -->
       </table>
+    </div>
 
-      <div class="kaufContainer">
-        <p class="price kaufpreis"><strong>Preis:</strong> Preis</p>
-        <button class="warenkorbButton">Zum Warenkorb hinzufügen</button>
-        <div class="anzahlContainer">
-          <button class="anzahlButton" id="decrease" onclick="alterValue('decrease')">-</button>
-          <input id="anzahl" type="text" class="anzahl" value="1" readonly>
-          <button class="anzahlButton" id="increase" onclick="alterValue('increase')">+</button>
-        </div>
+    <div class="kaufContainer">
+      <p class="price kaufpreis"><strong>Preis:</strong> Preis</p>
+      <button class="warenkorbButton">Zum Warenkorb hinzufügen</button>
+      <div class="anzahlContainer">
+        <button class="anzahlButton" id="decrease" onclick="alterValue('decrease')">-</button>
+        <input id="anzahl" type="text" class="anzahl" value="1" readonly>
+        <button class="anzahlButton" id="increase" onclick="alterValue('increase')">+</button>
       </div>
     </div>
   </div>
@@ -152,16 +159,38 @@
         document.querySelector(".kaufpreis").innerHTML = `<strong>Preis: </strong> ${produkt.preis} €`;
 
         // Bilder einfügen
-        const bilderContainer = document.querySelector(".productPictures");
+        const mainImage = document.querySelector(".mainImage");
+const thumbnailContainer = document.querySelector(".thumbnailContainer");
 
-        bilderContainer.innerHTML = "";
-        produkt.bild.forEach(src => {
-          const img = document.createElement("img");
-          img.src = "../" + src;
-          img.alt = produkt.alt || produkt.name;
-          img.width = 200;
-          bilderContainer.appendChild(img);
-        });
+// Sicherstellen, dass Container existieren
+if (!mainImage) {
+  console.error("mainImage oder thumbnailContainer nicht gefunden.");
+  return;
+}
+
+// Hauptbild initial setzen
+mainImage.src = "../" + produkt.bild[0];
+mainImage.alt = `${produkt.name} Hauptbild`;
+
+// Thumbnails leeren und neu füllen
+thumbnailContainer.innerHTML = "";
+
+produkt.bild.forEach((src, index) => {
+  const thumb = document.createElement("img");
+  thumb.src = "../" + src;
+  thumb.alt = `${produkt.name} Thumbnail ${index + 1}`;
+  thumb.classList.add("productImage", "thumbnail");
+  if (index === 0) thumb.classList.add("active");
+
+  // Beim Klick wird das Hauptbild gewechselt
+  thumb.addEventListener("click", () => {
+    document.querySelectorAll(".thumbnail").forEach(t => t.classList.remove("active"));
+    thumb.classList.add("active");
+    mainImage.src = "../" + src;
+  });
+
+  thumbnailContainer.appendChild(thumb);
+});
 
         // Technische Details einfügen
         const technikTabelle = document.querySelector(".technicalDetails");
