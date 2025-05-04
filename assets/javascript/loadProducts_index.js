@@ -34,7 +34,7 @@ async function loadProducts() {
                         ${product.spezifikationen.map(spec => `<li>${spec}</li>`).join('')}
                     </ul>
                     <div>
-                        <p class="productPrice"><strong>Preis:</strong> ${product.preis},- €</p>
+                        <p class="productPrice"><strong>Preis: </strong>€ ${product.preis},-</p>
                     </div>
                     <div class="buttonContainer">
                         <button class="zumWarenkorb">
