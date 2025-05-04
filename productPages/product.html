@@ -155,8 +155,8 @@
         document.querySelectorAll(".produktName").forEach(el => el.textContent = produkt.name);
         document.querySelector(".kurzbeschreibung").textContent = produkt.kurzbeschreibung;
         document.querySelector(".beschreibung").textContent = produkt.beschreibung;
-        document.querySelector(".topPrice").textContent = `${produkt.preis} €`;
-        document.querySelector(".kaufpreis").innerHTML = `<strong>Preis: </strong> ${produkt.preis} €`;
+        document.querySelector(".topPrice").textContent = `€ ${produkt.preis},-`;
+        document.querySelector(".kaufpreis").innerHTML = `<strong>Preis: </strong> € ${produkt.preis}`;
 
         // Bilder einfügen
         const mainImage = document.querySelector(".mainImage");
