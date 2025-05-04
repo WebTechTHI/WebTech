@@ -167,16 +167,17 @@
     transition: 0.15s ease;
     text-transform: uppercase;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 .warenkorbButton:hover {
     background-color: #333333;
-    transform: scale(1.02);
+    transform: translateY(-2px);
 }
 
 .warenkorbButton:active {
     background-color: #4e4e4e;
-    transform: scale(1);
+    transform: translateY(0);
 }
 
 .anzahlContainer {
