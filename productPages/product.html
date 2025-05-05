@@ -66,6 +66,30 @@
     </div>
   </header>
 
+  <button class="warenkorbToggle">
+    <img src="../../../assets/images/icons/shoppingcart.png" style="width: 25px;">
+    <span class="warenkorbAnzahl">0</span>
+</button>
+
+<div class="warenkorbContainer">
+    <div class="warenkorbHeader">
+        <h3>Warenkorb</h3>
+        <button class="warenkorbSchliessen">&times;</button>
+    </div>
+    <div class="warenkorbInhalt">
+        <div class="leerNachricht">Ihr Warenkorb ist leer.</div>
+    </div>
+    <div class="warenkorbFooter">
+        <div class="warenkorbGesamt">
+            <span>Gesamt:</span>
+            <span>0,00 €</span>
+        </div>
+        <button class="zurKasseButton">Zur Kasse</button>
+    </div>
+</div>
+
+<div class="warenkorbOverlay"></div>
+
   <div class="productContainer">
     <div class="productHeader">
       <h1 class="produktName">Produktname</h1>
@@ -107,18 +131,7 @@
 
   <script>
 
-    function alterValue(operation) {
-
-      var value = document.getElementById("anzahl").value;
-
-      if (operation == 'decrease' && value > 1) {
-        document.getElementById("anzahl").value = (parseInt(value) - 1);
-      }
-
-      if (operation == 'increase' && value < 10) {
-        document.getElementById("anzahl").value = (parseInt(value) + 1);
-      }
-    }
+   
 
   </script>
 
@@ -128,84 +141,7 @@
     </nav>
   </footer>
 
-  <script>
-    // Produktdaten laden und anzeigen
-    document.addEventListener("DOMContentLoaded", async () => {
-      const params = new URLSearchParams(window.location.search);
-      const produktId = parseInt(params.get("id"));
-
-      if (!produktId) {
-        console.error("Keine Produkt-ID in der URL gefunden (z. B. ?id=1)");
-        return;
-      }
-
-      try {
-        const response = await fetch("../assets/json/productList.json");
-        const produkte = await response.json();
-
-        const produkt = produkte.find(p => p.id === produktId);
-        if (!produkt) {
-          console.error(`Kein Produkt mit ID ${produktId} gefunden.`);
-          return;
-        }
-
-        // Seite mit Produktdaten füllen
-        document.title = `MLR | ${produkt.name}`;
-        document.querySelectorAll(".produktName").forEach(el => el.textContent = produkt.name);
-        document.querySelector(".kurzbeschreibung").textContent = produkt.kurzbeschreibung;
-        document.querySelector(".beschreibung").textContent = produkt.beschreibung;
-        document.querySelector(".topPrice").textContent = `€ ${produkt.preis},-`;
-        document.querySelector(".kaufpreis").innerHTML = `<strong>Preis: </strong> € ${produkt.preis}`;
-
-        // Bilder einfügen
-        const mainImage = document.querySelector(".mainImage");
-const thumbnailContainer = document.querySelector(".thumbnailContainer");
-
-// Sicherstellen, dass Container existieren
-if (!mainImage) {
-  console.error("mainImage nicht gefunden.");
-  return;
-}
-
-// Hauptbild initial setzen
-mainImage.src = "../" + produkt.bild[0];
-mainImage.alt = `${produkt.name} Hauptbild`;
-
-// Thumbnails leeren und neu füllen
-thumbnailContainer.innerHTML = "";
-
-produkt.bild.forEach((src, index) => {
-  const thumb = document.createElement("img");
-  thumb.src = "../" + src;
-  thumb.alt = `${produkt.name} Thumbnail ${index + 1}`;
-  thumb.classList.add("productImage", "thumbnail");
-  if (index === 0) thumb.classList.add("active");
-
-  // Beim Klick wird das Hauptbild gewechselt
-  thumb.addEventListener("click", () => {
-    document.querySelectorAll(".thumbnail").forEach(t => t.classList.remove("active"));
-    thumb.classList.add("active");
-    mainImage.src = "../" + src;
-  });
-
-  thumbnailContainer.appendChild(thumb);
-});
-
-        // Technische Details einfügen
-        const technikTabelle = document.querySelector(".technicalDetails");
-        technikTabelle.innerHTML = "";
-        produkt.technischeDetails.forEach(detail => {
-          const [key, value] = Object.entries(detail)[0];
-          const tr = document.createElement("tr");
-          tr.innerHTML = `<td><strong>${key}:</strong></td><td>${value}</td>`;
-          technikTabelle.appendChild(tr);
-        });
-
-      } catch (err) {
-        console.error("Fehler beim Laden der Produktdaten:", err);
-      }
-    });
-  </script>
+  <script src="../assets/javascript/productInfo.js"></script>
 
 
 </body>
