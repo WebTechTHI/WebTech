@@ -347,3 +347,195 @@
         margin: 10px 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.warenkorbContainer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 100%;
+    max-width: 320px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, .15);
+    transition: right 0.3s ease-in-out;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.warenkorbHeader {
+    padding: 15px;
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.warenkorbSchliessen {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.warenkorbInhalt {
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.warenkorbArtikel {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.artikelBild {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.artikelDetails {
+    flex-grow: 1;
+}
+
+.artikelTitel {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.artikelPreis {
+    color: #333;
+}
+
+.artikelMenge {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.mengenButton {
+    width: 25px;
+    height: 25px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+}
+
+.mengenEingabe {
+    width: 30px;
+    text-align: center;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+}
+
+.artikelEntfernen {
+    color: red;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.warenkorbFooter {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+}
+
+.warenkorbGesamt {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.zurKasseButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.zurKasseButton:hover {
+    background-color: #0056b3;
+}
+
+.warenkorbToggle {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 5px 0 0 5px;
+    z-index: 19;
+}
+
+.warenkorbToggle .warenkorbAnzahl {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+
+
+.warenkorbOffen {
+    right: 0; 
+}
+
+.warenkorbIcon {
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+
+.leerNachricht {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+
+.warenkorbOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 19;
+    display: none;
+}
