@@ -179,7 +179,7 @@
 
                 let gesamtPreis = 0;
 
-                warenkorb.forEach((artikel,) => {
+                warenkorb.forEach((artikel, i) => {
                     gesamtPreis += artikel.price * artikel.quantity;
 
                     const element = document.createElement('div');

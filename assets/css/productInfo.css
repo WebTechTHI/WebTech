@@ -513,8 +513,8 @@
 
 
 
-.warenkorbOffen {
-    right: 0; 
+.warenkorbContainer.warenkorbOffen {
+    right: 0;
 }
 
 .warenkorbIcon {
