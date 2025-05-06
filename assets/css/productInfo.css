@@ -152,6 +152,11 @@
     text-align: center;
 }
 
+#nettoPreisBox, #nettoLabel{
+    display: flex;
+    justify-content: center;
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+}
 .warenkorbButton {
     background-color: #000000;
     display: block;

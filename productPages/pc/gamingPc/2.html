@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../../../assets/css/shopHeader.css">
     <link rel="stylesheet" href="../../../assets/css/footer.css">
     <link rel="stylesheet" href="../../../assets/css/productInfo.css">
-<script src="../assets/javascript/base.js"></script>
+<script src="../../../assets/javascript/base.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -89,7 +89,9 @@
         </div>
 
         <div class="kaufContainer">
-            <p class="price"><strong>Preis: </strong> 869 €</p> 
+            <label id="nettoLabel" for="nettoPreisBox"><input type="checkbox" id="nettoPreisBox" onclick="berechneNetto();">Nettopreis anzeigen</label>
+            <p class="price" id="nettoPreis"> </p>
+            <p class="price" id="bruttoPreis"><strong>Preis: </strong>869 €</p> 
             <button class="warenkorbButton">Zum Warenkorb hinzufügen</button>
             <div class="anzahlContainer">
                 <button class="anzahlButton" id="decrease">-</button>

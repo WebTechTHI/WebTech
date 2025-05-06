@@ -79,6 +79,7 @@ thumbnailContainer.appendChild(thumb);
 
     // Warenkorb-Funktionalität
     document.addEventListener('DOMContentLoaded', function () {
+      
         const toggleBtn = document.querySelector('.warenkorbToggle');
         const container = document.querySelector('.warenkorbContainer');
         const closeBtn = document.querySelector('.warenkorbSchliessen');
@@ -92,6 +93,7 @@ thumbnailContainer.appendChild(thumb);
         const minusBtn = document.getElementById('decrease');
         const plusBtn = document.getElementById('increase');
 
+        
         let warenkorb = [];
 
         toggleBtn.addEventListener('click', () => {
@@ -109,15 +111,22 @@ thumbnailContainer.appendChild(thumb);
             overlay.style.display = 'none';
         });
 
-        minusBtn.addEventListener('click', alterValue('decrease'));
-        plusBtn.addEventListener('click', alterValue('increase'));
+        minusBtn.addEventListener('click', function() {
+          alterValue('decrease');
+        });
+        
+        plusBtn.addEventListener('click', function() {
+          alterValue('increase');
+        });
 
 
         hinzufuegenBtn.addEventListener('click', () => {
             const name = document.querySelector('.productHeader h1').textContent;
-            const preis = 869;
+            const preis = document.getElementById('bruttoPreis').textContent.replace('€', '').replace('.', ',').replace('Preis:', '');
             const menge = parseInt(mengeInput.value);
             const bild = document.querySelector('.mainImage').src;
+
+            
 
             const index = warenkorb.findIndex(e => e.name === name);
             if (index > -1) {
@@ -154,7 +163,7 @@ thumbnailContainer.appendChild(thumb);
                     <img src="${artikel.image}" alt="${artikel.name}" class="artikelBild">
                     <div class="artikelDetails">
                         <div class="artikelTitel">${artikel.name}</div>
-                        <div class="artikelPreis">${artikel.price.toFixed(2).replace('.', ',')} €</div>
+                        <div class="artikelPreis">${artikel.price} € </div>
                         <div class="artikelMenge">
                             <button class="mengenButton menge-minus" data-index="${i}">-</button>
                             <input type="number" class="mengenEingabe" value="${artikel.quantity}" readonly>

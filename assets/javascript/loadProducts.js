@@ -6,28 +6,34 @@ async function loadProducts(kategorie) {
         }
         const products = await response.json();
         const container = document.querySelector('.productMainContainer');
-        
+
         // Leere den Container, falls bereits Inhalte vorhanden sind
         container.innerHTML = '';
-        
-            
-        
+
+
+
         products.forEach(product => {
             const istSale = product.sale === true;
             const istZubehoer = product.kategorie === 'zubehör';
-        
+            const preis = product.preis;
+            var preisMitKomma = preis.toFixed(2).replace('.', ',');
+
+            
+            if (preisMitKomma.endsWith(',00')) {
+                preisMitKomma = preisMitKomma.slice(0, -3) + ',-'; 
+            }
             let istTreffer = false;
-        
+
             // Wenn Kategorie "angebote", zeige nur Produkte mit sale: true
             if (kategorie === 'angebote') {
                 istTreffer = istSale;
             } else {
                 istTreffer = product.kategorie === kategorie || product.unterkategorie === kategorie;
             }
-        
+
             if (istTreffer) {
                 const productDiv = document.createElement('div');
-        
+
                 // Klassen nur bei normalen Kategorien prüfen
                 let className = 'product';
                 if (kategorie !== 'angebote') {
@@ -35,18 +41,18 @@ async function loadProducts(kategorie) {
                 }
                 if (istSale) className += ' sale';
                 productDiv.className = className;
-        
+
                 const productImage = product.bild[0];
-        
+
                 // Auch hier: bei "angebote" keine zubehoer-Klasse
                 const pictureClass = (kategorie !== 'angebote' && istZubehoer)
                     ? 'productPictureContainer zubehoer'
                     : 'productPictureContainer';
-        
+
                 const detailsClass = (kategorie !== 'angebote' && istZubehoer)
                     ? 'productDetails zubehoer'
                     : 'productDetails';
-        
+
                 productDiv.innerHTML = `
                     <div class="${pictureClass}">
                         <a href="../${product.seitenlink}?id=${product.id}">
@@ -60,7 +66,7 @@ async function loadProducts(kategorie) {
                             ${product.spezifikationen.map(spec => `<li>${spec}</li>`).join('')}
                         </ul>
                         <div>
-                            <p class="productPrice"><strong>Preis: </strong>€ ${product.preis},-</p>
+                            <p class="productPrice"><strong>Preis: </strong>€ ${preisMitKomma}</p>
                         </div>
                         <div class="buttonContainer">
                             <button class="zumWarenkorb">
@@ -70,13 +76,13 @@ async function loadProducts(kategorie) {
                         </div>
                     </div>
                 `;
-        
+
                 container.appendChild(productDiv);
             }
         });
-        
-        
-               
+
+
+
     } catch (error) {
         console.error('Error loading products:', error);
         const container = document.getElementById('productMainContainer');

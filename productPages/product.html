@@ -119,12 +119,14 @@
     </div>
 
     <div class="kaufContainer">
-      <p class="price kaufpreis"><strong>Preis:</strong> Preis</p>
+      <label id="nettoLabel" for="nettoPreisBox"><input type="checkbox" id="nettoPreisBox" onclick="berechneNetto();">Nettopreis anzeigen</label>
+      <p class="price" id="nettoPreis"> </p>
+      <p class="price kaufpreis" id="bruttoPreis"><strong>Preis:</strong> Preis</p>
       <button class="warenkorbButton">Zum Warenkorb hinzufügen</button>
       <div class="anzahlContainer">
-        <button class="anzahlButton" id="decrease" onclick="alterValue('decrease')">-</button>
+        <button class="anzahlButton" id="decrease">-</button>
         <input id="anzahl" type="text" class="anzahl" value="1" readonly>
-        <button class="anzahlButton" id="increase" onclick="alterValue('increase')">+</button>
+        <button class="anzahlButton" id="increase">+</button>
       </div>
     </div>
   </div>
