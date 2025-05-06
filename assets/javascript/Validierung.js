@@ -22,6 +22,7 @@ function validierung() {
 
   }
   
+  //Hier Können die inputs quasi in den felder hören/listen wenn eine eingabe passiert bzw. sich was ändert !
   document.getElementById("usernamelogin").addEventListener("input", validierung);
   document.getElementById("userpasswordlogin").addEventListener("input", validierung);
   
