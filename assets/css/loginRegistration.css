@@ -99,15 +99,17 @@ label {
 }
 
 .submitButton {
-    background-color: rgb(200, 0, 0);
+    background-color: rgb(0, 193, 200);
     color: white;
 }
 
 .submitButton:hover {
-    background-color: rgb(163, 12, 12);
+    background-color: rgb(0, 123, 128);
     color: white;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
+    transition: all 0.3s linear;
+
 }
 
 .directionbutton {
@@ -125,4 +127,12 @@ label {
 }
 
 
+
+/*  JavaScript Hintergründe für button Ränder*/
+.inputFehler {
+    border-color: red;
+}
+.inputOk {
+    border-color: green;
+}
 
