@@ -17,14 +17,22 @@
         console.error(`Kein Produkt mit ID ${produktId} gefunden.`);
         return;
       }
-
+      let preisZahl = parseFloat(produkt.preis); // sicherstellen, dass es eine Zahl ist
+      let prei;
+      
+      // prüfen ob ganzzahlig
+      if (Number.isInteger(preisZahl)) {
+        preis = preisZahl + ',-';
+      } else {
+        preis = preisZahl.toFixed(2).replace('.', ',');
+      }
       // Seite mit Produktdaten füllen
       document.title = `MLR | ${produkt.name}`;
       document.querySelectorAll(".produktName").forEach(el => el.textContent = produkt.name);
       document.querySelector(".kurzbeschreibung").textContent = produkt.kurzbeschreibung;
       document.querySelector(".beschreibung").textContent = produkt.beschreibung;
-      document.querySelector(".topPrice").textContent = `€ ${produkt.preis},-`;
-      document.querySelector(".kaufpreis").innerHTML = `<strong>Preis: </strong> € ${produkt.preis}`;
+      document.querySelector(".topPrice").textContent = `€ ${preis}`;
+      document.querySelector(".kaufpreis").innerHTML = `<strong>Preis: </strong> € ${preis}`;
 
       // Bilder einfügen
       const mainImage = document.querySelector(".mainImage");
@@ -78,136 +86,144 @@ thumbnailContainer.appendChild(thumb);
 
 
     // Warenkorb-Funktionalität
-    document.addEventListener('DOMContentLoaded', function () {
-      
-        const toggleBtn = document.querySelector('.warenkorbToggle');
-        const container = document.querySelector('.warenkorbContainer');
-        const closeBtn = document.querySelector('.warenkorbSchliessen');
-        const overlay = document.querySelector('.warenkorbOverlay');
-        const anzahl = document.querySelector('.warenkorbAnzahl');
-        const inhalt = document.querySelector('.warenkorbInhalt');
-        const gesamt = document.querySelector('.warenkorbGesamt span:last-child');
-        const leerText = document.querySelector('.leerNachricht');
-        const hinzufuegenBtn = document.querySelector('.warenkorbButton');
-        const mengeInput = document.querySelector('.anzahl');
-        const minusBtn = document.getElementById('decrease');
-        const plusBtn = document.getElementById('increase');
+   // Warenkorb-Funktionalität (arbeitet nur mit JSON-Daten)
+document.addEventListener('DOMContentLoaded', async function () {
+  const params = new URLSearchParams(window.location.search);
+  const produktId = parseInt(params.get("id"));
+  const mengeInput = document.querySelector('.anzahl');
+  const minusBtn = document.getElementById('decrease');
+  const plusBtn = document.getElementById('increase');
 
-        
-        let warenkorb = [];
+  if (!produktId) {
+    console.error("Keine Produkt-ID in der URL gefunden.");
+    return;
+  }
 
-        toggleBtn.addEventListener('click', () => {
-            container.classList.add('warenkorbOffen');
-            overlay.style.display = 'block';
-        });
+  const response = await fetch("../assets/json/productList.json");
+  const produkte = await response.json();
+  const produkt = produkte.find(p => p.id === produktId);
 
-        closeBtn.addEventListener('click', () => {
-            container.classList.remove('warenkorbOffen');
-            overlay.style.display = 'none';
-        });
+  if (!produkt) {
+    console.error(`Produkt mit ID ${produktId} nicht gefunden.`);
+    return;
+  }
 
-        overlay.addEventListener('click', () => {
-            container.classList.remove('warenkorbOffen');
-            overlay.style.display = 'none';
-        });
+  const toggleBtn = document.querySelector('.warenkorbToggle');
+  const container = document.querySelector('.warenkorbContainer');
+  const closeBtn = document.querySelector('.warenkorbSchliessen');
+  const overlay = document.querySelector('.warenkorbOverlay');
+  const anzahl = document.querySelector('.warenkorbAnzahl');
+  const inhalt = document.querySelector('.warenkorbInhalt');
+  const gesamt = document.querySelector('.warenkorbGesamt span:last-child');
+  const leerText = document.querySelector('.leerNachricht');
+  const hinzufuegenBtn = document.querySelector('.warenkorbButton');
 
-        minusBtn.addEventListener('click', function() {
-          alterValue('decrease');
-        });
-        
-        plusBtn.addEventListener('click', function() {
-          alterValue('increase');
-        });
+  let warenkorb = [];
 
+  toggleBtn.addEventListener('click', () => {
+    container.classList.add('warenkorbOffen');
+    overlay.style.display = 'block';
+  });
 
-        hinzufuegenBtn.addEventListener('click', () => {
-            const name = document.querySelector('.productHeader h1').textContent;
-            const preis = document.getElementById('bruttoPreis').textContent.replace('€', '').replace('.', ',').replace('Preis:', '');
-            const menge = parseInt(mengeInput.value);
-            const bild = document.querySelector('.mainImage').src;
+  closeBtn.addEventListener('click', () => {
+    container.classList.remove('warenkorbOffen');
+    overlay.style.display = 'none';
+  });
 
-            
+  overlay.addEventListener('click', () => {
+    container.classList.remove('warenkorbOffen');
+    overlay.style.display = 'none';
+  });
 
-            const index = warenkorb.findIndex(e => e.name === name);
-            if (index > -1) {
-                warenkorb[index].quantity += menge;
-            } else {
-                warenkorb.push({ name, price: preis, quantity: menge, image: bild });
-            }
+  minusBtn.addEventListener('click', function () {
+    alterValue('decrease');
+  });
 
-            aktualisiereWarenkorb();
-            container.classList.add('warenkorbOffen');
-            overlay.style.display = 'block';
-        });
+  plusBtn.addEventListener('click', function () {
+    alterValue('increase');
+  });
 
-        function aktualisiereWarenkorb() {
-            const artikelZahl = warenkorb.reduce((sum, e) => sum + e.quantity, 0);
-            anzahl.textContent = artikelZahl;
+  hinzufuegenBtn.addEventListener('click', () => {
+    const menge = parseInt(mengeInput.value);
+    const index = warenkorb.findIndex(e => e.id === produkt.id);
 
-            while (inhalt.firstChild) inhalt.removeChild(inhalt.firstChild);
+    if (index > -1) {
+      warenkorb[index].quantity += menge;
+    } else {
+      warenkorb.push({
+        id: produkt.id,
+        name: produkt.name,
+        price: parseFloat(produkt.preis),
+        quantity: menge,
+        image: "../" + produkt.bild[0]
+      });
+    }
 
-            if (warenkorb.length === 0) {
-                inhalt.appendChild(leerText);
-                gesamt.textContent = '0,00 €';
-                return;
-            }
+    aktualisiereWarenkorb();
+    container.classList.add('warenkorbOffen');
+    overlay.style.display = 'block';
+  });
 
-            let gesamtPreis = 0;
+  function aktualisiereWarenkorb() {
+    const artikelZahl = warenkorb.reduce((sum, e) => sum + e.quantity, 0);
+    anzahl.textContent = artikelZahl;
 
-            warenkorb.forEach((artikel, i) => {
-                gesamtPreis += artikel.price * artikel.quantity;
+    while (inhalt.firstChild) inhalt.removeChild(inhalt.firstChild);
 
-                const element = document.createElement('div');
-                element.className = 'warenkorbArtikel';
-                element.innerHTML = `
-                    <img src="${artikel.image}" alt="${artikel.name}" class="artikelBild">
-                    <div class="artikelDetails">
-                        <div class="artikelTitel">${artikel.name}</div>
-                        <div class="artikelPreis">${artikel.price} € </div>
-                        <div class="artikelMenge">
-                            <button class="mengenButton menge-minus" data-index="${i}">-</button>
-                            <input type="number" class="mengenEingabe" value="${artikel.quantity}" readonly>
-                            <button class="mengenButton menge-plus" data-index="${i}">+</button>
-                        </div>
-                        <button class="artikelEntfernen" data-index="${i}">Entfernen</button>
-                    </div>
-                `;
-                inhalt.appendChild(element);
+    if (warenkorb.length === 0) {
+      inhalt.appendChild(leerText);
+      gesamt.textContent = '0,00 €';
+      return;
+    }
 
-                element.querySelector('.menge-minus').addEventListener('click', function () {
-                    const index = parseInt(this.dataset.index);
-                    if (warenkorb[index].quantity > 1) warenkorb[index].quantity--;
-                    aktualisiereWarenkorb();
-                });
+    let gesamtPreis = 0;
 
-                element.querySelector('.menge-plus').addEventListener('click', function () {
-                    const index = parseInt(this.dataset.index);
-                    warenkorb[index].quantity++;
-                    aktualisiereWarenkorb();
-                });
+    warenkorb.forEach((artikel, i) => {
+      const einzelpreis = artikel.price;
+      gesamtPreis += einzelpreis * artikel.quantity;
 
-                element.querySelector('.artikelEntfernen').addEventListener('click', function () {
-                    const index = parseInt(this.dataset.index);
-                    warenkorb.splice(index, 1);
-                    aktualisiereWarenkorb();
-                });
-            });
+      const element = document.createElement('div');
+      element.className = 'warenkorbArtikel';
+      element.innerHTML = `
+        <img src="${artikel.image}" alt="${artikel.name}" class="artikelBild">
+        <div class="artikelDetails">
+          <div class="artikelTitel">${artikel.name}</div>
+          <div class="artikelPreis">${einzelpreis.toFixed(2).replace('.', ',')} €</div>
+          <div class="artikelMenge">
+            <button class="mengenButton menge-minus" data-index="${i}">-</button>
+            <input type="number" class="mengenEingabe" value="${artikel.quantity}" readonly>
+            <button class="mengenButton menge-plus" data-index="${i}">+</button>
+          </div>
+          <button class="artikelEntfernen" data-index="${i}">Entfernen</button>
+        </div>
+      `;
+      inhalt.appendChild(element);
 
-            gesamt.textContent = `${gesamtPreis.toFixed(2).replace('.', ',')} €`;
-        }
-
+      element.querySelector('.menge-minus').addEventListener('click', function () {
+        const index = parseInt(this.dataset.index);
+        if (warenkorb[index].quantity > 1) warenkorb[index].quantity--;
         aktualisiereWarenkorb();
+      });
 
-        const hauptBild = document.querySelector('.mainImage');
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        thumbnails.forEach(t => {
-            t.addEventListener('click', function () {
-                hauptBild.src = this.src;
-                thumbnails.forEach(thumb => thumb.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+      element.querySelector('.menge-plus').addEventListener('click', function () {
+        const index = parseInt(this.dataset.index);
+        warenkorb[index].quantity++;
+        aktualisiereWarenkorb();
+      });
+
+      element.querySelector('.artikelEntfernen').addEventListener('click', function () {
+        const index = parseInt(this.dataset.index);
+        warenkorb.splice(index, 1);
+        aktualisiereWarenkorb();
+      });
     });
+
+    gesamt.textContent = `${gesamtPreis.toFixed(2).replace('.', ',')} €`;
+  }
+
+  aktualisiereWarenkorb();
+});
+
 
     
     

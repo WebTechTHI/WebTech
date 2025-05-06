@@ -21,16 +21,37 @@ window.onscroll = function () {
 
 
 function getTotalPrice(priceWOTax) {
-    return priceWOTax * 1.19;
+    var bruttoPreis= priceWOTax * 1.19;
+    return bruttoPreis.toFixed(2).replace(".", ",");
 }
 
-function berechneBrutto(){
-    var brutto = document.getElementById("")
+function berechneBrutto() {
+    var netto = document.getElementById("nettoPreis");
+    var brutto = document.getElementById("bruttoPreis");
+
+    var text = netto.textContent;
+    var nettoText = text.replace("€", "").replace(",", ".").replace("Netto:", "").trim();
+
+    if (document.getElementById("bruttoPreisBox").checked) {
+        const bruttoWert = getTotalPrice(parseFloat(nettoText));
+        let bruttoAnzeigen;
+
+        if (Number.isInteger(bruttoWert)) {
+            bruttoAnzeigen = bruttoWert + ',-';
+        } else {
+            bruttoAnzeigen = bruttoWert.toFixed(2).replace(".", ",");
+        }
+
+        brutto.innerHTML = "<strong>Preis: </strong>€ " + bruttoAnzeigen;
+        brutto.style.display = "block";
+    } else {
+        brutto.style.display = "none";
+    }
 }
 
 function getPriceWOTax(priceWTax) {
-    var bruttoPreis = priceWTax *100 / 119;
-    return bruttoPreis.toFixed(2);
+    var nettoPreis = priceWTax *100 / 119;
+    return nettoPreis.toFixed(2);
     
 }
 
@@ -39,11 +60,11 @@ function berechneNetto(){
     var netto = document.getElementById("nettoPreis");
 
     var text = brutto.textContent;
-    var bruttoText = text.replace("€", "").replace(",", ".").replace("Preis: ","");
+    var bruttoText = text.replace("€", "").replace(",", ".").replace("Preis: ","").replace(".-","").trim();
     console.log(bruttoText);
 
     if (document.getElementById("nettoPreisBox").checked) {
-        netto.innerHTML = "<strong>Netto: </strong>" + getPriceWOTax(bruttoText).replace(".", ",") + "€";
+        netto.innerHTML = "<strong>Netto: </strong>" + "€ " + getPriceWOTax(bruttoText).replace(".", ",") ;
         netto.style.display = "block";  
     } else {
         netto.style.display = "none";  
