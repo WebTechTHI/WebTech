@@ -1,6 +1,57 @@
+/* Root definiert die Farben des lightThemas in entsprecheden variablen */
+
+:root{
+
+    /* --------- Main --------- */
+    --main-bg-color: rgb(241, 241, 241);
+    --anker-color: rgb(255, 255, 255);
+    --hr-color: rgb(204, 204, 204);
+
+
+
+    /* --------- Footer ---------*/
+    --footer-bg-color: rgb(71, 71, 71);
+    --footer-color: rgb(255,255,255);
+
+
+    
+    /* --------- Login/Registration --------- */
+    /* ---- form ----*/
+    --form-bg: rgb(245, 245, 245);
+    --form-border: #1C6EA4;
+
+    /* ---- input ---- */
+    --user-info-input-color: rgb(51, 51, 51);
+    --user-info-input-bg-color: rgb(238,238,238);
+    --user-info-input-placeholder: rgba(90, 90, 90, 0.7);
+    /* hover-state*/
+    --user-info-input-bg-color--hover: rgb(230,230,230);
+    --user-info-input-border--hover: rgb(39, 174, 96);
+    /* focus-state */
+    --user-info-input-border--focus: rgb(255, 255, 255);
+    --user-info-input-bg-color--focus: rgb(30, 132, 73);
+
+    /* ---- submit ----*/
+    --submit-bg-color: rgb(0, 193, 200);
+    --submit-color: rgb(255, 255, 255);
+    /* hover-state */
+    --submit-bg-color--hover: rgb(0, 123, 128);
+
+    /* ---- direction ----*/
+    --direction-bg-color: rgb(39, 174, 96);
+    --direction-color: rgb(255, 255, 255);
+    /* hover-state */
+    --direction-bg-color--hover: rgb(30, 132, 73);
+
+    /* ---- input-detection ---- */
+    --input-valid: rgb(0, 128, 0);
+    --input-invalid: rgb(255, 0, 0);
+}
+
+
 /* Base styles */
 body {
-    background: rgb(241, 241, 241);
+    background: var(--main-bg-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     display: flex;
@@ -31,19 +82,18 @@ img {
 
 a {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--anker-color);
 }
 
 a:hover {
     text-decoration: underline;
-    color: #ffffff;
 }
 
 
 hr {
     width: 100%;
     border: none;
-    border-top: 2px solid #ccc;
+    border-top: 2px solid var(--hr-color);
     margin: 20px 0;
 }
 

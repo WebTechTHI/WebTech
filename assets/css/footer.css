@@ -1,8 +1,8 @@
 footer {
     margin-top: 50px;
     padding: 20px;
-    background-color: #474747;
-    color: white;
+    background-color: var(--footer-bg-color);
+    color: var(--footer-color);
     text-align: center;
     width: 100%;
     box-sizing: border-box;
