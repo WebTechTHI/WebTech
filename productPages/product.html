@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../assets/css/shopHeader.css">
   <link rel="stylesheet" href="../assets/css/footer.css">
   <link rel="stylesheet" href="../assets/css/productInfo.css">
+  <link rel="stylesheet" href="../assets/css/warenkorbSide.css">
   <script src="../assets/javascript/base.js"></script>
 </head>
 
@@ -69,26 +70,26 @@
   <button class="warenkorbToggle">
     <img src="../assets/images/icons/shoppingcart.png" style="width: 25px;">
     <span class="warenkorbAnzahl">0</span>
-</button>
+  </button>
 
-<div class="warenkorbContainer">
+  <div class="warenkorbContainer">
     <div class="warenkorbHeader">
-        <h3>Warenkorb</h3>
-        <button class="warenkorbSchliessen">&times;</button>
+      <h3>Warenkorb</h3>
+      <button class="warenkorbSchliessen">&times;</button>
     </div>
     <div class="warenkorbInhalt">
-        <div class="leerNachricht">Ihr Warenkorb ist leer.</div>
+      <div class="leerNachricht">Ihr Warenkorb ist leer.</div>
     </div>
     <div class="warenkorbFooter">
-        <div class="warenkorbGesamt">
-            <span>Gesamt:</span>
-            <span>0,00 €</span>
-        </div>
-        <button class="zurKasseButton">Zur Kasse</button>
+      <div class="warenkorbGesamt">
+        <span>Gesamt:</span>
+        <span>0,00 €</span>
+      </div>
+      <button class="zurKasseButton">Zur Kasse</button>
     </div>
-</div>
+  </div>
 
-<div class="warenkorbOverlay"></div>
+  <div class="warenkorbOverlay"></div>
 
   <div class="productContainer">
     <div class="productHeader">
@@ -97,16 +98,16 @@
       <span class="topPrice preis">Preis</span>
     </div>
 
-    <div class="productGallery"> 
+    <div class="productGallery">
       <!-- Hauptbild -->
       <img src="" alt="Produktbild" class="productImage mainImage">
-  
+
       <!-- Thumbnail-Vorschau -->
-      <div class="thumbnailContainer"> 
-          <!-- Hier fügt das Skript dynamisch Thumbnails ein -->
+      <div class="thumbnailContainer">
+        <!-- Hier fügt das Skript dynamisch Thumbnails ein -->
       </div>
-  </div>
-  
+    </div>
+
 
     <div class="productInfo">
       <h3>Beschreibung</h3>
@@ -119,7 +120,8 @@
     </div>
 
     <div class="kaufContainer">
-      <label id="nettoLabel" for="nettoPreisBox"><input type="checkbox" id="nettoPreisBox" onclick="berechneNetto();">Nettopreis anzeigen</label>
+      <label id="nettoLabel" for="nettoPreisBox"><input type="checkbox" id="nettoPreisBox"
+          onclick="berechneNetto();">Nettopreis anzeigen</label>
       <p class="price" id="nettoPreis"> </p>
       <p class="price kaufpreis" id="bruttoPreis"><strong>Preis:</strong> Preis</p>
       <button class="warenkorbButton">Zum Warenkorb hinzufügen</button>
@@ -130,12 +132,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-
-   
-
-  </script>
 
   <footer>
     <nav>

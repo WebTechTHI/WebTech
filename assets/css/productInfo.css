@@ -8,9 +8,9 @@
     flex: 1;
     width: 100%;
     box-sizing: border-box;
-    background-color: white;
+    background-color: var(--prInfo-pr-container-bg-color);
     border-radius: 1rem;
-    border: #d3d3d3 2px solid;
+    border: var(--prInfo-pr-container-border) 2px solid;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
@@ -32,13 +32,13 @@
 .productHeader h2 {
     font-size: clamp(16px, 2vw, 20px);
     font-weight: normal;
-    color: #6e6e6e;
+    color: var(--prInfo-h2-color);
 }
 
 .topPrice {
     font-size: clamp(18px, 2.5vw, 24px);
     font-weight: bold;
-    color: #000000;
+    color: var(--prInfo-top-price-color);
 }
 
 .productGallery {
@@ -51,10 +51,10 @@
 }
 
 .productImage.mainImage {
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--prInfo-mainImage-border);
     border-radius: 25px;
     padding: 0.5rem;
-    background-color: #f8f9fa;
+    background-color: var(--prInfo-mainImage-bg-color);
     max-width: 100%;
     height: auto;
     margin: 0 auto;
@@ -84,7 +84,7 @@
 }
 
 .productImage.thumbnail.active {
-    border-color: #d31e07;
+    border-color: var(--prInfo-thumbnail-active-border);
     opacity: 1;
 }
 
@@ -99,7 +99,7 @@
     
     font-size: clamp(18px, 2vw, 1.5rem);
     margin-bottom: 10px;
-    border-bottom: 2px solid #b0b0b0;
+    border-bottom: 2px solid var(--prInfo-h3-border);
     padding-bottom: 8px;
 }
 
@@ -133,11 +133,12 @@
 }
 
 .technicalDetails tr:not(:last-child) td {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--prInfo-technical-details-seperating-lines);
 }
 
 .kaufContainer {
-    background-color: #f9f9f9;
+    background-color: var(--prInfo-kaufContainer-bg-color);
+    border-top: var(--prInfo-kaufContainer-top-border) solid 2px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     grid-column: span 2;
@@ -157,15 +158,20 @@
     justify-content: center;
     font-size: clamp(1.5rem, 2.5vw, 1.8rem);
 }
+
+#nettoLabel {
+    margin: 20px 0 0 0;
+}
+
 .warenkorbButton {
-    background-color: #000000;
+    background-color: var(--prInfo-warenkorbButton-bg-color);
     display: block;
     border-radius: 50px;
     width: 100%;
     max-width: fit-content;
     margin: 0 auto 20px;
     padding: 15px 25px;
-    color: white;
+    color: var(--prInfo-warenkorbButton-color);
     border: none;
     font-size: clamp(16px, 2vw, 18px);
     cursor: pointer;
@@ -176,12 +182,12 @@
 }
 
 .warenkorbButton:hover {
-    background-color: #333333;
+    background-color: var(--prInfo-warenkorbButton-bg-color--hover);
     transform: translateY(-2px);
 }
 
 .warenkorbButton:active {
-    background-color: #4e4e4e;
+    background-color: var(--prInfo-warenkorbButton-bg-color--active);
     transform: translateY(0);
 }
 
@@ -194,7 +200,7 @@
 }
 
 .anzahlButton {
-    background-color: #e0e0e0;
+    background-color: var(--prInfo-amount-button-bg-color);
     border: none;
     width: 30px;
     height: 30px;
@@ -207,18 +213,18 @@
 }
 
 .anzahlButton:hover {
-    background-color: #cccccc;
+    background-color: var(--prInfo-amount-button-bg-color--hover);
 }
 
 .anzahlButton:active {
-    background-color: #aaaaaa;
+    background-color: var(--prInfo-amount-button-bg-color--active);
 }
 
 .anzahl {
     width: 50px;
     text-align: center;
     font-size: 16px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--prInfo-amount-number-box-border);
     border-radius: 4px;
     margin: 0 10px;
     padding: 5px;
@@ -271,7 +277,7 @@
     }
     
     .technicalDetails tr:not(:last-child) td:last-child {
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--prInfo-technical-details-seperating-lines);
         padding-bottom: 15px;
     }
 }
@@ -351,196 +357,4 @@
     .anzahl {
         margin: 10px 0;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.warenkorbContainer {
-    position: fixed;
-    top: 0;
-    right: -320px;
-    width: 100%;
-    max-width: 320px;
-    height: 100%;
-    background-color: #ffffff;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, .15);
-    transition: right 0.3s ease-in-out;
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
-}
-
-.warenkorbHeader {
-    padding: 15px;
-    background-color: #111;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.warenkorbSchliessen {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.warenkorbInhalt {
-    padding: 15px;
-    flex-grow: 1;
-    overflow-y: auto;
-}
-
-.warenkorbArtikel {
-    display: flex;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-}
-
-.artikelBild {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    margin-right: 10px;
-}
-
-.artikelDetails {
-    flex-grow: 1;
-}
-
-.artikelTitel {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.artikelPreis {
-    color: #333;
-}
-
-.artikelMenge {
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.mengenButton {
-    width: 25px;
-    height: 25px;
-    background-color: #f0f0f0;
-    border: none;
-    cursor: pointer;
-}
-
-.mengenEingabe {
-    width: 30px;
-    text-align: center;
-    margin: 0 5px;
-    border: 1px solid #ddd;
-}
-
-.artikelEntfernen {
-    color: red;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
-    margin-top: 5px;
-    text-align: right;
-}
-
-.warenkorbFooter {
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-top: 1px solid #eee;
-}
-
-.warenkorbGesamt {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.zurKasseButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.zurKasseButton:hover {
-    background-color: #0056b3;
-}
-
-.warenkorbToggle {
-    position: fixed;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 15px 10px;
-    cursor: pointer;
-    border-radius: 5px 0 0 5px;
-    z-index: 19;
-}
-
-.warenkorbToggle .warenkorbAnzahl {
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-}
-
-
-
-.warenkorbContainer.warenkorbOffen {
-    right: 0;
-}
-
-.warenkorbIcon {
-    width: 25px;
-    height: 25px;
-    position: relative;
-}
-
-.leerNachricht {
-    text-align: center;
-    padding: 20px;
-    color: #777;
-}
-
-.warenkorbOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 19;
-    display: none;
 }

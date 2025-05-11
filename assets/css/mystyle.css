@@ -1,15 +1,23 @@
 /* Root definiert die Farben des lightThemas in entsprecheden variablen */
-
 :root{
 
-    /* --------- Main --------- */
+    /* --------- Main (mystyle) --------- */
     --main-bg-color: rgb(241, 241, 241);
     --anker-color: rgb(255, 255, 255);
     --hr-color: rgb(204, 204, 204);
 
 
 
-    /* --------- Footer ---------*/
+    /* --------- Special-Header --------- */
+    --special-header-bg-color: rgb(92,92,92);
+
+
+
+    /* --------- ShopHeader --------- */
+
+
+
+    /* --------- Footer --------- */
     --footer-bg-color: rgb(71, 71, 71);
     --footer-color: rgb(255,255,255);
 
@@ -31,13 +39,13 @@
     --user-info-input-border--focus: rgb(255, 255, 255);
     --user-info-input-bg-color--focus: rgb(30, 132, 73);
 
-    /* ---- submit ----*/
+    /* ---- submit-button ----*/
     --submit-bg-color: rgb(0, 193, 200);
     --submit-color: rgb(255, 255, 255);
     /* hover-state */
     --submit-bg-color--hover: rgb(0, 123, 128);
 
-    /* ---- direction ----*/
+    /* ---- direction-button ----*/
     --direction-bg-color: rgb(39, 174, 96);
     --direction-color: rgb(255, 255, 255);
     /* hover-state */
@@ -46,6 +54,106 @@
     /* ---- input-detection ---- */
     --input-valid: rgb(0, 128, 0);
     --input-invalid: rgb(255, 0, 0);
+
+
+
+    /* --------- ProductInfo --------- */
+    /* ---- headings ---- */
+    --prInfo-h2-color: rgb(110, 110, 110);
+    --prInfo-h3-border: rgb(172, 172, 172);
+
+
+    /* ---- main-container ---- */
+    --prInfo-pr-container-bg-color: rgb(255, 255, 255);
+    --prInfo-pr-container-border: rgb(211, 211, 211);
+
+    /* ---- top-price ---- */
+    --prInfo-top-price-color: rgb(0, 0, 0);
+
+    /* ---- active-thumbnail ---- */
+    --prInfo-thumbnail-active-border: rgb(211, 30, 7);
+
+    /* ---- main-image ---- */
+    --prInfo-mainImage-border: rgb(230, 223, 222);
+    --prInfo-mainImage-bg-color: rgb(248, 249, 250);
+
+    /* ---- technical-details ---- */
+    --prInfo-technical-details-seperating-lines: rgb(238, 238, 238);
+
+    /* ---- kauf-Container ---- */
+    --prInfo-kaufContainer-bg-color: rgb(249, 249, 249);
+    --prInfo-kaufContainer-top-border: rgb(231, 231, 231);
+
+    /* ---- warenkorb-button ---- */
+    --prInfo-warenkorbButton-bg-color: rgb(0, 0, 0);
+    --prInfo-warenkorbButton-color: rgb(255, 255, 255);
+    /* hover-state */
+    --prInfo-warenkorbButton-bg-color--hover: rgb(51, 51, 51);
+    /* active-state */
+    --prInfo-warenkorbButton-bg-color--active: rgb(78, 78, 78);
+
+    /* ---- anzahl-button ---- */
+    --prInfo-amount-button-bg-color: rgb(224, 224, 224);
+    /* hover-state */
+    --prInfo-amount-button-bg-color--hover: rgb(204, 204, 204);
+    /* active-state */
+    --prInfo-amount-button-bg-color--active: rgb(170, 170, 170);
+
+    /* ---- anzahl-number-box ----*/
+    --prInfo-amount-number-box-border: rgb(221, 221, 221);
+
+
+
+    /* --------- WarenkorbSide --------- */
+    --wkSide-wk-container-color: rgb(255, 255, 255);
+    --wkSide-empty-message-color: rgb(119, 119, 119);
+
+    /* ---- header ----*/
+    --wkSide-header-bg-color: rgb(66, 66, 66);
+    --wkSide-header-color: rgb(255, 255, 255);
+    --wkSide-close-color: rgb(255, 255, 255);
+
+    /* ---- article ----*/
+    --wkSide-article-border: rgb(238, 238, 238);
+    --wkSide-article-price-color: rgb(51, 51, 51);
+
+    --wkSide-article-amount-button-bg-bolor: rgb(240, 240, 240);
+    --wkSide-article-amount-display-border: rgb(221, 221, 221);
+
+    --wkSide-article-remove-color: rgb(255, 0, 0);
+
+    /* ---- footer ---- */
+    --wkSide-footer-bg-color: rgb(249, 249, 249);
+    --wkSide-footer-border: rgb(238, 238, 238);
+
+    /* ---- checkout-button ---- */
+    --wkSide-checkout-button-bg-color: rgb(216, 24, 24);
+    --wkSide-checkout-button-color: rgb(255, 255, 255);
+    /* hover-state */
+    --wkSide-checkout-button-bg-color--hover: rgb(187, 4, 4);
+
+    /* ---- toggle-cart-button ---- */
+    --wkSide-toggle-cart-button-bg-color: rgb(0, 123, 255);
+    --wkSide-toggle-cart-button-color: rgb(255, 255, 255);
+
+    --wkSide-toggle-cart-button-amount-bg-color: rgb(255, 0, 0);
+    --wkSide-toggle-cart-button-amount-color: rgb(255, 255, 255);
+
+    
+
+    /* --------- User --------- */
+
+
+
+    /* --------- ProductList --------- */
+
+
+    
+    /*  /\
+        ||
+        ||       shop header noch nicht fertig.
+        ||                                                  */
+    
 }
 
 

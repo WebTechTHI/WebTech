@@ -1,13 +1,11 @@
 
 header img{
-
-    
     max-height: 200px;
 }
 
 header {
     display: flex;
     justify-content: center;
-    background-color: grey;
+    background-color: var(--special-header-bg-color);
     
 }

@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', async function () {
           <div class="artikelPreis">${einzelpreis.toFixed(2).replace('.', ',')} €</div>
           <div class="artikelMenge">
             <button class="mengenButton menge-minus" data-index="${i}">-</button>
-            <input type="number" class="mengenEingabe" value="${artikel.quantity}" readonly>
+            <input type="text" class="mengenEingabe" value="${artikel.quantity}" readonly>
             <button class="mengenButton menge-plus" data-index="${i}">+</button>
           </div>
           <button class="artikelEntfernen" data-index="${i}">Entfernen</button>
