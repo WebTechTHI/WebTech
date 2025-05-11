@@ -5,16 +5,14 @@
 <link rel="stylesheet" href="assets/css/footer.css">
 <link rel="stylesheet" href="assets/css/productList.css">
 <script src="assets/javascript/base.js"></script>
+<script src="assets/javascript/loadProducts_index.js"></script>
+<script src="assets/javascript/toggleTheme.js"></script>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR | Startseite</title>
     <link rel="icon" href="assets/images/logo/favicon.png" type="image/x-icon">
-    <script src="assets/javascript/loadProducts_index.js"></script>
-
-
-
 </head>
 
 <body>
@@ -66,7 +64,7 @@
                     <a href="productLists/deals.html">Angebote</a>
                 </li>
             </ul>
-            <img src="/assets/images/icons/btn-to-darkmode.png" id="themeButton">
+            <img id="themeToggleBtn" class="toggleTheme" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
         </div>
     </header>
 
@@ -75,10 +73,7 @@
         <h1 class="categoryName">Unsere Produkte im Überblick</h1>
     </div>
 
-    <div class="productMainContainer">
-
-
-    </div>
+    <div class="productMainContainer"></div>
 
     <footer>
         <p>© 2025 MLR | <a href="pages/about.html"><i>Impressum</i></a></p>
@@ -86,13 +81,5 @@
     </footer>
 </body>
 
-<script>
-
-document.getElementById('themeButton').addEventListener('click', () => {
-    document.body.classList.toggle('darkMode');
-})
-
-
-</script>
 
 </html>

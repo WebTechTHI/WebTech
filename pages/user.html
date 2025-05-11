@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../assets/css/user.css">
     <link rel="stylesheet" href="../assets/css/specialHeader.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
+
+        <script src="/assets/javascript/toggleTheme.js"></script>
     <!--JavaScript hier noch einfügen-->
 
 
@@ -24,15 +26,9 @@
         <a href="../index.html">
             <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
         </a>
+        
+        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
     </header>
-
-
-
-    
- 
-
-
-
 
     <form class="userInfoFormuser" action="user.html" method="post">
 
@@ -69,11 +65,6 @@
             <button class="directionbutton" type="button" onclick="change(document.getElementById('username'))">Benutzername ändern</button>
     </div>
 
-    
-
-
-
-
         <div class="infoRow">
             <div class="infoBlockSmall">
                 <h2>Weitere Informationen</h2>
@@ -96,17 +87,9 @@
 
                 <label>Datenschutz</label>
                 <input class="userInformationInput" type="text" id="Datenschutz" name="Datenschutz" value="Datenschutz-Grundverordnung DSGVO" disabled>
-
             </div>
-
         </div>
-
-    
     </form>
-
-
-
-
 
     <script>
 

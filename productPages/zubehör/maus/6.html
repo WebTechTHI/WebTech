@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
-    <link rel="stylesheet" href="../../../assets/css/mystyle.css">
-    <link rel="stylesheet" href="../../../assets/css/shopHeader.css">
-    <link rel="stylesheet" href="../../../assets/css/footer.css">
-    <link rel="stylesheet" href="../../../assets/css/productInfo.css">
+<link rel="stylesheet" href="../../../assets/css/mystyle.css">
+<link rel="stylesheet" href="../../../assets/css/shopHeader.css">
+<link rel="stylesheet" href="../../../assets/css/footer.css">
+<link rel="stylesheet" href="../../../assets/css/productInfo.css">
 <script src="../assets/javascript/base.js"></script>
+<script src="/assets/javascript/toggleTheme.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -17,14 +18,20 @@
 
     <header id="header">
         <div class="topNavHeader">
-            <a class="logo" href='../../../index.html'><img src='../../../assets/images/logo/logoDarkmode.png' alt="Logo"></a>
+            <a class="logo" href='../../../index.html'><img src='../../../assets/images/logo/logoDarkmode.png'
+                    alt="Logo"></a>
 
             <nav class="userNav">
-                <a href="../../../pages/login.html"><img class="userIconHeader" src="../../../assets/images/icons/login.png" alt="Login"></a>
-                <a href="../../../pages/registration.html"><img class="userIconHeader" src="../../../assets/images/icons/register.png" alt="Registrierung"></a>
-                <a href="../../../pages/logout.html"><img class="userIconHeader" src="../../../assets/images/icons/logout.png" alt="Logout"></a>
-                <a href="../../../pages/shoppingBasket.html"><img class="userIconHeader" src="../../../assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
-                <a href="../../../pages/user.html"><img class="userIconHeader" src="../../../assets/images/icons/user.png" alt="Benutzerkonto"></a>
+                <a href="../../../pages/login.html"><img class="userIconHeader"
+                        src="../../../assets/images/icons/login.png" alt="Login"></a>
+                <a href="../../../pages/registration.html"><img class="userIconHeader"
+                        src="../../../assets/images/icons/register.png" alt="Registrierung"></a>
+                <a href="../../../pages/logout.html"><img class="userIconHeader"
+                        src="../../../assets/images/icons/logout.png" alt="Logout"></a>
+                <a href="../../../pages/shoppingBasket.html"><img class="userIconHeader"
+                        src="../../../assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
+                <a href="../../../pages/user.html"><img class="userIconHeader"
+                        src="../../../assets/images/icons/user.png" alt="Benutzerkonto"></a>
             </nav>
         </div>
 
@@ -59,6 +66,7 @@
                     <a href="../../../productLists/deals.html">Angebote</a>
                 </li>
             </ul>
+            <img id="themeToggleBtn" class="toggleTheme" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
         </div>
     </header>
 
@@ -78,15 +86,30 @@
         <div class="productInfo">
             <h3>Beschreibung</h3>
             <p class="beschreibung">
-                Die SHARK Force II verbindet ergonomisches Design mit präziser Technik. Mit dem 4.200 DPI starken PixArt-Sensor, sechs einstellbaren DPI-Stufen und gummierter Oberfläche eignet sich die Maus ideal für Gaming und Büro. Beleuchtetes Logo, Daumentasten und angenehme Handhabung machen sie zum vielseitigen Klassiker im neuen Look.
+                Die SHARK Force II verbindet ergonomisches Design mit präziser Technik. Mit dem 4.200 DPI starken
+                PixArt-Sensor, sechs einstellbaren DPI-Stufen und gummierter Oberfläche eignet sich die Maus ideal für
+                Gaming und Büro. Beleuchtetes Logo, Daumentasten und angenehme Handhabung machen sie zum vielseitigen
+                Klassiker im neuen Look.
             </p>
 
             <h3>Technische Details</h3>
             <table class="technicalDetails">
-                <tr><td><strong>Sensor:</strong></td><td>PixArt mit 4.200 DPI</td></tr>
-                <tr><td><strong>DPI-Stufen:</strong></td><td>Sechs einstellbare Stufen</td></tr>
-                <tr><td><strong>Design:</strong></td><td>Ergonomisch, gummierte Oberfläche</td></tr>
-                <tr><td><strong>Extras:</strong></td><td>Beleuchtetes Logo, Daumentasten</td></tr>
+                <tr>
+                    <td><strong>Sensor:</strong></td>
+                    <td>PixArt mit 4.200 DPI</td>
+                </tr>
+                <tr>
+                    <td><strong>DPI-Stufen:</strong></td>
+                    <td>Sechs einstellbare Stufen</td>
+                </tr>
+                <tr>
+                    <td><strong>Design:</strong></td>
+                    <td>Ergonomisch, gummierte Oberfläche</td>
+                </tr>
+                <tr>
+                    <td><strong>Extras:</strong></td>
+                    <td>Beleuchtetes Logo, Daumentasten</td>
+                </tr>
             </table>
 
             <div class="kaufContainer">
@@ -103,7 +126,7 @@
     </div>
 
     <footer>
-    
+
         <nav>
             <p>© 2025 MLR | <a href="../../../pages/about.html"><i>Impressum</i></a></p>
         </nav>

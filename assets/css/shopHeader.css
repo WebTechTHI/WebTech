@@ -34,19 +34,26 @@ header {
     margin: 0 20px 0 0;
 }
 
-/* Bottom Header (Links zum Shop-Browsen) - Made responsive */
+/* Bottom Header (Links zum Shop-Browsen) */
 .bottomNavHeader {
     background-color: rgb(150, 35, 35);
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .bottomNavHeader > ul {
+    position: relative;
     list-style: none;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap; 
     justify-content: center;
     padding: 0;
     margin: 0;
+    flex: 1;
+    left:50%;
+    transform: translateX(-50%);
 }
 
 .bottomNavHeader > ul > li {
@@ -60,11 +67,11 @@ header {
 
 .bottomNavHeader > ul > li > a {
     color: rgb(255, 255, 255);
-    font-size: clamp(16px, 2.5vw, 27px); /* Responsive font size */
+    font-size: clamp(16px, 2.5vw, 27px);
     text-decoration: none;
 }
 
-/* Responsive submenu */
+
 .bottomNavHeader .subMenu {
     display: none;
     list-style: none;
@@ -76,18 +83,18 @@ header {
     white-space: nowrap;
     padding: 0;
     z-index: 5;
-    width: 200px; /* Fixed width for better mobile experience */
+    width: 200px;
 }
 
 .bottomNavHeader > ul > li:hover > .subMenu {
     display: flex;
     position: absolute;
     left: 0;
-    top: 100%; /* Position relative to parent */
-    font-size: clamp(16px, 2vw, 22px); /* Responsive font size */
+    top: 100%;
+    font-size: clamp(16px, 2vw, 22px);
 }
 
-/* Media query for small screens - Convert menu to mobile-friendly version */
+
 @media (max-width: 768px) {
     .bottomNavHeader > ul {
         flex-direction: column;
@@ -110,7 +117,6 @@ header {
     }
 }
 
-/* Submenu item styles */
 .subMenu li {
     padding: 7px 10px;
 }
@@ -126,22 +132,21 @@ header {
 .subMenu li a {
     text-decoration: none;
     color: white;
-    display: block; /* Make the entire area clickable */
+    display: block;
 }
 
 .subMenu li a:hover {
     color: rgb(46, 45, 45);
 }
 
-/* Offers button */
 .headerDeals {
     background-color: #3d3f3f;
     margin: 0 0 0 10px;
 }
 
-/* Logo for special pages */
-.logoHeader {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 200px;
+.toggleTheme{
+    cursor: pointer;
+    max-width: 50px;
+    max-height: 50px;
+    transform: translate(-20%);
 }
