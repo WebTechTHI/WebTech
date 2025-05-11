@@ -156,7 +156,10 @@
     
 }
 
-
+/* in dieser Klasse werden alle Farben für den Darkmode überschrieben. */
+.darkMode{
+    --main-bg-color: #272727;
+}
 /* Base styles */
 body {
     background: var(--main-bg-color);

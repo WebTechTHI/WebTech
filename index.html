@@ -66,6 +66,7 @@
                     <a href="productLists/deals.html">Angebote</a>
                 </li>
             </ul>
+            <img src="/assets/images/icons/btn-to-darkmode.png" id="themeButton">
         </div>
     </header>
 
@@ -84,5 +85,14 @@
 
     </footer>
 </body>
+
+<script>
+
+document.getElementById('themeButton').addEventListener('click', () => {
+    document.body.classList.toggle('darkMode');
+})
+
+
+</script>
 
 </html>
