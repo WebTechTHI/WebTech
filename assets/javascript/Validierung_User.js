@@ -7,16 +7,16 @@ function change(userinformation) {
     }
   
     if (userinformation.id === "userpassword") {
-      if (newInfo.length < 8 || newInfo.length > 16) {
-        alert("Passwort muss zwischen 8 und 16 Zeichen lang sein.");
+      if (newInfo.length < 3 || newInfo.length > 25) {
+        alert("Passwort muss zwischen 3 und 25 Zeichen lang sein.");
       } else {
         userinformation.value = newInfo;
         userinformation.classList.add("inputOk");
         userinformation.classList.remove("inputFehler");
       }
     } else if (userinformation.id === "username") {
-      if (newInfo.length > 20) {
-        alert("Benutzername darf maximal 20 Zeichen haben.");
+      if (newInfo.length > 25) {
+        alert("Benutzername darf maximal 25 Zeichen haben.");
       } else {
         userinformation.value = newInfo;
         userinformation.classList.add("inputOk");
