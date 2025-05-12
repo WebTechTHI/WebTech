@@ -14,9 +14,13 @@ function toggleTheme() {
     // beim Laden der Seite das gespeicherte Theme anwenden
 window.addEventListener('DOMContentLoaded', () => {
 
+    const icon = document.getElementById('themeToggleBtn');
+
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('darkMode');
+        icon.src = '/assets/images/icons/lightmode-btn.png';
     } else {
         document.body.classList.remove('darkMode');
+        icon.src = '/assets/images/icons/darkmode-btn.png';
     }
 });

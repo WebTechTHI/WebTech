@@ -9,7 +9,7 @@ header {
 
 /* Top Header (user navigation) */
 .topNavHeader {
-    background: rgb(12, 12, 12);
+    background: var(--shop-header-theader-bg-color);
     display: flex;
     align-items: center;
     flex-wrap: wrap; /* Allow wrapping on small screens */
@@ -36,7 +36,7 @@ header {
 
 /* Bottom Header (Links zum Shop-Browsen) */
 .bottomNavHeader {
-    background-color: rgb(150, 35, 35);
+    background-color: var(--shop-header-bheader-bg-color);
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -62,11 +62,11 @@ header {
 }
 
 .bottomNavHeader > ul > li:hover {
-    background-color: rgb(63, 61, 61);
+    background-color: var(--shop-header-tlvl-li--hover);
 }
 
 .bottomNavHeader > ul > li > a {
-    color: rgb(255, 255, 255);
+    color: var(--shop-header-tlvl-li-color);
     font-size: clamp(16px, 2.5vw, 27px);
     text-decoration: none;
 }
@@ -78,7 +78,7 @@ header {
     text-decoration: none;
     position: absolute;
     flex-direction: column;
-    background-color: rgb(63, 60, 60);
+    background-color: var(--shop-header-submenu-bg-color);
     border-radius: 0 0 3px 3px;
     white-space: nowrap;
     padding: 0;
@@ -122,25 +122,21 @@ header {
 }
 
 .subMenu li:hover {
-    background-color: rgb(219, 219, 219);
+    background-color: var(--shop-header-submenu-li-bg-color--hover);
 }
 
 .subMenu li:hover > a {
-    color: rgb(46, 45, 45);
+    color: var(--shop-header-submenu-li-text-color--hover);
 }
 
 .subMenu li a {
     text-decoration: none;
-    color: white;
+    color: var(--shop-header-submenu-li-text-color);
     display: block;
 }
 
-.subMenu li a:hover {
-    color: rgb(46, 45, 45);
-}
-
 .headerDeals {
-    background-color: #3d3f3f;
+    background-color: var(--shop-header-deals-bg-color);
     margin: 0 0 0 10px;
 }
 

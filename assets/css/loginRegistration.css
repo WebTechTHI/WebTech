@@ -19,8 +19,8 @@ body {
     text-align: center;
     padding: 5px 1px 80px;
     border-radius: 30px;
-    border: 2px solid var(--form-border);
-    background: var(--form-bg);
+    border: 2px solid var(--user-form-border);
+    background: var(--user-form-bg);
     margin-top: 50px;
 }
 
@@ -70,14 +70,11 @@ label {
 
 @media (max-width: 768px) {
     .infoBlockSmall {
-        flex: 1 1 100%; /* Full width on small screens */
+        flex: 1 1 100%;
     }
 }
 
 
-
-
-/* Responsive buttons */
 .submitButton,
 .directionbutton {
     display: inline-block;
@@ -104,8 +101,6 @@ label {
     background-color: var(--submit-bg-color--hover);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
-    transition: all 0.3s linear;
-
 }
 
 .directionbutton {

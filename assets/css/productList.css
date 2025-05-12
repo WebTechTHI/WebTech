@@ -1,20 +1,18 @@
-
-
 .categoryNameContainer {
     text-align: center;
     width: 100%;
 }
 
 .categoryName {
-    font-size: clamp(24px, 5vw, 45px); /* Responsive font size */
+    font-size: clamp(24px, 5vw, 45px);
     margin: 30px 0 40px;
-    color: #333;
+    color: var(--pl-category-color);
     font-weight: 700;
     border-bottom: rgba(0, 0, 0, 0.3) 2px solid;
     display: inline-block;
     padding-bottom: 20px;
-    padding-left: clamp(20px, 10vw, 250px); /* Responsive padding */
-    padding-right: clamp(20px, 10vw, 250px); /* Responsive padding */
+    padding-left: clamp(20px, 10vw, 250px);
+    padding-right: clamp(20px, 10vw, 250px); 
 }
 
 .productMainContainer {
@@ -47,7 +45,7 @@
 }
 
 .product {
-    background-color: #ffffff;
+    background-color: var(--pl-product-main-container-bg-color);
     border-radius: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -59,7 +57,7 @@
 }
 
 .product.zubehoer {
-    background-color: #ffffff;
+    background-color: var(--pl-product-main-container-bg-color);
     border-radius: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -89,7 +87,7 @@
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     justify-content: center;
-    background-color: #f8f8f8;
+    background-color: var(--pl-product-picture-bg-color);
     padding: 20px;
     width: 30%;
     min-width: 150px;
@@ -100,7 +98,7 @@
     align-items: center;
     border-radius: 25px 25px 0 0;
     justify-content: center;
-    background-color: #f8f8f8;
+    background-color: var(--pl-product-picture-bg-color);
     padding: 20px;
     width: 100%;
     min-width: 150px;
@@ -156,9 +154,9 @@
 }
 
 .product h1 {
-    font-size: clamp(20px, 3vw, 30px); /* Responsive font size */
+    font-size: clamp(20px, 3vw, 30px);
     font-weight: 700;
-    color: #222;
+    color: var(--pl-product-main-heading-color);
     margin: 0 0 10px 0;
     text-align: left;
     padding: 0;
@@ -166,8 +164,8 @@
 }
 
 .product h2 {
-    font-size: clamp(14px, 1.5vw, 16px); /* Responsive font size */
-    color: #666;
+    font-size: clamp(14px, 1.5vw, 16px);
+    color: var(--pl-product-subtitle-color);
     margin: 0 0 15px 0;
     text-align: left;
     line-height: 1.4;
@@ -182,7 +180,7 @@
 
 .productSpecs li {
     font-size: clamp(14px, 1.5vw, 16px);
-    color: #666;
+    color: var(--pl-description-text-color);
     margin: 12px 0;
     
     text-align: left;
@@ -193,7 +191,7 @@
 
 .productSpecs li::before {
     content: ">";
-    color: #d31e07;
+    color: var(--pl-description-indicator-color);
     font-weight: bold;
     position: absolute;
     left: 1px;
@@ -202,8 +200,8 @@
 }
 
 .productPrice {
-    font-size: clamp(18px, 2.5vw, 24px); /* Responsive font size */
-    color: #222;
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--pl-price-tag-color);
     font-weight: 600;
     text-align: right;
     margin: 15px 0;
@@ -214,7 +212,7 @@
     justify-content: right;
     gap: 15px;
     align-items: center;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap;
 }
 
 @media (max-width: 480px) {
@@ -228,11 +226,10 @@
 }
 
 .zumWarenkorb {
-    background-color: #2ecc71;
-    color: white;
+    background-color: var(--pl-add-to-basket-button-bg-color);
     text-decoration: none;
     padding: 10px;
-    border: #2ecc71;
+    border: none;
     border-radius: 6px;
     display: flex;
     cursor: pointer;
@@ -242,7 +239,7 @@
 }
 
 .zumWarenkorb:hover{
-    background-color: #27ae60;
+    background-color: var(--pl-add-to-basket-button-bg-color--hover);
 }
 
 .zumWarenkorb img {
@@ -251,8 +248,8 @@
 }
 
 .product .more {
-    background-color: #d31e07;
-    color: white;
+    background-color: var(--pl-show-more-button-bg-color);
+    color: --pl-show-more-button-color;
     text-decoration: none;
     width: auto;
     font-size: 16px;
@@ -265,7 +262,7 @@
 }
 
 .product .more:hover {
-    background-color: #b71c06;
+    background-color: var(--pl-show-more-button-bg-color--hover);
 }
 
 .product.sale::before {
@@ -276,8 +273,8 @@
     text-align: center;
     top: 15px;
     right: 15px;
-    background-color: #d31e07;
-    color: white;
+    background-color: var(--pl-sale-tag-bg-color);
+    color: var(--pl-sale-tag-color);
     padding: 5px 10px;
     font-size: 18px;
     font-weight: 600;
