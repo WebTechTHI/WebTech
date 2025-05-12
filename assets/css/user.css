@@ -169,3 +169,16 @@ label {
 .inputOk {
     border-color: var(--input-valid);
 }
+
+/*
+.inputFehler {
+    border-color: red;
+    box-shadow: 0 0 5px red;
+  }
+  
+  .inputOk {
+    border-color: green;
+    box-shadow: 0 0 5px green;
+  }
+  */
+  
