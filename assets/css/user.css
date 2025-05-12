@@ -159,3 +159,13 @@ label {
     transform: translateY(-2px);
     transition: all 0.2s linear;
 }
+
+
+
+/*  JavaScript Hintergründe für button Ränder*/
+.inputFehler {
+    border-color: var(--input-invalid);
+}
+.inputOk {
+    border-color: var(--input-valid);
+}

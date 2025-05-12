@@ -44,17 +44,17 @@
 
 
         <label  for="username">Benutzername </label>
-        <input class="userInformationInput" type="text" id="username" name="username" value="MaxMustermann" disabled>
+        <input class="userInformationInput" type="text" id="username" name="username" value="MaxMustermann" maxlength="16" disabled>
 
 
 
         <label title="Mit deinem richtigen Namen können deine Freunde dich leichter finden" for="username2">Richtiger Name ⍰</label>
-        <input class="userInformationInput" type="text" id="username2" name="username2" value="Max" >
+        <input class="userInformationInput" type="text" id="username2" name="username2" value="Max" maxlength="25" >
 
 
 
         <label for="password">Dein Passwort </label>
-        <input class="userInformationInput" type="password" id="userpassword" name="password" value="123456789" disabled>
+        <input class="userInformationInput" type="password" id="userpassword" name="password" value="123456789" minlength="8" maxlength="16" disabled>
         
 
 
@@ -93,30 +93,7 @@
 
     <script>
 
-        function change(userinformation) {
 
-            var newInfo;
-
-            if (userinformation == userpassword) {
-                newInfo = prompt("Bitte geben Sie ein gültiges Passwort ein. Das Passwort muss zwischen 8 und 16 Zeichen lang sein.");
-
-                if (newInfo.length < 8 || newInfo.length > 16) {
-                    alert("Ungültiges Passwort. Das Passwort muss zwischen 8 und 16 Zeichen lang sein.");
-                } else {
-                    document.getElementById("userpassword").value = newInfo;
-                }
-
-            } else if (userinformation == username) {
-                newInfo = prompt("Bitte geben Sie einen gültigen Benutzernamen ein. Der Benutzername darf maximal 20 Zeichen lang sein.")
-                if (newInfo.length > 20) {
-                    alert("Der eingegebene Benutzername ist zu lang. Der Benutzername darf maximal 20 Zeichen Lang sein");
-                } else if (newInfo.length < 1) {
-                    alert("Eingabe ungültig. Bitte geben sie einen Benutzernamen an.");
-                } else {
-                    document.getElementById("username").value = newInfo;
-                }
-            }
-        }
 
     </script>
 
