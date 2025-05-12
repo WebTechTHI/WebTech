@@ -29,28 +29,6 @@ function validierung() {
 
 
 
-    
-   //Prüfung hier ob benutzername falsch eingegeben wurde
-    if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe) {
-        benutzernameFeld.classList.add("inputOk");
-        benutzernameFeld.classList.remove("inputFehler");
-        //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv, also entweder: input ok oder input fehler sonst kämpfen die gegeneinander an !!
-    }
-    else{
-        benutzernameFeld.classList.add("inputFehler");
-        benutzernameFeld.classList.remove("inputOk");
-    }
-
-    //Prüfung hier ob Paswort falsh eingegeben wurde
-    if (passwortlänge){
-        passwortFeld.classList.add("inputOk");
-        passwortFeld.classList.remove("inputFehler");
-    }
-    else{
-        passwortFeld.classList.add("inputFehler");
-        passwortFeld.classList.remove("inputOk");
-    }
-
 
 
      //Buttons disablen oder nicht --> Prüfung also
@@ -63,12 +41,17 @@ function validierung() {
 
 
 
+
     
     //Prüfen ob schon was eingegeben wurde den wenn nicht soll es mit standart modus grün angezeigt werden !
     if (benutzername.length === 0) {
         benutzernameFeld.classList.remove("inputOk");
         benutzernameFeld.classList.remove("inputFehler");
+ //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv, also entweder: input ok oder input fehler sonst kämpfen die gegeneinander an !!
+
+
     }
+    //Prüfung hier ob benutzername falsch eingegeben wurde
     else if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe) {
         benutzernameFeld.classList.add("inputOk");
         benutzernameFeld.classList.remove("inputFehler");
@@ -83,6 +66,7 @@ function validierung() {
         passwortFeld.classList.remove("inputOk");
         passwortFeld.classList.remove("inputFehler");
     }
+     //Prüfung hier ob Paswort falsh eingegeben wurde
     else if (passwortlänge) {
         passwortFeld.classList.add("inputOk");
         passwortFeld.classList.remove("inputFehler");
@@ -94,12 +78,6 @@ function validierung() {
 
 
 }
-
-
-
-    
-
-
 
   //Muss auserhalb der Funktion stehen !!!!
   //Hier Können die inputs quasi in den felder hören/listen wenn eine eingabe passiert bzw. sich was ändert !       --> Event Listener
