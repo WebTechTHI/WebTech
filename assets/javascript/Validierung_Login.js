@@ -13,6 +13,8 @@ function ValidierungLogin() {
     const button = document.querySelector(".submitButton");
 
 
+//Prüfbedingungen ab HIER:
+
     // Der gewählte Benutzername muss aus mindestens fünf Zeichen bestehen
     const langGenug = benutzername.length >= 5;
 
@@ -28,7 +30,7 @@ function ValidierungLogin() {
 
 
 
-
+//Abfrage der Prüfbedingungen ab HIER:
 
      //Buttons disablen oder nicht --> Prüfung also
     if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe && passwortlänge) {
@@ -37,7 +39,6 @@ function ValidierungLogin() {
     else{
         button.disabled = true;
     }
-
 
 
 

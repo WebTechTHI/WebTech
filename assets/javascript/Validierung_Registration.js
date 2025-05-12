@@ -1,11 +1,122 @@
 
 /* Skript für Registration */
-    
-    // (REGISTRATION HIER)  Die Wiederholung des Passworts muss mit dem Passwort übereinstimmen
-    const passwortregistration = document.getElementById("userpasswordregistration").value;
-    const passwortregistrationconfirm = document.getElementById("userpasswordregistrationconfirmation").value;
+   
+function ValidierungRegistration() {
+    //Werte von Input feldern bekommn
+    const benutzername = document.getElementById("usernameregistration").value;
+    const passwort = document.getElementById("userpasswordregistration").value;
+    const passwortWdh = document.getElementById("userpasswordregistrationconfirmation").value;
 
-  
+    //Für css styling dom elemtne holen
+    const benutzernameFeld = document.getElementById("usernameregistration");
+    const passwortFeld = document.getElementById("userpasswordregistration");
+    const passwortWdhFeld = document.getElementById("userpasswordregistrationconfirmation");
+
+    //Button holen für aktivieren deaktivieren
+    const button = document.querySelector(".submitButton");
+
+
+
+//Prüfbedingungen ab HIER:
+
+
+    //Wir prüfen erst ob pw mit pwWdh übereinstimmt und dann noch ob auch passwortWdh länger als 0 ist da sonst auch leerer string mit leerem string übereinstimmt also ohne eine eingabe ist auch korrekt
+    //  und das darf nicht!
+    const pwStimmt = passwort === passwortWdh && passwortWdh.length > 0;
+
+
+
+
+    // Der gewählte Benutzername muss aus mindestens fünf Zeichen bestehen
+    const langGenug = benutzername.length >= 5;
+
+    // Der gewählte Benutzername muss mindestens einen Großbuchstaben und einen Kleinbuchstaben enthalten
+    const hatGroßBuchstabe = /[A-Z]/.test(benutzername);
+    const hatKleinBuchstabe = /[a-z]/.test(benutzername);               //RegEx = Regelprüfer für Texte
+                                                                        // [A-Z] = mindestens 1 Großbuchstabe
+                                                                        //[a-z] = mindestens 1 Kleinbuchstabe
+                                                                        //.test(...) = prüft, ob das im Text vorkommt
+
+    // Das Passwort muss aus mindestens 10 Zeichen bestehen
+    const passwortlänge = passwort.length >= 10;
+
+
+
+
+//Abfrage der Prüfbedingungen ab HIER:
+
+    //Button disablen
+    if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe && passwortlänge && pwStimmt) {
+        button.disabled = false;
+    }
+    else{
+        button.disabled = true;
+    }
+
+
+    
+    //Prüfen ob schon was eingegeben wurde den wenn nicht soll es mit standart modus grün angezeigt werden !
+    if (benutzername.length === 0) {
+        benutzernameFeld.classList.remove("inputOk");
+        benutzernameFeld.classList.remove("inputFehler");
+ //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv, also entweder: input ok oder input fehler sonst kämpfen die gegeneinander an !!
+
+
+    }
+    //Prüfung hier ob benutzername falsch eingegeben wurde
+    else if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe) {
+        benutzernameFeld.classList.add("inputOk");
+        benutzernameFeld.classList.remove("inputFehler");
+    }
+    else {
+        benutzernameFeld.classList.add("inputFehler");
+        benutzernameFeld.classList.remove("inputOk");
+    }
+
+    //Prüfen ob bei passwort auch schon was eingegeben wurde !
+    if (passwort.length === 0) {
+        passwortFeld.classList.remove("inputOk");
+        passwortFeld.classList.remove("inputFehler");
+    }
+     //Prüfung hier ob Paswort falsh eingegeben wurde
+    else if (passwortlänge) {
+        passwortFeld.classList.add("inputOk");
+        passwortFeld.classList.remove("inputFehler");
+    }
+    else {
+        passwortFeld.classList.add("inputFehler");
+        passwortFeld.classList.remove("inputOk");
+    }
+
+
+    //Passwort Wiederholung prüfen
+    if(passwortWdh.length === 0) {
+        passwortWdhFeld.classList.remove("inputOk");
+        passwortWdhFeld.classList.remove("inputFehler");
+    }
+    else if (pwStimmt){
+        passwortWdhFeld.classList.add("inputOk");
+        passwortWdhFeld.classList.remove("inputFehler");
+    }
+    else {
+        passwortWdhFeld.classList.add("inputFehler");
+        passwortWdhFeld.classList.remove("inputOk");    
+    }
+
+
+
+
+
+}
+
+
+  //Muss auserhalb der Funktion stehen !!!!
+  //Hier Können die inputs quasi in den felder hören/listen wenn eine eingabe passiert bzw. sich was ändert !       --> Event Listener 
+  // 
+  //Statt als Event input = liveprüfung geht auch change (das ist wenn erst das feld verlässt nicht sofort) oder click als event !
+    document.getElementById("usernameregistration").addEventListener("input", ValidierungRegistration);
+    document.getElementById("userpasswordregistration").addEventListener("input", ValidierungRegistration)
+    document.getElementById("userpasswordregistrationconfirmation").addEventListener("input", ValidierungRegistration)
 
 
 
