@@ -5,8 +5,13 @@ body {
     min-height: 100vh;
 }
 
+.formTitle{
+    color: var(--user-form-title-color);
+}
 
-
+.formSubtitle{
+    color: var(--user-form-subtitle-color);
+}
 
 .userInfoFormlogin,
 .userInfoFormregistration,
@@ -21,9 +26,8 @@ body {
     border-radius: 30px;
     border: 2px solid var(--user-form-border);
     background: var(--user-form-bg);
-    margin-top: 50px;
+    margin: 50px 0;
 }
-
 
 .userInformationInput {
     display: block;
@@ -62,6 +66,7 @@ body {
 
 
 label {
+    color:var(--user-input-label-color);
     display: block;
     margin-top: 10px;
     font-weight: 700;
@@ -116,14 +121,17 @@ label {
     transition: all 0.3s linear;
 }
 
-
-
-/*  JavaScript Hintergründe für button Ränder*/
 .inputFehler {
     border-color: var(--input-invalid);
 }
 .inputOk {
     border-color: var(--input-valid);
+}
+
+/* --------- Logout --------- */
+
+.logoutMessage{
+    color:var(--logout-message-color);
 }
 
 /*

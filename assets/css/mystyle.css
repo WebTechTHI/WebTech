@@ -48,7 +48,12 @@
     /* --------- Login/Registration --------- */
     /* ---- form ----*/
     --user-form-bg: rgb(245, 245, 245);
-    --user-form-border: #1C6EA4;
+    --user-form-border: rgb(28, 110, 164);
+
+    /* ---- headings ---- */
+    --user-form-title-color: rgb(0, 0, 0);
+    --user-form-subtitle-color: rgb(0, 0, 0);
+    --user-block-title-color: rgb(0, 0, 0);
 
     /* ---- input ---- */
     --user-info-input-color: rgb(51, 51, 51);
@@ -60,6 +65,9 @@
     /* focus-state */
     --user-info-input-border--focus: rgb(255, 255, 255);
     --user-info-input-bg-color--focus: rgb(30, 132, 73);
+
+    /* ---- input-labels ---- */
+    --user-input-label-color: rgb(0, 0, 0);
 
     /* ---- submit-button ----*/
     --submit-bg-color: rgb(0, 193, 200);
@@ -77,6 +85,9 @@
     --input-valid: rgb(0, 128, 0);
     --input-invalid: rgb(255, 0, 0);
 
+    /* ---- logout ---- */
+    --logout-message-color: rgb(0, 0, 0);
+
 
 
     /* --------- ProductInfo --------- */
@@ -90,9 +101,11 @@
     --prInfo-pr-container-bg-color: rgb(255, 255, 255);
     --prInfo-pr-container-border: rgb(211, 211, 211);
 
-    /* ---- top-price ---- */
+    /* ---- price-tags ---- */
     --prInfo-top-price-color: rgb(0, 0, 0);
-
+    --prInfo-bottom-price-color: rgb(0, 0, 0);
+    --prInfo-net-price-label-color: rgb(0, 0, 0);
+    
     /* ---- active-thumbnail ---- */
     --prInfo-thumbnail-active-border: rgb(211, 30, 7);
 
@@ -194,9 +207,9 @@
     --pl-price-tag-color: rgb(34, 34, 34);
 
     /* ---- add-to-basket-nutton ---- */
-    --pl-add-to-basket-button-bg-color: rgb(46, 204, 113);
+    --pl-add-to-basket-button-bg-color: rgb(40, 143, 45);
     /* hover-state */
-    --pl-add-to-basket-button-bg-color--hover: rgb(39, 174, 96);
+    --pl-add-to-basket-button-bg-color--hover: rgb(22, 119, 19);
 
     /* ---- more-button ---- */
     --pl-show-more-button-bg-color: rgb(211, 30, 7);
@@ -262,6 +275,11 @@
     --user-form-bg: rgb(59, 59, 59);
     --user-form-border: #525252;
 
+    /* ---- headings ---- */
+    --user-form-title-color: rgb(255, 255, 255);
+    --user-form-subtitle-color: rgb(255, 255, 255);
+    --user-block-title-color: rgb(238, 238, 238);
+
     /* ---- input ---- */
     --user-info-input-color: rgb(51, 51, 51);
     --user-info-input-bg-color: rgb(238, 238, 238);
@@ -272,6 +290,9 @@
     /* focus-state */
     --user-info-input-border--focus: rgb(18, 194, 42);
     --user-info-input-bg-color--focus: rgb(214, 214, 214);
+
+    /* ---- input-labels ---- */
+    --user-input-label-color: rgb(255, 255, 255);
 
     /* ---- submit-button ----*/
     --submit-bg-color: rgb(9, 173, 36);
@@ -289,6 +310,9 @@
     --input-valid: rgb(0, 128, 0);
     --input-invalid: rgb(255, 0, 0);
 
+    /* ---- logout ---- */
+    --logout-message-color: rgb(255, 255, 255);
+
 
 
     /* --------- ProductInfo --------- */
@@ -301,8 +325,10 @@
     --prInfo-h2-color: rgb(235, 235, 235);
     --prInfo-h3-border: rgb(105, 105, 105);
 
-    /* ---- top-price ---- */
+    /* ---- price-tags ---- */
     --prInfo-top-price-color: rgb(230, 230, 230);
+    --prInfo-bottom-price-color: rgb(255, 255, 255);
+    --prInfo-net-price-label-color: rgb(255, 255, 255);
 
     /* ---- active-thumbnail ---- */
     --prInfo-thumbnail-active-border: rgb(170, 31, 12);
@@ -406,9 +432,9 @@
     --pl-price-tag-color: rgb(255, 255, 255);
 
     /* ---- add-to-basket-nutton ---- */
-    --pl-add-to-basket-button-bg-color: rgb(46, 204, 113);
+    --pl-add-to-basket-button-bg-color: rgb(40, 143, 45);
     /* hover-state */
-    --pl-add-to-basket-button-bg-color--hover: rgb(39, 174, 96);
+    --pl-add-to-basket-button-bg-color--hover: rgb(22, 119, 19);
 
     /* ---- more-button ---- */
     --pl-show-more-button-bg-color: rgb(211, 30, 7);

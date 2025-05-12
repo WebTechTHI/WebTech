@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
-    
-    
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../assets/css/specialHeader.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
 
-        <script src="/assets/javascript/toggleTheme.js"></script>
+    <script src="/assets/javascript/toggleTheme.js"></script>
     <!--JavaScript hier noch einfügen-->
 
 
@@ -26,67 +26,71 @@
         <a href="../index.html">
             <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
         </a>
-        
-        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
+
+        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png"
+            onclick="toggleTheme()">
     </header>
 
     <form class="userInfoFormuser" action="user.html" method="post">
 
-        <h1>Benutzerkonto</h1>
-        <h2>Willkommen, Max Mustermann!</h2>
-    
-
-
-         <!-- Breiter Block für persönliche Informationen -->
-    <div class="infoBlockWide">
-        <h2>Persönliche Informationen</h2>
+        <h1 class="formTitle">Benutzerkonto</h1>
+        <h2 class="formSubtitle">Willkommen, Max Mustermann!</h2>
 
 
 
-        <label  for="username">Benutzername </label>
-        <input class="userInformationInput" type="text" id="username" name="username" value="MaxMustermann" maxlength="16" disabled>
+        <!-- Breiter Block für persönliche Informationen -->
+        <div class="infoBlockWide">
+            <h2>Persönliche Informationen</h2>
 
 
 
-        <label title="Mit deinem richtigen Namen können deine Freunde dich leichter finden" for="username2">Richtiger Name ⍰</label>
-        <input class="userInformationInput" type="text" id="username2" name="username2" value="Max" maxlength="25" >
+            <label for="username">Benutzername </label>
+            <input class="userInformationInput" type="text" id="username" name="username" value="MaxMustermann"
+                maxlength="16" disabled>
 
 
+            <label for="username2">Richtiger Name</label>
+            <input class="userInformationInput" type="text" id="username2" name="username2" value="Max" maxlength="25">
 
-        <label for="password">Dein Passwort </label>
-        <input class="userInformationInput" type="password" id="userpassword" name="password" value="123456789" minlength="8" maxlength="16" disabled>
-        
+
+            <label for="password">Dein Passwort </label>
+            <input class="userInformationInput" type="password" id="userpassword" name="password" value="123456789"
+                minlength="8" maxlength="16" disabled>
 
 
             <input class="submitButton" type="submit" value="Sichern">
             <br>
-            <button class="directionbutton" type="button" onclick="change(document.getElementById('userpassword'))">Passwort ändern</button>
+            <button class="directionbutton" type="button"
+                onclick="change(document.getElementById('userpassword'))">Passwort ändern</button>
 
-            <button class="directionbutton" type="button" onclick="change(document.getElementById('username'))">Benutzername ändern</button>
-    </div>
+            <button class="directionbutton" type="button"
+                onclick="change(document.getElementById('username'))">Benutzername ändern</button>
+        </div>
 
         <div class="infoRow">
             <div class="infoBlockSmall">
                 <h2>Weitere Informationen</h2>
 
                 <label>Land</label>
-                <input class="userInformationInput" type="text" id="Land" name="Land" value="Deutschland" >
+                <input class="userInformationInput" type="text" id="Land" name="Land" value="Deutschland">
 
                 <label>Stadt</label>
-                <input class="userInformationInput" type="text" id="Stadt" name="Stadt" value="Ingolstadt" >
+                <input class="userInformationInput" type="text" id="Stadt" name="Stadt" value="Ingolstadt">
 
                 <label>Email Adresse</label>
-                <input class="userInformationInput" type="text" id="email" name="email" value="MaxMustermann@email.de" >
+                <input class="userInformationInput" type="text" id="email" name="email" value="MaxMustermann@email.de">
 
             </div>
             <div class="infoBlockSmall">
                 <h2>Verschiedenes</h2>
 
                 <label>Zeitzone</label>
-                <input class="userInformationInput" type="text" id="Zeitzone" name="Zeitzone" value="Europe/Berlin" disabled>
+                <input class="userInformationInput" type="text" id="Zeitzone" name="Zeitzone" value="Europe/Berlin"
+                    disabled>
 
                 <label>Datenschutz</label>
-                <input class="userInformationInput" type="text" id="Datenschutz" name="Datenschutz" value="Datenschutz-Grundverordnung DSGVO" disabled>
+                <input class="userInformationInput" type="text" id="Datenschutz" name="Datenschutz"
+                    value="Datenschutz-Grundverordnung DSGVO" disabled>
             </div>
         </div>
     </form>
@@ -105,8 +109,8 @@
     </footer>
 
 
-      <!--JavaScript hier noch einfügen-->
-      <script src="../assets/javascript/Validierung_User.js"></script>
+    <!--JavaScript hier noch einfügen-->
+    <script src="../assets/javascript/Validierung_User.js"></script>
 
 </body>
 
