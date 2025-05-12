@@ -121,6 +121,72 @@ label {
     transition: all 0.3s linear;
 }
 
+
+
+
+
+
+.hinweisBlock {
+    background: linear-gradient(135deg, #eef4fa, #dbeafe);
+    border-left: 5px solid #2563eb;
+    padding: 20px;
+    margin: 25px auto;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    color: #1e293b;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.hinweisBlock h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #1e40af;
+    font-weight: 700;
+}
+
+.hinweisBlock ul {
+    padding-left: 20px;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.hinweisBlock li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Responsives Verhalten */
+@media (max-width: 600px) {
+    .hinweisBlock {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .hinweisBlock h3 {
+        font-size: 1rem;
+    }
+
+    .hinweisBlock ul {
+        padding-left: 16px;
+    }
+
+    .hinweisBlock li {
+        margin-bottom: 6px;
+    }
+}
+
+
+
+
+
+
+
+
+/*JavaScript*/
 .inputFehler {
     border-color: var(--input-invalid);
 }
