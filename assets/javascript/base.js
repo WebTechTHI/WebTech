@@ -71,3 +71,56 @@ function berechneNetto(){
     }
 
 }
+
+
+//ab hier für suchfunktion
+let produkte = [];
+
+document.addEventListener('DOMContentLoaded', async function() {
+    const searchIcon = document.getElementById('searchIcon');
+    const suchFeld = document.getElementById('suchFeld');
+
+    produkte = await alleProdukte();
+    
+    searchIcon.addEventListener('click', function() {
+      suchFeld.classList.toggle('active');
+      if (suchFeld.classList.contains('active')) {
+        suchFeld.focus();
+      }
+    });
+  
+  });
+
+
+  function searchFunction() {
+    const searchValue = document.getElementById('suchFeld').value;
+    const gefundeneProdukte = produkte.filter(product => {
+        return (
+            product.name.toLowerCase().includes(searchValue) ||
+            product.kurzbeschreibung.toLowerCase().includes(searchValue) ||
+            product.kategorie.toLowerCase().includes(searchValue) ||
+            product.unterkategorie.toLowerCase().includes(searchValue)
+        );
+    });
+    console.log('Suchergebnisse:', gefundeneProdukte);
+   
+    
+  }
+
+  async function alleProdukte() {
+    try {
+        const response = await fetch('../assets/json/productList.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const products = await response.json();
+        return products;
+    }catch (error) {
+        console.error('Error fetching product data:', error);
+    }
+}
+
+
+
+
+

@@ -140,6 +140,42 @@ header {
     margin: 0 0 0 10px;
 }
 
+.suchIcon{
+    width: 100%;
+    max-width: 50px;
+    cursor: pointer;
+}
+
+.suchIcon:hover {
+    background-color: var(--shop-header-tlvl-li--hover);
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+  }
+  
+
+  
+  #suchFeld {
+    display: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--shop-header-submenu-bg-color);
+    margin-left: 5px;
+    background-color: var(--shop-header-bheader-bg-color);
+    color: black;
+    transition: all 0.3s ease;
+  }
+  
+  #suchFeld.active {
+    background-color: white;
+    display: inline-block;
+    width: 150px;
+  }
+
 .toggleTheme{
     cursor: pointer;
     max-width: 50px;
