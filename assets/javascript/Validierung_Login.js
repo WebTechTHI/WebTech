@@ -1,6 +1,6 @@
 
 /* Skript für Login */
-function validierung() {
+function ValidierungLogin() {
     //Werte von Input feldern bekommn
     const benutzername = document.getElementById("usernamelogin").value;
     const passwort = document.getElementById("userpasswordlogin").value;
@@ -80,8 +80,8 @@ function validierung() {
 
   //Muss auserhalb der Funktion stehen !!!!
   //Hier Können die inputs quasi in den felder hören/listen wenn eine eingabe passiert bzw. sich was ändert !       --> Event Listener
-  document.getElementById("usernamelogin").addEventListener("input", validierung);
-  document.getElementById("userpasswordlogin").addEventListener("input", validierung);
+  document.getElementById("usernamelogin").addEventListener("input", ValidierungLogin);
+  document.getElementById("userpasswordlogin").addEventListener("input", ValidierungLogin);
   
 
 
