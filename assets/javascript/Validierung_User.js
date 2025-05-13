@@ -65,9 +65,10 @@ function ValidierungUser() {
   
 
   }
-
-    //Muss auserhalb der Funktion stehen !!!!
-    //Hier Können die inputs quasi in den felder hören/listen wenn eine eingabe passiert bzw. sich was ändert !       --> Event Listener
+  //Muss auserhalb der Funktion stehen !!!!
+  //Hier Können die inputs quasi in den felder hören/listen wenn eine eingabe passiert bzw. sich was ändert !       --> Event Listener 
+  // 
+  //Statt als Event input = liveprüfung geht auch change (das ist wenn erst das feld verlässt nicht sofort) oder click als event !
     document.getElementById("username").addEventListener("input", ValidierungUser);
     document.getElementById("userpassword").addEventListener("input", ValidierungUser);
 
