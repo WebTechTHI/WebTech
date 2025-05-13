@@ -17,7 +17,7 @@ window.onscroll = function () {
     }
 }
 
-/* Placeholder 😍*/
+/* Placeholder */
 
 
 function getTotalPrice(priceWOTax) {

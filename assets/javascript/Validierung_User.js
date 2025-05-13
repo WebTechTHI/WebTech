@@ -1,15 +1,15 @@
 
 /* Skript für User */
 function ValidierungUser() {
-    //Werte von Input feldern bekommn
+
     const benutzername = document.getElementById("username").value;
     const passwort = document.getElementById("userpassword").value;
   
-    //Für css styling dom elemtne holen
+ 
     const benutzernameFeld = document.getElementById("username");
     const passwortFeld = document.getElementById("userpassword");
 
-    //button
+  
     const button = document.querySelector(".submitButton");
   
 
@@ -27,7 +27,7 @@ function ValidierungUser() {
 
 //Abfrage der Prüfbedingungen ab HIER:
 
-    // Button aktivieren nur wenn alles erfüllt ist
+
     if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe && passwortlänge) {
         button.disabled = false;
       } else {
@@ -35,11 +35,12 @@ function ValidierungUser() {
       }
 
 
-    // Benutzername prüfen
+   
     if (benutzername.length === 0) {
         benutzernameFeld.classList.remove("inputOk");
         benutzernameFeld.classList.remove("inputFehler");
-         //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv, also entweder: input ok oder input fehler sonst kämpfen die gegeneinander an !!
+         //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv, also entweder: 
+         // input ok oder input fehler sonst kämpfen die gegeneinander an !!
 
     } else if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe) {
       benutzernameFeld.classList.add("inputOk");
@@ -50,7 +51,7 @@ function ValidierungUser() {
       benutzernameFeld.classList.remove("inputOk");
     }
   
-    // Passwort prüfen
+   
     if (passwort.length === 0) {
         passwortFeld.classList.remove("inputOk");
         passwortFeld.classList.remove("inputFehler");

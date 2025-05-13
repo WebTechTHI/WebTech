@@ -9,30 +9,30 @@ function ValidierungLogin() {
     const benutzernameFeld = document.getElementById("usernamelogin");
     const passwortFeld = document.getElementById("userpasswordlogin");
 
-    //Button holen für aktivieren deaktivieren
+  
     const button = document.querySelector(".submitButton");
 
 
 //Prüfbedingungen ab HIER:
 
-    // Der gewählte Benutzername muss aus mindestens fünf Zeichen bestehen
+   
     const langGenug = benutzername.length >= 5;
 
-    // Der gewählte Benutzername muss mindestens einen Großbuchstaben und einen Kleinbuchstaben enthalten
+
     const hatGroßBuchstabe = /[A-Z]/.test(benutzername);
     const hatKleinBuchstabe = /[a-z]/.test(benutzername);               //RegEx = Regelprüfer für Texte
                                                                         // [A-Z] = mindestens 1 Großbuchstabe
                                                                         //[a-z] = mindestens 1 Kleinbuchstabe
                                                                         //.test(...) = prüft, ob das im Text vorkommt
 
-    // Das Passwort muss aus mindestens 10 Zeichen bestehen
+   
     const passwortlänge = passwort.length >= 10;
 
 
 
 //Abfrage der Prüfbedingungen ab HIER:
 
-     //Buttons disablen oder nicht --> Prüfung also
+
     if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe && passwortlänge) {
         button.disabled = false;
     }
@@ -51,7 +51,7 @@ function ValidierungLogin() {
 
 
     }
-    //Prüfung hier ob benutzername falsch eingegeben wurde
+
     else if (langGenug && hatGroßBuchstabe && hatKleinBuchstabe) {
         benutzernameFeld.classList.add("inputOk");
         benutzernameFeld.classList.remove("inputFehler");
@@ -61,7 +61,7 @@ function ValidierungLogin() {
         benutzernameFeld.classList.remove("inputOk");
     }
 
-    //Prüfen ob bei passwort auch schon was eingegeben wurde !
+   
     if (passwort.length === 0) {
         passwortFeld.classList.remove("inputOk");
         passwortFeld.classList.remove("inputFehler");
