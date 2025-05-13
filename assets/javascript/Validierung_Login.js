@@ -20,10 +20,8 @@ function ValidierungLogin() {
 
 
     const hatGroßBuchstabe = /[A-Z]/.test(benutzername);
-    const hatKleinBuchstabe = /[a-z]/.test(benutzername);               //RegEx = Regelprüfer für Texte
-                                                                        // [A-Z] = mindestens 1 Großbuchstabe
-                                                                        //[a-z] = mindestens 1 Kleinbuchstabe
-                                                                        //.test(...) = prüft, ob das im Text vorkommt
+    const hatKleinBuchstabe = /[a-z]/.test(benutzername);               //RegEx = Regelprüfer für angegebnen text
+                                                                        //.test = prüft, ob das im benutzername vorkommt
 
    
     const passwortlänge = passwort.length >= 10;
