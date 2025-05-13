@@ -25,7 +25,7 @@ function getTotalPrice(priceWOTax) {
     return bruttoPreis.toFixed(2).replace(".", ",");
 }
 
-function berechneBrutto() {
+/*function berechneBrutto() {
     var netto = document.getElementById("nettoPreis");
     var brutto = document.getElementById("bruttoPreis");
 
@@ -48,6 +48,7 @@ function berechneBrutto() {
         brutto.style.display = "none";
     }
 }
+    */
 
 function getPriceWOTax(priceWTax) {
     var nettoPreis = priceWTax *100 / 119;
@@ -61,7 +62,6 @@ function berechneNetto(){
 
     var text = brutto.textContent;
     var bruttoText = text.replace("€", "").replace(",", ".").replace("Preis: ","").replace(".-","").trim();
-    console.log(bruttoText);
 
     if (document.getElementById("nettoPreisBox").checked) {
         netto.innerHTML = "<strong>Netto: </strong>" + "€ " + getPriceWOTax(bruttoText).replace(".", ",") ;
