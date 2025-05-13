@@ -20,10 +20,8 @@ function ValidierungLogin() {
 
 
     const hatGroßBuchstabe = /[A-Z]/.test(benutzername);
-    const hatKleinBuchstabe = /[a-z]/.test(benutzername);               //RegEx = Regelprüfer für Texte
-                                                                        // [A-Z] = mindestens 1 Großbuchstabe
-                                                                        //[a-z] = mindestens 1 Kleinbuchstabe
-                                                                        //.test(...) = prüft, ob das im Text vorkommt
+    const hatKleinBuchstabe = /[a-z]/.test(benutzername);               //RegEx = Regelprüfer für angegebnen text
+                                                                        //.test = prüft, ob das im benutzername vorkommt
 
    
     const passwortlänge = passwort.length >= 10;
@@ -47,7 +45,8 @@ function ValidierungLogin() {
     if (benutzername.length === 0) {
         benutzernameFeld.classList.remove("inputOk");
         benutzernameFeld.classList.remove("inputFehler");
- //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv, also entweder: input ok oder input fehler sonst kämpfen die gegeneinander an !!
+ //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv,
+ //  also entweder: input ok oder input fehler sonst kämpfen die gegeneinander an !!
 
 
     }
