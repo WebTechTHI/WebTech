@@ -45,7 +45,8 @@ function ValidierungLogin() {
     if (benutzername.length === 0) {
         benutzernameFeld.classList.remove("inputOk");
         benutzernameFeld.classList.remove("inputFehler");
- //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv, also entweder: input ok oder input fehler sonst kämpfen die gegeneinander an !!
+ //--> mit remove von rot wollen wir das --> immer nur EINE Klasse aktiv,
+ //  also entweder: input ok oder input fehler sonst kämpfen die gegeneinander an !!
 
 
     }
