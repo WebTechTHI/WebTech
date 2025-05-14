@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLR - Gaming PCs & Desktop Computer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #e6e6e6;
+        }
+        
+        .top-bar {
+            background-color: #222;
+            color: white;
+            padding: 8px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hotline, .right-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .hotline {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .right-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        
+        .main-nav {
+            background-color: #111;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 40px;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 30px;
+        }
+        
+        .main-menu {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .main-menu a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .main-menu a:hover {
+            color: white;
+        }
+        
+        .main-menu a.active {
+            color: white;
+        }
+        
+        .red-badge {
+            background-color: #e00;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 50%;
+            font-size: 10px;
+            margin-left: 5px;
+            vertical-align: super;
+        }
+        
+        .cart {
+            background-color: #e00;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: white;
+            color: #e00;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .breadcrumb {
+            padding: 10px 40px;
+            background-color: #e6e6e6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .breadcrumb a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .sidebar {
+            width: 240px;
+            background-color: white;
+            margin: 20px;
+            padding: 0;
+        }
+        
+        .sidebar-title {
+            background-color: #111;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-menu a {
+            display: block;
+            padding: 15px;
+            color: #333;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .sidebar-menu a::before {
+            content: "›";
+            position: absolute;
+            left: 5px;
+            color: #e00;
+        }
+        
+        .filter-section {
+            background-color: white;
+            margin: 20px;
+            padding: 15px;
+        }
+        
+        .filter-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .filter-group {
+            margin-bottom: 20px;
+        }
+        
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .filter-options {
+            list-style: none;
+        }
+        
+        .filter-options li {
+            margin-bottom: 5px;
+        }
+        
+        .reset-btn {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #f5f5f5;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        
+        .reset-icon {
+            color: #e00;
+            margin-left: 5px;
+        }
+        
+        .main-content {
+            display: flex;
+        }
+        
+        .products {
+            flex: 1;
+            padding: 0 20px 20px 0;
+        }
+        
+        .banner {
+            width: 100%;
+            background-color: #111;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-image: linear-gradient(to right, #000, #111);
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .banner-content {
+            width: 60%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .banner h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .banner h1 span {
+            color: #e00;
+        }
+        
+        .banner p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 40%;
+            background-image: url('/api/placeholder/500/300');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin: 30px 0 20px;
+            text-transform: uppercase;
+        }
+        
+        .subtext {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .read-more {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        
+        .read-more a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .category {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        
+        .category-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title::after {
+            content: "›";
+            margin-left: 5px;
+            color: #e00;
+        }
+        
+        .category-image {
+            width: 100%;
+            height: 180px;
+            background-color: #111;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .category-specs {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        
+        .category-specs li {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .category-specs li::before {
+            content: "›";
+            margin-right: 5px;
+            color: #e00;
+        }
+        
+        .topseller {
+            margin-top: 40px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            display: flex;
+            position: relative;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #111;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .product-image {
+            width: 40%;
+            padding-right: 15px;
+        }
+        
+        .product-details {
+            width: 60%;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .product-specs {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        
+        .product-specs li {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .product-specs li::before {
+            content: "›";
+            margin-right: 5px;
+            color: #e00;
+        }
+        
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .price-prefix {
+            font-size: 18px;
+            vertical-align: top;
+        }
+        
+        .financing {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .financing span {
+            color: #0c0;
+        }
+        
+        .buy-btn {
+            display: block;
+            background-color: #e00;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .fixed-menu {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .fixed-menu a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid #ddd;
+            margin-bottom: 1px;
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="hotline">Experten-Hotline: +49 89/660 77 969 0</div>
+        <div class="right-links">
+            <a href="#">B2B</a> | 
+            <a href="#">Showroom</a> |
+            <a href="#">Login / Registrieren</a> |
+            <a href="#">Mein Konto</a> |
+            <a href="#">DE</a> |
+            <a href="#">Vergleichen</a> |
+            <a href="#">Merken</a> |
+            <a href="#">Konfigurationen</a>
+        </div>
+    </div>
+    
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="/api/placeholder/120/30" alt="MLR Logo" style="height:30px;">
+        </div>
+        <div class="main-menu">
+            <a href="#">Editions</a>
+            <a href="#" class="active">Desktop PCs</a>
+            <a href="#">Laptops</a>
+            <a href="#">Professional</a>
+            <a href="#">PC Konfigurator</a>
+            <a href="#">Sale & Aktionen <span class="red-badge">5</span></a>
+            <a href="#">Peripherie</a>
+        </div>
+        <a href="#" class="cart">
+            MEIN WARENKORB
+            <span class="cart-badge">0</span>
+        </a>
+    </nav>
+    
+    <div class="breadcrumb">
+        <a href="#">MLR</a> › 
+        <span>Desktop PCs</span>
+    </div>
+    
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="sidebar-title">DESKTOP PCS</div>
+            <ul class="sidebar-menu">
+                <li><a href="#">Gaming PCs</a></li>
+                <li><a href="#">High-End PCs</a></li>
+                <li><a href="#">Silent PCs</a></li>
+                <li><a href="#">Creator</a></li>
+                <li><a href="#">Mini Gaming PCs</a></li>
+                <li><a href="#">Office & Mini PCs</a></li>
+                <li><a href="#">Wassergekühlte PCs</a></li>
+                <li><a href="#">PC Technik-Highlights</a></li>
+            </ul>
+            
+            <div class="filter-section">
+                <div class="filter-title">Auswahl filtern</div>
+                
+                <div class="filter-group">
+                    <div class="filter-header">
+                        <span>CPU</span>
+                        <span>▼</span>
+                    </div>
+                    <ul class="filter-options">
+                        <li><input type="checkbox" id="amd-5"> <label for="amd-5">AMD Ryzen 5 (80)</label></li>
+                        <li><input type="checkbox" id="amd-7"> <label for="amd-7">AMD Ryzen 7 (174)</label></li>
+                        <li><input type="checkbox" id="amd-9"> <label for="amd-9">AMD Ryzen 9 (41)</label></li>
+                        <li><input type="checkbox" id="intel-5"> <label for="intel-5">Intel Core i5 (35)</label></li>
+                        <li><input type="checkbox" id="intel-7"> <label for="intel-7">Intel Core i7 (32)</label></li>
+                        <li><input type="checkbox" id="intel-9"> <label for="intel-9">Intel Core i9 (13)</label></li>
+                        <li><input type="checkbox" id="intel-u5"> <label for="intel-u5">Intel Core Ultra 5 (16)</label></li>
+                        <li><input type="checkbox" id="intel-u7"> <label for="intel-u7">Intel Core Ultra 7 (36)</label></li>
+                        <li><input type="checkbox" id="intel-u9"> <label for="intel-u9">Intel Core Ultra 9 (34)</label></li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="reset-btn">ZURÜCKSETZEN <span class="reset-icon">✕</span></a>
+                
+                <div class="filter-group">
+                    <div class="filter-header">
+                        <span>Grafik</span>
+                        <span>▼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="products">
+            <div class="banner">
+                <div class="banner-content">
+                    <h1><span>DESKTOP PC</span> SYSTEME</h1>
+                    <p>Die größte Auswahl von konfigurierbaren Desktop PCs</p>
+                </div>
+            </div>
+            
+            <div class="section-info">
+                <h2>Jetzt Desktop PC konfigurieren: PC Systeme für alle Anwendungen kaufen</h2>
+                <p class="subtext">Der Desktop PC darf in keinem Büro oder in der Gaming-Battlestation fehlen. Bei uns kannst Du viele Desktop PCs konfigurieren, ganz nach deinem Geschmack und Budget. Vom günstigsten Office-PC für unter 500€ bis zum High-End PC jenseits der 5.000€ - hier findest Du das richtige PC System.</p>
+                <div class="read-more">
+                    <a href="#">mehr lesen ▼</a>
+                </div>
+            </div>
+            
+            <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
+            
+            <div class="categories">
+                <div class="category">
+                    <div class="category-title">GAMING PCS</div>
+                    <div class="category-image">
+                        <img src="/api/placeholder/300/180" alt="Gaming PC">
+                    </div>
+                    <ul class="category-specs">
+                        <li>Intel oder AMD Prozessor</li>
+                        <li>NVIDIA oder AMD GPU</li>
+                        <li>Max: 128GB RAM</li>
+                    </ul>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title">HIGH-END PCS</div>
+                    <div class="category-image">
+                        <img src="/api/placeholder/300/180" alt="High-End PC">
+                    </div>
+                    <ul class="category-specs">
+                        <li>Intel i9 oder AMD R9 CPU</li>
+                        <li>RTX 4090 und RX 7900</li>
+                        <li>Max: 256GB RAM</li>
+                    </ul>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title">SILENT PCS</div>
+                    <div class="category-image">
+                        <img src="/api/placeholder/300/180" alt="Silent PC">
+                    </div>
+                    <ul class="category-specs">
+                        <li>Silent-Komponenten</li>
+                        <li>Intel oder AMD Prozessor</li>
+                        <li>Max: 256GB DDR4-RAM</li>
+                    </ul>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title">CREATOR</div>
+                    <div class="category-image">
+                        <img src="/api/placeholder/300/180" alt="Creator PC">
+                    </div>
+                    <ul class="category-specs">
+                        <li>Entwickelt für Erschaffer</li>
+                        <li>8K Performance</li>
+                        <li>NVIDIA oder AMD GPU</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 class="section-title">UNSERE TOPSELLER</h3>
+            
+            <div class="products-grid">
+                <div class="product">
+                    <span class="product-badge">TOP</span>
+                    <div class="product-image">
+                        <img src="/api/placeholder/200/300" alt="Gaming PC Ryzen 7 7700">
+                    </div>
+                    <div class="product-details">
+                        <h4 class="product-title">Gaming PC Ryzen 7 7700 - RTX 5070</h4>
+                        <ul class="product-specs">
+                            <li>AMD Ryzen 7 7700, 8C</li>
+                            <li>MSI B650 Gaming</li>
+                            <li>RTX 5070 12GB, Gainward</li>
+                            <li>32GB DDR5-6600, Corsair RGB</li>
+                        </ul>
+                        <div class="price"><span class="price-prefix">€</span>1.749.-</div>
+                        <div class="financing">Jetzt mit 0% Finanzierung</div>
+                        <a href="#" class="buy-btn">Jetzt konfigurieren</a>
+                    </div>
+                </div>
+                
+                <div class="product">
+                    <span class="product-badge">TOP</span>
+                    <div class="product-image">
+                        <img src="/api/placeholder/200/300" alt="Gaming PC Konfigurator AMD Ryzen 7000">
+                    </div>
+                    <div class="product-details">
+                        <h4 class="product-title">Gaming PC Konfigurator AMD Ryzen 7000 (So. AM5)</h4>
+                        <ul class="product-specs">
+                            <li>AMD Ryzen 5 7500F, 6C</li>
+                            <li>MSI B650 Gaming</li>
+                            <li>AMD/Intel Integrated Graphics</li>
+                            <li>16GB DDR5-5200, Corsair</li>
+                        </ul>
+                        <div class="price"><span class="price-prefix">€</span>799.-</div>
+                        <div class="financing">Jetzt mit 0% Finanzierung</div>
+                        <a href="#" class="buy-btn">Jetzt konfigurieren</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="fixed-menu">
+        <a href="#" title="Infocenter">i</a>
+        <a href="#" title="Rückruf">☎</a>
+        <a href="#" title="Support">?</a>
+        <a href="#" title="Kontakt">✉</a>
+        <a href="#" title="Community">👥</a>
+    </div>
+</body>
+</html>
