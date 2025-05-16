@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="bodyLoginRegistration">
+<body>
 
     <header>
         <a href="../index.html">
@@ -31,71 +31,94 @@
             onclick="toggleTheme()">
     </header>
 
-    <form class="userInfoFormuser" action="user.php" method="post">
 
-        <h1 class="formTitle">Benutzerkonto</h1>
-        <h2 class="formSubtitle">Willkommen, Max Mustermann!</h2>
+        <!-- Ab Hier User Funktionen -->
+   <form class="userInfoFormuser" action="user.php" method="post">
+  <h1 class="formTitle">👤 Benutzerkonto</h1>
+  <h2 class="formSubtitle">Willkommen, Max Mustermann!</h2>
 
+  <div class="infoBlockWide">
+    <h2>🧾 Persönliche Informationen</h2>
 
+    <div class="inputGroup">
+      <label for="username">Benutzername</label>
+      <div class="inputWithIcon">
+        <span class="icon">👤</span>
+        <input class="userInformationInput" type="text" id="username" name="username" value="MaxMustermann" maxlength="25">
+      </div>
+    </div>
 
-        <!-- Breiter Block für persönliche Informationen -->
-        <div class="infoBlockWide">
-            <h2>Persönliche Informationen</h2>
+    <div class="inputGroup">
+      <label for="username2">Richtiger Name</label>
+      <div class="inputWithIcon">
+        <span class="icon">🧑</span>
+        <input class="userInformationInput" type="text" id="username2" name="username2" value="Max" maxlength="25">
+      </div>
+    </div>
 
-            <label for="username">Benutzername </label>
-            <input class="userInformationInput" type="text" id="username" name="username" value="MaxMustermann"
-                maxlength="25" >
+    <div class="inputGroup">
+      <label for="userpassword">Passwort</label>
+      <div class="inputWithIcon">
+        <span class="icon">🔒</span>
+        <input class="userInformationInput" type="password" id="userpassword" name="password" value="123456789" minlength="3" maxlength="25">
+      </div>
+    </div>
 
+    <input class="submitButton" type="submit" value="💾 Sichern">
+  </div>
 
-            <label for="username2">Richtiger Name</label>
-            <input class="userInformationInput" type="text" id="username2" name="username2" value="Max" maxlength="25">
+  <div class="infoRow">
+    <div class="infoBlockSmall">
+      <h2>🌍 Weitere Informationen</h2>
 
-            <label for="password">Dein Passwort </label>
-            <input class="userInformationInput" type="password" id="userpassword" name="password" value="123456789"
-                minlength="3" maxlength="25" >
-
-
-
-            <input class="submitButton" type="submit" value="Sichern" >
-            <br>
-  
-
-
+      <div class="inputGroup">
+        <label for="Land">Land</label>
+        <div class="inputWithIcon">
+          <span class="icon">🏳️</span>
+          <input class="userInformationInput" type="text" id="Land" name="Land" value="Deutschland">
         </div>
+      </div>
 
-        <div class="infoRow">
-            <div class="infoBlockSmall">
-                <h2>Weitere Informationen</h2>
-
-                <label>Land</label>
-                <input class="userInformationInput" type="text" id="Land" name="Land" value="Deutschland">
-
-                <label>Stadt</label>
-                <input class="userInformationInput" type="text" id="Stadt" name="Stadt" value="Ingolstadt">
-
-                <label>Email Adresse</label>
-                <input class="userInformationInput" type="text" id="email" name="email" value="MaxMustermann@email.de">
-
-            </div>
-            <div class="infoBlockSmall">
-                <h2>Verschiedenes</h2>
-
-                <label>Zeitzone</label>
-                <input class="userInformationInput" type="text" id="Zeitzone" name="Zeitzone" value="Europe/Berlin"
-                    disabled>
-
-                <label>Datenschutz</label>
-                <input class="userInformationInput" type="text" id="Datenschutz" name="Datenschutz"
-                    value="Datenschutz-Grundverordnung DSGVO" disabled>
-            </div>
+      <div class="inputGroup">
+        <label for="Stadt">Stadt</label>
+        <div class="inputWithIcon">
+          <span class="icon">🏙️</span>
+          <input class="userInformationInput" type="text" id="Stadt" name="Stadt" value="Ingolstadt">
         </div>
-    </form>
+      </div>
 
-    <script>
+      <div class="inputGroup">
+        <label for="email">E-Mail Adresse</label>
+        <div class="inputWithIcon">
+          <span class="icon">✉️</span>
+          <input class="userInformationInput" type="text" id="email" name="email" value="MaxMustermann@email.de">
+        </div>
+      </div>
+    </div>
+
+    <div class="infoBlockSmall">
+      <h2>⚙️ Verschiedenes</h2>
+
+      <div class="inputGroup">
+        <label for="Zeitzone">Zeitzone</label>
+        <div class="inputWithIcon">
+          <span class="icon">⏰</span>
+          <input class="userInformationInput" type="text" id="Zeitzone" name="Zeitzone" value="Europe/Berlin" disabled>
+        </div>
+      </div>
+
+      <div class="inputGroup">
+        <label for="Datenschutz">Datenschutz</label>
+        <div class="inputWithIcon">
+          <span class="icon">📄</span>
+          <input class="userInformationInput" type="text" id="Datenschutz" name="Datenschutz" value="Datenschutz-Grundverordnung DSGVO" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
 
 
-
-    </script>
 
 
     <footer>
