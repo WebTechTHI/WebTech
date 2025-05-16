@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="bodyLoginRegistration">
+<body>
 
     <header>
         <a href="../index.html">
@@ -30,35 +30,33 @@
    
 
     <!-- Ab Hier Login Funktionen -->
-    <form class="userInfoFormlogin" action="login.php" method="post">
-        <h1 class="formTitle" title="Please fill out the blanks"> Login</h1>
-        
-    <h4 class="formSubtitle" title="Please fill out the blanks"> Bitte geben sie ihre Anmeldeinformationen ein.</h4>
+ <!-- 🔧 Überarbeiteter login.html – moderner & professioneller -->
+<form class="userInfoFormlogin" action="login.php" method="post">
+    <h1 class="formTitle" title="Please fill out the blanks">🔐 Login</h1>
+    <h4 class="formSubtitle" title="Please fill out the blanks">Melden Sie sich mit Ihren Zugangsdaten an</h4>
 
-
-
-        <div>
-            <input class="userInformationInput" name="variablefromusername" id="usernamelogin" type="text"
-                placeholder="Benutzername" >
+    <div class="inputGroup">
+        <label for="usernamelogin">Benutzername</label>
+        <div class="inputWithIcon">
+            <span class="icon">👤</span>
+            <input class="userInformationInput" name="variablefromusername" id="usernamelogin" type="text" placeholder="Benutzername" required>
         </div>
-
-        <div>
-            <input class="userInformationInput" name="variableformpassword" id="userpasswordlogin" type="password"
-                placeholder="Passwort" >
-        </div>
-
-        <input class="submitButton" type="submit" value="Anmelden">
-
-            
-<hr>
-            <div>
-        <label title="Wenn sie noch keinen einen Account haben können sie mit dem Registrieren Button einen erstellen!">Noch keinen Account ? </label>
-
-        <a class="directionbutton" href="registration.html">Zur Registrierung</a>
-
     </div>
 
-    </form>
+    <div class="inputGroup">
+        <label for="userpasswordlogin">Passwort</label>
+        <div class="inputWithIcon">
+            <span class="icon">🔒</span>
+            <input class="userInformationInput" name="variableformpassword" id="userpasswordlogin" type="password" placeholder="Passwort" required>
+        </div>
+    </div>
+
+    <input class="submitButton" type="submit" value="🔐 Anmelden">
+
+    <hr>
+    <label  title="Wenn sie noch keinen einen Account haben können sie mit dem Registrieren Button einen erstellen!">Sie haben noch keinen Account?</label>
+    <a class="directionbutton" href="registration.html">Zur Registrierung</a>
+</form>
 
 
 

@@ -31,58 +31,57 @@
 
 
     <!-- Ab Hier Registrieren Formular -->
-    <form class="userInfoFormregistration" action="registration.php" method="post">
+   <form class="userInfoFormregistration" action="registration.php" method="post">
+    <h1 class="formTitle" title="Please fill out the blanks">📝 Registrierung</h1>
+    <h4 class="formSubtitle" title="Please fill out the blanks">Bitte erstellen Sie ein Benutzerkonto</h4>
 
-        <h1 class="formTitle" title="Please fill out the blanks"> Registrierungsformular</h1>
+    <div class="hinweisBlock">
+        <p><strong>Hinweis zur Eingabe:</strong></p>
+        <ul>
+            <li>Benutzername: mind. 5 Zeichen</li>
+            <li>Mindestens ein Groß- und Kleinbuchstabe im Benutzernamen</li>
+            <li>Passwort: mind. 10 Zeichen</li>
+            <li>Passwort-Wiederholung muss exakt übereinstimmen</li>
+        </ul>
+    </div>
 
-        <h4 class="formSubtitle" title="Please fill out the blanks"> Bitte erstellen sie einen Benutzer</h4>
-
-        <div class="hinweisBlock">
-    <p><strong>Hinweis zur Eingabe:</strong></p>
-    <ul>
-        <li>Benutzername: mind. 5 Zeichen</li>
-        <li>Mindestens ein Groß- und Kleinbuchstabe im Benutzernamen</li>
-        <li>Passwort: mind. 10 Zeichen</li>
-        <li>Passwort-Wiederholung muss exakt übereinstimmen</li>
-    </ul>
-</div>
-
-
-        <div>
-            <input class="userInformationInput" type="text" name="fromusernameregistration" id="usernameregistration"
-                placeholder="Benutzername"  required>
+    <div class="inputGroup">
+        <label for="usernameregistration">Benutzername</label>
+        <div class="inputWithIcon">
+            <span class="icon">👤</span>
+            <input class="userInformationInput" type="text" name="fromusernameregistration" id="usernameregistration" placeholder="Benutzername" required>
         </div>
+    </div>
 
-        <div>
-            <input class="userInformationInput" type="password" name="fromuserpasswordregistration"
-                id="userpasswordregistration" placeholder="Passwort"  required>
+    <div class="inputGroup">
+        <label for="userpasswordregistration">Passwort</label>
+        <div class="inputWithIcon">
+            <span class="icon">🔒</span>
+            <input class="userInformationInput" type="password" name="fromuserpasswordregistration" id="userpasswordregistration" placeholder="Passwort" required>
         </div>
+    </div>
 
-        <div>
-            <input class="userInformationInput" type="password" name="fromuserpasswordregistrationconfirmation"
-                id="userpasswordregistrationconfirmation" placeholder="Passwort bestätigen" required>
+  
+    <div class="inputGroup">
+        <label for="userpasswordregistrationconfirmation">Passwort bestätigen</label>
+        <div class="inputWithIcon">
+            <span class="icon">🔒</span>
+            <input class="userInformationInput" type="password" name="fromuserpasswordregistrationconfirmation" id="userpasswordregistrationconfirmation" placeholder="Passwort bestätigen" required>
         </div>
+    </div>
 
-        <div>
-            <!-- Submit-Button (Daten an Server schicken) -->
-            <input class="submitButton" type="submit" value="Registrieren">
-        </div>
+            <!-- Submit-Button (Daten an Server schicken) -->  
+    <input class="submitButton" type="submit" value="📝 Registrieren">
 
+    <hr>
 
-        <hr>
-        <label for="registration_back_to_login_button"
-            title="Wenn sie bereits einen Account haben können sie mit dem Login Button sich einloggen!">Haben Sie
-            bereits einen Account?</label>
+    <label  title="Wenn sie bereits einen Account haben können sie mit dem Login Button sich einloggen!">Sie haben bereits ein Konto?</label>
+          <!-- Abbrechen-Button (Zurück zu Login Maske) -->
+    <a class="directionbutton" href="login.html"  title="Wenn sie bereits einen Account haben können sie mit dem Login Button sich einloggen!">Zum Login</a>
+          <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->
+    <a class="directionbutton" href="../index.html" onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zur Startseite</a>
+</form>
 
-        <!-- Abbrechen-Button (Zurück zu Login Maske) -->
-        <a href="login.html" class="directionbutton">Login</a>
-
-
-        <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->
-        <a name="registration_back_to_login_button" class="directionbutton"
-            onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zurück
-            zur Startseite</a>
-    </form>
 
 
 
