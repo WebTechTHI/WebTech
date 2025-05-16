@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html lang="de">
-    
-  <link rel="stylesheet" href="../assets/css/mystyle.css">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MLR | Warenkorb</title>
-  <link rel="icon" href="../assets/images/logo/favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="../assets/css/specialHeader.css">
-  <link rel="stylesheet" href="../assets/css/footer.css">
-
-    <script src="/assets/javascript/toggleTheme.js"></script>
+  <link rel="icon" href="../assets/images/logo/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/mystyle.css" />
+  <link rel="stylesheet" href="../assets/css/specialHeader.css" />
+  <link rel="stylesheet" href="../assets/css/footer.css" />
+  <link rel="stylesheet" href="../assets/css/warenkorbSide.css" />
+  <script src="/assets/javascript/toggleTheme.js"></script>
 </head>
-
 <body>
 
-    <header>
-      <a href="../index.html">
-        <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" width="200" style="margin-top: 20px">
-      </a>
-        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
-    </header>
-    <main>
-    <h1>Warenkorb</h1>
-    <table id="shoppingBasket" name="warenkorb" border="5" style="text-align: center;">
-      <div>
-        <tr>
-          <th>Produkt</th>
-          <th>Preis</th>
-        </tr>
-      </div>
-      <div>
-        <tr id="product1">
-          <td id="product1Label">Laptop</td>
-          <td id="product1Price">899€</td>
-        </tr>
-      </div>
-      <div>
-        <tr id="product2">
-          <td id="product2Label">Maus</td>
-          <td id="product2Price">51€</td>
-        </tr>
-      </div>
-      <div>
-        <tr id="sum">
-          <td><strong>Summe</strong></td>
-          <td id="sumAcc"><italic>sum</italic></td>
-        </tr>
-      </div>
-    </table>
+  <header>
+    <a href="../index.html">
+      <img src="../assets/images/logo/logoDarkmode.png" alt="Logo" class="logoHeader" />
+    </a>
+    <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()" />
+  </header>
 
+  <main class="basketContainer">
+    <h1 class="basketTitle">🛒 Dein Warenkorb</h1>
+
+    <div class="basketItem">
+      <span class="basketItemName">Laptop</span>
+      <span class="basketItemPrice">899 €</span>
+    </div>
+
+    <div class="basketItem">
+      <span class="basketItemName">Maus</span>
+      <span class="basketItemPrice">51 €</span>
+    </div>
+
+    <div class="basketSummary">
+      <span>Gesamt:</span>
+      <strong>950 €</strong>
+    </div>
+
+    <div class="basketActions">
+      <a href="../index.html" class="directionbutton">🛍️ Weiter einkaufen</a>
+      <a href="checkout.html" class="submitButton">💳 Zur Kasse</a>
+    </div>
   </main>
 
-    <script>
+  <footer>
+    <nav>
+      <p>© 2025 MLR | <a href="about.html">Impressum</a></p>
+    </nav>
+  </footer>
 
-      document.getElementById("sumAcc").innerHTML = parseFloat(document.getElementById("product1Price").innerHTML) + parseFloat(document.getElementById("product2Price").innerHTML) + "€";
-
-    </script>
-
-
-    <footer>
- 
-      <nav>
-        <p>© 2025 MLR | <a href="about.html">Impressum</a></p>
-      </nav>
-    </footer>
-
-  </body>
-
+</body>
 </html>
