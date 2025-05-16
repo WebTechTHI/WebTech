@@ -1,4 +1,6 @@
 
+
+
 /* Forms and user interface elements - Made responsive */
 body {
     text-align: center;
@@ -14,20 +16,32 @@ body {
 }
 
 .userInfoFormlogin,
+.userInfoFormregistration {
+    max-width: 600px;
+}
+
+.userInfoFormuser {
+    max-width: 1200px;
+}
+
+.userInfoFormlogin,
 .userInfoFormregistration,
 .userInfoFormuser {
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
     width: 90%;
-    max-width: 600px;
     text-align: center;
     padding: 5px 1px 80px;
     border-radius: 30px;
     border: 2px solid var(--user-form-border);
     background: var(--user-form-bg);
     margin: 50px 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
+
 
 .userInformationInput {
     display: block;
@@ -182,6 +196,109 @@ label {
 
 
 
+/*Icon bei Registrations einfügen*/
+.inputGroup {
+    margin-bottom: 25px;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputWithIcon {
+    position: relative;
+}
+
+.inputWithIcon .icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #666;
+}
+
+.inputWithIcon input {
+    padding-left: 42px !important;
+}
+
+
+
+
+
+
+
+
+/*  Ab hier User daten*/
+.infoBlockWide {
+    background-color: var(--user-block-bg-color);
+    border: 1px solid var(--user-block-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.infoRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.infoBlockSmall {
+    flex: 1 1 calc(50% - 20px); 
+    min-width: 250px; 
+    background-color: var(--user-block-bg-color);
+    border: 1px solid var(--user-block-border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .infoBlockSmall {
+        flex: 1 1 100%;
+    }
+}
+
+.infoBlockWide h2,
+.infoBlockSmall h2 {
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--user-block-title-color);
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+  /*     Logout-Styles  */
+.logoutMessage {
+  margin: 30px 0;
+  font-size: 18px;
+  color: var(--logout-message-color);
+  font-weight: 500;
+}
+
+.basketActions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.basketActions .directionbutton {
+  max-width: 220px;
+}
+
+
 
 
 
@@ -212,3 +329,5 @@ label {
   }
   */
   
+
+
