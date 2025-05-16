@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<body>
+<header id="header">
+
+  <div class="header-left"><img src="assets/images/logo/logo.png" alt="Logo.png"></div>
+
+  <nav class="mainNav">
+    <ul>
+        <li>
+            <a href="productLists/desktopPcList.html">Desktop-PCs</a>
+            <ul class="subMenu">
+                <li><a href="productLists/gamingPcList.html">Gaming-PCs</a></li>
+                <li><a href="productLists/officePcList.html">Office-PCs</a></li>
+                <li><a href="productLists/workstationList.html">Workstations</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="productLists/laptopList.html">Laptops</a>
+            <ul class="subMenu">
+                <li><a href="productLists/gamingLaptopList.html">Gaming Laptops</a></li>
+                <li><a href="productLists/officeLaptopList.html">Office Laptops</a></li>
+                <li><a href="productLists/businessLaptopList.html">Business Laptops</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="productLists/zubehörList.html">Zubehör</a>
+            <ul class="subMenu">
+                <li><a href="productLists/monitorList.html">Monitore</a></li>
+                <li><a href="productLists/mausList.html">Mäuse</a></li>
+                <li><a href="productLists/tastaturList.html">Tastaturen</a></li>
+                <li><a href="productLists/headsetList.html">Headsets</a></li>
+            </ul>
+        </li>
+
+        <li class="headerDeals">
+            <a href="productLists/deals.html">Angebote</a>
+        </li>
+
+        <li>
+            <a href="pages/Komponenten.html">Komponenten</a>
+        </li>
+
+        <li>
+            <div class="search-container">
+                <img src="assets/images/icons/suchIcon.png" alt="Suche" id="searchIcon" class="suchIcon"
+                    onclick="document.getElementById('suchFeld').classList.toggle('active')">
+                <input type="text" name="suchFeld" id="suchFeld" placeholder="Suchen..." onkeyup="searchFunction()">
+            </div>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="header-right">
+    <ul class=userNav>
+        <a href="pages/login.html" title="Login">
+            <img class="userIconHeader" src="assets/images/icons/login.png" alt="Login">
+        </a>
+        <a href="pages/registration.html" title="Registrieren">
+            <img class="userIconHeader" src="assets/images/icons/register.png" alt="Registrieren">
+        </a>
+        <a href="pages/logout.html" title="Logout">
+            <img class="userIconHeader" src="assets/images/icons/logout.png" alt="Logout">
+        </a>
+        <a href="pages/shoppingBasket.html" title="Warenkorb">
+            <img class="userIconHeader" src="assets/images/icons/shoppingcart.png" alt="Warenkorb">
+        </a>
+        <a href="pages/user.html" title="Benutzerkonto">
+            <img class="userIconHeader" src="assets/images/icons/user.png" alt="Benutzerkonto">
+        </a>
+    </ul>
+    <img id="themeToggleBtn" class="toggleTheme" src="assets/images/icons/darkmode-btn.png" onclick="toggleTheme()" alt="Theme umschalten">
+  </div>
+</header>
+</body>
+
+
+<style>
+    :root {
+        --shop-header-theader-bg-color: #1e1e1e;
+        --shop-header-bheader-bg-color: #292929;
+        --shop-header-tlvl-li-color: #f1f1f1;
+        --shop-header-tlvl-li--hover: #3a3a3a;
+        --shop-header-submenu-bg-color: #383838;
+        --shop-header-submenu-li-text-color: #ddd;
+        --shop-header-submenu-li-text-color--hover: #ffffff;
+        --shop-header-submenu-li-bg-color--hover: #4b4b4b;
+        --shop-header-deals-bg-color: #ff5722;
+    }
+
+    .dark-theme {
+        --shop-header-theader-bg-color: #101010;
+        --shop-header-bheader-bg-color: #181818;
+        --shop-header-tlvl-li-color: #ffffff;
+        --shop-header-tlvl-li--hover: #2a2a2a;
+        --shop-header-submenu-bg-color: #202020;
+        --shop-header-submenu-li-text-color: #bbb;
+        --shop-header-submenu-li-text-color--hover: #fff;
+        --shop-header-submenu-li-bg-color--hover: #333;
+        --shop-header-deals-bg-color: #ff3d00;
+    }
+
+body {margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+    header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background-color: var(--shop-header-bheader-bg-color);
+  transition: 0.35s ease-in-out;
+  margin: 0;
+}
+
+header img {
+    max-width: 50px;
+}
+/* Left (frei oder Logo) */
+.header-left {
+  justify-self: start;
+}
+
+/* CENTER NAVIGATION */
+.mainNav {
+  justify-self: center;
+}
+.mainNav > ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.mainNav > ul > li {
+  position: relative;
+  padding: 10px 15px;
+}
+.mainNav > ul > li > a {
+  color: var(--shop-header-tlvl-li-color);
+  font-size: clamp(16px, 2vw, 20px);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.mainNav > ul > li:hover {
+  background-color: var(--shop-header-tlvl-li--hover);
+  border-radius: 6px;
+}
+
+/* Submenus */
+.subMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+  background-color: var(--shop-header-submenu-bg-color);
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  z-index: 5;
+  width: 200px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+.mainNav > ul > li:hover .subMenu {
+  display: flex;
+}
+.subMenu li {
+  padding: 12px 15px;
+}
+.subMenu li a {
+  color: var(--shop-header-submenu-li-text-color);
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+  transition: background 0.2s, color 0.2s;
+}
+.subMenu li:hover {
+  background-color: var(--shop-header-submenu-li-bg-color--hover);
+}
+.subMenu li:hover a {
+  color: var(--shop-header-submenu-li-text-color--hover);
+}
+
+/* Deals */
+.headerDeals {
+  background-color: var(--shop-header-deals-bg-color);
+  border-radius: 6px;
+  padding: 10px 15px;
+}
+.headerDeals > a {
+  color: white;
+  font-weight: bold;
+}
+
+/* RIGHT SECTION: userNav + toggle */
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.userNav {
+  display: flex;
+  gap: 10px;
+}
+.userIconHeader {
+  max-height: 36px;
+  transition: transform 0.2s ease;
+}
+.userIconHeader:hover {
+  transform: scale(1.1);
+}
+.toggleTheme {
+  cursor: pointer;
+  max-width: 36px;
+  transition: transform 0.2s ease;
+}
+.toggleTheme:hover {
+  transform: rotate(15deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    padding: 10px 15px;
+    row-gap: 15px;
+  }
+
+  .mainNav > ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subMenu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .mainNav > ul > li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .header-right {
+    justify-content: center;
+  }
+}
+
+</style>
+
+</html>
