@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLR - Gaming PC Ryzen 7 7700 - RTX 5070</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #e6e6e6;
+        }
+        
+        .top-bar {
+            background-color: #222;
+            color: white;
+            padding: 8px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hotline, .right-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .hotline {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .right-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        
+        .main-nav {
+            background-color: #111;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 40px;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 30px;
+        }
+        
+        .main-menu {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .main-menu a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .main-menu a:hover {
+            color: white;
+        }
+        
+        .main-menu a.active {
+            color: white;
+        }
+        
+        .red-badge {
+            background-color: #e00;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 50%;
+            font-size: 10px;
+            margin-left: 5px;
+            vertical-align: super;
+        }
+        
+        .cart {
+            background-color: #e00;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: white;
+            color: #e00;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .breadcrumb {
+            padding: 10px 40px;
+            background-color: #e6e6e6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .breadcrumb a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        /* Produktdetail-Seite Styling */
+        .product-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .product-gallery {
+            width: 45%;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            background-color: #f5f5f5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .main-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .thumbnail-row {
+            display: flex;
+            justify-content: start;
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .thumbnail:hover {
+            border-color: #e00;
+        }
+        
+        .thumbnail.active {
+            border-color: #e00;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-details {
+            width: calc(55% - 30px);
+        }
+        
+        .product-badge {
+            display: inline-block;
+            background-color: #111;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .product-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .product-id {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .stars {
+            color: #ffc107;
+            margin-right: 10px;
+        }
+        
+        .reviews-count {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .price-container {
+            margin-bottom: 25px;
+        }
+        
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .price-prefix {
+            font-size: 20px;
+            vertical-align: top;
+        }
+        
+        .price-info {
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0 15px;
+        }
+        
+        .price-info span {
+            color: #0c0;
+        }
+        
+        .tax-info {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        .stock-status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .stock-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #0c0;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .stock-text {
+            font-size: 14px;
+            color: #0c0;
+        }
+        
+        .shipping-info {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .qty-selector label {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .qty-input {
+            display: flex;
+            border: 1px solid #ddd;
+        }
+        
+        .qty-btn {
+            width: 30px;
+            height: 38px;
+            background-color: #f5f5f5;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .qty-value {
+            width: 40px;
+            height: 38px;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .buy-btn {
+            display: block;
+            background-color: #e00;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .configure-btn {
+            display: block;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .wishlist-btn {
+            display: block;
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #ddd;
+        }
+        
+        .specs-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .specs-list li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .specs-list li::before {
+            content: "›";
+            margin-right: 8px;
+            color: #e00;
+            font-size: 18px;
+            line-height: 1;
+        }
+        
+        .tabs {
+            width: 100%;
+            margin-top: 40px;
+        }
+        
+        .tab-header {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab-item {
+            padding: 12px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .tab-item.active {
+            border-bottom: 2px solid #e00;
+            color: #e00;
+            margin-bottom: -2px;
+        }
+        
+        .tab-content {
+            padding: 30px 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            padding: 20px;
+        }
+        
+        .tab-content h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .tab-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .specs-table tr:nth-child(odd) {
+            background-color: #f5f5f5;
+        }
+        
+        .specs-table td {
+            padding: 12px;
+            font-size: 14px;
+        }
+        
+        .specs-table td:first-child {
+            width: 30%;
+            font-weight: bold;
+        }
+        
+        .related-products {
+            width: 100%;
+            margin-top: 50px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .products-row {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+        }
+        
+        .related-product {
+            min-width: 280px;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        
+        .related-product-image {
+            width: 100%;
+            height: 180px;
+            background-color: #f5f5f5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .related-product-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 40px;
+        }
+        
+        .related-product-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .related-product-btn {
+            display: block;
+            background-color: #e00;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        
+        .fixed-menu {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .fixed-menu a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid #ddd;
+            margin-bottom: 1px;
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .footer {
+            background-color: #111;
+            color: white;
+            padding: 40px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer-column {
+            width: 22%;
+        }
+        
+        .footer-title {
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .bottom-footer {
+            background-color: #000;
+            color: #777;
+            padding: 15px 40px;
+            font-size: 12px;
+        }
+        
+        .bottom-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .payment-methods img {
+            height: 20px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="hotline">Experten-Hotline: +49 89/660 77 969 0</div>
+        <div class="right-links">
+            <a href="#">B2B</a> | 
+            <a href="#">Showroom</a> |
+            <a href="#">Login / Registrieren</a> |
+            <a href="#">Mein Konto</a> |
+            <a href="#">DE</a> |
+            <a href="#">Vergleichen</a> |
+            <a href="#">Merken</a> |
+            <a href="#">Konfigurationen</a>
+        </div>
+    </div>
+    
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="/api/placeholder/120/30" alt="MLR Logo" style="height:30px;">
+        </div>
+        <div class="main-menu">
+            <a href="#">Editions</a>
+            <a href="#" class="active">Desktop PCs</a>
+            <a href="#">Laptops</a>
+            <a href="#">Professional</a>
+            <a href="#">PC Konfigurator</a>
+            <a href="#">Sale & Aktionen <span class="red-badge">5</span></a>
+            <a href="#">Peripherie</a>
+        </div>
+        <a href="#" class="cart">
+            MEIN WARENKORB
+            <span class="cart-badge">0</span>
+        </a>
+    </nav>
+    
+    <div class="breadcrumb">
+        <a href="#">MLR</a> › 
+        <a href="#">Desktop PCs</a> › 
+        <a href="#">Gaming PCs</a> › 
+        <span>Gaming PC Ryzen 7 7700 - RTX 5070</span>
+    </div>
+    
+    <div class="product-container">
+        <div class="product-gallery">
+            <div class="main-image">
+                <img src="assets/images/products/1/vorne.png" alt="Gaming PC Ryzen 7 7700">
+            </div>
+            <div class="thumbnail-row">
+                <div class="thumbnail active">
+                    <img src="assets/images/products/1/vorne.png" alt="Ansicht 1">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/80/80" alt="Ansicht 2">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/80/80" alt="Ansicht 3">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/80/80" alt="Ansicht 4">
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-details">
+            <span class="product-badge">TOP</span>
+            <h1 class="product-title">Gaming PC Ryzen 7 7700 - RTX 5070</h1>
+            <div class="product-id">Artikelnummer: MLR-RYZEN7-5070</div>
+            
+            <div class="product-rating">
+                <div class="stars">★★★★★</div>
+                <div class="reviews-count">(27 Bewertungen)</div>
+            </div>
+            
+            <div class="price-container">
+                <div class="price"><span class="price-prefix">€</span>1.749.-</div>
+                <div class="price-info">Jetzt mit <span>0% Finanzierung</span> ab €48,58 im Monat</div>
+                <div class="tax-info">inkl. 19% MwSt., zzgl. Versandkosten</div>
+            </div>
+            
+            <div class="stock-status">
+                <div class="stock-dot"></div>
+                <div class="stock-text">Auf Lager, Lieferzeit 1-3 Werktage</div>
+            </div>
+            
+            <div class="shipping-info">
+                Bei Bestellung innerhalb der nächsten <strong>2 Stunden und 47 Minuten</strong> erfolgt der Versand heute.
+            </div>
+            
+            <div class="qty-selector">
+                <label>Menge:</label>
+                <div class="qty-input">
+                    <button class="qty-btn">-</button>
+                    <input class="qty-value" type="text" value="1" readonly>
+                    <button class="qty-btn">+</button>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="buy-btn">IN DEN WARENKORB</button>
+                <a href="#" class="configure-btn">JETZT KONFIGURIEREN</a>
+                <a href="#" class="wishlist-btn">ZUR WUNSCHLISTE HINZUFÜGEN</a>
+            </div>
+            
+            <ul class="specs-list">
+                <li>AMD Ryzen 7 7700, 8C/16T, 5.3 GHz Boost</li>
+                <li>MSI B650 Gaming Mainboard</li>
+                <li>RTX 5070 12GB, Gainward</li>
+                <li>32GB DDR5-6600, Corsair RGB</li>
+                <li>1TB NVMe SSD, WD_BLACK SN850X</li>
+                <li>BeQuiet! 750W 80+ Gold Netzteil</li>
+                <li>Windows 11 Pro vorinstalliert</li>
+            </ul>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab-header">
+                <div class="tab-item active">Produktdetails</div>
+                <div class="tab-item">Technische Daten</div>
+                <div class="tab-item">Bewertungen</div>
+                <div class="tab-item">Zubehör</div>
+                <div class="tab-item">FAQ</div>
+            </div>
+            
+            <div class="tab-content">
+                <h3>Gaming PC Ryzen 7 7700 - RTX 5070</h3>
+                <p>Dieser leistungsstarke Gaming-PC bietet alles, was Sie für ein herausragendes Spielerlebnis benötigen. Mit dem AMD Ryzen 7 7700 Prozessor und der neuesten RTX 5070 Grafikkarte sind Sie bestens für aktuelle und kommende Spieletitel gerüstet.</p>
+                
+                <p>Der Gaming PC ist optimal auf Performance ausgelegt und bietet dank der schnellen DDR5-6600 RAM-Module und der ultraschnellen NVMe SSD genügend Reserven auch für anspruchsvolle Anwendungen und Multitasking.</p>
+                
+                <h3>Leistungsmerkmale:</h3>
+                <ul class="specs-list">
+                    <li>Herausragende Gaming-Performance in 4K und VR</li>
+                    <li>RGB-Beleuchtung für individuellen Style</li>
+                    <li>Leises Kühlsystem für optimale Temperaturen unter Last</li>
+                    <li>Hochwertiges MSI Gaming Mainboard mit vielen Anschlussmöglichkeiten</li>
+                    <li>2 Jahre Garantie und lebenslanger Support</li>
+                </ul>
+                
+                <h3>Was ist im Lieferumfang enthalten?</h3>
+                <ul class="specs-list">
+                    <li>Gaming PC Ryzen 7 7700 - RTX 5070</li>
+                    <li>Netzkabel</li>
+                    <li>Handbuch und Treiber-CD</li>
+                    <li>Kostenloses Spiele-Bundle (limitierte Aktion)</li>
+                </ul>
+                
+                <p>Alle Komponenten wurden sorgfältig ausgewählt und perfekt aufeinander abgestimmt. Nach der Montage wird jedes System einem ausführlichen Belastungstest unterzogen, um eine einwandfreie Funktion zu gewährleisten.</p>
+            </div>
+        </div>
+        
+        <div class="specs-table-container" style="width: 100%; margin-top: 30px; padding: 20px; background-color: white; border: 1px solid #ddd;">
+            <h3 style="margin-bottom: 20px;">Technische Spezifikationen</h3>
+            
+            <table class="specs-table">
+                <tr>
+                    <td>Prozessor</td>
+                    <td>AMD Ryzen 7 7700, 8 Kerne, 16 Threads, 5.3 GHz Max Boost</td>
+                </tr>
+                <tr>
+                    <td>Mainboard</td>
+                    <td>MSI B650 Gaming Mainboard, AM5 Sockel</td>
+                </tr>
+                <tr>
+                    <td>Arbeitsspeicher</td>
+                    <td>32GB (2x16GB) Corsair Vengeance RGB DDR5-6600 MHz</td>
+                </tr>
+                <tr>
+                    <td>Grafikkarte</td>
+                    <td>NVIDIA GeForce RTX 5070, 12GB GDDR6X, Gainward</td>
+                </tr>
+                <tr>
+                    <td>Festplatte / SSD</td>
+                    <td>1TB WD_BLACK SN850X NVMe SSD (Lesen: bis zu 7.300 MB/s)</td>
+                </tr>
+                <tr>
+                    <td>Netzteil</td>
+                    <td>BeQuiet! Straight Power 11 750W, 80+ Gold</td>
+                </tr>
+                <tr>
+                    <td>Gehäuse</td>
+                    <td>MLR Gaming Gehäuse mit Tempered Glass Seitenteil, 4x RGB Lüfter</td>
+                </tr>
+                <tr>
+                    <td>Kühlung</td>
+                    <td>BeQuiet! Dark Rock Pro 4 CPU-Kühler</td>
+                </tr>
+                <tr>
+                    <td>Betriebssystem</td>
+                    <td>Windows 11 Pro 64-bit</td>
+                </tr>
+                <tr>
+                    <td>WLAN</td>
+                    <td>Wi-Fi 6E (802.11ax) + Bluetooth 5.3</td>
+                </tr>
+                <tr>
+                    <td>Anschlüsse vorne</td>
+                    <td>2x USB 3.2 Gen1 Typ-A, 1x USB 3.2 Gen2 Typ-C, Audio In/Out</td>
+                </tr>
+                <tr>
+                    <td>Anschlüsse hinten</td>
+                    <td>4x USB 3.2 Gen1, 2x USB 3.2 Gen2, 1x USB 3.2 Gen2x2 Typ-C, 1x LAN (2.5 GBit), 5x Audio</td>
+                </tr>
+                <tr>
+                    <td>Grafikanschlüsse</td>
+                    <td>3x DisplayPort 1.4a, 1x HDMI 2.1</td>
+                </tr>
+                <tr>
+                    <td>Abmessungen</td>
+                    <td>45 cm x 21 cm x 45 cm (H x B x T)</td>
+                </tr>
+                <tr>
+                    <td>Gewicht</td>
+                    <td>ca. 12 kg</td>
+                </tr>
+                <tr>
+                    <td>Garantie</td>
+                    <td>2 Jahre Garantie, lebenslanger Support</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="related-products">
+            <h3 class="section-title">Das könnte Sie auch interessieren</h3>
+            
+            <div class="products-row">
+                <div class="related-product">
+                    <div class="related-product-image">
+                        <img src="/api/placeholder/200/180" alt="Gaming PC Ryzen 5">
+                    </div>
+                    <h4 class="related-product-title">Gaming PC Ryzen 5 7600X - RTX 4070</h4>
+                    <div class="related-product-price">€1.299.-</div>
+                    <a href="#" class="related-product-btn">Details</a>
+                </div>
+                
+                <div class="related-product">
+                    <div class="related-product-image">
+                        <img src="/api/placeholder/200/180" alt="Gaming PC Ryzen 9">
+                    </div>
+                    <h4 class="related-product-title">Gaming PC Ryzen 9 7900X - RTX 5080 Ti</h4>
+                    <div class="related-product-price">€2.499.-</div>
+                    <a href="#" class="related-product-btn">Details</a>
+                </div>
+                
+                <div class="related-product">
+                    <div class="related-product-image">
+                        <img src="/api/placeholder/200/180" alt="27 Zoll Gaming Monitor">
+                    </div>
+                    <h4 class="related-product-title">27 Zoll Gaming Monitor, 240Hz, 1ms, QHD</h4>
+                    <div class="related-product-price">€399.-</div>
+                    <a href="#" class="related-product-btn">Details</a>
+                </div>
+                
+                <div class="related-product">
+                    <div class="related-product-image">
+                        <img src="/api/placeholder/200/180" alt="Gaming Headset">
+                    </div>
+                    <h4 class="related-product-title">MLR Pro Gaming Headset mit 7.1 Surround Sound</h4>
+                    <div class="related-product-price">€99.-</div>
+                    <a href="#" class="related-product-btn">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="fixed-menu">
+        <a href="#" title="Infocenter">i</a>
+        <a href="#" title="Rückruf">☎</a>
+        <a href="#" title="Support">?</a>
+        <a href="#" title="Kontakt">✉</a>
+        <a href="#" title="Community">👥</a>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4 class="footer-title">Kundenservice</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="#">FAQ / Hilfe</a></li>
+                    <li><a href="#">Rückgabe & Garantie</a></li>
+                    <li><a href="#">Bestellstatus</a></li>
+                    <li><a href="#">Reparaturservice</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4 class="footer-title">Über MLR</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Unternehmen</a></li>
