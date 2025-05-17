@@ -205,23 +205,6 @@ label {
     margin-right: auto;
 }
 
-.inputWithIcon {
-    position: relative;
-}
-
-.inputWithIcon .icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: #666;
-}
-
-.inputWithIcon input {
-    padding-left: 42px !important;
-}
-
 
 
 
