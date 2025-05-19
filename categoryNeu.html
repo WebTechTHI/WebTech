@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/categoryTest.css">
+    <link rel="stylesheet" href="assets/css/shopHeader.css">
+    <link rel="stylesheet" href="assets/css/mystyle.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <script src="assets/javascript/base.js"></script>
+    <script src="assets/javascript/loadProductsTest.js"></script>
+    <script src="assets/javascript/toggleTheme.js"></script>
+    <script>loadProducts('pc')</script>
+</head>
+
+<body>
+    <header id="header">
+        <div id="topHeader" class="topNavHeader">
+            <a class="logo" href='index.html'><img src='assets/images/logo/logoDarkmode.png'></a>
+
+            <nav class="userNav">
+                <a href="pages/login.html"><img class="userIconHeader" src="assets/images/icons/login.png"
+                        alt="Login"></a>
+                <a href="pages/registration.html"><img class="userIconHeader" src="assets/images/icons/register.png"
+                        alt="Registrierung"></a>
+                <a href="pages/logout.html"><img class="userIconHeader" src="assets/images/icons/logout.png"
+                        alt="Logout"></a>
+                <a href="pages/shoppingBasket.html"><img class="userIconHeader"
+                        src="assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
+                <a href="pages/user.html"><img class="userIconHeader" src="assets/images/icons/user.png"></a>
+            </nav>
+        </div>
+
+        <div class="bottomNavHeader">
+            <ul>
+                <li>
+                    <a href="productLists/desktopPcList.html">Desktop-PCs</a>
+                    <ul class="subMenu">
+                        <li><a href="productLists/gamingPcList.html">Gaming-PCs</a></li>
+                        <li><a href="productLists/officePcList.html">Office-PCs</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="productLists/laptopList.html">Laptops</a>
+                    <ul class="subMenu">
+                        <li><a href="productLists/gamingLaptopList.html">Gaming Laptops</a></li>
+                        <li><a href="productLists/officeLaptopList.html">Office Laptops</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="productLists/zubehörList.html">Zubehör</a>
+                    <ul class="subMenu">
+                        <li><a href="productLists/monitorList.html">Monitore</a></li>
+                        <li><a href="productLists/mausList.html">Mäuse</a></li>
+                        <li><a href="productLists/tastaturList.html">Tastaturen</a></li>
+                    </ul>
+                </li>
+                <li class="headerDeals">
+                    <a href="productLists/deals.html">Angebote</a>
+                </li>
+
+                <div class="search-container">
+                    <img src="assets/images/icons/suchIcon.png" alt="Suche" id="searchIcon" class="suchIcon">
+                    <input type="text" name="suchFeld" id="suchFeld" placeholder="Suchen..." onkeyup="searchFunction()">
+                </div>
+            </ul>
+            <img id="themeToggleBtn" class="toggleTheme" src="/assets/images/icons/darkmode-btn.png"
+                onclick="toggleTheme()">
+        </div>
+    </header>
+
+
+
+    <div class="breadcrumb">
+        <a href="#">MLR</a> ›
+        <span>Desktop PCs</span>
+    </div>
+    <div class="main-content">
+
+
+        <div class="sidebar">
+            <div class="sidebar-title">DESKTOP PCS</div>
+            <ul class="sidebar-menu">
+                <li><a href="#">Gaming PCs</a></li>
+                <li><a href="#">High-End PCs</a></li>
+                <li><a href="#">Silent PCs</a></li>
+                <li><a href="#">Creator</a></li>
+                <li><a href="#">Mini Gaming PCs</a></li>
+                <li><a href="#">Office & Mini PCs</a></li>
+                <li><a href="#">Wassergekühlte PCs</a></li>
+                <li><a href="#">PC Technik-Highlights</a></li>
+            </ul>
+
+            <div class="filter-section">
+                <div class="filter-title">Auswahl filtern</div>
+
+                <div class="filter-group">
+                    <div class="filter-header">
+                        <span>CPU</span>
+                        <span>▼</span>
+                    </div>
+                    <ul class="filter-options">
+                        <li><input type="checkbox" id="amd-5"> <label for="amd-5">AMD Ryzen 5 (80)</label></li>
+                        <li><input type="checkbox" id="amd-7"> <label for="amd-7">AMD Ryzen 7 (174)</label></li>
+                        <li><input type="checkbox" id="amd-9"> <label for="amd-9">AMD Ryzen 9 (41)</label></li>
+                        <li><input type="checkbox" id="intel-5"> <label for="intel-5">Intel Core i5 (35)</label></li>
+                        <li><input type="checkbox" id="intel-7"> <label for="intel-7">Intel Core i7 (32)</label></li>
+                        <li><input type="checkbox" id="intel-9"> <label for="intel-9">Intel Core i9 (13)</label></li>
+                        <li><input type="checkbox" id="intel-u5"> <label for="intel-u5">Intel Core Ultra 5 (16)</label>
+                        </li>
+                        <li><input type="checkbox" id="intel-u7"> <label for="intel-u7">Intel Core Ultra 7 (36)</label>
+                        </li>
+                        <li><input type="checkbox" id="intel-u9"> <label for="intel-u9">Intel Core Ultra 9 (34)</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="#" class="reset-btn">ZURÜCKSETZEN <span class="reset-icon">✕</span></a>
+
+                <div class="filter-group">
+                    <div class="filter-header">
+                        <span>Grafik</span>
+                        <span>▼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="products">
+            <div class="banner">
+                <div class="banner-content">
+                    <h1><span>DESKTOP PC</span> SYSTEME</h1>
+                    <p>Die größte Auswahl von konfigurierbaren Desktop PCs</p>
+                </div>
+            </div>
+
+            <div class="section-info">
+                <h2>Jetzt Desktop PC konfigurieren: PC Systeme für alle Anwendungen kaufen</h2>
+                <p class="subtext">Der Desktop PC darf in keinem Büro oder in der Gaming-Battlestation fehlen. Bei uns
+                    kannst Du viele Desktop PCs konfigurieren, ganz nach deinem Geschmack und Budget. Vom günstigsten
+                    Office-PC für unter 500€ bis zum High-End PC jenseits der 5.000€ - hier findest Du das richtige PC
+                    System.</p>
+                <div class="read-more">
+                    <a href="#">mehr lesen ▼</a>
+                </div>
+            </div>
+
+            <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
+
+            <div class="categories">
+                <div class="category">
+                    <div class="category-title">GAMING PCS</div>
+                    <div class="category-image">
+                        <img src="/api/placeholder/300/180" alt="Gaming PC">
+                    </div>
+                    <ul class="category-specs">
+                        <li>Intel oder AMD Prozessor</li>
+                        <li>NVIDIA oder AMD GPU</li>
+                        <li>Max: 128GB RAM</li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <div class="category-title">HIGH-END PCS</div>
+                    <div class="category-image">
+                        <img src="/api/placeholder/300/180" alt="High-End PC">
+                    </div>
+                    <ul class="category-specs">
+                        <li>Intel i9 oder AMD R9 CPU</li>
+                        <li>RTX 4090 und RX 7900</li>
+                        <li>Max: 256GB RAM</li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <div class="category-title">SILENT PCS</div>
+                    <div class="category-image">
+                        <img src="/api/placeholder/300/180" alt="Silent PC">
+                    </div>
+                    <ul class="category-specs">
+                        <li>Silent-Komponenten</li>
+                        <li>Intel oder AMD Prozessor</li>
+                        <li>Max: 256GB DDR4-RAM</li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <div class="category-title">CREATOR</div>
+                    <div class="category-image">
+                        <img src="/api/placeholder/300/180" alt="Creator PC">
+                    </div>
+                    <ul class="category-specs">
+                        <li>Entwickelt für Erschaffer</li>
+                        <li>8K Performance</li>
+                        <li>NVIDIA oder AMD GPU</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="section-title">UNSERE TOPSELLER</h3>
+
+            <div class="products-grid">
+                <div class="product">
+                    <span class="product-badge">TOP</span>
+                    <div class="product-image">
+                        <img src="assets/images/products/7/vorne.png" alt="Gaming PC Ryzen 7 7700">
+                    </div>
+                    <div class="product-details">
+                        <h4 class="product-title">Gaming PC Ryzen 7 7700 - RTX 5070</h4>
+                        <ul class="product-specs">
+                            <li>AMD Ryzen 7 7700, 8C</li>
+                            <li>MSI B650 Gaming</li>
+                            <li>RTX 5070 12GB, Gainward</li>
+                            <li>32GB DDR5-6600, Corsair RGB</li>
+                        </ul>
+                        <div class="price"><span class="price-prefix">€</span>1.749.-</div>
+                        <div class="financing">Jetzt mit 0% Finanzierung</div>
+                        <a href="#" class="buy-btn">Jetzt konfigurieren</a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="product-badge">TOP</span>
+                    <div class="product-image">
+                        <img src="/api/placeholder/200/300" alt="Gaming PC Konfigurator AMD Ryzen 7000">
+                    </div>
+                    <div class="product-details">
+                        <h4 class="product-title">Gaming PC Konfigurator AMD Ryzen 7000 (So. AM5)</h4>
+                        <ul class="product-specs">
+                            <li>AMD Ryzen 5 7500F, 6C</li>
+                            <li>MSI B650 Gaming</li>
+                            <li>AMD/Intel Integrated Graphics</li>
+                            <li>16GB DDR5-5200, Corsair</li>
+                        </ul>
+                        <div class="price"><span class="price-prefix">€</span>799.-</div>
+                        <div class="financing">Jetzt mit 0% Finanzierung</div>
+                        <a href="#" class="buy-btn">Jetzt konfigurieren</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
