@@ -1,9 +1,8 @@
 /* =====================================
-   Farbdefinitionen – Corporate Design
-===================================== */
-:root {
-  /* Primärfarben */
-  --ci-black: #0c0c0c;
+ Farbdefinitionen – Corporate Design
+  ===================================== */ 
+  :root { /* Primärfarben */
+   --ci-black: #0c0c0c;
   --ci-white: #ffffff;
   --ci-red: #d31e07;
   --ci-red-dark: #870000;
@@ -13,22 +12,20 @@
   --ci-green: #278d5e;
   --header-bg: var(--ci-grey-dark);
   --footer-bg: var(--ci-grey-dark);
-  --user-block-bg-color: rgba(255, 255, 255, 0.7); /* etwas kräftiger als vorher */
-  --user-block-border: #cccccc;
+  --user-block-bg-color: rgba(255, 255, 255, 0.7);
+  /* etwas kräftiger als vorher */ --user-block-border: #cccccc;
+ 
 
-
-
-  /* Hintergrund & Text */
-  --main-bg-color: var(--ci-grey-light);
+ /* Hintergrund & Text */ --main-bg-color: var(--ci-grey-light);
   --text-color: var(--ci-black);
   --hr-color: var(--ci-grey);
+ 
 
-  /* Links */
-  --link-color: var(--ci-black);
+ /* Links */ --link-color: var(--ci-black);
   --link-hover-color: var(--ci-white);
+ 
 
-  /* Formulare */
-  --form-bg: rgba(255, 255, 255, 0.2);
+ /* Formulare */ --form-bg: rgba(255, 255, 255, 0.2);
   --form-border: var(--ci-black);
   --input-bg: rgba(238, 238, 238, 0.678);
   --input-color: var(--ci-black);
@@ -37,46 +34,47 @@
   --input-border-focus: rgba(0, 0, 0, 0.2);
   --input-bg-hover: #e6e6e6;
   --input-bg-focus: rgba(255, 255, 255, 0.6);
+ 
 
-  /* Buttons */
-  --submit-bg: var(--ci-red);
+ /* Buttons */ --submit-bg: var(--ci-red);
   --submit-hover: var(--ci-red-dark);
   --submit-text: var(--ci-white);
+ 
 
-  --direction-bg: var(--ci-green);
+ --direction-bg: var(--ci-green);
   --direction-hover: #10532c;
   --direction-text: var(--ci-white);
+ 
 
-  /* Validierung */
-  --input-valid: green;
+ /* Validierung */ --input-valid: green;
   --input-invalid: red;
+ 
 
-  /* Footer */
-  --footer-bg: var(--ci-grey-dark);
+ /* Footer */ --footer-bg: var(--ci-grey-dark);
   --footer-color: var(--ci-white);
-}
+  }
 
 /* =====================================
-   Dark Mode (Überschreibungen)
-===================================== */
-.darkMode {
+ Dark Mode (Überschreibungen) 
+ ===================================== */ 
+ .darkMode { 
   --main-bg-color: #1a1a1a;
   --text-color: #eeeeee;
   --hr-color: #777777;
   --user-block-bg-color: rgba(75, 75, 75, 0.9);
   --user-block-border: #888888;
+ 
 
-
-
-
-  --header-bg: var(--ci-grey-dark);
+ --header-bg: var(--ci-grey-dark);
   --footer-bg: #222222;
   --footer-color: var(--ci-white);
+ 
 
-  --link-color: #eeeeee;
+ --link-color: #eeeeee;
   --link-hover-color: var(--ci-white);
+ 
 
-  --form-bg: rgba(0, 0, 0, 0.3);
+ --form-bg: rgba(0, 0, 0, 0.3);
   --form-border: var(--ci-black);
   --input-bg: #3a3a3a;
   --input-color: #ffffff;
@@ -85,20 +83,22 @@
   --input-border-focus: rgba(255, 255, 255, 0.2);
   --input-bg-hover: #444444;
   --input-bg-focus: rgba(255, 255, 255, 0.1);
+ 
 
-  --submit-bg: var(--ci-red-dark);
+ --submit-bg: var(--ci-red-dark);
   --submit-hover: #700000;
   --submit-text: var(--ci-white);
+ 
 
-  --direction-bg: #09331b;
+ --direction-bg: #09331b;
   --direction-hover: #092e18;
   --direction-text: var(--ci-black);
-}
+  }
 
 /* =====================================
-   Basis-Elemente (Global gültig)
-===================================== */
-body {
+ Basis-Elemente (Global gültig)
+  ===================================== */ 
+  body { 
   background-color: var(--main-bg-color);
   color: var(--text-color);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -106,37 +106,37 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
+  }
 
-main {
+main { 
   flex: 1;
-}
+  }
 
-.container {
+.container { 
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
   box-sizing: border-box;
-}
+  }
 
-a {
+a { 
   color: var(--link-color);
   text-decoration: none;
-}
+  }
 
-a:hover {
+a:hover { 
   color: var(--link-hover-color);
   text-decoration: none;
-}
+  }
 
-hr {
+hr { 
   border: none;
   border-top: 2px solid var(--hr-color);
   margin: 20px 0;
-}
+  }
 
-img {
+img { 
   max-width: 100%;
   height: auto;
-}
+  }
