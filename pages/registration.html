@@ -33,6 +33,9 @@
     <!-- Ab Hier Registrieren Formular -->
    <form class="userInfoFormregistration" action="registration.php" method="post">
     <h1 class="formTitle" title="Please fill out the blanks">📝 Registrierung</h1>
+
+        <div id="liveClock" class="Clock"></div>
+
     <h4 class="formSubtitle" title="Please fill out the blanks">Bitte erstellen Sie ein Benutzerkonto</h4>
 
     <div class="hinweisBlock">
@@ -76,9 +79,11 @@
     
 
     <label  title="Wenn sie bereits einen Account haben können sie mit dem Login Button sich einloggen!">Sie haben bereits ein Konto?</label>
+
           <!-- Abbrechen-Button (Zurück zu Login Maske) -->
     <a class="directionbutton" href="login.html"  title="Wenn sie bereits einen Account haben können sie mit dem Login Button sich einloggen!">Zum Login</a>
-          <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->
+  
+    <!-- Abbrechen-Button (Zurück zu Startseite Maske) -->
     <a class="directionbutton" href="../index.html" onclick='confirmAction("Sind Sie sicher, dass Sie die Registrierung abbrechen möchten? Alle Änderungen gehen verloren.")'>Zur Startseite</a>
 </form>
 
@@ -101,6 +106,7 @@
 
       <!--JavaScript hier noch einfügen-->
       <script src="../assets/javascript/Validierung_Registration.js"></script>
+      <script src="../assets/javascript/uhrzeit.js"></script>
 </body>
 
 </html>

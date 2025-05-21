@@ -331,6 +331,17 @@ label {
 
 
 
+/* Uhrzeit Für Login Registration und User */
+    .Clock {
+  font-size: 1.9rem;
+  color: var( --user-form-title-color);
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+
+
+
 /*JavaScript*/
 .inputFehler {
     border-color: var(--input-invalid);
