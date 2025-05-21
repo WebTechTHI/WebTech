@@ -11,28 +11,51 @@
 </head>
 
 <body>
-    <!-- Top Bar -->
+
+    <!-- top header -->
     <div class="top-bar">
-            <a href="#">B2B</a> |
-            <a href="#">Login / Registrieren</a> |
-            <a href="#">Mein Konto</a> |
-            <a href="#">DE</a> |
-            <a href="#">Vergleichen</a> |
-            <a href="#">Merken</a> |
+        <a id="wishlist-btn-heder" href="#">Merken</a> |
+        <a id="log-reg-btn-header" href="/pages/login.html">Login / Registrieren</a> |
+        <a id="user-btn-header" href="/pages/user.html">Mein Konto</a>
     </div>
 
-    <!-- Main Navigation -->
+    <!-- nav header -->
     <nav class="main-nav">
-       
+
         <div class="main-menu">
             <div class="logo">
-                <a  href="testIndex.html"><img src="assets\images\logo\logoDarkmode.png" alt="MLR Logo" style="height:60px;"></a>
+                <a href="testIndex.html"><img src="/assets\images\logo\logoDarkmode.png" alt="MLR Logo"
+                        style="height:60px;"></a>
             </div>
-            <a href="#">Desktop PCs</a>
-            <a href="#">Laptops</a>
-            <a href="#">Monitore & Zubehör</a>
-            <a href="#">PC Konfigurator</a>
-            <a href="#">Sale & Aktionen <span class="red-badge">5</span></a>
+            <ul>
+                <li>
+                    <a href="#">Desktop PCs</a>
+                    <ul class="submenu">
+                        <li><a>gaming PCs</a></li>
+                        <li><a>office PCs</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Laptops</a>
+                    <ul class="submenu">
+                        <li><a>gaming Laptops</a></li>
+                        <li><a>office Laptops</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Monitore & Zubehör</a>
+                    <ul class="submenu">
+                        <li><a>Monitore</a></li>
+                        <li><a>Zubehör</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">PC Konfigurator</a>
+                </li>
+                <li>
+                    <a href="#">Sale & Aktionen <span class="red-badge">5</span></a>
+                </li>
+            </ul>
         </div>
         <a href="#" class="cart">
             MEIN WARENKORB
@@ -345,41 +368,41 @@
 </body>
 
 <script>
-   document.addEventListener("DOMContentLoaded", () => {
-    // Array mit den Bildpfaden für den Hero-Bereich
-    const heroImages = [
-        '/assets/images/background/index-test-banner1.png',
-        '/assets/images/background/index-test-banner.png',
-    ];
-   
-    let currentImageIndex = 0;
-    const heroImageElement = document.getElementById('heroImage');
-   
-    // Funktion zum Wechseln der Bilder
-    function changeHeroImage() {
-        // Bewege das aktuelle Bild nach links raus
-        heroImageElement.style.transform = 'translateX(-100%)';
-       
-        setTimeout(() => {
-            // Berechne den nächsten Index
-            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-           
-            // Setze das neue Bild und platziere es sofort rechts außerhalb
-            heroImageElement.style.transition = 'none';
-            heroImageElement.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
-            heroImageElement.style.transform = 'translateX(100%)';
-           
+    document.addEventListener("DOMContentLoaded", () => {
+        // Array mit den Bildpfaden für den Hero-Bereich
+        const heroImages = [
+            '/assets/images/background/index-test-banner1.png',
+            '/assets/images/background/index-test-banner.png',
+        ];
+
+        let currentImageIndex = 0;
+        const heroImageElement = document.getElementById('heroImage');
+
+        // Funktion zum Wechseln der Bilder
+        function changeHeroImage() {
+            // Bewege das aktuelle Bild nach links raus
+            heroImageElement.style.transform = 'translateX(-100%)';
+
             setTimeout(() => {
-                // Aktiviere Transition wieder und bewege das Bild von rechts rein
-                heroImageElement.style.transition = 'transform 1.3s ease-in-out';
-                heroImageElement.style.transform = 'translateX(0)';
-            }, 20);
-        }, 1000);
-    }
-   
-    // Starte den automatischen Bildwechsel alle 5 Sekunden
-    setInterval(changeHeroImage, 10000);
-});
+                // Berechne den nächsten Index
+                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+
+                // Setze das neue Bild und platziere es sofort rechts außerhalb
+                heroImageElement.style.transition = 'none';
+                heroImageElement.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
+                heroImageElement.style.transform = 'translateX(100%)';
+
+                setTimeout(() => {
+                    // Aktiviere Transition wieder und bewege das Bild von rechts rein
+                    heroImageElement.style.transition = 'transform 1.3s ease-in-out';
+                    heroImageElement.style.transform = 'translateX(0)';
+                }, 20);
+            }, 1000);
+        }
+
+        // Starte den automatischen Bildwechsel alle 5 Sekunden
+        setInterval(changeHeroImage, 10000);
+    });
 
 
 </script>

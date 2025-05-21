@@ -12,10 +12,10 @@ body {
 .top-bar {
     background-color: #222;
     color: white;
-    padding: 8px 40px;
+    padding: 1vh 3vw;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: right;
+    align-items: right;
     display: flex;
     gap: 15px;
 }
@@ -30,8 +30,9 @@ body {
 .main-nav {
     background-color: #111;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    padding: 10px 40px;
+    padding: 2vh 3vw;
     align-items: center;
 }
 
@@ -42,12 +43,12 @@ body {
 .main-menu {
     display: flex;
     gap: 20px;
+    flex-direction: row;
 }
 
 .main-menu a {
     color: #ccc;
     text-decoration: none;
-    padding: 10px 15px;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: bold;
@@ -57,9 +58,61 @@ body {
     color: white;
 }
 
-.main-menu a.active {
-    color: white;
+.main-menu>ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
 }
+
+.main-menu>ul>li {
+    position: relative;
+    padding: 20px;
+}
+
+.main-menu>ul>li:hover {
+    background-color: #1d1d1d;
+    border-bottom: #ccc solid;
+}
+
+.main-menu>ul>li>.submenu {
+    display: none;
+    background-color: #111;
+    position: absolute;
+    top: 103%;
+    left: 0%;
+    list-style: none;
+    z-index: 5;
+    flex-direction: column;
+    width: max-content;
+    min-width: 150px;
+}
+
+.main-menu>ul>li:hover>.submenu {
+    display: flex;
+    z-index: 5;
+    list-style: none;
+    flex-direction: column;
+}
+
+.main-menu>ul>li>.submenu>li {
+    padding: 15px 20px;
+}
+
+
+.main-menu>ul>li>.submenu>li:last-child {
+    padding-bottom: 20px;
+}
+
+.main-menu>ul>li>.submenu>li>a:hover {
+    cursor: pointer;
+}
+
+.main-menu>ul>li>.submenu>li:has(a:hover) {
+    background-color: #1d1d1d;
+}
+
 
 .red-badge {
     background-color: #e00;
