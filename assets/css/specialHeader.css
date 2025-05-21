@@ -1,32 +1,35 @@
-
-header img{
-    max-height: 200px;
-}
-
-header a{
-    max-height: 200px;
-    max-width: 200px;
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    position: relative;
-    transform: translate(-50%);
-    left: 50%;
-}
-
+/* =======================
+   🔝 HEADER-STYLING
+======================= */
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--special-header-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--header-bg);
+  padding: 10px 20px;
+  box-sizing: border-box;
 }
 
-.toggleThemeSpecial{
-    display:flex;
-    max-height: 50px;
-    max-width: 50px;
-    cursor: pointer;
-    margin-left: auto;
-    transform: translate(-20%);
+header img {
+  max-height: 200px;
+}
+
+header a {
+  max-height: 200px;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  transform: translate(-50%);
+  left: 50%;
+}
+
+.toggleThemeSpecial {
+  display: flex;
+  max-height: 50px;
+  max-width: 50px;
+  cursor: pointer;
+  margin-left: auto;
+  transform: translate(-20%);
 }
