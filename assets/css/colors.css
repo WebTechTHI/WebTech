@@ -1,5 +1,5 @@
 /* =====================================
-   🎨 Farbdefinitionen – Corporate Design
+   Farbdefinitionen – Corporate Design
 ===================================== */
 :root {
   /* Primärfarben */
@@ -57,7 +57,7 @@
 }
 
 /* =====================================
-   🌙 Dark Mode (Überschreibungen)
+   Dark Mode (Überschreibungen)
 ===================================== */
 .darkMode {
   --main-bg-color: #1a1a1a;
@@ -96,7 +96,7 @@
 }
 
 /* =====================================
-   ⚙️ Basis-Elemente (Global gültig)
+   Basis-Elemente (Global gültig)
 ===================================== */
 body {
   background-color: var(--main-bg-color);
