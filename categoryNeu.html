@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MLR - Produktkategorien</title>
     <link rel="stylesheet" href="assets/css/categoryTest.css">
     <link rel="stylesheet" href="assets/css/shopHeader.css">
     <link rel="stylesheet" href="assets/css/mystyle.css">
@@ -12,7 +12,44 @@
     <script src="assets/javascript/base.js"></script>
     <script src="assets/javascript/loadProductsTest.js"></script>
     <script src="assets/javascript/toggleTheme.js"></script>
-    <script>loadProducts('pc')</script>
+    
+    <!-- Kategorie wird über URL-Parameter oder data-Attribut geladen -->
+    <script>
+        // Automatische Kategorieerkennung basierend auf Dateiname oder URL-Parameter
+        function getKategorieFromURL() {
+            // URL-Parameter prüfen
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlKategorie = urlParams.get('kategorie');
+            if (urlKategorie) return urlKategorie;
+            
+            // Dateiname analysieren
+            const filename = window.location.pathname.split('/').pop().replace('.html', '');
+            
+            // Mapping von Dateinamen zu Kategorien
+            const filenameMapping = {
+                'desktopPcList': 'pc',
+                'laptopList': 'laptop',
+                'zubehörList': 'zubehör',
+                'gamingPcList': 'gamingPc',
+                'officePcList': 'officePc',
+                'gamingLaptopList': 'gamingLaptop',
+                'officeLaptopList': 'officeLaptop',
+                'monitorList': 'monitor',
+                'mausList': 'maus',
+                'tastaturList': 'tastatur',
+                'deals': 'angebote'
+            };
+            
+            return filenameMapping[filename] || 'pc'; // Fallback
+        }
+        
+        // Seite laden, wenn DOM bereit ist
+        document.addEventListener('DOMContentLoaded', function() {
+            const kategorie = getKategorieFromURL();
+            //ERSTMAL OHNE QUERY BIS HEADER DYNAMISCH GENERIERT WIRD
+            loadProducts('gamingPc');
+        });
+    </script>
 </head>
 
 <body>
@@ -21,14 +58,10 @@
             <a class="logo" href='index.html'><img src='assets/images/logo/logoDarkmode.png'></a>
 
             <nav class="userNav">
-                <a href="pages/login.html"><img class="userIconHeader" src="assets/images/icons/login.png"
-                        alt="Login"></a>
-                <a href="pages/registration.html"><img class="userIconHeader" src="assets/images/icons/register.png"
-                        alt="Registrierung"></a>
-                <a href="pages/logout.html"><img class="userIconHeader" src="assets/images/icons/logout.png"
-                        alt="Logout"></a>
-                <a href="pages/shoppingBasket.html"><img class="userIconHeader"
-                        src="assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
+                <a href="pages/login.html"><img class="userIconHeader" src="assets/images/icons/login.png" alt="Login"></a>
+                <a href="pages/registration.html"><img class="userIconHeader" src="assets/images/icons/register.png" alt="Registrierung"></a>
+                <a href="pages/logout.html"><img class="userIconHeader" src="assets/images/icons/logout.png" alt="Logout"></a>
+                <a href="pages/shoppingBasket.html"><img class="userIconHeader" src="assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
                 <a href="pages/user.html"><img class="userIconHeader" src="assets/images/icons/user.png"></a>
             </nav>
         </div>
@@ -68,188 +101,139 @@
                     <input type="text" name="suchFeld" id="suchFeld" placeholder="Suchen..." onkeyup="searchFunction()">
                 </div>
             </ul>
-            <img id="themeToggleBtn" class="toggleTheme" src="/assets/images/icons/darkmode-btn.png"
-                onclick="toggleTheme()">
+            <img id="themeToggleBtn" class="toggleTheme" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
         </div>
     </header>
 
-
-
+    <!-- Breadcrumb - wird dynamisch durch JavaScript gefüllt -->
     <div class="breadcrumb">
-        <a href="#">MLR</a> ›
-        <span>Desktop PCs</span>
+        <a href="#">MLR</a> › <span>Laden...</span>
     </div>
+
     <div class="main-content">
-
-
+        <!-- Sidebar - wird dynamisch durch JavaScript gefüllt -->
         <div class="sidebar">
-            <div class="sidebar-title">DESKTOP PCS</div>
+            <div class="sidebar-title">LADEN...</div>
             <ul class="sidebar-menu">
-                <li><a href="#">Gaming PCs</a></li>
-                <li><a href="#">High-End PCs</a></li>
-                <li><a href="#">Silent PCs</a></li>
-                <li><a href="#">Creator</a></li>
-                <li><a href="#">Mini Gaming PCs</a></li>
-                <li><a href="#">Office & Mini PCs</a></li>
-                <li><a href="#">Wassergekühlte PCs</a></li>
-                <li><a href="#">PC Technik-Highlights</a></li>
+                <!-- Wird dynamisch gefüllt -->
             </ul>
 
             <div class="filter-section">
                 <div class="filter-title">Auswahl filtern</div>
-
-                <div class="filter-group">
-                    <div class="filter-header">
-                        <span>CPU</span>
-                        <span>▼</span>
-                    </div>
-                    <ul class="filter-options">
-                        <li><input type="checkbox" id="amd-5"> <label for="amd-5">AMD Ryzen 5 (80)</label></li>
-                        <li><input type="checkbox" id="amd-7"> <label for="amd-7">AMD Ryzen 7 (174)</label></li>
-                        <li><input type="checkbox" id="amd-9"> <label for="amd-9">AMD Ryzen 9 (41)</label></li>
-                        <li><input type="checkbox" id="intel-5"> <label for="intel-5">Intel Core i5 (35)</label></li>
-                        <li><input type="checkbox" id="intel-7"> <label for="intel-7">Intel Core i7 (32)</label></li>
-                        <li><input type="checkbox" id="intel-9"> <label for="intel-9">Intel Core i9 (13)</label></li>
-                        <li><input type="checkbox" id="intel-u5"> <label for="intel-u5">Intel Core Ultra 5 (16)</label>
-                        </li>
-                        <li><input type="checkbox" id="intel-u7"> <label for="intel-u7">Intel Core Ultra 7 (36)</label>
-                        </li>
-                        <li><input type="checkbox" id="intel-u9"> <label for="intel-u9">Intel Core Ultra 9 (34)</label>
-                        </li>
-                    </ul>
-                    
-                </div>
-
                 <a href="#" class="reset-btn">ZURÜCKSETZEN <span class="reset-icon">✕</span></a>
-
-                <div class="filter-group">
-                    <div class="filter-header">
-                        <span>Grafik</span>
-                        <span>▼</span>
-                    </div>
-                </div>
+                <!-- Filter werden dynamisch hinzugefügt -->
             </div>
         </div>
 
+        <!-- Hauptinhalt - wird dynamisch durch JavaScript gefüllt -->
         <div class="products">
+            <!-- Banner - wird dynamisch gefüllt -->
             <div class="banner">
                 <div class="banner-content">
-                    <h1><span>DESKTOP PC</span> SYSTEME</h1>
-                    <p>Die größte Auswahl von konfigurierbaren Desktop PCs</p>
+                    <h1><span>LADEN</span> ...</h1>
+                    <p>Inhalte werden geladen...</p>
                 </div>
             </div>
 
+            <!-- Section Info - wird dynamisch gefüllt -->
             <div class="section-info">
-                <h2>Jetzt Desktop PC konfigurieren: PC Systeme für alle Anwendungen kaufen</h2>
-                <p class="subtext">Der Desktop PC darf in keinem Büro oder in der Gaming-Battlestation fehlen. Bei uns
-                    kannst Du viele Desktop PCs konfigurieren, ganz nach deinem Geschmack und Budget. Vom günstigsten
-                    Office-PC für unter 500€ bis zum High-End PC jenseits der 5.000€ - hier findest Du das richtige PC
-                    System.</p>
+                <h2>Laden...</h2>
+                <p class="subtext">Inhalte werden geladen...</p>
                 <div class="read-more">
                     <a href="#">mehr lesen ▼</a>
                 </div>
             </div>
 
-            <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
-
+            <!-- Kategorien - werden bei Hauptkategorien angezeigt -->
+            <h3 class="section-title" style="display: none;">UNTERKATEGORIE WÄHLEN:</h3>
             <div class="categories">
-                <div class="category">
-                    <div class="category-title">GAMING PCS</div>
-                    <div class="category-image">
-                        <img src="/api/placeholder/300/180" alt="Gaming PC">
-                    </div>
-                    <ul class="category-specs">
-                        <li>Intel oder AMD Prozessor</li>
-                        <li>NVIDIA oder AMD GPU</li>
-                        <li>Max: 128GB RAM</li>
-                    </ul>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">HIGH-END PCS</div>
-                    <div class="category-image">
-                        <img src="/api/placeholder/300/180" alt="High-End PC">
-                    </div>
-                    <ul class="category-specs">
-                        <li>Intel i9 oder AMD R9 CPU</li>
-                        <li>RTX 4090 und RX 7900</li>
-                        <li>Max: 256GB RAM</li>
-                    </ul>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">SILENT PCS</div>
-                    <div class="category-image">
-                        <img src="/api/placeholder/300/180" alt="Silent PC">
-                    </div>
-                    <ul class="category-specs">
-                        <li>Silent-Komponenten</li>
-                        <li>Intel oder AMD Prozessor</li>
-                        <li>Max: 256GB DDR4-RAM</li>
-                    </ul>
-                </div>
-
-                <div class="category">
-                    <div class="category-title">CREATOR</div>
-                    <div class="category-image">
-                        <img src="/api/placeholder/300/180" alt="Creator PC">
-                    </div>
-                    <ul class="category-specs">
-                        <li>Entwickelt für Erschaffer</li>
-                        <li>8K Performance</li>
-                        <li>NVIDIA oder AMD GPU</li>
-                    </ul>
-                </div>
+                <!-- Wird dynamisch gefüllt -->
             </div>
 
+            <!-- Topseller Titel - wird bei Unterkategorien angezeigt -->
             <h3 class="section-title">UNSERE TOPSELLER</h3>
 
+            <!-- Products Grid - wird dynamisch durch JavaScript gefüllt -->
             <div class="products-grid">
-                <div class="product">
-                    <span class="product-badge">TOP</span>
-                    <div class="product-image">
-                        <img src="assets/images/products/7/vorne.png" alt="Gaming PC Ryzen 7 7700">
-                    </div>
-                    <div class="product-details">
-                        <h4 class="product-title">Gaming PC Ryzen 7 7700 - RTX 5070</h4>
-                        <ul class="product-specs">
-                            <li>AMD Ryzen 7 7700, 8C</li>
-                            <li>MSI B650 Gaming</li>
-                            <li>RTX 5070 12GB, Gainward</li>
-                            <li>32GB DDR5-6600, Corsair RGB</li>
-                        </ul>
-                        <div class="price"><span class="price-prefix">€</span>1.749.-</div>
-                        <div class="financing">Jetzt mit 0% Finanzierung</div>
-                        <a href="#" class="buy-btn">Jetzt konfigurieren</a>
-                    </div>
-                </div>
-
-                <div class="product">
-                    <span class="product-badge">TOP</span>
-                    <div class="product-image">
-                        <img src="/api/placeholder/200/300" alt="Gaming PC Konfigurator AMD Ryzen 7000">
-                    </div>
-                    <div class="product-details">
-                        <h4 class="product-title">Gaming PC Konfigurator AMD Ryzen 7000 (So. AM5)</h4>
-                        <ul class="product-specs">
-                            <li>AMD Ryzen 5 7500F, 6C</li>
-                            <li>MSI B650 Gaming</li>
-                            <li>AMD/Intel Integrated Graphics</li>
-                            <li>16GB DDR5-5200, Corsair</li>
-                        </ul>
-                        <div class="price"><span class="price-prefix">€</span>799.-</div>
-                        <div class="financing">Jetzt mit 0% Finanzierung</div>
-                        <a href="#" class="buy-btn">Jetzt konfigurieren</a>
-                    </div>
+                <!-- Loading Placeholder -->
+                <div class="loading-placeholder" style="text-align: center; padding: 40px; color: #666;">
+                    <p>Produkte werden geladen...</p>
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- footer -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <img src="/api/placeholder/120/30" alt="MLR Logo" style="height:30px;">
+                    </div>
+                    <p class="footer-about">
+                        MLR ist Deutschlands führender Anbieter von hochwertigen Gaming-PCs, Laptops und individuell
+                        konfigurierbaren Computer-Systemen mit über 15 Jahren Erfahrung und exzellentem Kundenservice.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">t</a>
+                        <a href="#" title="Instagram">i</a>
+                        <a href="#" title="YouTube">y</a>
+                        <a href="#" title="Discord">d</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">PRODUKTE</h4>
+                    <ul class="footer-links">
+                        <li><a href="productLists/gamingPcList.html">Gaming PCs</a></li>
+                        <li><a href="productLists/desktopPcList.html">Desktop PCs</a></li>
+                        <li><a href="productLists/laptopList.html">Laptops</a></li>
+                        <li><a href="productLists/zubehörList.html">Zubehör</a></li>
+                        <li><a href="productLists/monitorList.html">Monitore</a></li>
+                        <li><a href="#">PC Konfigurator</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">SERVICE</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Reparatur & Wartung</a></li>
+                        <li><a href="#">Garantie</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Hardware-Ratgeber</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">KONTAKT</h4>
+                    <ul class="footer-contact footer-links">
+                        <li><span class="footer-contact-icon">◆</span> MLR GmbH<br>Musterstraße 123<br>80335 München</li>
+                        <li><span class="footer-contact-icon">☎</span> +49 89/660 77 969 0</li>
+                        <li><span class="footer-contact-icon">✉</span> info@mlr-computer.de</li>
+                        <li><span class="footer-contact-icon">⌚</span> Mo-Fr: 9-18 Uhr<br>Sa: 10-14 Uhr</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2025 MLR GmbH. Alle Rechte vorbehalten.</div>
+                <div class="footer-payment">
+                    <div class="payment-icon" title="PayPal"></div>
+                    <div class="payment-icon" title="Visa"></div>
+                    <div class="payment-icon" title="Mastercard"></div>
+                    <div class="payment-icon" title="Klarna"></div>
+                    <div class="payment-icon" title="Sofortüberweisung"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <style>
+        /* Footer Styles */
         .footer {
             background-color: #111;
             color: white;
@@ -261,6 +245,10 @@
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
 
         .footer-logo {
@@ -290,6 +278,7 @@
             border-radius: 50%;
             text-decoration: none;
             font-size: 16px;
+            transition: background-color 0.3s;
         }
 
         .footer-social a:hover {
@@ -315,6 +304,7 @@
 
         .footer-links {
             list-style: none;
+            padding: 0;
         }
 
         .footer-links li {
@@ -342,6 +332,7 @@
         .footer-contact-icon {
             margin-right: 10px;
             color: #e00;
+            min-width: 16px;
         }
 
         .footer-bottom {
@@ -352,6 +343,10 @@
             border-top: 1px solid #333;
             font-size: 13px;
             color: #aaa;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .footer-payment {
@@ -366,100 +361,31 @@
             border-radius: 3px;
         }
 
-        /* Fixed Menu */
-        .fixed-menu {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
+        /* Loading Placeholder Styles */
+        .loading-placeholder {
+            grid-column: 1 / -1;
         }
 
-        .fixed-menu a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            border: 1px solid #ddd;
-            margin-bottom: 1px;
-            color: #333;
-            text-decoration: none;
-            font-size: 18px;
+        /* Container für Footer */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
+        /* Responsive Design für Footer */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
     </style>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-logo">
-                        <img src="/api/placeholder/120/30" alt="MLR Logo" style="height:30px;">
-                    </div>
-                    <p class="footer-about">
-                        MLR ist Deutschlands führender Anbieter von hochwertigen Gaming-PCs, Laptops und individuell
-                        konfigurierbaren Computer-Systemen mit über 15 Jahren Erfahrung und exzellentem Kundenservice.
-                    </p>
-                    <div class="footer-social">
-                        <a href="#" title="Facebook">f</a>
-                        <a href="#" title="Twitter">t</a>
-                        <a href="#" title="Instagram">i</a>
-                        <a href="#" title="YouTube">y</a>
-                        <a href="#" title="Discord">d</a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="footer-title">PRODUKTE</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Gaming PCs</a></li>
-                        <li><a href="#">High-End PCs</a></li>
-                        <li><a href="#">Silent PCs</a></li>
-                        <li><a href="#">Creator PCs</a></li>
-                        <li><a href="#">Gaming Laptops</a></li>
-                        <li><a href="#">PC Konfigurator</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer-title">SERVICE</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Reparatur & Wartung</a></li>
-                        <li><a href="#">Garantie</a></li>
-                        <li><a href="#">Downloads</a></li>
-                        <li><a href="#">Hardware-Ratgeber</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer-title">KONTAKT</h4>
-                    <ul class="footer-contact footer-links">
-                        <li><span class="footer-contact-icon">◆</span> MLR GmbH<br>Musterstraße 123<br>80335 München
-                        </li>
-                        <li><span class="footer-contact-icon">☎</span> +49 89/660 77 969 0</li>
-                        <li><span class="footer-contact-icon">✉</span> info@mlr-computer.de</li>
-                        <li><span class="footer-contact-icon">⌚</span> Mo-Fr: 9-18 Uhr<br>Sa: 10-14 Uhr</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div>© 2025 MLR GmbH. Alle Rechte vorbehalten.</div>
-                <div class="footer-payment">
-                    <div class="payment-icon" title="PayPal"></div>
-                    <div class="payment-icon" title="Visa"></div>
-                    <div class="payment-icon" title="Mastercard"></div>
-                    <div class="payment-icon" title="Klarna"></div>
-                    <div class="payment-icon" title="Sofortüberweisung"></div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 
 </html>

@@ -1,0 +1,150 @@
+{
+  "pc": {
+    "titel": "DESKTOP PC",
+    "untertitel": "SYSTEME",
+    "beschreibung": "Die größte Auswahl von konfigurierbaren Desktop PCs",
+    "infoTitel": "Jetzt Desktop PC konfigurieren: PC Systeme für alle Anwendungen kaufen",
+    "infoText": "Der Desktop PC darf in keinem Büro oder in der Gaming-Battlestation fehlen. Bei uns kannst Du viele Desktop PCs konfigurieren, ganz nach deinem Geschmack und Budget. Vom günstigsten Office-PC für unter 500€ bis zum High-End PC jenseits der 5.000€ - hier findest Du das richtige PC System.",
+    "sidebarTitel": "DESKTOP PCS",
+    "unterkategorien": [
+      {
+        "name": "Gaming PCs",
+        "link": "productLists/gamingPcList.html",
+        "bild": "assets/images/products/2/vorne.png"
+      },
+      {
+        "name": "Office PCs",
+        "link": "productLists/officePcList.html",
+        "bild": "assets/images/products/1/vorne.png"
+      }
+    ],
+    "breadcrumb": "Desktop PCs"
+  },
+  "laptop": {
+    "titel": "LAPTOP",
+    "untertitel": "SYSTEME",
+    "beschreibung": "Die größte Auswahl von Gaming- und Office-Laptops",
+    "infoTitel": "Jetzt Laptop konfigurieren: Mobile Systeme für unterwegs kaufen",
+    "infoText": "Der perfekte Laptop für jeden Anwendungsbereich. Ob Gaming-Laptop für unterwegs oder Office-Laptop für die Arbeit - bei uns findest Du das richtige mobile System. Von günstigen Office-Laptops bis zu High-End Gaming-Laptops.",
+    "sidebarTitel": "LAPTOPS",
+    "unterkategorien": [
+      {
+        "name": "Gaming Laptops",
+        "link": "productLists/gamingLaptopList.html",
+        "bild": "assets/images/products/3/vorne.png"
+      },
+      {
+        "name": "Office Laptops",
+        "link": "productLists/officeLaptopList.html",
+        "bild": "assets/images/products/4/vorne.png"
+      }
+    ],
+    "breadcrumb": "Laptops"
+  },
+  "zubehör": {
+    "titel": "ZUBEHÖR",
+    "untertitel": "KOMPONENTEN",
+    "beschreibung": "Perfekte Ergänzung für dein Setup",
+    "infoTitel": "Zubehör kaufen: Die perfekte Ergänzung für dein System",
+    "infoText": "Vervollständige dein Setup mit hochwertigem Zubehör. Von Gaming-Monitoren über präzise Mäuse bis hin zu ergonomischen Tastaturen - hier findest Du alles für das perfekte Computer-Erlebnis.",
+    "sidebarTitel": "ZUBEHÖR",
+    "unterkategorien": [
+      {
+        "name": "Monitore",
+        "link": "productLists/monitorList.html",
+        "bild": "assets/images/products/5/vorne.png"
+      },
+      {
+        "name": "Mäuse",
+        "link": "productLists/mausList.html",
+        "bild": "assets/images/products/6/vorne.png"
+      },
+      {
+        "name": "Tastaturen",
+        "link": "productLists/tastaturList.html",
+        "bild": "assets/images/products/7/vorne.png"
+      }
+    ],
+    "breadcrumb": "Zubehör"
+  },
+  "gamingPC": {
+    "titel": "GAMING",
+    "untertitel": "PCS",
+    "beschreibung": "Hochleistungs-PCs für das ultimative Gaming-Erlebnis",
+    "infoTitel": "Gaming PCs kaufen: Maximale Performance für deine Spiele",
+    "infoText": "Erlebe Gaming auf höchstem Niveau mit unseren speziell konfigurierten Gaming-PCs. Von Einsteiger-Systemen bis zu High-End Maschinen - jeder PC wird individuell zusammengestellt und getestet. Mit aktuellsten Grafikkarten, schnellen Prozessoren und optimaler Kühlung für maximale FPS in allen aktuellen Spielen.",
+    "sidebarTitel": "GAMING PCS",
+    "unterkategorien": [],
+    "breadcrumb": "Desktop PCs › Gaming PCs"
+  },
+  "officePC": {
+    "titel": "OFFICE",
+    "untertitel": "PCS",
+    "beschreibung": "Zuverlässige Arbeitsplatz-Computer für Büro und Home-Office",
+    "infoTitel": "Office PCs kaufen: Effiziente Systeme für den Arbeitsalltag",
+    "infoText": "Produktive Arbeit erfordert zuverlässige Technik. Unsere Office-PCs sind speziell für den Büroalltag konzipiert - mit energieeffizienten Komponenten, langen Wartungsintervallen und allem was Du für Office-Anwendungen, Videokonferenzen und Multitasking benötigst. Leise, sparsam und trotzdem leistungsstark.",
+    "sidebarTitel": "OFFICE PCS",
+    "unterkategorien": [],
+    "breadcrumb": "Desktop PCs › Office PCs"
+  },
+  "gamingLaptop": {
+    "titel": "GAMING",
+    "untertitel": "LAPTOPS",
+    "beschreibung": "Mobile Gaming-Power für unterwegs",
+    "infoTitel": "Gaming Laptops kaufen: Hochleistung trifft Mobilität",
+    "infoText": "Gaming ohne Kompromisse - auch unterwegs. Unsere Gaming-Laptops bieten Desktop-Performance in mobilem Format. Mit leistungsstarken Grafikkarten, schnellen Displays mit hohen Bildwiederholraten und effizienter Kühlung. Perfekt für LAN-Parties, Gaming unterwegs oder als Allround-System für Studium und Freizeit.",
+    "sidebarTitel": "GAMING LAPTOPS",
+    "unterkategorien": [],
+    "breadcrumb": "Laptops › Gaming Laptops"
+  },
+  "officeLaptop": {
+    "titel": "OFFICE",
+    "untertitel": "LAPTOPS",
+    "beschreibung": "Mobile Arbeitsplätze für maximale Flexibilität",
+    "infoTitel": "Office Laptops kaufen: Produktivität ohne Grenzen",
+    "infoText": "Arbeiten wo Du willst - mit unseren Office-Laptops. Lange Akkulaufzeit, ergonomische Tastaturen, hochwertige Displays und zuverlässige Performance für alle Office-Anwendungen. Ideal für Home-Office, Außendienst oder als mobiler Arbeitsplatz. Mit Windows 11 Pro und umfassender Garantie.",
+    "sidebarTitel": "OFFICE LAPTOPS",
+    "unterkategorien": [],
+    "breadcrumb": "Laptops › Office Laptops"
+  },
+  "monitor": {
+    "titel": "GAMING",
+    "untertitel": "MONITORE",
+    "beschreibung": "Hochauflösende Displays für das perfekte Bild",
+    "infoTitel": "Monitore kaufen: Das perfekte Display für jeden Anwendungsbereich",
+    "infoText": "Der Monitor ist das Fenster zu deiner digitalen Welt. Ob Gaming-Monitor mit hohen Bildwiederholraten, 4K-Display für Creators oder ergonomischer Office-Monitor - bei uns findest Du das perfekte Display. Mit modernster Technik wie HDR, G-Sync/FreeSync und verschiedensten Größen von 24\" bis 32\".",
+    "sidebarTitel": "MONITORE",
+    "unterkategorien": [],
+    "breadcrumb": "Zubehör › Monitore"
+  },
+  "maus": {
+    "titel": "GAMING",
+    "untertitel": "MÄUSE",
+    "beschreibung": "Präzise Gaming-Mäuse für den Sieg",
+    "infoTitel": "Gaming Mäuse kaufen: Präzision trifft auf Ergonomie",
+    "infoText": "Die richtige Maus kann über Sieg oder Niederlage entscheiden. Unsere Gaming-Mäuse bieten präzise Sensoren, ergonomisches Design und anpassbare Features. Von ultraleichten Gaming-Mäuse für Esports bis zu vollausgestatteten MMO-Mäuse mit programmierbaren Tasten - für jeden Spielertyp das Richtige.",
+    "sidebarTitel": "GAMING MÄUSE",
+    "unterkategorien": [],
+    "breadcrumb": "Zubehör › Mäuse"
+  },
+  "tastatur": {
+    "titel": "GAMING",
+    "untertitel": "TASTATUREN",
+    "beschreibung": "Mechanische Tastaturen für das ultimative Tippgefühl",
+    "infoTitel": "Gaming Tastaturen kaufen: Mechanische Präzision für jeden Anschlag",
+    "infoText": "Spüre den Unterschied einer mechanischen Tastatur. Mit verschiedenen Switch-Typen, RGB-Beleuchtung und Gaming-Features wie Anti-Ghosting bieten unsere Tastaturen das perfekte Feedback für Gaming und Produktivität. Von kompakten 60% Layouts bis zu Full-Size Tastaturen mit Nummernblock.",
+    "sidebarTitel": "GAMING TASTATUREN",
+    "unterkategorien": [],
+    "breadcrumb": "Zubehör › Tastaturen"
+  },
+  "angebote": {
+    "titel": "AKTUELLE",
+    "untertitel": "ANGEBOTE",
+    "beschreibung": "Spare jetzt bei ausgewählten Gaming-PCs und Zubehör",
+    "infoTitel": "Sale: Top-Hardware zu reduzierten Preisen",
+    "infoText": "Verpasse nicht unsere aktuellen Angebote! Hier findest Du Gaming-PCs, Laptops und Zubehör zu reduzierten Preisen. Alle Sale-Artikel sind nur solange der Vorrat reicht verfügbar. Von Auslaufmodellen bis zu Sonderaktionen - entdecke jetzt dein Schnäppchen und spare bei hochwertiger Gaming-Hardware.",
+    "sidebarTitel": "ANGEBOTE",
+    "unterkategorien": [],
+    "breadcrumb": "Angebote"
+  }
+}

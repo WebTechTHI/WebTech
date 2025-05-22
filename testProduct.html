@@ -1,630 +1,79 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLR - Gaming PC Ryzen 7 7700 - RTX 5070</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #e6e6e6;
-        }
-        
-        .top-bar {
-            background-color: #222;
-            color: white;
-            padding: 8px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .hotline, .right-links {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        
-        .hotline {
-            color: #999;
-            font-size: 14px;
-        }
-        
-        .right-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-        
-        .main-nav {
-            background-color: #111;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 40px;
-            align-items: center;
-        }
-        
-        .logo {
-            height: 30px;
-        }
-        
-        .main-menu {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .main-menu a {
-            color: #ccc;
-            text-decoration: none;
-            padding: 10px 15px;
-            text-transform: uppercase;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        
-        .main-menu a:hover {
-            color: white;
-        }
-        
-        .main-menu a.active {
-            color: white;
-        }
-        
-        .red-badge {
-            background-color: #e00;
-            color: white;
-            padding: 2px 5px;
-            border-radius: 50%;
-            font-size: 10px;
-            margin-left: 5px;
-            vertical-align: super;
-        }
-        
-        .cart {
-            background-color: #e00;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .cart-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: white;
-            color: #e00;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .breadcrumb {
-            align-items: center;
-            justify-content: center;
-            padding: 10px 40px;
-            background-color: #e6e6e6;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-        }
-        
-        .breadcrumb a {
-            color: #333;
-            text-decoration: none;
-        }
-        
-        /* Produktdetail-Seite Styling */
-        .product-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            padding: 0 20px;
-        }
-        
-        .product-gallery {
-            width: 45%;
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-        }
-        
-        
-        .main-image {
-            width: 100%;
-            height: 400px;
-            background-color: #f5f5f5;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .main-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        .thumbnail-row {
-            display: flex;
-            justify-content: start;
-            gap: 10px;
-        }
-        
-        .thumbnail {
-            width: 80px;
-            height: 80px;
-            border: 1px solid #ddd;
-            padding: 5px;
-            cursor: pointer;
-        }
-        
-        .thumbnail:hover {
-            border-color: #e00;
-        }
-        
-        .thumbnail.active {
-            border-color: #e00;
-        }
-        
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .product-details {
-            width: calc(55% - 30px);
-        }
-        
-        .product-badge {
-            display: inline-block;
-            background-color: #111;
-            color: white;
-            padding: 5px 10px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .product-title {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        
-        .product-id {
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 20px;
-        }
-        
-        .product-rating {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .stars {
-            color: #ffc107;
-            margin-right: 10px;
-        }
-        
-        .reviews-count {
-            color: #777;
-            font-size: 14px;
-        }
-        
-        .price-container {
-            margin-bottom: 25px;
-        }
-        
-        .price {
-            font-size: 32px;
-            font-weight: bold;
-        }
-        
-        .price-prefix {
-            font-size: 20px;
-            vertical-align: top;
-        }
-        
-        .price-info {
-            font-size: 14px;
-            color: #555;
-            margin: 5px 0 15px;
-        }
-        
-        .price-info span {
-            color: #0c0;
-        }
-        
-        .tax-info {
-            font-size: 12px;
-            color: #777;
-        }
-        
-        .stock-status {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .stock-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #0c0;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-        
-        .stock-text {
-            font-size: 14px;
-            color: #0c0;
-        }
-        
-        .shipping-info {
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .qty-selector {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .qty-selector label {
-            margin-right: 10px;
-            font-size: 14px;
-        }
-        
-        .qty-input {
-            display: flex;
-            border: 1px solid #ddd;
-        }
-        
-        .qty-btn {
-            width: 30px;
-            height: 38px;
-            background-color: #f5f5f5;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        
-        .qty-value {
-            width: 40px;
-            height: 38px;
-            border: none;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
-            text-align: center;
-        }
-        
-        .buy-btn {
-            display: block;
-            background-color: #e00;
-            color: white;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .configure-btn {
-            display: block;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        .wishlist-btn {
-            display: block;
-            background-color: white;
-            color: #333;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            border: 1px solid #ddd;
-        }
-        
-        .specs-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        
-        .specs-list li {
-            margin-bottom: 10px;
-            font-size: 14px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .specs-list li::before {
-            content: "›";
-            margin-right: 8px;
-            color: #e00;
-            font-size: 18px;
-            line-height: 1;
-        }
-        
-        .tabs {
-            width: 100%;
-            margin-top: 40px;
-        }
-        
-        .tab-header {
-            display: flex;
-            border-bottom: 2px solid #ddd;
-        }
-        
-        .tab-item {
-            padding: 12px 20px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-        
-        .tab-item.active {
-            border-bottom: 2px solid #e00;
-            color: #e00;
-            margin-bottom: -2px;
-        }
-        
-        .tab-content {
-            padding: 30px 0;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-top: none;
-            padding: 20px;
-        }
-        
-        .tab-content h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        
-        .tab-content p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        
-        .specs-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .specs-table tr:nth-child(odd) {
-            background-color: #f5f5f5;
-        }
-        
-        .specs-table td {
-            padding: 12px;
-            font-size: 14px;
-        }
-        
-        .specs-table td:first-child {
-            width: 30%;
-            font-weight: bold;
-        }
-        
-        .related-products {
-            width: 100%;
-            margin-top: 50px;
-        }
-        
-        .section-title {
-            font-size: 20px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        
-        .products-row {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 15px;
-        }
-        
-        .related-product {
-            min-width: 280px;
-            background-color: white;
-            border: 1px solid #ddd;
-            padding: 15px;
-        }
-        
-        .related-product-image {
-            width: 100%;
-            height: 180px;
-            background-color: #f5f5f5;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .related-product-title {
-            font-size: 16px;
-            margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            height: 40px;
-        }
-        
-        .related-product-price {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .related-product-btn {
-            display: block;
-            background-color: #e00;
-            color: white;
-            text-align: center;
-            padding: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
-        
-        .fixed-menu {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .fixed-menu a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            border: 1px solid #ddd;
-            margin-bottom: 1px;
-            color: #333;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        
-        .footer {
-            background-color: #111;
-            color: white;
-            padding: 40px;
-            margin-top: 60px;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .footer-column {
-            width: 22%;
-        }
-        
-        .footer-title {
-            font-size: 16px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .bottom-footer {
-            background-color: #000;
-            color: #777;
-            padding: 15px 40px;
-            font-size: 12px;
-        }
-        
-        .bottom-footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .payment-methods img {
-            height: 20px;
-            margin-left: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produkt</title>
+  <link rel="icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="assets/css/mystyle.css">
+  <link rel="stylesheet" href="assets/css/shopHeader.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/product.css">
+  <link rel="stylesheet" href="assets/css/warenkorbSide.css">
+
+  <script src="assets/javascript/base.js"></script>
+  <script src="assets/javascript/toggleTheme.js"></script>
+<script src="assets/javascript/productInfo.js"></script>
+  
 </head>
 <body>
-    <div class="top-bar">
-        <div class="hotline">Experten-Hotline: +49 89/660 77 969 0</div>
-        <div class="right-links">
-            <a href="#">B2B</a> | 
-            <a href="#">Showroom</a> |
-            <a href="#">Login / Registrieren</a> |
-            <a href="#">Mein Konto</a> |
-            <a href="#">DE</a> |
-            <a href="#">Vergleichen</a> |
-            <a href="#">Merken</a> |
-            <a href="#">Konfigurationen</a>
+    <header id="header">
+        <div id="topHeader" class="topNavHeader">
+            <a class="logo" href='index.html'><img src='assets/images/logo/logoDarkmode.png'></a>
+
+            <nav class="userNav">
+                <a href="pages/login.html"><img class="userIconHeader" src="assets/images/icons/login.png"
+                        alt="Login"></a>
+                <a href="pages/registration.html"><img class="userIconHeader" src="assets/images/icons/register.png"
+                        alt="Registrierung"></a>
+                <a href="pages/logout.html"><img class="userIconHeader" src="assets/images/icons/logout.png"
+                        alt="Logout"></a>
+                <a href="pages/shoppingBasket.html"><img class="userIconHeader"
+                        src="assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
+                <a href="pages/user.html"><img class="userIconHeader" src="assets/images/icons/user.png"></a>
+            </nav>
         </div>
-    </div>
-    
-    <nav class="main-nav">
-        <div class="logo">
-            <img src="assets/images/logo/logoDarkmode.png" alt="MLR Logo" style="height:30px;" >
+
+        <div class="bottomNavHeader">
+            <ul>
+                <li>
+                    <a href="productLists/desktopPcList.html">Desktop-PCs</a>
+                    <ul class="subMenu">
+                        <li><a href="productLists/gamingPcList.html">Gaming-PCs</a></li>
+                        <li><a href="productLists/officePcList.html">Office-PCs</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="productLists/laptopList.html">Laptops</a>
+                    <ul class="subMenu">
+                        <li><a href="productLists/gamingLaptopList.html">Gaming Laptops</a></li>
+                        <li><a href="productLists/officeLaptopList.html">Office Laptops</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="productLists/zubehörList.html">Zubehör</a>
+                    <ul class="subMenu">
+                        <li><a href="productLists/monitorList.html">Monitore</a></li>
+                        <li><a href="productLists/mausList.html">Mäuse</a></li>
+                        <li><a href="productLists/tastaturList.html">Tastaturen</a></li>
+                    </ul>
+                </li>
+                <li class="headerDeals">
+                    <a href="productLists/deals.html">Angebote</a>
+                </li>
+
+                <div class="search-container">
+                    <img src="assets/images/icons/suchIcon.png" alt="Suche" id="searchIcon" class="suchIcon">
+                    <input type="text" name="suchFeld" id="suchFeld" placeholder="Suchen..." onkeyup="searchFunction()">
+                  </div>
+            </ul>
+            <img id="themeToggleBtn" class="toggleTheme" src="/assets/images/icons/darkmode-btn.png"
+                onclick="toggleTheme()">
         </div>
-        <div class="main-menu">
-            <a href="#">Editions</a>
-            <a href="#" class="active">Desktop PCs</a>
-            <a href="#">Laptops</a>
-            <a href="#">Professional</a>
-            <a href="#">PC Konfigurator</a>
-            <a href="#">Sale & Aktionen <span class="red-badge">5</span></a>
-            <a href="#">Peripherie</a>
-        </div>
-        <a href="#" class="cart">
-            MEIN WARENKORB
-            <span class="cart-badge">0</span>
-        </a>
-    </nav>
+    </header>
     
     <div class="breadcrumb">
         <a href="#">MLR</a> › 
@@ -632,6 +81,30 @@
         <a href="#">Gaming PCs</a> › 
         <span>Gaming PC Ryzen 7 7700 - RTX 5070</span>
     </div>
+
+     <button class="warenkorbToggle">
+      <img src="../assets/images/icons/shoppingcart.png" style="width: 25px;">
+      <span class="warenkorbAnzahl">0</span>
+    </button>
+
+    <div class="warenkorbContainer">
+      <div class="warenkorbHeader">
+        <h3>Warenkorb</h3>
+        <button class="warenkorbSchliessen">&times;</button>
+      </div>
+      <div class="warenkorbInhalt">
+        <div class="leerNachricht">Ihr Warenkorb ist leer.</div>
+      </div>
+      <div class="warenkorbFooter">
+        <div class="warenkorbGesamt">
+          <span>Gesamt:</span>
+          <span>0,00 €</span>
+        </div>
+        <button class="zurKasseButton">Zur Kasse</button>
+      </div>
+    </div>
+
+    <div class="warenkorbOverlay"></div>
     
     <div class="product-container">
         <div class="product-gallery">
@@ -855,13 +328,7 @@
         </div>
     </div>
     
-    <div class="fixed-menu">
-        <a href="#" title="Infocenter">i</a>
-        <a href="#" title="Rückruf">☎</a>
-        <a href="#" title="Support">?</a>
-        <a href="#" title="Kontakt">✉</a>
-        <a href="#" title="Community">👥</a>
-    </div>
+
     
     <div class="footer">
         <div class="footer-content">

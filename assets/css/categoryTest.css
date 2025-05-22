@@ -165,7 +165,9 @@ body {
 .filter-section {
     background-color: white;
     margin: 20px;
-    padding: 15px;
+    padding: 15px 15px 15px 0px;
+    justify-content: center;
+    align-items: center;
 }
 
 .filter-title {
@@ -175,7 +177,8 @@ body {
 }
 
 .filter-group {
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
+   
 }
 
 .filter-header {
@@ -183,6 +186,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    border-bottom: 1px solid black;  
+    padding-bottom: 5px;
     cursor: pointer;
 }
 
@@ -191,7 +196,13 @@ body {
 }
 
 .filter-options li {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.filter-options li:not(:last-child) {
+    border-bottom: #ddd 1px solid;
+    
 }
 
 .reset-btn {
@@ -203,6 +214,7 @@ body {
     border-radius: 3px;
     margin-top: 10px;
     font-size: 12px;
+    margin-bottom: 10px;
 }
 
 .reset-icon {
@@ -295,6 +307,10 @@ body {
     gap: 20px;
     margin-bottom: 30px;
 }
+.categories a {
+    text-decoration: none;
+    color: #333;
+}
 
 .category {
     border-radius: 25px;
@@ -303,12 +319,18 @@ body {
     padding: 15px;
 }
 
+.category:hover {
+   border: 1px solid rgb(180, 180, 180);
+}
+
 .category-title {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 15px;
     display: flex;
     align-items: center;
+    text-align: center; 
+    justify-content: center;
 }
 
 .category-title::after {
@@ -320,7 +342,7 @@ body {
 .category-image {
     width: 100%;
     height: 180px;
-    background-color: #111;
+    background-color: white; /* kein Schwarz */
     margin-bottom: 15px;
     display: flex;
     align-items: center;
@@ -329,26 +351,13 @@ body {
 }
 
 .category-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
 }
 
-.category-specs {
-    list-style: none;
-    margin-bottom: 15px;
-}
 
-.category-specs li {
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.category-specs li::before {
-    content: "›";
-    margin-right: 5px;
-    color: #e00;
-}
 
 .topseller {
     margin-top: 40px;

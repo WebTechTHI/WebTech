@@ -1,26 +1,58 @@
 <!DOCTYPE html>
 <html lang="de">
-<link rel="stylesheet" href="../assets/css/mystyle.css">
-<link rel="stylesheet" href="../assets/css/productList.css">
-<link rel="stylesheet" href="../assets/css/shopHeader.css">
-<link rel="stylesheet" href="../assets/css/footer.css">
-
-<script src="../assets/javascript/base.js"></script>
-<script src="/assets/javascript/toggleTheme.js"></script>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLR | Laptops</title>
-    <link rel="icon" href="../assets/images/logo/favicon.png" type="image/x-icon">
+    <title>MLR - Produktkategorien</title>
+    <link rel="stylesheet" href="../assets/css/categoryTest.css">
+    <link rel="stylesheet" href="../assets/css/shopHeader.css">
+    <link rel="stylesheet" href="../assets/css/mystyle.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <script src="../assets/javascript/base.js"></script>
     <script src="../assets/javascript/loadProducts.js"></script>
-    <script>loadProducts('laptop')</script>
+    <script src="../assets/javascript/toggleTheme.js"></script>
+    
+    
+    <script>
+        
+        function getKategorieFromURL() {
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlKategorie = urlParams.get('kategorie');
+            if (urlKategorie) return urlKategorie;
+            
+            const filename = window.location.pathname.split('/').pop().replace('.html', '');
+            
+            
+            const filenameMapping = {
+                'desktopPcList': 'pc',
+                'laptopList': 'laptop',
+                'zubehörList': 'zubehör',
+                'gamingPcList': 'gamingPc',
+                'officePcList': 'officePc',
+                'gamingLaptopList': 'gamingLaptop',
+                'officeLaptopList': 'officeLaptop',
+                'monitorList': 'monitor',
+                'mausList': 'maus',
+                'tastaturList': 'tastatur',
+                'deals': 'angebote'
+            };
+            
+            return filenameMapping[filename] || 'pc'; // Fallback
+        }
+        
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const kategorie = getKategorieFromURL();
+
+            //ERSTMAL OHNE QUERY BIS HEADER DYNAMISCH GENERIERT WIRD
+            loadProducts('laptop');
+        });
+    </script>
 </head>
 
-
-
 <body>
-
     <header id="header">
         <div class="topNavHeader">
             <a class="logo" href='../index.html'><img src='../assets/images/logo/logoDarkmode.png'></a>
@@ -28,8 +60,8 @@
             <nav class="userNav">
                 <a href="../pages/login.html"><img class="userIconHeader" src="../assets/images/icons/login.png"
                         alt="Login"></a>
-                <a href="../pages/registration.html"><img class="userIconHeader"
-                        src="../assets/images/icons/register.png" alt="Registrierung"></a>
+                <a href="../pages/registration.html"><img class="userIconHeader" src="../assets/images/icons/register.png"
+                        alt="Registrierung"></a>
                 <a href="../pages/logout.html"><img class="userIconHeader" src="../assets/images/icons/logout.png"
                         alt="Logout"></a>
                 <a href="../pages/shoppingBasket.html"><img class="userIconHeader"
@@ -73,93 +105,291 @@
                     <input type="text" name="suchFeld" id="suchFeld" placeholder="Suchen..." onkeyup="searchFunction()">
                   </div>
             </ul>
-            <img id="themeToggleBtn" class="toggleTheme" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
+            <img id="themeToggleBtn" class="toggleTheme" src="../assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
         </div>
     </header>
 
-
-    <div class="categoryNameContainer">
-        <h1 class="categoryName">Laptops</h1>
+    
+    <div class="breadcrumb">
+        <a href="#">MLR</a> › <span>Laden...</span>
     </div>
 
+    <div class="main-content">
+        
+        <div class="sidebar">
+            <div class="sidebar-title">LADEN...</div>
+            <ul class="sidebar-menu">
+                
+            </ul>
 
-    <div class="productMainContainer">
-        <div class="product">
-            <div class="productPictureContainer">
-
-                <a href="../productPages/laptop/gamingLaptop/2.html">
-                    <img src="../assets/images/products/laptop/2/vorne.png" alt="MSI Katana 17">
-                </a>
-            </div>
-
-
-            <div class="productDetails">
-
-                <h1>MSI Katana 17</h1>
-
-
-                <h2>NVIDIA RTX 4060 | Intel Core i7-13620H | 16GB RAM | 2TB SSD | Windows 11 Pro | DE-Layout (QWERTZ)
-                </h2>
-
-
-                <ul class="productSpecs">
-                    <li>RTX 4060, i7-13620H, 16GB RAM</li>
-                    <li>Display: 17,3 Zoll Full-HD 144Hz</li>
-                    <li>2TB NVMe SSD, Wi-Fi 6</li>
-                </ul>
-
-
-                <div>
-                    <p class="productPrice"><strong>Preis:</strong> 1409,- €</p>
-                </div>
-
-                <div class="buttonContainer">
-                    <button class="zumWarenkorb">
-                        <img src="../assets/images/icons/shoppingcart.png" alt="Zum Warenkorb hinzufügen">
-                    </button>
-                    <a class="more" href="../productPages/laptop/gamingLaptop/2.html">Mehr zum Laptop</a>
-                </div>
+            <div class="filter-section">
+                <div class="filter-title">Auswahl filtern</div>
+                <a href="#" class="reset-btn">ZURÜCKSETZEN <span class="reset-icon">✕</span></a>
+                
             </div>
         </div>
 
-        <div class="product">
-            <div class="productPictureContainer">
-                <a href="../productPages/laptop/officeLaptop/1.html">
-                    <img src="../assets/images/products/laptop/1/vorne.png" alt="HP 255 G9">
-                </a>
+        
+        <div class="products">
+            
+            <div class="banner">
+                <div class="banner-content">
+                    <h1><span>LADEN</span> ...</h1>
+                    <p>Inhalte werden geladen...</p>
+                </div>
             </div>
 
-            <div class="productDetails">
-                <h1>Laptop HP 255 G9</h1>
-                <h2>AMD Athlon Gold 3150U | Radeon Graphics | 8GB RAM | 512GB SSD | Windows 11 Pro | DE-Layout (QWERTZ)
-                </h2>
-
-                <ul class="productSpecs">
-                    <li>RTX 4060, i7-13620H, 16GB RAM</li>
-                    <li>Display: 17,3 Zoll Full-HD 144Hz</li>
-                    <li>2TB NVMe SSD, Wi-Fi 6</li>
-                </ul>
-
-                <div>
-                    <p class="productPrice"><strong>Preis:</strong> 299,- €</p>
+            
+            <div class="section-info">
+                <h2>Laden...</h2>
+                <p class="subtext">Inhalte werden geladen...</p>
+                <div class="read-more">
+                    <a href="#">mehr lesen ▼</a>
                 </div>
+            </div>
 
-                <div class="buttonContainer">
-                    <button class="zumWarenkorb">
-                        <img src="../assets/images/icons/shoppingcart.png" alt="Zum Warenkorb hinzufügen">
-                    </button>
-                    <a class="more" href="../productPages/laptop/officeLaptop/1.html">Mehr zum Laptop</a>
+            
+            <h3 class="section-title" style="display: none;">UNTERKATEGORIE WÄHLEN:</h3>
+            <div class="categories">
+                
+            </div>
+
+            
+            <h3 class="section-title">UNSERE TOPSELLER</h3>
+
+            
+            <div class="products-grid">
+                <!-- Loading Placeholder -->
+                <div class="loading-placeholder" style="text-align: center; padding: 40px; color: #666;">
+                    <p>Produkte werden geladen...</p>
                 </div>
             </div>
         </div>
     </div>
-    <footer>
 
-        <nav>
-            <p>© 2025 MLR | <a href="../pages/about.html"><i>Impressum</i></a></p>
-        </nav>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <img src="/api/placeholder/120/30" alt="MLR Logo" style="height:30px;">
+                    </div>
+                    <p class="footer-about">
+                        MLR ist Deutschlands führender Anbieter von hochwertigen Gaming-PCs, Laptops und individuell
+                        konfigurierbaren Computer-Systemen mit über 15 Jahren Erfahrung und exzellentem Kundenservice.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">t</a>
+                        <a href="#" title="Instagram">i</a>
+                        <a href="#" title="YouTube">y</a>
+                        <a href="#" title="Discord">d</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">PRODUKTE</h4>
+                    <ul class="footer-links">
+                        <li><a href="productLists/gamingPcList.html">Gaming PCs</a></li>
+                        <li><a href="productLists/desktopPcList.html">Desktop PCs</a></li>
+                        <li><a href="productLists/laptopList.html">Laptops</a></li>
+                        <li><a href="productLists/zubehörList.html">Zubehör</a></li>
+                        <li><a href="productLists/monitorList.html">Monitore</a></li>
+                        <li><a href="#">PC Konfigurator</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">SERVICE</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Reparatur & Wartung</a></li>
+                        <li><a href="#">Garantie</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Hardware-Ratgeber</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">KONTAKT</h4>
+                    <ul class="footer-contact footer-links">
+                        <li><span class="footer-contact-icon">◆</span> MLR GmbH<br>Musterstraße 123<br>80335 München</li>
+                        <li><span class="footer-contact-icon">☎</span> +49 89/660 77 969 0</li>
+                        <li><span class="footer-contact-icon">✉</span> info@mlr-computer.de</li>
+                        <li><span class="footer-contact-icon">⌚</span> Mo-Fr: 9-18 Uhr<br>Sa: 10-14 Uhr</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2025 MLR GmbH. Alle Rechte vorbehalten.</div>
+                <div class="footer-payment">
+                    <div class="payment-icon" title="PayPal"></div>
+                    <div class="payment-icon" title="Visa"></div>
+                    <div class="payment-icon" title="Mastercard"></div>
+                    <div class="payment-icon" title="Klarna"></div>
+                    <div class="payment-icon" title="Sofortüberweisung"></div>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <style>
+        /* Footer Styles */
+        .footer {
+            background-color: #111;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-about {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .footer-social a:hover {
+            background-color: #e00;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: #e00;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact li {
+            display: flex;
+            margin-bottom: 15px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .footer-contact-icon {
+            margin-right: 10px;
+            color: #e00;
+            min-width: 16px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+            color: #aaa;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-payment {
+            display: flex;
+            gap: 10px;
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 25px;
+            background-color: #fff;
+            border-radius: 3px;
+        }
+
+        /* Loading Placeholder Styles */
+        .loading-placeholder {
+            grid-column: 1 / -1;
+        }
+
+        /* Container für Footer */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design für Footer */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
 </body>
 
 </html>
