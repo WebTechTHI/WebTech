@@ -15,8 +15,6 @@ async function loadProducts(kategorie) {
 
         container.innerHTML = ''; // Alte Inhalte leeren
 
-        const sidebar = document.querySelector('.sidebar-title');
-        sidebar.innerHTML = kategorie
 
         products.forEach(product => {
             let istTreffer = false;
