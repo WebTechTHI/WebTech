@@ -1,5 +1,4 @@
 <?php
-//automatischer git pull auf den server
-$output = shell_exec('cd /var/www/html && git pull 2>&1');
+shell_exec("cd /var/www/html && git pull");
 echo "<pre>$output</pre>";
 ?>
