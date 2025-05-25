@@ -11,7 +11,7 @@ function startLiveClock() {
 
     let greeting = "Platzhalter";
     if (hours < 12) greeting = "Guten Morgen";
-    else if (hours < 18) greeting = "Guten Tag ";
+    else if (hours < 18) greeting = "Guten Tag";
     else greeting = "Guten Abend";
 
     clockDiv.textContent = greeting + ", es ist " + hours + ":" + minutes + ":" + seconds;

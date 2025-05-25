@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR | Login</title>
-    <link rel="icon" href="../assets/images/logo/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/WebTech/assets/images/logo/favicon.png" type="image/x-icon">
 
 
-    <link rel="stylesheet" href="../assets/css/colors.css">
+    <link rel="stylesheet" href="/WebTech/assets/css/colors.css">
 
-    <link rel="stylesheet" href="../assets/css/loginRegistration.css">
+    
+    <link rel="stylesheet" href="/WebTech/assets/css/loginRegistration.css">
 
-    <link rel="stylesheet" href="../assets/css/specialHeader.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
+
+    <link rel="stylesheet" href="/WebTech/assets/css/specialHeader.css">
+    <link rel="stylesheet" href="/WebTech/assets/css/footer.css">
   
-    <script src="/assets/javascript/toggleTheme.js"></script>
+    <script src="/WebTech/assets/javascript/toggleTheme.js"></script>
 
 
 </head>
@@ -23,16 +25,16 @@
 <body class="backgroundpicture darkMode">
 
     <header>
-        <a href="../index.html">
-            <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
+        <a href="/WebTech/index.php">
+            <img src="/WebTech/assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
         </a>
-        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
+        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/WebTech/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
     </header>
 
    
 
     <!-- Ab Hier Login Funktionen -->
- <!-- Überarbeiteter login.html – moderner & professioneller -->
+ <!-- Überarbeiteter login.php – moderner & professioneller -->
 <form class="userInfoFormlogin" action="login.php" method="post">
 
     <h1 class="formTitle" title="Please fill out the blanks">🔐Login</h1>
@@ -61,7 +63,7 @@
 
     
     <label  title="Wenn sie noch keinen einen Account haben können sie mit dem Registrieren Button einen erstellen!">Sie haben noch keinen Account?</label>
-    <a class="directionbutton" href="registration.html">Zur Registrierung</a>
+    <a class="directionbutton" href="registration.php">Zur Registrierung</a>
 </form>
 
 
@@ -69,14 +71,14 @@
     <footer>
         
         <nav>
-            <p>© 2025 MLR | <a href="about.html">Impressum</a></p>
+            <p>© 2025 MLR | <a href="about.php">Impressum</a></p>
         </nav>
     </footer>
 
 
       <!--JavaScript hier noch einfügen-->
-      <script src="../assets/javascript/Validierung_Login.js"></script>
-      <script src="../assets/javascript/uhrzeit.js"></script>
+      <script src="/WebTech/assets/javascript/Validierung_Login.js"></script>
+      <script src="/WebTech/assets/javascript/uhrzeit.js"></script>
 
 </body>
 
