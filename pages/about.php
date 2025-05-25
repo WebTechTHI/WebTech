@@ -24,12 +24,10 @@
     </header>
 
 
-    <h1>
-        Impressum
-    </h1>
-    <p>
-        Informationen Impressum
-    </p>
+    <!--Ab Hier Body -->
+<main>
+    <h1 class="formTitle">Impressum</h1>
+    <h4 class="formSubtitle">Informationen Impressum</h4>
 
     <div>
         <p>Germany Deutschland DE <br> Max Mustermannstraße <br> Deutschland +49 <br><br>
@@ -42,6 +40,16 @@
             CEO - Michael Pietsch <br>
         </p>
     </div>
+
+
+  
+</main>
+
+  
+
+
+    
+
 
     <footer>
         
