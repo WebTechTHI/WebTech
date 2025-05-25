@@ -2,7 +2,7 @@
 <html lang="de">
 
 
-    <link rel="stylesheet" href="/WebTech/assets/css/mystyle.css">
+    <link rel="stylesheet" href="/WebTech/assets/css/loginRegistration.css">
     <link rel="stylesheet" href="/WebTech/assets/css/specialHeader.css">
     <link rel="stylesheet" href="/WebTech/assets/css/footer.css">
     <link rel="stylesheet" href="/WebTech/assets/css/colors.css">
