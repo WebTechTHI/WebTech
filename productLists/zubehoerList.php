@@ -10,94 +10,97 @@
     <link rel="stylesheet" href="../assets/css/mystyle.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <script src="../assets/javascript/base.js"></script>
-    <script src="../assets/javascript/loadProducts.js"></script>
     <script src="../assets/javascript/toggleTheme.js"></script>
-    
-    
-    <script>
-        
-        function getKategorieFromURL() {
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlKategorie = urlParams.get('kategorie');
-            if (urlKategorie) return urlKategorie;
-            
-            const filename = window.location.pathname.split('/').pop().replace('.html', '');
-            
-            
-            const filenameMapping = {
-                'desktopPcList': 'pc',
-                'laptopList': 'laptop',
-                'zubehörList': 'zubehör',
-                'gamingPcList': 'gamingPc',
-                'officePcList': 'officePc',
-                'gamingLaptopList': 'gamingLaptop',
-                'officeLaptopList': 'officeLaptop',
-                'monitorList': 'monitor',
-                'mausList': 'maus',
-                'tastaturList': 'tastatur',
-                'deals': 'angebote'
-            };
-            
-            return filenameMapping[filename] || 'pc'; // Fallback
-        }
-        
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const kategorie = getKategorieFromURL();
-
-            //ERSTMAL OHNE QUERY BIS HEADER DYNAMISCH GENERIERT WIRD
-            loadProducts('maus');
-        });
-    </script>
 </head>
 
 <body>
+    <?php
+        // Product loading logic
+        $category = 'zubehör'; 
+        $json_data_products = file_get_contents('../assets/json/productList.json');
+        $products_all = json_decode($json_data_products, true);
+        $filtered_products = [];
+        if ($category === 'angebote') {
+            foreach ($products_all as $product_item) {
+                if (isset($product_item['sale']) && $product_item['sale'] === true) {
+                    $filtered_products[] = $product_item;
+                }
+            }
+        } else {
+             foreach ($products_all as $product_item) {
+                if ((isset($product_item['kategorie']) && $product_item['kategorie'] === $category) ||
+                    (isset($product_item['unterkategorie']) && $product_item['unterkategorie'] === $category)) {
+                    // For zubehoerList.php, we only want items directly in 'zubehör' category,
+                    // not items from subcategories like maus, monitor, tastatur, as they have their own pages.
+                    if (isset($product_item['kategorie']) && $product_item['kategorie'] === 'zubehör') {
+                         $filtered_products[] = $product_item;
+                    }
+                }
+            }
+        }
+
+        // Design/Content loading logic from produktBeschreibung.json
+        $json_data_desc = file_get_contents('../assets/json/produktBeschreibung.json');
+        $descriptions = json_decode($json_data_desc, true);
+        
+        $page_content = isset($descriptions[$category]) ? $descriptions[$category] : null;
+
+        $breadcrumb_text = $page_content['breadcrumb'] ?? 'Produkte';
+        $sidebarTitel_text = $page_content['sidebarTitel'] ?? ucfirst($category);
+        $unterkategorien_list = $page_content['unterkategorien'] ?? [];
+        
+        $bannerTitel_text = $page_content['titel'] ?? '';
+        $bannerUntertitel_text = $page_content['untertitel'] ?? '';
+        $bannerBeschreibung_text = $page_content['beschreibung'] ?? '';
+        
+        $infoTitel_text = $page_content['infoTitel'] ?? '';
+        $infoText_text = $page_content['infoText'] ?? '';
+    ?>
     <header id="header">
         <div class="topNavHeader">
             <a class="logo" href='../index.html'><img src='../assets/images/logo/logoDarkmode.png'></a>
 
             <nav class="userNav">
-                <a href="../pages/login.html"><img class="userIconHeader" src="../assets/images/icons/login.png"
+                <a href="../pages/login.php"><img class="userIconHeader" src="../assets/images/icons/login.png"
                         alt="Login"></a>
-                <a href="../pages/registration.html"><img class="userIconHeader" src="../assets/images/icons/register.png"
+                <a href="../pages/registration.php"><img class="userIconHeader" src="../assets/images/icons/register.png"
                         alt="Registrierung"></a>
-                <a href="../pages/logout.html"><img class="userIconHeader" src="../assets/images/icons/logout.png"
+                <a href="../pages/logout.php"><img class="userIconHeader" src="../assets/images/icons/logout.png"
                         alt="Logout"></a>
-                <a href="../pages/shoppingBasket.html"><img class="userIconHeader"
+                <a href="../pages/shoppingBasket.php"><img class="userIconHeader"
                         src="../assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
-                <a href="../pages/user.html"><img class="userIconHeader" src="../assets/images/icons/user.png"></a>
+                <a href="../pages/user.php"><img class="userIconHeader" src="../assets/images/icons/user.png"></a>
             </nav>
         </div>
 
         <div class="bottomNavHeader">
             <ul>
                 <li>
-                    <a href="../productLists/desktopPcList.html">Desktop-PCs</a>
+                    <a href="../productLists/desktopPcList.php">Desktop-PCs</a>
                     <ul class="subMenu">
-                        <li><a href="../productLists/gamingPcList.html">Gaming-PCs</a></li>
-                        <li><a href="../productLists/officePcList.html">Office-PCs</a></li>
+                        <li><a href="../productLists/gamingPcList.php">Gaming-PCs</a></li>
+                        <li><a href="../productLists/officePcList.php">Office-PCs</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="../productLists/laptopList.html">Laptops</a>
+                    <a href="../productLists/laptopList.php">Laptops</a>
                     <ul class="subMenu">
-                        <li><a href="../productLists/gamingLaptopList.html">Gaming Laptops</a></li>
-                        <li><a href="../productLists/officeLaptopList.html">Office Laptops</a></li>
+                        <li><a href="../productLists/gamingLaptopList.php">Gaming Laptops</a></li>
+                        <li><a href="../productLists/officeLaptopList.php">Office Laptops</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="../productLists/zubehörList.html">Zubehör</a>
+                    <a href="../productLists/zubehoerList.php">Zubehör</a>
                     <ul class="subMenu">
-                        <li><a href="../productLists/monitorList.html">Monitore</a></li>
-                        <li><a href="../productLists/mausList.html">Mäuse</a></li>
-                        <li><a href="../productLists/tastaturList.html">Tastaturen</a></li>
+                        <li><a href="../productLists/monitorList.php">Monitore</a></li>
+                        <li><a href="../productLists/mausList.php">Mäuse</a></li>
+                        <li><a href="../productLists/tastaturList.php">Tastaturen</a></li>
                     </ul>
                 </li>
                 <li class="headerDeals">
-                    <a href="../productLists/deals.html">Angebote</a>
+                    <a href="../productLists/deals.php">Angebote</a>
                 </li>
 
                 <div class="search-container">
@@ -111,15 +114,21 @@
 
     
     <div class="breadcrumb">
-        <a href="#">MLR</a> › <span>Laden...</span>
+        <a href="../index.html">MLR</a> › <span><?php echo htmlspecialchars($breadcrumb_text); ?></span>
     </div>
 
     <div class="main-content">
         
         <div class="sidebar">
-            <div class="sidebar-title">LADEN...</div>
+            <div class="sidebar-title"><?php echo htmlspecialchars($sidebarTitel_text); ?></div>
             <ul class="sidebar-menu">
-                
+                <?php if (!empty($unterkategorien_list)): ?>
+                    <?php foreach ($unterkategorien_list as $uk): ?>
+                        <li><a href="../<?php echo htmlspecialchars(str_replace('.html', '.php', $uk['link'])); ?>"><?php echo htmlspecialchars($uk['name']); ?></a></li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                     <li><a href="#">Keine Unterkategorien</a></li>
+                <?php endif; ?>
             </ul>
 
             <div class="filter-section">
@@ -134,35 +143,74 @@
             
             <div class="banner">
                 <div class="banner-content">
-                    <h1><span>LADEN</span> ...</h1>
-                    <p>Inhalte werden geladen...</p>
+                    <h1><span><?php echo htmlspecialchars($bannerTitel_text); ?></span> <?php echo htmlspecialchars($bannerUntertitel_text); ?></h1>
+                    <p><?php echo htmlspecialchars($bannerBeschreibung_text); ?></p>
                 </div>
             </div>
 
             
             <div class="section-info">
-                <h2>Laden...</h2>
-                <p class="subtext">Inhalte werden geladen...</p>
+                <h2><?php echo htmlspecialchars($infoTitel_text); ?></h2>
+                <p class="subtext"><?php echo htmlspecialchars($infoText_text); ?></p>
                 <div class="read-more">
                     <a href="#">mehr lesen ▼</a>
                 </div>
             </div>
 
-            
-            <h3 class="section-title" style="display: none;">UNTERKATEGORIE WÄHLEN:</h3>
+            <?php if (!empty($unterkategorien_list)): ?>
+            <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
             <div class="categories">
-                
+                <?php foreach ($unterkategorien_list as $uk): ?>
+                    <a href="../<?php echo htmlspecialchars(str_replace('.html', '.php', $uk['link'])); ?>" class="category-item">
+                        <img src="../<?php echo htmlspecialchars($uk['bild']); ?>" alt="<?php echo htmlspecialchars($uk['name']); ?>">
+                        <span><?php echo htmlspecialchars($uk['name']); ?></span>
+                    </a>
+                <?php endforeach; ?>
             </div>
-
+            <?php else: ?>
+            <h3 class="section-title" style="display: none;">UNTERKATEGORIE WÄHLEN:</h3>
+            <div class="categories" style="display: none;">
+            </div>
+            <?php endif; ?>
             
             <h3 class="section-title">UNSERE TOPSELLER</h3>
 
             
             <div class="products-grid">
-                <!-- Loading Placeholder -->
-                <div class="loading-placeholder" style="text-align: center; padding: 40px; color: #666;">
-                    <p>Produkte werden geladen...</p>
-                </div>
+                <?php if (empty($filtered_products)): ?>
+                    <div class="loading-placeholder" style="text-align: center; padding: 40px; color: #666;">
+                        <p>Keine Produkte in dieser Kategorie gefunden.</p>
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($filtered_products as $product): ?>
+                        <div class="product-card" data-product-id="<?php echo htmlspecialchars($product['id']); ?>">
+                            <a href="../product.html?id=<?php echo htmlspecialchars($product['id']); ?>">
+                                <img src="../assets/<?php echo htmlspecialchars($product['bild'][0]); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" class="product-image">
+                            </a>
+                            <div class="product-info">
+                                <h3 class="product-name"><?php echo htmlspecialchars($product['name']); ?></h3>
+                                <p class="product-description"><?php echo htmlspecialchars(implode(', ', $product['highlights'])); ?></p>
+                                <div class="product-price">
+                                    <?php if (isset($product['sale']) && $product['sale'] && isset($product['preis_reduziert'])): ?>
+                                        <span class="original-price">€<?php echo htmlspecialchars(number_format($product['preis'], 2, ',', '.')); ?></span>
+                                        <span class="discounted-price">€<?php echo htmlspecialchars(number_format($product['preis_reduziert'], 2, ',', '.')); ?></span>
+                                    <?php else: ?>
+                                        <span>€<?php echo htmlspecialchars(number_format($product['preis'], 2, ',', '.')); ?></span>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="product-rating">
+                                    <?php 
+                                        $rating = isset($product['bewertung']) ? $product['bewertung'] : 0;
+                                        for ($i = 0; $i < 5; $i++): 
+                                    ?>
+                                        <span class="star"><?php echo ($i < $rating) ? '★' : '☆'; ?></span>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(<?php echo htmlspecialchars($product['id']); ?>, '<?php echo htmlspecialchars(addslashes($product['name'])); ?>', <?php echo (isset($product['sale']) && $product['sale'] && isset($product['preis_reduziert'])) ? htmlspecialchars($product['preis_reduziert']) : htmlspecialchars($product['preis']); ?>, '../assets/<?php echo htmlspecialchars($product['bild'][0]); ?>');">In den Warenkorb</button>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -191,11 +239,16 @@
                 <div>
                     <h4 class="footer-title">PRODUKTE</h4>
                     <ul class="footer-links">
-                        <li><a href="productLists/gamingPcList.html">Gaming PCs</a></li>
-                        <li><a href="productLists/desktopPcList.html">Desktop PCs</a></li>
-                        <li><a href="productLists/laptopList.html">Laptops</a></li>
-                        <li><a href="productLists/zubehörList.html">Zubehör</a></li>
-                        <li><a href="productLists/monitorList.html">Monitore</a></li>
+                        <li><a href="productLists/gamingPcList.php">Gaming PCs</a></li>
+                        <li><a href="productLists/desktopPcList.php">Desktop PCs</a></li>
+                        <li><a href="productLists/laptopList.php">Laptops</a></li>
+                        <li><a href="../productLists/zubehoerList.php">Zubehör</a></li>
+                        <li><a href="../productLists/monitorList.php">Monitore</a></li>
+                        <li><a href="../productLists/gamingPcList.php">Gaming PCs</a></li>
+                        <li><a href="../productLists/desktopPcList.php">Desktop PCs</a></li>
+                        <li><a href="../productLists/laptopList.php">Laptops</a></li>
+                        <li><a href="../productLists/zubehoerList.php">Zubehör</a></li>
+                        <li><a href="../productLists/monitorList.php">Monitore</a></li>
                         <li><a href="#">PC Konfigurator</a></li>
                     </ul>
                 </div>
