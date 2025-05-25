@@ -32,7 +32,15 @@
     </header>
 
    
+<!--Ab hier PHP noch unfertig !!!! -->
+    <?php
+    $kontakte = [];
 
+    if(isset($_POST['variablefromusername']) && isset($_POST['variableformpassword'])){
+        echo 'Person ' . $_POST['variablefromusername'] . ' hinzugefügt';
+    }
+
+?>
 
 
 
