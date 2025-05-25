@@ -32,6 +32,15 @@
     </header>
 
    
+<!--Ab hier PHP noch unfertig !!!! -->
+    <?php
+    $kontakte = [];
+
+    if(isset($_POST[]))
+
+?>
+
+
 
     <!-- Ab Hier Login Funktionen -->
  <!-- Überarbeiteter login.php – moderner & professioneller -->

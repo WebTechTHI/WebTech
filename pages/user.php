@@ -36,8 +36,11 @@
     </header>
 
 
+<!--Ab hier PHP -->
+
+
         <!-- Ab Hier User Funktionen -->
-   <form class="userInfoFormuser" action="user.php" method="post">
+   <form class="userInfoFormuser" action="user.php" method="POST">
   <h1 class="formTitle">👤 Benutzerkonto</h1>
 
       <div id="liveClock" class="Clock"></div>
