@@ -5,9 +5,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--header-bg);
+  background-color: transparent;
   padding: 10px 20px;
   box-sizing: border-box;
+  
 }
 
 header img {
