@@ -32,7 +32,7 @@
     </header>
 
    
-<!--Ab hier PHP noch unfertig !!!! -->
+<!--Ab hier PHP noch unfertig !!!!! -->
     <?php
     $kontakte = [];
 
