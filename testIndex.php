@@ -223,31 +223,6 @@
         </div>
     </section>
 
-    <!-- Brands Section -->
-    <section class="container brands">
-        <h2 class="section-title">UNSERE PARTNER</h2>
-        <div class="brands-grid">
-            <div class="brand">
-                <img src="/api/placeholder/120/60" alt="NVIDIA">
-            </div>
-            <div class="brand">
-                <img src="/api/placeholder/120/60" alt="AMD">
-            </div>
-            <div class="brand">
-                <img src="/api/placeholder/120/60" alt="Intel">
-            </div>
-            <div class="brand">
-                <img src="/api/placeholder/120/60" alt="MSI">
-            </div>
-            <div class="brand">
-                <img src="/api/placeholder/120/60" alt="ASUS">
-            </div>
-            <div class="brand">
-                <img src="/api/placeholder/120/60" alt="Corsair">
-            </div>
-        </div>
-    </section>
-
     <?php include 'components/footer.html'; ?>
 
 </body>

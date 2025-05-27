@@ -456,50 +456,8 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
     /* Use viewport height instead of percentage */
 
 }
 
-main {
-    flex: 1;
-}
-
-/* Responsive container */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-/* Make images responsive by default */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-
-a {
-    text-decoration: none;
-    color: var(--anker-color);
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-
-hr {
-    width: 100%;
-    border: none;
-    border-top: 2px solid var(--hr-color);
-    margin: 20px 0;
-}
-
-.logoutMessage {
-    font-size: clamp(16px, 2vw, 20px);
-    /* Responsive font size */
-    margin-top: 20px;
-}
