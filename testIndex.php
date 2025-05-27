@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR - Gaming PCs, Laptops & High-End Computer</title>
 
-    <link rel="stylesheet" href="/assets/css/tests/testIndex.css">
+    <link rel="stylesheet" href="/webtech/WebTech/assets/css/tests/testIndex.css">
 
 </head>
 
