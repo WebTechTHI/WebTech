@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $targetDir = "uploads/"; // Zielordner (muss existieren und beschreibbar sein)
+    $targetDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/'; // Zielordner (muss existieren und beschreibbar sein)
     $targetFile = $targetDir . basename($_FILES["image"]["name"]);
 
     // Prüfen, ob eine Datei hochgeladen wurde
