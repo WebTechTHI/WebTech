@@ -2,25 +2,25 @@
 <html lang="de">
 
 
-    <link rel="stylesheet" href="/WebTech/assets/css/loginRegistration.css">
-    <link rel="stylesheet" href="/WebTech/assets/css/specialHeader.css">
-    <link rel="stylesheet" href="/WebTech/assets/css/footer.css">
-    <link rel="stylesheet" href="/WebTech/assets/css/colors.css">
+    <link rel="stylesheet" href="/assets/css/loginRegistration.css">
+    <link rel="stylesheet" href="/assets/css/specialHeader.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/colors.css">
 
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR | Impressum</title>
-    <link rel="icon" href="/WebTech/assets/images/logo/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
 </head>
 
 <body>
     <header>
-        <a href="/WebTech/index.php">
-            <img src="/WebTech/assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
+        <a href="/index.php">
+            <img src="/assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
         </a>
-        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/WebTech/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
+        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
     </header>
 
 
