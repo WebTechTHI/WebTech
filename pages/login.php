@@ -36,7 +36,7 @@
 
 
 
-<!--Ab hier PHP noch unfertig !!!! -->
+<!-- =====Ab hier PHP noch unfertig !!!!  =============-->
     <?php
     $usernameInput = $_POST['variablefromusername']
     $passwordInput = $_POST['variableformpassword']
@@ -49,7 +49,7 @@
 
 
 
-    <!-- Ab Hier Login Funktionen -->
+    <!-- ======= Ab Hier Login Funktionen  ==========-->
  <!-- Überarbeiteter login.php – moderner & professioneller -->
 <form class="userInfoFormlogin" action="login.php" method="post">
 
