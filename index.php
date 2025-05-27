@@ -89,7 +89,7 @@
     <a href="testEndprodukt.html">test testEndprodukte</a>
 
     <div class="categoryNameContainer">
-        <h1 class="categoryName">Unsere produkte im Überblick</h1>
+        <h1 class="categoryName">Unsere produkte test im Überblick</h1>
     </div>
 
     <div class="productMainContainer"></div>
