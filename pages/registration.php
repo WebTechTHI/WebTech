@@ -33,6 +33,36 @@
 
 
 
+<!--Ab hier PHP noch unfertig !!!! -->
+    <?php
+    $kontakte = [];
+
+    if(file_exists('kontakte.txt')){
+            $text = file_get_contents('kontakte.txt', true);
+           $kontakte = json_decode($text, true);
+    }
+
+    if(isset($_POST['fromusernameregistration']) && isset($_POST['fromuserpasswordregistration'])){
+        echo 'Hallo ' . $_POST['fromusernameregistration'] . ' sie sind Angemeldet!';
+        $neueKontakte = [
+            'fromusernameregistration' => $_POST['fromusernameregistration'],
+            'fromuserpasswordregistration' => $_POST['fromuserpasswordregistration']
+        ];
+            array_push($kontakte, $neueKontakte);
+            file_put_contents('kontakte.txt', json_encode($kontakte, JSON_PRETTY_PRINT));
+
+    }
+
+?>
+
+
+
+
+
+
+
+
+
     <!-- Ab Hier Registrieren Formular -->
    <form class="userInfoFormregistration" action="registration.php" method="post">
     <h1 class="formTitle" title="Please fill out the blanks">📝 Registrierung</h1>

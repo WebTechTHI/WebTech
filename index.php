@@ -24,17 +24,23 @@
 <body>
     <header id="header">
         <div id="topHeader" class="topNavHeader">
-            <a class="logo" href='index.html'><img src='assets/images/logo/logoDarkmode.png'></a>
+            <a class="logo" href='index.php'><img src='assets/images/logo/logoDarkmode.png'></a>
             <nav class="userNav">
-                <a href="pages/login.html"><img class="userIconHeader" src="assets/images/icons/login.png"
+
+                <a href="pages/login.php"><img class="userIconHeader" src="assets/images/icons/login.png"
                         alt="Login"></a>
-                <a href="pages/registration.html"><img class="userIconHeader" src="assets/images/icons/register.png"
+
+                <a href="pages/registration.php"><img class="userIconHeader" src="assets/images/icons/register.png"
                         alt="Registrierung"></a>
-                <a href="pages/logout.html"><img class="userIconHeader" src="assets/images/icons/logout.png"
+
+                <a href="pages/logout.php"><img class="userIconHeader" src="assets/images/icons/logout.png"
                         alt="Logout"></a>
-                <a href="pages/shoppingBasket.html"><img class="userIconHeader"
+
+                <a href="pages/shoppingBasket.php"><img class="userIconHeader"
                         src="assets/images/icons/shoppingcart.png" alt="Warenkorb"></a>
-                <a href="pages/user.html"><img class="userIconHeader" src="assets/images/icons/user.png"></a>
+
+                <a href="pages/user.php"><img class="userIconHeader" 
+                        src="assets/images/icons/user.png"></a>
             </nav>
         </div>
 
