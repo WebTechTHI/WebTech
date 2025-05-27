@@ -86,7 +86,7 @@
     <a href="testIndex.html">test Startseite</a>
     <a href="testProduct.html">test Produktseite</a>
     <a href="categoryNeu.html">test Produktliste</a>
-    <a href="testEndprodukt.html">test testEndproduktetetete</a>
+    <a href="testEndprodukt.html">test testEndprodukte</a>
 
     <div class="categoryNameContainer">
         <h1 class="categoryName">Unsere pcs im Überblick</h1>
