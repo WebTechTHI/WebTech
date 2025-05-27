@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <header>
+    <header style="display: flex; justify-content: space-between;">
         <a href="../index.html">
-            <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
+            <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader" style="width: 100px;">
         </a>
         <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png"
             onclick="toggleTheme()">
@@ -27,10 +27,11 @@
     </h1>
 
     <div style="margin: 100px 0; display: flex; justify-content: center">
-        <div>
-            <input type="image">
-
-        </div>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <label for="imageUpload">Bild hochladen:</label>
+            <input type="file" name="image" id="imageUpload" accept="image/*" required>
+            <button type="submit">Hochladen</button>
+        </form>
     </div>
 
 
