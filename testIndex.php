@@ -6,62 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR - Gaming PCs, Laptops & High-End Computer</title>
 
-    <link rel="stylesheet" href="/webtech/WebTech/assets/css/tests/testIndex.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/mystyle.css">
 
 </head>
 
 <body>
 
-    <!-- top header -->
-    <div class="top-bar">
-        <a id="wishlist-btn-heder" href="#">Merken</a> |
-        <a id="log-reg-btn-header" href="/pages/login.html">Login / Registrieren</a> |
-        <a id="user-btn-header" href="/pages/user.html">Mein Konto</a>
-    </div>
-
-    <!-- nav header -->
-    <nav class="main-nav">
-
-        <div class="main-menu">
-            <div class="logo">
-                <a href="testIndex.html"><img src="/assets\images\logo\logoDarkmode.png" alt="MLR Logo"
-                        style="height:60px;"></a>
-            </div>
-            <ul>
-                <li>
-                    <a href="#">Desktop PCs</a>
-                    <ul class="submenu">
-                        <li><a>gaming PCs</a></li>
-                        <li><a>office PCs</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Laptops</a>
-                    <ul class="submenu">
-                        <li><a>gaming Laptops</a></li>
-                        <li><a>office Laptops</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Monitore & Zubehör</a>
-                    <ul class="submenu">
-                        <li><a>Monitore</a></li>
-                        <li><a>Zubehör</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">PC Konfigurator</a>
-                </li>
-                <li>
-                    <a href="#">Sale & Aktionen <span class="red-badge">5</span></a>
-                </li>
-            </ul>
-        </div>
-        <a href="#" class="cart">
-            MEIN WARENKORB
-            <span class="cart-badge">0</span>
-        </a>
-    </nav>
+    <?php include 'components/header.html'; ?>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -296,75 +248,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-logo">
-                        <img src="/assets/images/logo/logoDarkmode.png" alt="MLR Logo" style="height:70px;">
-                    </div>
-                    <p class="footer-about">
-                        MLR ist Deutschlands führender Anbieter von hochwertigen Gaming-PCs, Laptops und individuell
-                        konfigurierbaren Computer-Systemen mit über 15 Jahren Erfahrung und exzellentem Kundenservice.
-                    </p>
-                    <div class="footer-social">
-                        <a href="#" title="Facebook">f</a>
-                        <a href="#" title="Twitter">t</a>
-                        <a href="#" title="Instagram">i</a>
-                        <a href="#" title="YouTube">y</a>
-                        <a href="#" title="Discord">d</a>
-                    </div>
-                </div>
+    <?php include 'components/footer.html'; ?>
 
-                <div>
-                    <h4 class="footer-title">PRODUKTE</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Gaming PCs</a></li>
-                        <li><a href="#">High-End PCs</a></li>
-                        <li><a href="#">Silent PCs</a></li>
-                        <li><a href="#">Creator PCs</a></li>
-                        <li><a href="#">Gaming Laptops</a></li>
-                        <li><a href="#">PC Konfigurator</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer-title">SERVICE</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Reparatur & Wartung</a></li>
-                        <li><a href="#">Garantie</a></li>
-                        <li><a href="#">Downloads</a></li>
-                        <li><a href="#">Hardware-Ratgeber</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer-title">KONTAKT</h4>
-                    <ul class="footer-contact footer-links">
-                        <li><span class="footer-contact-icon">◆</span> MLR GmbH<br>Musterstraße 123<br>80335 München
-                        </li>
-                        <li><span class="footer-contact-icon">☎</span> +49 89/660 77 969 0</li>
-                        <li><span class="footer-contact-icon">✉</span> info@mlr-computer.de</li>
-                        <li><span class="footer-contact-icon">⌚</span> Mo-Fr: 9-18 Uhr<br>Sa: 10-14 Uhr</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div>© 2025 MLR GmbH. Alle Rechte vorbehalten.</div>
-                <div class="footer-payment">
-                    <div class="payment-icon" title="PayPal"></div>
-                    <div class="payment-icon" title="Visa"></div>
-                    <div class="payment-icon" title="Mastercard"></div>
-                    <div class="payment-icon" title="Klarna"></div>
-                    <div class="payment-icon" title="Sofortüberweisung"></div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 
 <script>
