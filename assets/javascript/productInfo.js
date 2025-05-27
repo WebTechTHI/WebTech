@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Hauptbild initial setzen
-    mainImage.src = "../" + produkt.bild[0];
+    mainImage.src = "/" + produkt.bild[0];
     mainImage.alt = `${produkt.name} Hauptbild`;
 
     // Thumbnails leeren und neu füllen
