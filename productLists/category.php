@@ -31,15 +31,11 @@ if ($conn->connect_error) {
     die("Verbindung fehlgeschlagen: " . $conn->connect_error);
 }
 
-// Beispiel SELECT-Anweisung (kannst du ändern)
+// Produkte abfragen
 $sql = "SELECT * FROM product";
 $result = $conn->query($sql);
 
-if ($result === false) {
-    echo "Fehler bei der Abfrage: " . $conn->error;
-} else {
-    // Daten ausgeben
-   // HTML-Ausgabe starten
+// HTML-Ausgabe starten
 echo '<div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;">';
 
 if ($result->num_rows > 0) {
@@ -59,7 +55,6 @@ if ($result->num_rows > 0) {
 }
 
 echo '</div>';
-}
 
 // Verbindung schließen
 $conn->close();
