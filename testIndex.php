@@ -17,7 +17,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div id="heroImage" class="hero-image" style="background-image: url('/assets/images/background/index-test-banner1.png');"></div>
+        <div id="heroImage" class="hero-image"></div>
         <div class="hero-overlay-down"></div>
         <div class="hero-overlay-right"></div>
         <div class="hero-content">
