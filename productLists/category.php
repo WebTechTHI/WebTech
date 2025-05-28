@@ -45,9 +45,10 @@ if ($result->num_rows > 0) {
             <h2>' . htmlspecialchars($row["name"]) . '</h2>
             <p><strong>Kurzbeschreibung:</strong> ' . htmlspecialchars($row["short_description"]) . '</p>
             <p><strong>Preis:</strong> €' . number_format($row["price"], 2, ',', '.') . '</p>
-            <a href="' . htmlspecialchars($row["page_link"]) . '" style="display: inline-block; margin-top: 10px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
-                Zum Produkt
-            </a>
+            <a href="' . htmlspecialchars($row["page_link"]) . '?id=' . htmlspecialchars($row["product_id"]) . '" 
+   style="display: inline-block; margin-top: 10px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+   Zum Produkt
+</a>
         </div>';
     }
 } else {
