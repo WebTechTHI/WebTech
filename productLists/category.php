@@ -13,17 +13,47 @@
 
 <body>
 
-    <?php
-$path = __DIR__ . '/components/header.html';
-if (file_exists($path)) {
-    echo "Datei gefunden: $path";
-} else {
-    echo "Datei NICHT gefunden: $path";
+ <?php include __DIR__ . '/../components/header.html'; ?>
+
+
+<?php
+// Verbindungsdaten zur Datenbank
+$servername = "localhost";
+$username = "shopuser";
+$password = "12345678";
+$dbname = "onlineshop";
+
+// Verbindung herstellen
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verbindung prüfen
+if ($conn->connect_error) {
+    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
 }
+
+// Beispiel SELECT-Anweisung (kannst du ändern)
+$sql = "SELECT * FROM deine_tabelle";
+$result = $conn->query($sql);
+
+if ($result === false) {
+    echo "Fehler bei der Abfrage: " . $conn->error;
+} else {
+    // Daten ausgeben
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            print_r($row);
+            echo "<br>";
+        }
+    } else {
+        echo "Keine Ergebnisse gefunden.";
+    }
+}
+
+// Verbindung schließen
+$conn->close();
 ?>
 
 
-
     
-    
+ <?php include __DIR__ . '/../components/footer.html'; ?>   
 </html>
