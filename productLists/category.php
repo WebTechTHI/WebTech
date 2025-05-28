@@ -18,7 +18,7 @@
 
 <?php
 // Verbindungsdaten zur Datenbank
-$servername = "localhost";
+$servername = "79.76.121.65";
 $username = "shopuser";
 $password = "12345678";
 $dbname = "onlineshop";
@@ -39,14 +39,26 @@ if ($result === false) {
     echo "Fehler bei der Abfrage: " . $conn->error;
 } else {
     // Daten ausgeben
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            print_r($row);
-            echo "<br>";
-        }
-    } else {
-        echo "Keine Ergebnisse gefunden.";
+   // HTML-Ausgabe starten
+echo '<div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;">';
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo '
+        <div style="border: 1px solid #ccc; border-radius: 10px; padding: 16px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <h2>' . htmlspecialchars($row["name"]) . '</h2>
+            <p><strong>Kurzbeschreibung:</strong> ' . htmlspecialchars($row["short_description"]) . '</p>
+            <p><strong>Preis:</strong> €' . number_format($row["price"], 2, ',', '.') . '</p>
+            <a href="' . htmlspecialchars($row["page_link"]) . '" style="display: inline-block; margin-top: 10px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+                Zum Produkt
+            </a>
+        </div>';
     }
+} else {
+    echo "<p>Keine Produkte gefunden.</p>";
+}
+
+echo '</div>';
 }
 
 // Verbindung schließen
