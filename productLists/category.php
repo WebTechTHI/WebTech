@@ -32,7 +32,7 @@ if ($conn->connect_error) {
 }
 
 // Beispiel SELECT-Anweisung (kannst du ändern)
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM product";
 $result = $conn->query($sql);
 
 if ($result === false) {
