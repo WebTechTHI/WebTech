@@ -211,6 +211,22 @@ a:hover {
     vertical-align: top;
 }
 
+.buy-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e00;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #c00;
+}
+
 /* Categories Section */
 .categories {
     display: grid;
