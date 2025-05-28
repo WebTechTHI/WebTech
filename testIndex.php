@@ -15,57 +15,6 @@
 
     <?php include 'components/header.html'; ?>
 
-    <!-- top header -->
-    <div class="top-bar">
-        <a id="wishlist-btn-heder" href="#">Merken</a> |
-        <a id="log-reg-btn-header" href="/pages/login.html">Login / Registrieren</a> |
-        <a id="user-btn-header" href="/pages/user.html">Mein Konto</a>
-    </div>
-
-    <!-- nav header -->
-    <nav class="main-nav">
-
-        <div class="main-menu">
-            <div class="logo">
-                <a href="testIndex.html"><img src="/assets\images\logo\logoDarkmode.png" alt="MLR Logo"
-                        style="height:60px;"></a>
-            </div>
-            <ul>
-                <li>
-                    <a href="#">Desktop PCs</a>
-                    <ul class="submenu">
-                        <li><a>gaming PCs</a></li>
-                        <li><a>office PCs</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Laptops</a>
-                    <ul class="submenu">
-                        <li><a>gaming Laptops</a></li>
-                        <li><a>office Laptops</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Monitore & Zubehör</a>
-                    <ul class="submenu">
-                        <li><a>Monitore</a></li>
-                        <li><a>Zubehör</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">PC Konfigurator</a>
-                </li>
-                <li>
-                    <a href="#">Sale & Aktionen <span class="red-badge">5</span></a>
-                </li>
-            </ul>
-        </div>
-        <a href="#" class="cart">
-            MEIN WARENKORB
-            <span class="cart-badge">0</span>
-        </a>
-    </nav>
-
     <!-- Hero Section -->
     <section class="hero">
         <div id="heroImage" class="hero-image" style="background-image: url('/assets/images/background/index-test-banner1.png');"></div>
