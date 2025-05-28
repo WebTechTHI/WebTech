@@ -257,11 +257,11 @@
                     heroImageElement.style.transition = 'transform 1.3s ease-in-out';
                     heroImageElement.style.transform = 'translateX(0)';
                 }, 20);
-            }, 1000);
+            }, 100);
         }
 
-        // Starte den automatischen Bildwechsel alle 5 Sekunden
-        setInterval(changeHeroImage, 10000);
+        // Starte den automatischen Bildwechsel alle 9 Sekunden
+        setInterval(changeHeroImage, 9000);
     });
 
 
