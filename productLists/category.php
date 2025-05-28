@@ -18,7 +18,7 @@
 
 <?php
 // Verbindungsdaten zur Datenbank
-$servername = "79.76.121.65";
+$servername = "localhost";
 $username = "shopuser";
 $password = "12345678";
 $dbname = "onlineshop";
