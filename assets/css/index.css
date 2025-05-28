@@ -33,6 +33,7 @@ a:hover {
     background-size: cover;
     background-position: center 5%;
     opacity: .8;
+    background-color: red;
     transition: transform 1.3s ease-in-out;
 }
 
