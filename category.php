@@ -15,7 +15,7 @@ $categoryInfo = getCategoryInfo($category);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR - <?php echo htmlspecialchars($categoryInfo['sidebarTitel']); ?></title>
-    <link rel="stylesheet" href="/assets/css/categoryTest.css">
+    <link rel="stylesheet" href="/assets/css/categoryList.css">
     <link rel="stylesheet" href="/assets/css/shopHeader.css">
     <link rel="stylesheet" href="/assets/css/mystyle.css">
     <link rel="stylesheet" href="/assets/css/footer.css">
@@ -125,7 +125,7 @@ $categoryInfo = getCategoryInfo($category);
     <div class="category-container">
         
         <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
-            <a class="product-container-link "href="<?php echo htmlspecialchars($uk['link']); ?>" class="category-link">
+            <a class="product-container-link "href="<?php echo htmlspecialchars($uk['link']); ?>">
             <div class="category-card">
                 <img src="<?php echo htmlspecialchars($uk['bild']); ?>" alt="<?php echo htmlspecialchars($uk['name']); ?>">
                 <div class="category-overlay"></div>
