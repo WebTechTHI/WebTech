@@ -120,22 +120,28 @@ $categoryInfo = getCategoryInfo($category);
             </div>
 
 
-          <?php if (!empty($categoryInfo['unterkategorien'])): ?>
-    <div class="categories">
+       <?php if (!empty($categoryInfo['unterkategorien'])): ?>
+        <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
+    <div class="category-container">
+        
         <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
-            <a href="<?php echo htmlspecialchars($uk['link']); ?>">
-                <div class="category">
-                    <div class="category-title">
-                        <?php echo strtoupper(htmlspecialchars($uk['name'])); ?>
-                    </div>
-                    <div class="category-image">
-                        <img src="<?php echo htmlspecialchars($uk['bild']); ?>" alt="<?php echo htmlspecialchars($uk['name']); ?>">
-                    </div>
+            <a class="product-container-link "href="<?php echo htmlspecialchars($uk['link']); ?>" class="category-link">
+            <div class="category-card">
+                <img src="<?php echo htmlspecialchars($uk['bild']); ?>" alt="<?php echo htmlspecialchars($uk['name']); ?>">
+                <div class="category-overlay"></div>
+                <div class="category-content">
+                    <h3 class="category-title"><?php echo htmlspecialchars($uk['name']); ?></h3>
+                    
+                    <a href="<?php echo htmlspecialchars($uk['link']); ?>" class="category-link">MEHR ERFAHREN</a>
                 </div>
-            </a>
+            </div>
+           </a> 
+
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
+
+
 
 
     <!-- Products Grid -->
