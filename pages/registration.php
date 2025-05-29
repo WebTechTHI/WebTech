@@ -33,33 +33,75 @@
 
 
 
-<!--Ab hier PHP noch unfertig !!!! -->
+<!-- ======= Ab hier PHP !!!! ======= -->
     <?php
-    $kontakte = [];
+    session_start();
+    include '../db_verbindung.php';
+   
+    //Prüfung ob fehld existiert mit iesset und mit !empty das es auch nicht leer ist
+   if (
+        isset($_POST['fromusernameregistration']) && isset($_POST['fromuserpasswordregistration'])
+    && !empty($_POST['fromusernameregistration']) && !empty($_POST['fromuserpasswordregistration'])
+   ) {
 
-    if(file_exists('kontakte.txt')){
-            $text = file_get_contents('kontakte.txt', true);
-           $kontakte = json_decode($text, true);
-    }
+    //Eingaben aus Formular jetz in php variablen speichern
+    $username = $_POST['fromusernameregistration'];
+    $password = $_POST['fromuserpasswordregistration'];
 
-    if(isset($_POST['fromusernameregistration']) && isset($_POST['fromuserpasswordregistration'])){
-        echo 'Hallo ' . $_POST['fromusernameregistration'] . ' sie sind Angemeldet!';
-        $neueKontakte = [
-            'fromusernameregistration' => $_POST['fromusernameregistration'],
-            'fromuserpasswordregistration' => $_POST['fromuserpasswordregistration']
-        ];
-            array_push($kontakte, $neueKontakte);
-            file_put_contents('kontakte.txt', json_encode($kontakte, JSON_PRETTY_PRINT));
+    //Passwort hashen (sicherheit!!!)
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    }
+    
 
-?>
+    
+    //========= Hier noch prüfung ob es Benutzername schon in Datenbank gibt !! ===========
+    $check_sql = "SELECT username FROM kontakte WHERE username = ?";
+    $check_stmt = $conn->prepare($check_sql);
+    $check_stmt->bind_param("s", $username);
+    $check_stmt->execute();
+    $check_stmt->store_result();
+
+    if($check_stmt-> num_rows > 0) {
+        $fehlermeldung = "Achtung! Dieser Benutzername ist leider schon vergeben :(";
+     } else {
+        //SQL statement (prepared statement) 1. sql statement vorbereiten dann 2 strings einbinden
+        $stmt = $conn->prepare("INSERT INTO kontakte (username, password) VALUES (?, ?)");
+        $stmt->bind_param("ss", $username, $hashedPassword);
 
 
 
+        //Ausführen von sql statement (stmt) und Ergebnis prüfen
+            if ($stmt->execute()) {
+                $user_id = $stmt->insert_id;                //user ID aus DB holen
+                $_SESSION['user_id'] = $user_id;            // in Session speichern (für Warenkorb später wichtig !)
+                $erfolgsmeldung = "Registrierung hat geklappt ! Benutzer ID ist: " . $user_id;
+            }   
+            else {
+                echo "Fehler !: " . $stmt->error;
+            }
+            $stmt->close();
+            
+        }
+        $check_stmt->close();
+        $conn->close();
+
+       }      else {
+                 echo "";
+         }
 
 
 
+   ?>
+
+   <?php
+   if   (isset($fehlermeldung)){
+    echo "<div class='meldung-container meldung-fehler'> $fehlermeldung</div>";
+   }
+   if   (isset($erfolgsmeldung)){
+    echo "<div class= 'meldung-container meldung-erfolg'>$erfolgsmeldung</div>";
+   }
+   ?>
+   
 
 
 

@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR | Login</title>
-    <link rel="icon" href="/WebTech/assets/images/logo/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
 
 
-    <link rel="stylesheet" href="/WebTech/assets/css/colors.css">
+    <link rel="stylesheet" href="/assets/css/colors.css">
 
     
-    <link rel="stylesheet" href="/WebTech/assets/css/loginRegistration.css">
+    <link rel="stylesheet" href="/assets/css/loginRegistration.css">
 
 
-    <link rel="stylesheet" href="/WebTech/assets/css/specialHeader.css">
-    <link rel="stylesheet" href="/WebTech/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/specialHeader.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
   
-    <script src="/WebTech/assets/javascript/toggleTheme.js"></script>
+    <script src="/assets/javascript/toggleTheme.js"></script>
 
 
 </head>
@@ -25,10 +25,10 @@
 <body class="backgroundpicture darkMode">
 
     <header>
-        <a href="/WebTech/index.php">
-            <img src="/WebTech/assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
+        <a href="/index.php">
+            <img src="/assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
         </a>
-        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/WebTech/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
+        <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()">
     </header>
 
    
@@ -37,16 +37,58 @@
 
 
 <!-- =====Ab hier PHP noch unfertig !!!!  =============-->
-    <?php
-    $usernameInput = $_POST['variablefromusername']
-    $passwordInput = $_POST['variableformpassword']
+<?php
+    //IMMER als erstes Session starten
+    session_start();
+
+    //DB verbindung
+    include '../db_verbindung.php';
+
+    //Prüfn ob formular abgeschickt per Post
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        //Eingaben absichern (trim = whitespace entfernen leerzeichen)
+        $username = trim($_POST['variablefromusername']);
+        $password = $_POST['variableformpassword'];
+
+        //Richtigen Nutze aus DB lesen
+        $sql = "SELECT user_id, username, password FROM kontakte WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
 
 
-    ?>
+        $result = $stmt->get_result();
+
+        //Prüfen ob benutzer existiert
+        if ($result->num_rows === 1){
+            $user = $result->fetch_assoc();
 
 
+            //Passwort prüfen und entziffern !!
+            if(password_verify($password, $user['password'])) {
 
+                //Wenn login jetzt erfolgreich ist
+                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['username'] = $user['username'];
 
+                echo "Willkommen, " . htmlspecialchars($user['username']) . "!<br>";
+                echo "Ihre Benutzer ID lautet: " . $_SESSION['user_id'];
+
+                //=================Hier noch später weiterleiten auf user.php oder sprüche einfügen / sound beim anmelden einfügen als erfolg ==============
+            }else {
+                echo "Falsches Passwort !";
+            }
+        } else{
+            echo "Benutzer existiert nicht !";
+        }
+
+        $stmt->close();
+        $conn->close();
+
+    }
+
+?>
 
 
     <!-- ======= Ab Hier Login Funktionen  ==========-->
@@ -93,8 +135,8 @@
 
 
       <!--JavaScript hier noch einfügen-->
-      <script src="/WebTech/assets/javascript/Validierung_Login.js"></script>
-      <script src="/WebTech/assets/javascript/uhrzeit.js"></script>
+      <script src="/assets/javascript/Validierung_Login.js"></script>
+      <script src="/assets/javascript/uhrzeit.js"></script>
 
 </body>
 
