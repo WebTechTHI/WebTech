@@ -120,75 +120,81 @@ $categoryInfo = getCategoryInfo($category);
             </div>
 
 
-       <?php if (!empty($categoryInfo['unterkategorien'])): ?>
-        <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
-    <div class="category-container">
-        
-        <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
-            <a class="product-container-link "href="<?php echo htmlspecialchars($uk['link']); ?>">
-            <div class="category-card">
-                <img src="<?php echo htmlspecialchars($uk['bild']); ?>" alt="<?php echo htmlspecialchars($uk['name']); ?>">
-                <div class="category-overlay"></div>
-                <div class="category-content">
-                    <h3 class="category-title"><?php echo htmlspecialchars($uk['name']); ?></h3>
-                    
-                    <a href="<?php echo htmlspecialchars($uk['link']); ?>" class="category-link">MEHR ERFAHREN</a>
+            <?php if (!empty($categoryInfo['unterkategorien'])): ?>
+                <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
+                <div class="category-container">
+
+                    <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
+                        <a class="product-container-link " href="<?php echo htmlspecialchars($uk['link']); ?>">
+                            <div class="category-card">
+                                <img src="<?php echo htmlspecialchars($uk['bild']); ?>"
+                                    alt="<?php echo htmlspecialchars($uk['name']); ?>">
+                                <div class="category-overlay"></div>
+                                <div class="category-content">
+                                    <h3 class="category-title"><?php echo htmlspecialchars($uk['name']); ?></h3>
+
+                                    <a href="<?php echo htmlspecialchars($uk['link']); ?>" class="category-link">MEHR
+                                        ERFAHREN</a>
+                                </div>
+                            </div>
+                        </a>
+
+                    <?php endforeach; ?>
                 </div>
-            </div>
-           </a> 
-
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
+            <?php endif; ?>
 
 
 
 
-    <!-- Products Grid -->
-    <h3 class="section-title">UNSERE TOPSELLER</h3>
+            <!-- Products Grid -->
+            <h3 class="section-title">UNSERE TOPSELLER</h3>
 
-    <div class="products-grid">
-        <?php if (empty($products)): ?>
-            <div class="no-products" style="text-align: center; padding: 40px; color: #666;">
-                <p>Derzeit sind keine Produkte in dieser Kategorie verfügbar.</p>
-            </div>
-        <?php else: ?>
-            <?php foreach ($products as $product): ?>
-                <?php
-                // Erstes Bild laden
-                $images = getProductImages($conn, $product['product_id']);
-
-                $firstImage = !empty($images) ? $images[0]['file_path'] : 'assets/images/placeholder.png';
-
-                // Spezifikationen aufbauen
-                $specs = buildSpecifications($product);
-                ?>
-
-                <div class="product">
-                    <span class="product-badge"><?php echo $product['sale'] ? 'SALE' : 'TOP'; ?></span>
-                    <div class="product-image">
-                        <img src="<?php echo htmlspecialchars($firstImage); ?>"
-                            alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>">
+            <div class="products-grid">
+                <?php if (empty($products)): ?>
+                    <div class="no-products" style="text-align: center; padding: 40px; color: #666;">
+                        <p>Derzeit sind keine Produkte in dieser Kategorie verfügbar.</p>
                     </div>
-                    <div class="product-details">
-                        <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
-                        <ul class="product-specs">
-                            <?php foreach ($specs as $spec): ?>
-                                <li><?php echo htmlspecialchars($spec); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <div class="price">
-                            <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                <?php else: ?>
+                    <?php foreach ($products as $product): ?>
+                        <?php
+                        // Erstes Bild laden
+                        $images = getProductImages($conn, $product['product_id']);
+
+                        $firstImage = !empty($images) ? $images[0]['file_path'] : 'assets/images/placeholder.png';
+
+                        // Spezifikationen aufbauen
+                        $specs = buildSpecifications($product);
+                        ?>
+
+                        <div class="product">
+                            <span class="product-badge"><?php echo $product['sale'] ? 'SALE' : 'TOP'; ?></span>
+                            <div class="product-image">
+                                <img src="<?php echo htmlspecialchars($firstImage); ?>"
+                                    alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>">
+                            </div>
+                            <div class="product-details">
+                                <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
+                                <ul class="product-specs">
+                                    <?php foreach ($specs as $spec): ?>
+                                        <li><?php echo htmlspecialchars($spec); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <div class="product-footer">
+                                    <div class="price">
+                                        <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                                    </div>
+                                    <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
+                                    <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"
+                                        class="buy-btn">Jetzt
+                                        konfigurieren</a>
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="financing">Jetzt mit 0% Finanzierung</div>
-                        <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>" class="buy-btn">Jetzt
-                            konfigurieren</a>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
-    </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->

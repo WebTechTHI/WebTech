@@ -168,7 +168,7 @@ function buildSpecifications($product) {
         $specs[] = $product['storage_capacity'] . ' GB ' . ($product['storage_type'] ?? 'Storage');
     }
     if (!empty($product['display_size'])) {
-        $specs[] = $product['display_size'] . '"';
+        $specs[] = $product['display_size'] . '" Zoll';
         if (!empty($product['resolution'])) {
             $specs[] = $product['resolution'];
         }
