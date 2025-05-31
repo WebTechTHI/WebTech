@@ -10,12 +10,12 @@
       {
         "name": "Gaming PCs",
         "link": "/category.php?category=gamingpc",
-        "bild": "assets/images/products/2/vorne.png"
+        "bild": "assets/images/subcategory_images/gamingPc.png"
       },
       {
         "name": "Office PCs",
         "link": "/category.php?category=officepc",
-        "bild": "assets/images/products/1/vorne.png"
+        "bild": "assets/images/subcategory_images/officePc.png"
       }
     ],
     "breadcrumb": "Desktop PCs"
@@ -31,12 +31,12 @@
       {
         "name": "Gaming Laptops",
         "link": "/category.php?category=gaminglaptop",
-        "bild": "assets/images/products/3/vorne.png"
+        "bild": "assets/images/subcategory_images/gamingLaptop.png"
       },
       {
         "name": "Office Laptops",
         "link": "/category.php?category=officelaptop",
-        "bild": "assets/images/products/4/vorne.png"
+        "bild": "assets/images/subcategory_images/officeLaptop.png"
       }
     ],
     "breadcrumb": "Laptops"
@@ -52,17 +52,17 @@
       {
         "name": "Monitore",
         "link": "/category.php?category=monitor",
-        "bild": "assets/images/products/5/vorne.png"
+        "bild": "assets/images/subcategory_images/monitor.png"
       },
       {
         "name": "Mäuse",
         "link": "/category.php?category=maus",
-        "bild": "assets/images/products/6/vorne.png"
+        "bild": "assets/images/subcategory_images/maus.png"
       },
       {
         "name": "Tastaturen",
         "link": "/category.php?category=tastatur",
-        "bild": "assets/images/products/7/vorne.png"
+        "bild": "assets/images/subcategory_images/tastatur.png"
       }
     ],
     "breadcrumb": "Zubehör"
@@ -159,17 +159,17 @@
     {
       "name": "Desktop PCs",
       "link": "/category.php?category=pc",
-      "bild": "assets/images/products/2/vorne.png"
+      "bild": "assets/images/subcategory_images/officePc.png"
     },
     {
       "name": "Laptops",
       "link": "/category.php?category=laptop",
-      "bild": "assets/images/products/3/vorne.png"
+      "bild": "assets/images/subcategory_images/gamingLaptop.png"
     },
     {
       "name": "Zubehör",
       "link": "/category.php?category=zubehör",
-      "bild": "assets/images/products/5/vorne.png"
+      "bild": "assets/images/subcategory_images/monitor.png"
     }
   ],
   "breadcrumb": "Alle Produkte"

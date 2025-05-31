@@ -24,11 +24,11 @@ $categoryInfo = getCategoryInfo($category);
 </head>
 
 <body>
-
+<?php include 'components/header.html'; ?>
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="#">MLR</a> › <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
+        <a href="index.html">MLR</a> › <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span> 
     </div>
 
     <div class="main-content">
@@ -185,9 +185,7 @@ $categoryInfo = getCategoryInfo($category);
                                     </div>
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                                     <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"
-                                        class="buy-btn">Jetzt
-                                        konfigurieren</a>
-
+                                        class="buy-btn">Mehr zum produkt</a>
                                 </div>
                             </div>
                         </div>
