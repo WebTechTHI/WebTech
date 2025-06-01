@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/assets/css/mystyle.css">
 
     <script src="/assets/javascript/toggleTheme.js"></script>
+    <script src="/assets/javascript/changeHero.js"></script>
 
 </head>
 
@@ -228,7 +229,5 @@
     <?php include 'components/footer.html'; ?>
 
 </body>
-
-<?php include '/assets/javascript/changeHero.js';?>
 
 </html>
