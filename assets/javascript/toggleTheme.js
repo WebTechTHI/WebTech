@@ -25,7 +25,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const klarnaIcon = document.getElementById('klarnaIconFooter');
     const bitocinIcon = document.getElementById('bitcoinIconFooter');
 
-    setTimeout(() => {
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('darkMode');
         darkmodeBtn.src = '/assets/images/icons/lightmode-btn.png';
@@ -40,5 +39,4 @@ window.addEventListener('DOMContentLoaded', () => {
         paypalIcon.src = '/assets/images/icons/paymentMethods/paypal-light.svg';
         bitocinIcon.src = '/assets/images/icons/paymentMethods/bitcoin-light.svg';
     }
-}, 2000);
 });
