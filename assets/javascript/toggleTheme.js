@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const visaIcon = document.getElementById('visaIconFooter');
     const mastercardIcon = document.getElementById('mastercardIconFooter');
     const paypalIcon = document.getElementById('paypalIconFooter');
-    const klarnaIcon = document.getElementById('klarnaIconFooter');
     const bitocinIcon = document.getElementById('bitcoinIconFooter');
 
     if (localStorage.getItem('theme') === 'dark') {
