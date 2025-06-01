@@ -80,7 +80,7 @@ $categoryInfo = getCategoryInfo($category);
                     $uniqueValues = array_unique($values);
                     if (count($uniqueValues) > 1) {
                         echo "<div class='filter-group'>";
-                        echo "<div class='filter-header'><span>$filterName</span><span>▼</span></div>";
+                        echo "<div class='filter-header' onclick='toggleFilter(this)'><span>$filterName</span><span class='arrow'>▼</span></div>";
                         echo "<ul class='filter-options'>";
 
                         foreach ($uniqueValues as $value) {
@@ -194,6 +194,28 @@ $categoryInfo = getCategoryInfo($category);
     </div>
 
     <?php include 'components/footer.html'; ?>
+
+   <script>
+    function toggleFilter(header) {
+        const options = header.nextElementSibling;
+        options.classList.toggle('collapsed');
+        header.classList.toggle('open');
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const allOptions = document.querySelectorAll('.filter-options');
+        const allHeaders = document.querySelectorAll('.filter-header');
+
+        allOptions.forEach((el, index) => {
+            if (index === 0) {
+                el.classList.remove('collapsed'); // Erstes Element offen lassen
+                allHeaders[index].classList.add('open');
+            } else {
+                el.classList.add('collapsed'); // Alle anderen einklappen
+            }
+        });
+    });
+</script>
 </body>
 
 </html>
