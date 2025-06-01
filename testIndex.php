@@ -225,8 +225,6 @@
         </div>
     </section>
 
-    <image onclick="toggleTheme()" src="/assets/images/icons/darkmode-btn.png" id="themeToggleBtn" style="width: 60px">
-
     <?php include 'components/footer.html'; ?>
 
 </body>
