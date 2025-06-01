@@ -16,9 +16,7 @@ $categoryInfo = getCategoryInfo($category);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR - <?php echo htmlspecialchars($categoryInfo['sidebarTitel']); ?></title>
     <link rel="stylesheet" href="/assets/css/categoryList.css">
-    <link rel="stylesheet" href="/assets/css/shopHeader.css">
     <link rel="stylesheet" href="/assets/css/mystyle.css">
-    <link rel="stylesheet" href="/assets/css/footer.css">
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
 </head>
