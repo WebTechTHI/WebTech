@@ -15,15 +15,13 @@ function toggleTheme() {
     // beim Laden der Seite das gespeicherte Theme anwenden
 window.addEventListener('DOMContentLoaded', () => {
 
-    /*  */
     const darkmodeBtn = document.getElementById('themeToggleBtn');
-
-    /* Payment Icons */
     const visaIcon = document.getElementById('visaIconFooter');
     const mastercardIcon = document.getElementById('mastercardIconFooter');
     const paypalIcon = document.getElementById('paypalIconFooter');
     const bitocinIcon = document.getElementById('bitcoinIconFooter');
 
+    //light theme
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('darkMode');
         darkmodeBtn.src = '/assets/images/icons/lightmode-btn.png';
@@ -32,6 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
         paypalIcon.src = '/assets/images/icons/paymentMethods/paypal-dark.svg';
         bitocinIcon.src = '/assets/images/icons/paymentMethods/bitcoin-dark.svg';
     } else {
+        //dark theme
         darkmodeBtn.src = '/assets/images/icons/darkmode-btn.png';
         visaIcon.src = '/assets/images/icons/paymentMethods/visa-light.svg';
         mastercardIcon.src = '/assets/images/icons/paymentMethods/mastercard-light.svg';
