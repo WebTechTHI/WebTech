@@ -9,13 +9,13 @@
     "unterkategorien": [
       {
         "name": "Gaming PCs",
-        "link": "productLists/gamingPcList.html",
-        "bild": "assets/images/products/2/vorne.png"
+        "link": "/category.php?category=gamingpc",
+        "bild": "assets/images/subcategory_images/gamingPc.png"
       },
       {
         "name": "Office PCs",
-        "link": "productLists/officePcList.html",
-        "bild": "assets/images/products/1/vorne.png"
+        "link": "/category.php?category=officepc",
+        "bild": "assets/images/subcategory_images/officePc.png"
       }
     ],
     "breadcrumb": "Desktop PCs"
@@ -30,13 +30,13 @@
     "unterkategorien": [
       {
         "name": "Gaming Laptops",
-        "link": "productLists/gamingLaptopList.html",
-        "bild": "assets/images/products/3/vorne.png"
+        "link": "/category.php?category=gaminglaptop",
+        "bild": "assets/images/subcategory_images/gamingLaptop.png"
       },
       {
         "name": "Office Laptops",
-        "link": "productLists/officeLaptopList.html",
-        "bild": "assets/images/products/4/vorne.png"
+        "link": "/category.php?category=officelaptop",
+        "bild": "assets/images/subcategory_images/officeLaptop.png"
       }
     ],
     "breadcrumb": "Laptops"
@@ -51,23 +51,23 @@
     "unterkategorien": [
       {
         "name": "Monitore",
-        "link": "productLists/monitorList.html",
-        "bild": "assets/images/products/5/vorne.png"
+        "link": "/category.php?category=monitor",
+        "bild": "assets/images/subcategory_images/monitor.png"
       },
       {
         "name": "Mäuse",
-        "link": "productLists/mausList.html",
-        "bild": "assets/images/products/6/vorne.png"
+        "link": "/category.php?category=maus",
+        "bild": "assets/images/subcategory_images/maus.png"
       },
       {
         "name": "Tastaturen",
-        "link": "productLists/tastaturList.html",
-        "bild": "assets/images/products/7/vorne.png"
+        "link": "/category.php?category=tastatur",
+        "bild": "assets/images/subcategory_images/tastatur.png"
       }
     ],
     "breadcrumb": "Zubehör"
   },
-  "gamingPC": {
+  "gamingpc": {
     "titel": "GAMING",
     "untertitel": "PCS",
     "beschreibung": "Hochleistungs-PCs für das ultimative Gaming-Erlebnis",
@@ -77,7 +77,7 @@
     "unterkategorien": [],
     "breadcrumb": "Desktop PCs › Gaming PCs"
   },
-  "officePC": {
+  "officepc": {
     "titel": "OFFICE",
     "untertitel": "PCS",
     "beschreibung": "Zuverlässige Arbeitsplatz-Computer für Büro und Home-Office",
@@ -87,7 +87,7 @@
     "unterkategorien": [],
     "breadcrumb": "Desktop PCs › Office PCs"
   },
-  "gamingLaptop": {
+  "gaminglaptop": {
     "titel": "GAMING",
     "untertitel": "LAPTOPS",
     "beschreibung": "Mobile Gaming-Power für unterwegs",
@@ -97,7 +97,7 @@
     "unterkategorien": [],
     "breadcrumb": "Laptops › Gaming Laptops"
   },
-  "officeLaptop": {
+  "officelaptop": {
     "titel": "OFFICE",
     "untertitel": "LAPTOPS",
     "beschreibung": "Mobile Arbeitsplätze für maximale Flexibilität",
@@ -146,5 +146,34 @@
     "sidebarTitel": "ANGEBOTE",
     "unterkategorien": [],
     "breadcrumb": "Angebote"
-  }
+  },
+
+  "alle": {
+  "titel": "ALLE",
+  "untertitel": "PRODUKTE",
+  "beschreibung": "Entdecke unser gesamtes Sortiment an PCs, Laptops und Zubehör",
+  "infoTitel": "Alle Produkte entdecken: Für jeden Bedarf das passende System",
+  "infoText": "Stöbere durch unser komplettes Angebot an Desktop-PCs, Laptops und Zubehör. Ob für Gaming, Office oder unterwegs – hier findest Du alles in einer Übersicht. Individuell konfigurierbar, leistungsstark und sofort einsatzbereit.",
+  "sidebarTitel": "ALLE PRODUKTE",
+  "unterkategorien": [
+    {
+      "name": "Desktop PCs",
+      "link": "/category.php?category=pc",
+      "bild": "assets/images/subcategory_images/officePc.png"
+    },
+    {
+      "name": "Laptops",
+      "link": "/category.php?category=laptop",
+      "bild": "assets/images/subcategory_images/gamingLaptop.png"
+    },
+    {
+      "name": "Zubehör",
+      "link": "/category.php?category=zubehör",
+      "bild": "assets/images/subcategory_images/monitor.png"
+    }
+  ],
+  "breadcrumb": "Alle Produkte"
 }
+
+}
+

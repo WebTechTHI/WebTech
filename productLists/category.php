@@ -1,67 +1,157 @@
+<?php
+/******************************************************************
+ *  productList.php
+ *  – dynamische Kategorie-/Produktseite  (MySQL 8 / PHP 8)
+ ******************************************************************/
+
+/* ------------------ 1)  DB-Verbindung ------------------------- */
+$servername = "mlr-shop.de";
+$username   = "shopuser";
+$password   = "12345678";
+$dbname     = "onlineshop";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn) {
+    die("Verbindung fehlgeschlagen: " . mysqli_connect_error());
+}
+
+/* ------------------ 2)  Kategorie aus der URL ----------------- */
+$param = $_GET['category']  ?? $_GET['kategorie'] ?? null;
+$param = strtolower(trim($param ?? ''));       // »gamingpc« usw.
+
+/* -------- Mapping: URL-Slug  →  Subkategorie / Kategorie ------ */
+$slugToSub  = [
+    'gamingpc'      => 'Gaming-PC',
+    'officepc'      => 'Office-PC',
+    'gaminglaptop'  => 'Gaming-Laptop',
+    'officelaptop'  => 'Office-Laptop',
+    'monitor'       => 'Monitor',
+    'maus'          => 'Maus',
+    'tastatur'      => 'Tastatur'
+];
+$slugToCat  = [           // wenn du ganze Hauptkategorien filtern willst
+    'pc'        => 'PC',
+    'laptop'    => 'Laptop',
+    'zubehör'   => 'Zubehör'
+];
+
+$whereSql   = '';         // wird gleich gebaut
+$params     = [];         // für prepared statement
+
+if ($param && isset($slugToSub[$param])) {
+    /* nach Subkategorie filtern */
+    $whereSql = 'WHERE s.name = ?';
+    $params[] = $slugToSub[$param];
+    $breadcrumb = $slugToSub[$param];
+} elseif ($param && isset($slugToCat[$param])) {
+    /* nach Hauptkategorie filtern */
+    $whereSql = 'WHERE c.name = ?';
+    $params[] = $slugToCat[$param];
+    $breadcrumb = $slugToCat[$param];
+} else {
+    /* keine / unbekannte Kategorie → alles anzeigen */
+    $breadcrumb = 'Alle Produkte';
+}
+
+/* ------------------ 3)  Produkte holen ------------------------ */
+$sql = "
+    SELECT p.*, s.name AS subcat, c.name AS cat
+    FROM   product      p
+    JOIN   subcategory  s ON p.subcategory_id = s.subcategory_id
+    JOIN   category     c ON s.category_id    = c.category_id
+    $whereSql
+    ORDER BY p.price DESC
+";
+
+$stmt = mysqli_prepare($conn, $sql);
+if ($params) {
+    /* Bindet beliebig viele Strings an das Statement */
+    mysqli_stmt_bind_param($stmt, str_repeat('s', count($params)), ...$params);
+}
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_close($conn);
+
+/* ------------------ 4)  Hilfsfunktionen ----------------------- */
+function formatPrice(float $price): string {
+    $str = number_format($price, 2, ',', '.');          // 1.234,56
+    return preg_replace('/,00$/', ',-', $str);          // 1.234,-
+}
+
+function badge(bool $sale): string {
+    return $sale ? 'SALE' : 'TOP';
+}
+?>
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLR - Gaming PCs, Laptops & High-End Computer</title>
-
+    <title>MLR – <?= htmlentities($breadcrumb) ?></title>
     <link rel="stylesheet" href="/assets/css/index.css">
     <link rel="stylesheet" href="/assets/css/mystyle.css">
-
+    <!-- deine weiteren CSS-Dateien … -->
 </head>
-
 <body>
+    <?php include 'components/header.html'; ?>
 
- <?php include __DIR__ . '/../components/header.html'; ?>
+    <!-- Breadcrumb ------------------------------------------- -->
+    <div class="breadcrumb">
+        <a href="/">MLR</a> › <span><?= htmlentities($breadcrumb) ?></span>
+    </div>
 
+    <div class="main-content">
+        <div class="products">
+            <h3 class="section-title"><?= htmlentities(strtoupper($breadcrumb)) ?></h3>
 
-<?php
-// Verbindungsdaten zur Datenbank
-$servername = "localhost";
-$username = "shopuser";
-$password = "12345678";
-$dbname = "onlineshop";
+            <div class="products-grid">
+            <?php if (!$products): ?>
+                <p style="grid-column: 1 / -1; padding: 40px; text-align:center;">
+                    Keine Produkte gefunden 🙁
+                </p>
+            <?php else: ?>
+                <?php foreach ($products as $p): ?>
+                    <div class="product">
+                        <span class="product-badge"><?= badge((bool)$p['sale']) ?></span>
 
-// Verbindung herstellen
-$conn = new mysqli($servername, $username, $password, $dbname);
+                        <div class="product-image">
+                            <!-- nimmt das erste Bild dieser Produkt-ID -->
+                            <img src="/assets/images/products/<?= $p['product_id'] ?>/vorne.png"
+                                 alt="<?= htmlentities($p['alt_text']) ?>">
+                        </div>
 
-// Verbindung prüfen
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
-}
+                        <div class="product-details">
+                            <h4 class="product-title"><?= htmlentities($p['name']) ?></h4>
 
-// Produkte abfragen
-$sql = "SELECT * FROM product";
-$result = $conn->query($sql);
+                            <!-- Spezifikationen als Liste (falls gewünscht) -->
+                            <?php
+                            $specs = [];
+                            if ($p['cpu_id'])      $specs[] = 'CPU ID '  . $p['cpu_id'];
+                            if ($p['gpu_id'])      $specs[] = 'GPU ID '  . $p['gpu_id'];
+                            if ($p['ram_id'])      $specs[] = 'RAM ID '  . $p['ram_id'];
+                            if ($p['storage_id'])  $specs[] = 'SSD ID '  . $p['storage_id'];
+                            ?>
+                            <ul class="product-specs">
+                                <?php foreach ($specs as $s): ?>
+                                    <li><?= htmlentities($s) ?></li>
+                                <?php endforeach; ?>
+                            </ul>
 
-// HTML-Ausgabe starten
-echo '<div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;">';
+                            <div class="price"><span class="price-prefix">€</span><?= formatPrice($p['price']) ?></div>
+                            <div class="financing">Jetzt mit 0% Finanzierung</div>
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo '
-        <div style="border: 1px solid #ccc; border-radius: 10px; padding: 16px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-            <h2>' . htmlspecialchars($row["name"]) . '</h2>
-            <p><strong>Kurzbeschreibung:</strong> ' . htmlspecialchars($row["short_description"]) . '</p>
-            <p><strong>Preis:</strong> €' . number_format($row["price"], 2, ',', '.') . '</p>
-            <a href="' . '/productPages/product.html?id=' . htmlspecialchars($row["product_id"]) . '" 
-   style="display: inline-block; margin-top: 10px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
-   Zum Produkt
-</a>
-        </div>';
-    }
-} else {
-    echo "<p>Keine Produkte gefunden.</p>";
-}
+                            <a href="/productPages/product.php?id=<?= $p['product_id'] ?>"
+                               class="buy-btn">Jetzt konfigurieren</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </div>
+        </div>
+    </div>
 
-echo '</div>';
-
-// Verbindung schließen
-$conn->close();
-?>
-
-
-    
- <?php include __DIR__ . '/../components/footer.html'; ?>   
+    <?php include 'components/footer.html'; ?>
+</body>
 </html>

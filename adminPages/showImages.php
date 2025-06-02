@@ -101,13 +101,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
             foreach ($bilder as $bild) {
                 $endung = strtolower(pathinfo($bild, PATHINFO_EXTENSION));
                 if (in_array($endung, $erlaubt)) {
-                    echo '<div class="galerie-item">';
-                    echo '<img src="' . htmlspecialchars($uploadUrl . $bild) . '" alt="Bild">';
-                    echo '<form class="delete-form" method="post" onsubmit="return confirm(\'Bild wirklich löschen?\');">';
-                    echo '<input type="hidden" name="delete_image" value="' . htmlspecialchars($bild) . '">';
-                    echo '<button type="submit" class="delete-button" title="Bild löschen">🗑️</button>';
-                    echo '</form>';
-                    echo '</div>';
+                    echo 
+                    '<div class="galerie-item">
+                        <img src="' . htmlspecialchars($uploadUrl . $bild) . '" alt="Bild">
+                        <form class="delete-form" method="post" onsubmit="return confirm(\'Bild wirklich löschen?\');">
+                            <input type="hidden" name="delete_image" value="' . htmlspecialchars($bild) . '">
+                            <button type="submit" class="delete-button" title="Bild löschen">🗑️</button>
+                        </form>
+                    </div>';
                 }
             }
         } else {

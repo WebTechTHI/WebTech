@@ -1,68 +1,221 @@
+<?php
+require_once 'db_verbindung.php';
+require_once 'categoryFunctions.php';
+
+// Kategorie aus URL-Parameter ermitteln
+$category = $_GET['category'] ?? 'alle';
+$products = getProductsByCategory($conn, $category);
+$categoryInfo = getCategoryInfo($category);
+
+?>
 <!DOCTYPE html>
 <html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLR - Gaming PCs, Laptops & High-End Computer</title>
-
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <title>MLR - <?php echo htmlspecialchars($categoryInfo['sidebarTitel']); ?></title>
+    <link rel="stylesheet" href="/assets/css/categoryList.css">
     <link rel="stylesheet" href="/assets/css/mystyle.css">
-
+    <script src="/assets/javascript/base.js"></script>
+    <script src="/assets/javascript/toggleTheme.js"></script>
 </head>
 
 <body>
+<?php include 'components/header.html'; ?>
 
- <?php include 'components/header.html'; ?>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">MLR</a> › <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span> 
+    </div>
+
+    <div class="main-content">
 
 
-<?php
-// Verbindungsdaten zur Datenbank
-$servername = "mlr-shop.de";
-$username = "shopuser";
-$password = "12345678";
-$dbname = "onlineshop";
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?></div>
+            <ul class="sidebar-menu">
+                <?php if (!empty($categoryInfo['unterkategorien'])): ?>
+                    <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
+                        <li><a
+                                href="<?php echo htmlspecialchars($uk['link']); ?>"><?php echo htmlspecialchars($uk['name']); ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </ul>
 
-// Verbindung herstellen
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+            <div class="filter-section">
+                <div class="filter-title">Auswahl filtern</div>
+                <a href="#" class="reset-btn">ZURÜCKSETZEN <span class="reset-icon">✕</span></a>
 
-// Verbindung prüfen
-if (!$conn) {
-    die("Verbindung fehlgeschlagen: " . mysqli_connect_error());
-}
+                <?php
+                // Filter dynamisch generieren basierend auf verfügbaren Produkten
+                $filters = [];
 
-// Produkte abfragen
-$sql = "SELECT * FROM product";
-$result = mysqli_query($conn, $sql);
+                foreach ($products as $product) {
+                    // Prozessor Filter
+                    if (!empty($product['processor_brand'])) {
+                        $filters['Prozessor'][] = $product['processor_brand'];
+                    }
 
-// HTML-Ausgabe starten
-echo '<div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;">';
+                    // RAM Filter
+                    if (!empty($product['ram_capacity'])) {
+                        $filters['RAM'][] = $product['ram_capacity'] . ' GB';
+                    }
 
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        echo '
-        <div style="border: 1px solid #ccc; border-radius: 10px; padding: 16px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-            <h2>' . htmlspecialchars($row["name"]) . '</h2>
-            <p><strong>Kurzbeschreibung:</strong> ' . htmlspecialchars($row["short_description"]) . '</p>
-            <p><strong>Preis:</strong> €' . number_format($row["price"], 2, ',', '.') . '</p>
-            <a href="/productPages/product.html?id=' . htmlspecialchars($row["product_id"]) . '" 
-               style="display: inline-block; margin-top: 10px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
-               Zum Produkt
-            </a>
-        </div>';
+                    // GPU Filter
+                    if (!empty($product['gpu_brand']) && !$product['gpu_integrated']) {
+                        $filters['Grafikkarte'][] = $product['gpu_brand'];
+                    }
+
+                    // Storage Filter
+                    if (!empty($product['storage_type'])) {
+                        $filters['Speicher'][] = $product['storage_type'];
+                    }
+                }
+
+                // Filter-HTML generieren
+                foreach ($filters as $filterName => $values) {
+                    $uniqueValues = array_unique($values);
+                    if (count($uniqueValues) > 1) {
+                        echo "<div class='filter-group'>";
+                        echo "<div class='filter-header' onclick='toggleFilter(this)'><span>$filterName</span><span class='arrow'>▼</span></div>";
+                        echo "<ul class='filter-options'>";
+
+                        foreach ($uniqueValues as $value) {
+                            $count = array_count_values($values)[$value];
+                            $id = strtolower(str_replace(' ', '-', $filterName . '-' . $value));
+                            echo "<li><input type='checkbox' id='$id'> <label for='$id'>$value ($count)</label></li>";
+                        }
+
+                        echo "</ul>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+            </div>
+        </div>
+
+        <!-- Main Products Area -->
+        <div class="products">
+            <!-- Banner -->
+            <div class="banner">
+                <div class="banner-content">
+                    <h1><span><?php echo htmlspecialchars($categoryInfo['titel']); ?></span>
+                        <?php echo htmlspecialchars($categoryInfo['untertitel']); ?></h1>
+                    <p><?php echo htmlspecialchars($categoryInfo['beschreibung']); ?></p>
+                </div>
+            </div>
+
+            <!-- Section Info -->
+            <div class="section-info">
+                <h2><?php echo htmlspecialchars($categoryInfo['infoTitel']); ?></h2>
+                <p class="subtext"><?php echo htmlspecialchars($categoryInfo['infoText']); ?></p>
+                <div class="read-more">
+                    <a href="#">mehr lesen ▼</a>
+                </div>
+            </div>
+
+
+            <?php if (!empty($categoryInfo['unterkategorien'])): ?>
+                <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
+                <div class="category-container">
+
+                    <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
+                        <a class="product-container-link " href="<?php echo htmlspecialchars($uk['link']); ?>">
+                            <div class="category-card">
+                                <img src="<?php echo htmlspecialchars($uk['bild']); ?>"
+                                    alt="<?php echo htmlspecialchars($uk['name']); ?>">
+                                <div class="category-overlay"></div>
+                                <div class="category-content">
+                                    <h3 class="category-title"><?php echo htmlspecialchars($uk['name']); ?></h3>
+
+                                    <a href="<?php echo htmlspecialchars($uk['link']); ?>" class="category-link">MEHR
+                                        ERFAHREN</a>
+                                </div>
+                            </div>
+                        </a>
+
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+
+
+
+            <!-- Products Grid -->
+            <h3 class="section-title">UNSERE TOPSELLER</h3>
+
+            <div class="products-grid">
+                <?php if (empty($products)): ?>
+                    <div class="no-products" style="text-align: center; padding: 40px; color: #666;">
+                        <p>Derzeit sind keine Produkte in dieser Kategorie verfügbar.</p>
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($products as $product): ?>
+                        <?php
+                        // Erstes Bild laden
+                        $images = getProductImages($conn, $product['product_id']);
+
+                        $firstImage = !empty($images) ? $images[0]['file_path'] : 'assets/images/placeholder.png';
+
+                        // Spezifikationen aufbauen
+                        $specs = buildSpecifications($product);
+                        ?>
+
+                        <div class="product">
+                            <span class="product-badge"><?php echo $product['sale'] ? 'SALE' : 'TOP'; ?></span>
+                            <div class="product-image">
+                                <img src="<?php echo htmlspecialchars($firstImage); ?>"
+                                    alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>">
+                            </div>
+                            <div class="product-details">
+                                <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
+                                <ul class="product-specs">
+                                    <?php foreach ($specs as $spec): ?>
+                                        <li><?php echo htmlspecialchars($spec); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <div class="product-footer">
+                                    <div class="price">
+                                        <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                                    </div>
+                                    <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
+                                    <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"
+                                        class="buy-btn">Mehr zum produkt</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <?php include 'components/footer.html'; ?>
+
+   <script>
+    function toggleFilter(header) {
+        const options = header.nextElementSibling;
+        options.classList.toggle('collapsed');
+        header.classList.toggle('open');
     }
-} else {
-    echo "<p>Keine Produkte gefunden.</p>";
-}
 
-echo '</div>';
+    document.addEventListener("DOMContentLoaded", () => {
+        const allOptions = document.querySelectorAll('.filter-options');
+        const allHeaders = document.querySelectorAll('.filter-header');
 
-// Verbindung schließen
-mysqli_close($conn);
-?>
+        allOptions.forEach((el, index) => {
+            if (index === 0) {
+                el.classList.remove('collapsed'); // Erstes Element offen lassen
+                allHeaders[index].classList.add('open');
+            } else {
+                el.classList.add('collapsed'); // Alle anderen einklappen
+            }
+        });
+    });
+</script>
+</body>
 
-
-
-    
- <?php include 'components/footer.html'; ?>   
 </html>

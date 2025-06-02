@@ -96,7 +96,6 @@
 
     <footer>
         <p>© 2025 MLR | <a href="/pages/about.html"><i>Impressum</i></a></p>
-
     </footer>
 </body>
 
