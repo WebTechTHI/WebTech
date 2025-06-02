@@ -76,10 +76,10 @@
 
                 }else {
                     $fehlermeldung = "Falsches Passwort :(";
-
-                //=================Hier noch später weiterleiten auf user.php oder sprüche einfügen / sound beim anmelden einfügen als erfolg ==============
+                }
+            //=================Hier noch später weiterleiten auf user.php oder sprüche einfügen / sound beim anmelden einfügen als erfolg ==============
             
-            }
+          
         } else{//löschen
             echo "Benutzer existiert nicht !";//löschen
         }

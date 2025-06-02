@@ -1,0 +1,10 @@
+[
+    {
+        "fromusernameregistration": "Maxmuser",
+        "fromuserpasswordregistration": "1234567890"
+    },
+    {
+        "fromusernameregistration": "Leonlukas",
+        "fromuserpasswordregistration": "kleinerpipimann"
+    }
+]
