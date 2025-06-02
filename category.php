@@ -19,6 +19,7 @@ $categoryInfo = getCategoryInfo($category);
     <link rel="stylesheet" href="/assets/css/mystyle.css">
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
+    <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
 </head>
 
 <body>
