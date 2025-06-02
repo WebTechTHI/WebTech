@@ -60,7 +60,8 @@
 
         $result = $stmt->get_result();
 
-        //Prüfen ob benutzer existiert / LÖSCHEN DIE PRÜFUNG GIBTS IN REGISTRATION SCHON !!!
+        //Prüfen ob benutzer existiert / Nicht löschen da user sich ja mit daten anmeldet und system prüfen muss obs die daten
+        // gibt schon in datenbank !!!
         if ($result->num_rows === 1){
             $user = $result->fetch_assoc();
 
@@ -80,8 +81,8 @@
             //=================Hier noch später weiterleiten auf user.php oder sprüche einfügen / sound beim anmelden einfügen als erfolg ==============
             
           
-        } else{//löschen
-            echo "Benutzer existiert nicht !";//löschen
+        } else{
+            $fehlermeldung = "Benutzername existiert leider nicht :(";
         }
 
         $stmt->close();
