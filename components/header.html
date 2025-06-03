@@ -10,9 +10,12 @@
 
     <!-- top header -->
     <div class="top-bar">
-        <a id="wishlist-btn-heder" href="#">Merken</a> |
-        <a id="log-reg-btn-header" href="/pages/login.php">Login / Registrieren</a> |
-        <a id="user-btn-header" href="/pages/user.php">Mein Konto</a>
+        <a href="/pages/login.php">
+            <img class="header-icon" src="/assets/images/icons/login.svg" alt="Login/Registrierung" title="Login/Registrierung">
+        </a>
+        <a href="/pages/user.php">
+            <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
+        </a>
     </div>
 
     <!-- nav header -->
@@ -57,10 +60,18 @@
                 </li>
             </ul>
         </div>
-        <a href="/pages/shoppingBasket.php" class="cart">
-            MEIN WARENKORB
-            <span class="cart-badge">0</span>
-        </a>
+
+        <!-- Warenkorb und Wunschliste-->
+        <div class="wishlist-cart-container">
+            <a href="/pages/wishlist.php" title="Wunschliste">
+                <img class="header-icon" id="wishlist-icon" src="/assets/images/icons/favorite-border.svg" alt="wishlist">
+            </a>
+            <a href="/pages/shoppingBasket.php" class="cart">
+                MEIN WARENKORB
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+
     </nav>
 </body>
 

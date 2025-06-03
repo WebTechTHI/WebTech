@@ -5,7 +5,7 @@ function toggleTheme() {
 
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
-    document.getElementById('themeToggleBtn').src = isDark ? '/assets/images/icons/lightmode-btn.png' : '/assets/images/icons/darkmode-btn.png';
+    document.getElementById('themeToggleBtn').src = isDark ? '/assets/images/icons/light-mode.svg' : '/assets/images/icons/dark-mode.svg';
     document.getElementById('visaIconFooter').src = isDark ? '/assets/images/icons/paymentMethods/visa-dark.svg' : '/assets/images/icons/paymentMethods/visa-light.svg';
     document.getElementById('mastercardIconFooter').src = isDark ? '/assets/images/icons/paymentMethods/mastercard-dark.svg' : '/assets/images/icons/paymentMethods/mastercard-light.svg';
     document.getElementById('paypalIconFooter').src = isDark ? '/assets/images/icons/paymentMethods/paypal-dark.svg' : '/assets/images/icons/paymentMethods/paypal-light.svg';
@@ -24,14 +24,14 @@ window.addEventListener('DOMContentLoaded', () => {
     //light theme
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('darkMode');
-        darkmodeBtn.src = '/assets/images/icons/lightmode-btn.png';
+        darkmodeBtn.src = '/assets/images/icons/light-mode.svg';
         visaIcon.src = '/assets/images/icons/paymentMethods/visa-dark.svg';
         mastercardIcon.src = '/assets/images/icons/paymentMethods/mastercard-dark.svg';
         paypalIcon.src = '/assets/images/icons/paymentMethods/paypal-dark.svg';
         bitocinIcon.src = '/assets/images/icons/paymentMethods/bitcoin-dark.svg';
     } else {
         //dark theme
-        darkmodeBtn.src = '/assets/images/icons/darkmode-btn.png';
+        darkmodeBtn.src = '/assets/images/icons/dark-mode.svg';
         visaIcon.src = '/assets/images/icons/paymentMethods/visa-light.svg';
         mastercardIcon.src = '/assets/images/icons/paymentMethods/mastercard-light.svg';
         paypalIcon.src = '/assets/images/icons/paymentMethods/paypal-light.svg';

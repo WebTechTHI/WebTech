@@ -3,14 +3,14 @@ body {
 }
 
 .top-bar {
-    background-color: #222;
+    background-color: rgb(7,7,7);
     color: white;
-    padding: 1vh 3vw;
+    padding: 2vh 3vw;
     display: flex;
     justify-content: right;
     align-items: right;
     display: flex;
-    gap: 15px;
+    gap: 2vw;
 }
 
 .top-bar a {
@@ -18,6 +18,12 @@ body {
     text-decoration: none;
     font-size: 14px;
     margin-left: 10px;
+}
+
+.header-icon{
+    width: 35px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .main-nav {
@@ -107,11 +113,6 @@ body {
     background-color: #1d1d1d;
 }
 
-
-
-
-
-
 .red-badge {
     background-color: #e00;
     color: white;
@@ -120,6 +121,23 @@ body {
     font-size: 10px;
     margin-left: 5px;
     vertical-align: super;
+}
+
+
+/* Warenkorb und Wunschliste */
+
+.wishlist-cart-container{
+    display:flex;
+    align-items: center;
+    gap: 25px;
+}
+
+#wishlist-icon{
+    background-image: url(/assets/images/icons/favorite-border.svg);
+}
+
+#wishlist-icon:hover{
+    background-image: url(/assets/images/icons/favorite.svg);
 }
 
 .cart {
