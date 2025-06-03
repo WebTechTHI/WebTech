@@ -87,7 +87,7 @@
 
         $stmt->close();
         $conn->close();
-        aheader("Location: /index.php")
+        header("Location: /index.php");
     }
 
 ?>
