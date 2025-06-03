@@ -85,7 +85,7 @@ body {
 }
 
 .filter-group {
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .filter-header {
@@ -93,7 +93,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    border-bottom: 1px solid black;  
+    border-bottom: 1px solid black;
     padding-bottom: 5px;
     cursor: pointer;
 }
@@ -102,9 +102,35 @@ body {
     list-style: none;
 }
 
+/* Toggle Filter Dropdown */
+.filter-options {
+    max-height: 1000px;
+    /* groß genug, um Inhalt abzudecken */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.filter-options.collapsed {
+    max-height: 0;
+}
+
+.arrow {
+    color: #e00;
+}
+
+.filter-header.open .arrow {
+    transform: rotate(180deg);
+    transition: transform 0.4s ease;
+}
+
+
 .filter-options li {
     margin-bottom: 10px;
     padding-bottom: 10px;
+}
+
+.filter-options label {
+    cursor: pointer;
 }
 
 .filter-options li:not(:last-child) {
@@ -177,7 +203,7 @@ body {
     position: absolute;
     inset: 0;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)),
-                url('/assets/images/background/category_background.png') center/cover no-repeat;
+        url('/assets/images/background/category_background.png') center/cover no-repeat;
     opacity: 1;
     z-index: 0;
 }
@@ -226,7 +252,7 @@ body {
     width: 100%;
     height: 180px;
     border-radius: 10px;
-    overflow: hidden; 
+    overflow: hidden;
     transition: transform 0.3s ease;
 }
 
@@ -251,7 +277,8 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 80%; /* nur unterer Bereich */
+    height: 80%;
+    /* nur unterer Bereich */
     background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     z-index: 1;
 }
@@ -443,6 +470,7 @@ body {
     background-color: #c00;
     transition: background-color 0.3s ease;
 }
+
 /* Fixed Menu - Hide on Mobile */
 .fixed-menu {
     display: none;
@@ -450,110 +478,111 @@ body {
 
 /* Tablet Styles */
 @media (min-width: 768px) {
-  
-    
+
+
     .breadcrumb {
         padding: 10px 40px;
     }
-    
+
     .main-content {
         flex-direction: row;
     }
-    
+
     .sidebar {
         width: 240px;
         margin: 20px;
     }
-    
+
     .products {
         padding: 0 20px 20px 0;
     }
-    
+
     .banner {
         height: 220px;
         border-radius: 25px;
     }
-    
+
     .banner h1 {
         font-size: 40px;
     }
-    
+
     .banner p {
         font-size: 20px;
     }
-    
+
     .section-title {
         font-size: 20px;
     }
-    
+
     .category-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-    
+
     .category-card {
         height: 200px;
     }
-    
+
     .category-title {
         font-size: 20px;
     }
-    
+
     .category-description {
         font-size: 14px;
     }
-    
+
     .category-link {
         font-size: 13px;
     }
-    
+
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-    
+
     .product {
         border-radius: 25px;
         flex-direction: row;
         max-height: 280px;
         min-height: 280px;
     }
-    
+
     .product-image {
         width: 35%;
         padding-right: 15px;
         padding-bottom: 0;
         height: 200px;
     }
-    
+
     .product-title {
         font-size: 18px;
     }
-    
+
     .product-specs {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         grid-template-rows: repeat(3, auto);
         grid-auto-flow: column;
         gap: 5px 10px;
         height: auto;
-        
+
     }
-    
+
     .product-specs li {
         font-size: 14px;
     }
-    
+
     .price {
-        font-size: 28px;;
+        font-size: 28px;
+        ;
     }
-    
+
     .price-prefix {
         font-size: 18px;
     }
-    
+
     .buy-btn {
         padding: 10px;
-        
+
     }
 }
 
@@ -562,12 +591,12 @@ body {
     .category-container {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .category-card {
         width: 400px;
         height: 200px;
     }
-    
+
     .fixed-menu {
         position: fixed;
         left: 0;
@@ -600,7 +629,7 @@ body {
         display: flex;
         flex-wrap: wrap;
     }
-    
+
     .category-card {
         width: 400px;
         flex-shrink: 0;
@@ -609,8 +638,8 @@ body {
 
 /* Mobile Menu Improvements */
 @media (max-width: 767px) {
-  
-    
+
+
     .right-links a {
         font-size: 12px;
     }

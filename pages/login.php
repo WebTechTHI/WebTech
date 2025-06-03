@@ -51,7 +51,7 @@
         $username = trim($_POST['variablefromusername']);
         $password = $_POST['variableformpassword'];
 
-        //Richtigen Nutze aus DB lesen
+        //Richtigen Nutzer aus DB lesen
         $sql = "SELECT user_id, username, password FROM kontakte WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
@@ -60,7 +60,8 @@
 
         $result = $stmt->get_result();
 
-        //Prüfen ob benutzer existiert
+        //Prüfen ob benutzer existiert / Nicht löschen da user sich ja mit daten anmeldet und system prüfen muss obs die daten
+        // gibt schon in datenbank !!!
         if ($result->num_rows === 1){
             $user = $result->fetch_assoc();
 
@@ -72,15 +73,16 @@
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
 
-                echo "Willkommen, " . htmlspecialchars($user['username']) . "!<br>";
-                echo "Ihre Benutzer ID lautet: " . $_SESSION['user_id'];
+                $erfolgsmeldung = "Willkommen, " . htmlspecialchars($user['username']) . "!<br> Ihre Benutzer ID lautet: " . $_SESSION['user_id'];
 
-                //=================Hier noch später weiterleiten auf user.php oder sprüche einfügen / sound beim anmelden einfügen als erfolg ==============
-            }else {
-                echo "Falsches Passwort !";
-            }
+                }else {
+                    $fehlermeldung = "Falsches Passwort :(";
+                }
+            //=================Hier noch später weiterleiten auf user.php oder sprüche einfügen / sound beim anmelden einfügen als erfolg ==============
+            
+          
         } else{
-            echo "Benutzer existiert nicht !";
+            $fehlermeldung = "Benutzername existiert leider nicht :(";
         }
 
         $stmt->close();
@@ -89,6 +91,37 @@
     }
 
 ?>
+
+
+
+
+ <!-- ======= Nur Sound JavaScript und PHP um abzuspielen !!! NOCH EINFPGEN SOUND !!!! ==========-->
+<?php if (isset($erfolgsmeldung)): ?>   
+
+    <audio id="loginSound" autoplay>
+        <source src="/assets/sounds/loginSound.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        const sound = document.getElementById("loginSound");
+        sound.play();
+    </script>
+
+<?php endif; ?>
+
+
+
+
+
+   <?php        //Nur Farbe und Layout für Meldungen
+   if   (isset($fehlermeldung)){
+    echo "<div class='meldung-container meldung-fehler'> $fehlermeldung</div>";
+   }
+   if   (isset($erfolgsmeldung)){
+    echo "<div class= 'meldung-container meldung-erfolg'>$erfolgsmeldung</div>";
+   }
+   ?>
+
+
 
 
     <!-- ======= Ab Hier Login Funktionen  ==========-->
