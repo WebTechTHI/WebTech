@@ -17,6 +17,7 @@
 <body>
 
     <?php include 'components/header.html'; ?>
+    
 
     <!-- Hero Section -->
     <section class="hero">
@@ -33,6 +34,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Featured Products Section -->
     <section class="container">
