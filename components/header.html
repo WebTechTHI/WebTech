@@ -3,24 +3,28 @@
 
 <head>
     <link rel="stylesheet" href="/assets/css/components/header.css">
-
+    <link type="javascript" src="/assets/javascript/toggleTheme.js">
 </head>
 
 <body>
 
     <!-- top header -->
     <div class="top-bar">
-        <a href="/pages/login.php">
-            <img class="header-icon" src="/assets/images/icons/login.svg" alt="Login/Registrierung" title="Login/Registrierung">
-        </a>
-        <a href="/pages/user.php">
-            <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
-        </a>
+        <img id="themeToggleBtn" src="/assets/images/icons/dark-mode.svg" alt="toggle-theme-btn"
+            onclick="toggleTheme()">
+        <div class="login-user-container">
+            <a href="/pages/login.php">
+                <img class="header-icon" src="/assets/images/icons/login.svg" alt="Login/Registrierung"
+                    title="Login/Registrierung">
+            </a>
+            <a href="/pages/user.php">
+                <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
+            </a>
+        </div>
     </div>
 
     <!-- nav header -->
     <nav class="main-nav">
-
         <div class="main-menu">
             <div class="logo">
                 <a href="/testIndex.php"><img src="/assets/images/logo/logoDarkmode.png" alt="MLR Logo"
@@ -64,7 +68,8 @@
         <!-- Warenkorb und Wunschliste-->
         <div class="wishlist-cart-container">
             <a href="/pages/wishlist.php" title="Wunschliste">
-                <img class="header-icon" id="wishlist-icon" src="/assets/images/icons/favorite-border.svg" alt="wishlist">
+                <img class="header-icon" id="wishlist-icon" src="/assets/images/icons/favorite-border.svg"
+                    alt="wishlist">
             </a>
             <a href="/pages/shoppingBasket.php" class="cart">
                 MEIN WARENKORB
