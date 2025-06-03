@@ -80,7 +80,8 @@
                 }
             //=================Hier noch später weiterleiten auf user.php oder sprüche einfügen / sound beim anmelden einfügen als erfolg ==============
             
-          header("Location: /index.php");
+            header("Location: /index.php");
+        
         } else{
             $fehlermeldung = "Benutzername existiert leider nicht :(";
         }
