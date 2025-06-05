@@ -2,7 +2,7 @@
 
 
 // Produkt-Klasse für Datenbankoperationen
-function getProductsByCategory($conn, $category) {
+function getProductsByCategory($conn, $category, $filters = []) {
     $sql = "
         SELECT 
             p.product_id, p.name, p.short_description, p.price, p.sale, p.alt_text, p.description,
@@ -125,17 +125,14 @@ function getProductsByCategory($conn, $category) {
    function getCategoryInfo($category) {
      $json = file_get_contents('assets/json/produktBeschreibung.json');
 
-    // In ein Array umwandeln
+    
     $data = json_decode($json, true);
 
-    // Sicherheitscheck: Kleinbuchstaben
+    
     $category = strtolower($category);
-
-    // Wenn Kategorie existiert, gib sie zurück
     if (isset($data[$category])) {
         return $data[$category];
     } else {
-        // Fallback, falls Kategorie nicht existiert
         return 
             $data['alle'];
         ;
