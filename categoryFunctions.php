@@ -1,7 +1,7 @@
 <?php
 
 
-// Produkt-Klasse für Datenbankoperationen
+
 function getProductsByCategory($conn, $category, $filters = []) {
     $sql = "
         SELECT 
