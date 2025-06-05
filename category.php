@@ -4,6 +4,13 @@ require_once 'categoryFunctions.php';
 
 // Kategorie aus URL-Parameter ermitteln
 $category = $_GET['category'] ?? 'alle';
+$filters = [
+    'ram' => $_GET['ram'] ?? null,
+    'gpu' => $_GET['gpu'] ?? null,
+    'processor' => $_GET['processor'] ?? null,
+    'storage' => $_GET['storage'] ?? null
+];
+
 $products = getProductsByCategory($conn, $category);
 $categoryInfo = getCategoryInfo($category);
 
@@ -87,7 +94,7 @@ $categoryInfo = getCategoryInfo($category);
                         foreach ($uniqueValues as $value) {
                             $count = array_count_values($values)[$value];
                             $id = strtolower(str_replace(' ', '-', $filterName . '-' . $value));
-                            echo "<li><input type='checkbox' id='$id'> <label for='$id'>$value ($count)</label></li>";
+                            echo "<li><input type='checkbox' id='$id' class='filter-checkbox'> <label for='$id'>$value ($count)</label></li>";
                         }
 
                         echo "</ul>";
