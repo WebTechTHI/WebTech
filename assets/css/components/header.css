@@ -18,7 +18,7 @@ body {
 .header-icon{
     width: 35px;
     background-size: contain;
-    background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .main-nav {

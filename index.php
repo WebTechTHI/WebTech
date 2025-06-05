@@ -29,8 +29,8 @@
             <p class="hero-text">Entdecke unsere neue Generation an High-Performance Gaming-PCs mit den neuesten NVIDIA
                 RTX 5000 Grafikkarten für ultimative Gaming-Power.</p>
             <div class="hero-buttons">
-                <a href="#" class="hero-btn btn-primary">JETZT ENTDECKEN</a>
-                <a href="#" class="hero-btn btn-secondary">KONFIGURATOR</a>
+                <a href="#" class="hero-btn main-btn">JETZT ENTDECKEN</a>
+                <a href="#" class="hero-btn configure-btn">KONFIGURATOR</a>
             </div>
         </div>
     </section>
@@ -153,7 +153,7 @@
                     <h3 class="main-promo-title">KONFIGURIERE DEINEN <span>TRAUMPC</span></h3>
                     <p class="main-promo-text">Mit unserem PC-Konfigurator kannst du deinen persönlichen Gaming- oder
                         Arbeits-PC nach deinen Wünschen zusammenstellen.</p>
-                    <a href="#" class="hero-btn btn-primary">ZUM KONFIGURATOR</a>
+                    <a href="#" class="hero-btn main-btn">ZUM KONFIGURATOR</a>
                 </div>
             </div>
 

@@ -228,7 +228,7 @@
 /* in dieser Klasse werden alle Farben für den Darkmode überschrieben. */
 .darkMode {
     /* --------- Main (mystyle) --------- */
-    --main-bg-color: rgb(65, 65, 65);
+    --main-bg-color: rgb(27, 27, 27);
     --anker-color: rgb(255, 255, 255);
     --hr-color: rgb(204, 204, 204);
 
