@@ -44,6 +44,11 @@
     //DB verbindung
     include '../db_verbindung.php';
 
+
+    $erfolgsmeldung="";
+    $fehlermeldung="";
+
+
     //Prüfn ob formular abgeschickt per Post
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -73,16 +78,19 @@
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
 
-                $erfolgsmeldung = "Willkommen, " . htmlspecialchars($user['username']) . "!<br> Ihre Benutzer ID lautet: " . $_SESSION['user_id'];
+                //Erfolgsmeldung und Sound als Session speichern !!!! damit es auf user.php abgespielt wird worauf man geleitet wird!!
+                $_SESSION['erfolgsmeldung'] = "Willkommen, " . htmlspecialchars($user['username']) . "!<br> Ihre Benutzer ID lautet: " . $_SESSION['user_id'];
+                
+
+                
+              header("Location: user.php");
+              exit();
+
 
                 }else {
                     $fehlermeldung = "Falsches Passwort :(";
                 }
-            //=================Hier noch später weiterleiten auf user.php oder sprüche einfügen / sound beim anmelden einfügen als erfolg ==============
-            
-            header("Location: /index.php");
-        
-        } else{
+            } else{
             $fehlermeldung = "Benutzername existiert leider nicht :(";
         }
 
@@ -96,31 +104,17 @@
 
 
 
- <!-- ======= Nur Sound JavaScript und PHP um abzuspielen !!! NOCH EINFPGEN SOUND !!!! ==========-->
-<?php if (isset($erfolgsmeldung)): ?>   
 
-    <audio id="loginSound" autoplay>
-        <source src="/assets/sounds/loginSound.mp3" type="audio/mpeg">
-    </audio>
-    <script>
-        const sound = document.getElementById("loginSound");
-        sound.play();
-    </script>
 
+
+  
+<?php if (!empty($fehlermeldung)):              //Nur Farbe und Layout für Meldungen    ?>
+    <div class="meldung-container meldung-fehler">
+        <?= $fehlermeldung?>
+    </div>
 <?php endif; ?>
 
 
-
-
-
-   <?php        //Nur Farbe und Layout für Meldungen
-   if   (isset($fehlermeldung)){
-    echo "<div class='meldung-container meldung-fehler'> $fehlermeldung</div>";
-   }
-   if   (isset($erfolgsmeldung)){
-    echo "<div class= 'meldung-container meldung-erfolg'>$erfolgsmeldung</div>";
-   }
-   ?>
 
 
 

@@ -39,6 +39,31 @@
 <!--Ab hier PHP -->
 
 
+
+
+
+
+ <!-- ======= Nur Sound JavaScript und PHP um abzuspielen !!! NOCH EINFPGEN SOUND !!!! ==========-->
+<?php 
+
+  session_start();
+
+  // ====== Erfolgsmeldung anzeigen erstmal =============
+  if (isset($_SESSION['erfolgsmeldung'])) {
+    echo "<div class='meldung-container meldung-erfolg'>" . $_SESSION['erfolgsmeldung'] . "</div>";
+    unset($_SESSION['erfolgsmeldung']); //1 mal anzeigen nur 
+  }
+
+?>
+
+        
+            
+
+
+
+
+
+
         <!-- Ab Hier User Funktionen -->
    <form class="userInfoFormuser" action="user.php" method="POST">
   <h1 class="formTitle">👤 Benutzerkonto</h1>
