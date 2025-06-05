@@ -3,24 +3,31 @@
 
 <head>
     <link rel="stylesheet" href="/assets/css/components/header.css">
-
+    <link type="javascript" src="/assets/javascript/toggleTheme.js">
 </head>
 
 <body>
-
+    <div id="header">
     <!-- top header -->
     <div class="top-bar">
-        <a id="wishlist-btn-heder" href="#">Merken</a> |
-        <a id="log-reg-btn-header" href="/pages/login.php">Login / Registrieren</a> |
-        <a id="user-btn-header" href="/pages/user.php">Mein Konto</a>
+        <img id="themeToggleBtn" src="/assets/images/icons/dark-mode.svg" alt="toggle-theme-btn"
+            onclick="toggleTheme()">
+        <div class="login-user-container">
+            <a href="/pages/login.php">
+                <img class="header-icon" src="/assets/images/icons/login.svg" alt="Login/Registrierung"
+                    title="Login/Registrierung">
+            </a>
+            <a href="/pages/user.php">
+                <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
+            </a>
+        </div>
     </div>
 
     <!-- nav header -->
     <nav class="main-nav">
-
         <div class="main-menu">
             <div class="logo">
-                <a href="/testIndex.php"><img src="/assets\images\logo\logoDarkmode.png" alt="MLR Logo"
+                <a href="/index.php"><img src="/assets/images/logo/logoDarkmode.png" alt="MLR Logo"
                         style="height:60px;"></a>
             </div>
             <ul>
@@ -50,18 +57,28 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">PC Konfigurator</a>
+                    <a href="/configurator.php">Konfigurator</a>
                 </li>
                 <li>
                     <a href="#">Sale & Aktionen <span class="red-badge">5</span></a>
                 </li>
             </ul>
         </div>
-        <a href="#" class="cart">
-            MEIN WARENKORB
-            <span class="cart-badge">0</span>
-        </a>
+
+        <!-- Warenkorb und Wunschliste-->
+        <div class="wishlist-cart-container">
+            <a href="/pages/wishlist.php" title="Wunschliste">
+                <img class="header-icon" id="wishlist-icon" src="/assets/images/icons/favorite-border.svg"
+                    alt="wishlist">
+            </a>
+            <a href="/pages/shoppingBasket.php" class="cart">
+                MEIN WARENKORB
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+
     </nav>
+    </div>
 </body>
 
 </html>

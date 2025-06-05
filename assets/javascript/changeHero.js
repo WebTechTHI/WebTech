@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 heroImageElement.style.transition = 'transform 1.3s ease-in-out';
                 heroImageElement.style.transform = 'translateX(0)';
             }, 20);
-        }, 100);
+        }, 1000);
     }
 
 
     // Starte den automatischen Bildwechsel alle 9 Sekunden
-    setInterval(changeHeroImage, 9000);
+    setInterval(changeHeroImage, 6000);
 });
