@@ -7,7 +7,6 @@ function toggleTheme() {
 
     document.getElementById('themeToggleBtn').src = isDark ? '/assets/images/icons/light-mode.svg' : '/assets/images/icons/dark-mode.svg';
     document.getElementById('themeToggleBtn').title = isDark ? 'light mode' : 'dark mode';
-    darkmodeBtn.title = 'light mode';
     document.getElementById('visaIconFooter').src = isDark ? '/assets/images/icons/paymentMethods/visa-dark.svg' : '/assets/images/icons/paymentMethods/visa-light.svg';
     document.getElementById('mastercardIconFooter').src = isDark ? '/assets/images/icons/paymentMethods/mastercard-dark.svg' : '/assets/images/icons/paymentMethods/mastercard-light.svg';
     document.getElementById('paypalIconFooter').src = isDark ? '/assets/images/icons/paymentMethods/paypal-dark.svg' : '/assets/images/icons/paymentMethods/paypal-light.svg';
