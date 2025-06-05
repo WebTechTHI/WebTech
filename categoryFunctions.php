@@ -34,52 +34,41 @@ function getProductsByCategory($conn, $category, $filters = []) {
 
     switch($category) {
         case 'angebote':
-        case 'deals':
             $sql .= " WHERE p.sale = 1";
             break;
         case 'pc':
-        case 'desktop-pc':
             $sql .= " WHERE c.name = 'PC'";
             break;
         case 'laptop':
-        case 'laptops':
             $sql .= " WHERE c.name = 'Laptop'";
             break;
         case 'zubehör':
-        case 'zubehoer':
             $sql .= " WHERE c.name = 'Zubehör'";
             break;
-        case 'gaming-pc':
         case 'gamingpc':
             $sql .= " WHERE sc.name = 'Gaming-PC'";
             break;
-        case 'office-pc':
         case 'officepc':
             $sql .= " WHERE sc.name = 'Office-PC'";
             break;
-        case 'gaming-laptop':
         case 'gaminglaptop':
             $sql .= " WHERE sc.name = 'Gaming-Laptop'";
             break;
-        case 'office-laptop':
         case 'officelaptop':
             $sql .= " WHERE sc.name = 'Office-Laptop'";
             break;
         case 'monitor':
-        case 'monitore':
             $sql .= " WHERE sc.name = 'Monitor'";
             break;
         case 'maus':
-        case 'mäuse':
             $sql .= " WHERE sc.name = 'Maus'";
             break;
         case 'tastatur':
-        case 'tastaturen':
             $sql .= " WHERE sc.name = 'Tastatur'";
             break;
     }
 
-    $sql .= " ORDER BY p.name";
+    $sql .= " ORDER BY p.sales";
 
     $result = mysqli_query($conn, $sql);
 
