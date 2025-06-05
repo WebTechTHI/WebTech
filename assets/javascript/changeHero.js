@@ -33,5 +33,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // Starte den automatischen Bildwechsel alle 9 Sekunden
-    setInterval(changeHeroImage, 9000);
+    setInterval(changeHeroImage, 6000);
 });
