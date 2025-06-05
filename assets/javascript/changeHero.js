@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 heroImageElement.style.transition = 'transform 1.3s ease-in-out';
                 heroImageElement.style.transform = 'translateX(0)';
             }, 20);
-        }, 100);
+        }, 1000);
     }
 
 
