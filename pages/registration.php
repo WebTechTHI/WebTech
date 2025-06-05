@@ -93,15 +93,26 @@
 
    ?>
 
-   <?php
-   if   (isset($fehlermeldung)){
-    echo "<div class='meldung-container meldung-fehler'> $fehlermeldung</div>";
-   }
-   if   (isset($erfolgsmeldung)){
-    echo "<div class= 'meldung-container meldung-erfolg'>$erfolgsmeldung</div>";
-   }
-   ?>
-   
+
+   <?php        //Hier werden CSS/ Formatierung von der jeweiligen Meldung festgelegt wenn diese aufgerufen wird im code darüber !!!
+   if   (isset($fehlermeldung)): ?>
+        <div class='meldung-container meldung-fehler'>
+            <?= $fehlermeldung ?>
+            <audio autoplay>
+                <source src="/assets/sounds/registerError.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    <?php endif; ?>
+
+
+    <?php    if   (isset($erfolgsmeldung)):       //Wenn erfolgreich angemeldet wurde dann wird wird erfolgsmeldung hier geworfen mit Audio :) !!!!!       ?>
+        <div class= 'meldung-container meldung-erfolg'>
+            <?= $erfolgsmeldung ?>
+            <audio autoplay>
+                <source src="/assets/sounds/registerSuccess.mp3" type="audio/mpeg">
+            </audio>
+           </div>
+    <?php endif; ?>    
 
 
 
