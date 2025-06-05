@@ -30,7 +30,7 @@
                 RTX 5000 Grafikkarten für ultimative Gaming-Power.</p>
             <div class="hero-buttons">
                 <a href="#" class="hero-btn btn-primary">JETZT ENTDECKEN</a>
-                <a href="#" class="hero-btn btn-secondary">PC KONFIGURATOR</a>
+                <a href="#" class="hero-btn btn-secondary">KONFIGURATOR</a>
             </div>
         </div>
     </section>
