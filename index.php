@@ -17,7 +17,7 @@
 <body>
 
     <?php include 'components/header.html'; ?>
-    
+
 
     <!-- Hero Section -->
     <section class="hero">
@@ -39,75 +39,68 @@
     <!-- Featured Products Section -->
     <section class="container">
         <h2 class="section-title">BESTSELLER</h2>
-        <div class="featured-products">
-            <div class="featured-product">
-                <div class="featured-product-image">
-                    <img src="/api/placeholder/300/180" alt="Gaming PC">
-                    <span class="product-badge">NEU</span>
-                </div>
-                <div class="featured-product-info">
-                    <h3 class="featured-product-title">Gaming PC Ryzen 9 9700X</h3>
-                    <ul class="featured-product-specs">
-                        <li>AMD Ryzen 9 9700X, 16C</li>
-                        <li>RTX 5080 16GB</li>
-                        <li>32GB DDR5-6600</li>
-                    </ul>
-                    <div class="featured-product-price"><span>€</span> 2.499.-</div>
-                    <a href="#" class="buy-btn">Jetzt konfigurieren</a>
-                </div>
-            </div>
 
-            <div class="featured-product">
-                <div class="featured-product-image">
-                    <img src="/api/placeholder/300/180" alt="Gaming Laptop">
-                    <span class="product-badge">TOP</span>
-                </div>
-                <div class="featured-product-info">
-                    <h3 class="featured-product-title">Gaming Laptop Aero 16</h3>
-                    <ul class="featured-product-specs">
-                        <li>Intel Core i9 Ultra</li>
-                        <li>RTX 5070M 12GB</li>
-                        <li>16" 240Hz OLED</li>
-                    </ul>
-                    <div class="featured-product-price"><span>€</span> 1.999.-</div>
-                    <a href="#" class="buy-btn">Jetzt konfigurieren</a>
-                </div>
-            </div>
+    <div class="products-grid">
+        <div class="overlaywhite"></div>
+<!---------------------------------WIP-------------------------------->
+<!---------------------------------WIP-------------------------------->
+<!---------------------------------WIP-------------------------------->
+<!---------------------------------WIP-------------------------------->
+<!---------------------------------WIP-------------------------------->
 
-            <div class="featured-product">
-                <div class="featured-product-image">
-                    <img src="/api/placeholder/300/180" alt="Office PC">
-                </div>
-                <div class="featured-product-info">
-                    <h3 class="featured-product-title">Office PC Basic</h3>
-                    <ul class="featured-product-specs">
-                        <li>Intel Core i5 Ultra</li>
-                        <li>16GB DDR5-5600</li>
-                        <li>512GB NVMe SSD</li>
-                    </ul>
-                    <div class="featured-product-price"><span>€</span> 699.-</div>
-                    <a href="#" class="buy-btn">Jetzt konfigurieren</a>
-                </div>
-            </div>
 
-            <div class="featured-product">
-                <div class="featured-product-image">
-                    <img src="/api/placeholder/300/180" alt="Creator PC">
-                    <span class="product-badge">-20%</span>
+    <?php require_once 'db_verbindung.php';
+    require_once 'bestsellertestsellerOrdnerphpstuffzeugyoyoyo/bestseller.php'; 
+
+    $products = getProductsByCategory($conn); ?>
+
+        <?php foreach ($products as $product): ?>
+            <?php
+            // Erstes Bild laden
+            $images = getProductImages($conn, $product['product_id']);
+
+            $firstImage = !empty($images) ? $images[0]['file_path'] : 'assets/images/placeholder.png';
+
+            // Spezifikationen aufbauen
+            $specs = buildSpecifications($product);
+            ?>
+
+            <div class="product">
+                <span class="product-badge"><?php echo $product['sale'] ? 'SALE' : 'TOP'; ?></span>
+                <div class="product-image">
+                    <img src="<?php echo htmlspecialchars($firstImage); ?>"
+                        alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>">
                 </div>
-                <div class="featured-product-info">
-                    <h3 class="featured-product-title">Creator PC Pro</h3>
-                    <ul class="featured-product-specs">
-                        <li>AMD Ryzen 9 9950X</li>
-                        <li>RTX 5090 24GB</li>
-                        <li>64GB DDR5-7200</li>
+                <div class="product-details">
+                    <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
+                    <ul class="product-specs">
+                        <?php foreach ($specs as $spec): ?>
+                            <li><?php echo htmlspecialchars($spec); ?></li>
+                        <?php endforeach; ?>
                     </ul>
-                    <div class="featured-product-price"><span>€</span> 3.499.-</div>
-                    <a href="#" class="buy-btn">Jetzt konfigurieren</a>
+                    <div class="product-footer">
+                        <div class="price">
+                            <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                        </div>
+                        <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
+                        <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr
+                            zum produkt</a>
+                    </div>
                 </div>
             </div>
-        </div>
+                        
+        <?php endforeach; ?>
+
+    </div>
     </section>
+
+
+<!---------------------------------WIP-------------------------------->
+<!---------------------------------WIP-------------------------------->
+<!---------------------------------WIP-------------------------------->
+<!---------------------------------WIP-------------------------------->
+
+
 
     <!-- Categories Section -->
     <section class="container">

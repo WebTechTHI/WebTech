@@ -57,7 +57,7 @@
         $password = $_POST['variableformpassword'];
 
         //Richtigen Nutzer aus DB lesen
-        $sql = "SELECT user_id, username, password FROM kontakte WHERE username = ?";
+        $sql = "SELECT user_id, username, password FROM user WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
         $stmt->execute();
