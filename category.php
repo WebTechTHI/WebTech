@@ -57,25 +57,9 @@ $categoryInfo = getCategoryInfo($category);
 
                 <!--    Sortierkriterium      (Michi) -->
 
-                <div class="sort-container">
-                    <select id="orderBy">
-                        <option value="sales">Bestseller</option>
-                        <option value="price">Preis</option>
-                        <option value="name">Name</option>
-                    </select>
 
-                    <input type="checkbox" id="sortDirection" class="hidden" />
-                    <label for="sortDirection">
-                        <svg class="arrow-direction" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
-                            width="30" height="30" fill="currentColor">
-                            <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                        </svg>
-                    </label>
-                </div>
 
                 <!-- Weiter Rinor -->
-
-                <a href="#" class="reset-btn">ZURÜCKSETZEN <span class="reset-icon">✕</span></a>
 
                 <?php
                 // Filter dynamisch generieren basierend auf verfügbaren Produkten
@@ -122,6 +106,10 @@ $categoryInfo = getCategoryInfo($category);
                     }
                 }
                 ?>
+                <div class="filterButtons">
+            <button class="reset-btn">Zurücksetzen </button>
+                <button class="safe-btn">Speichern</button>
+                </div>
             </div>
         </div>
 
@@ -148,6 +136,7 @@ $categoryInfo = getCategoryInfo($category);
 
             <?php if (!empty($categoryInfo['unterkategorien'])): ?>
                 <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
+
                 <div class="category-container">
 
                     <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
@@ -173,7 +162,28 @@ $categoryInfo = getCategoryInfo($category);
 
 
             <!-- Products Grid -->
-            <h3 class="section-title">UNSERE TOPSELLER</h3>
+            <div class="title-and-sort">
+                <h3 class="section-title">UNSERE TOPSELLER</h3>
+
+                <div class="sort-container">
+                    <select id="orderBy">
+                        <option value="sales">Bestseller</option>
+                        <option value="price">Preis</option>
+                        <option value="name">Name</option>
+                    </select>
+
+                    <input type="checkbox" id="sortDirection" class="hidden" />
+                    <label for="sortDirection" onclick="toggleSort()">
+                        <p id="sortButton" >Aufsteigend</p>
+                        <svg class="arrow-direction" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+                            width="30" height="30" fill="currentColor" >
+                            <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                        </svg>
+                    </label>
+                </div>
+            </div>
+
+
 
             <div class="products-grid">
                 <?php if (empty($products)): ?>
@@ -244,6 +254,23 @@ $categoryInfo = getCategoryInfo($category);
             });
         });
     </script>
+
+    <script>
+
+
+function toggleSort() {
+    const btn = document.getElementById('sortButton');
+
+    if (btn.textContent === 'Aufsteigend') {
+        btn.textContent = 'Absteigend';
+    } else {
+        btn.textContent = 'Aufsteigend';
+    }
+
+    // Optional: Sortierfunktion aufrufen oder Daten neu laden
+    
+}
+</script>
 </body>
 
 </html>

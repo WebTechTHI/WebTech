@@ -71,13 +71,47 @@ body {
 
 /* Filter Section - Responsive */
 /* sort by container (Michi) */
-.sort-container{
-    display:flex;
-    flex-direction: column;
+.title-and-sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: Arial, sans-serif;
+    font-weight: bold;
     text-transform: uppercase;
+    background-color: #f0f0f0;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+.sort-container label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    min-width: 160px;
+}
+
+#sortButton {
+    min-width: 90px;
+    text-align: left;
+    white-space: nowrap;
+}
+.sort-container select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
     font-weight: bold;
 }
+
+
 
 .sort-check{
     display:flex;
@@ -110,7 +144,8 @@ body {
 
 /* filter weiter (Rinor) */
 .filter-section {
-    background-color: white;
+    
+    border-radius: 20px;
     margin: 20px;
     padding: 15px 15px 15px 0px;
     justify-content: center;
@@ -130,6 +165,7 @@ body {
 .filter-header {
     display: flex;
     justify-content: space-between;
+    
     align-items: center;
     margin-bottom: 10px;
     border-bottom: 1px solid black;
@@ -175,8 +211,15 @@ body {
 .filter-options li:not(:last-child) {
     border-bottom: #ddd 1px solid;
 }
+.filterButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
 
-.reset-btn {
+
+.reset-btn, .safe-btn {
     display: inline-block;
     padding: 5px 10px;
     background-color: #f5f5f5;
@@ -186,12 +229,28 @@ body {
     margin-top: 10px;
     font-size: 12px;
     margin-bottom: 10px;
+    cursor: pointer;
+    border: transparent 1px solid;
 }
 
-.reset-icon {
-    color: #e00;
-    margin-left: 5px;
+.safe-btn {
+    background-color: #e00;
+    color: white;
 }
+
+.reset-btn:hover {
+    background-color: #ddd;
+    text-decoration: underline;
+    transition: background-color 0.3s ease;
+}
+
+.safe-btn:hover {
+    background-color: #c00;
+    text-decoration: underline;
+    transition: background-color 0.3s ease;
+}
+
+
 
 /* Main Content - Responsive Layout */
 .main-content {
@@ -627,13 +686,15 @@ body {
 
 /* Desktop Styles */
 @media (min-width: 1024px) {
-    .category-container {
-        grid-template-columns: repeat(2, 1fr);
+       .category-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* exakt 3 Spalten */
+        gap: 20px;
     }
 
     .category-card {
-        width: 400px;
-        height: 200px;
+        width: 100%;   /* Karte passt sich automatisch an */
+        height: 200px; /* wie vorher */
     }
 
     .fixed-menu {
