@@ -50,9 +50,9 @@
 
 
     <?php require_once 'db_verbindung.php';
-    require_once 'bestsellertestsellerOrdnerphpstuffzeugyoyoyo/bestseller.php'; 
+    require_once 'categoryFunctions.php'; 
 
-    $products = getProductsByCategory($conn); ?>
+    $products = getProductsByCategory($conn, '', 'sales', 'desc'); ?>
 
         <?php foreach ($products as $product): ?>
             <?php
