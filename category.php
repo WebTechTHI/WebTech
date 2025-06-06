@@ -109,7 +109,7 @@ $categoryInfo = getCategoryInfo($category);
                     if ($category !== 'alle' && $category !== 'zubehör') {
                         echo '<div class="filterButtons">';
                         echo '<a href=category.php?category=' . $category . ' class="reset-btn">Zurücksetzen </a>';
-                        echo '<button class="safe-btn">Speichern</button>
+                        echo '<button class="safe-btn">Anwenden</button>
                         </div>';
                     }
                     ?>

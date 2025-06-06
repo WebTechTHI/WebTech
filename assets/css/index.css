@@ -149,10 +149,8 @@ body {
     padding: 15px;
     display: flex;
     max-height: 280px;
-    min-height: 280px;
-    min-height: 16vh;
     position: relative;
-    min-width: 33vw;
+    min-width: 550px;
 }
 
 
