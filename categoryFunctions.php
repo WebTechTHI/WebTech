@@ -2,7 +2,8 @@
 
 
 
-function getProductsByCategory($conn, $category, $orderBy, $direction, $filters = []) {
+function getProductsByCategory($conn, $category, $orderBy, $direction, $filters = [])
+{
     $sql = "
         SELECT 
             p.product_id, p.name, p.short_description, p.price, p.sale, p.alt_text, p.description, p.sales,
@@ -32,7 +33,7 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
 
     $category = strtolower($category);
 
-    switch($category) {
+    switch ($category) {
         case 'angebote':
             $sql .= " WHERE p.sale = 1";
             break;
@@ -92,7 +93,7 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
         case "asc":
             $dir = "ASC";
             break;
-        case"desc":
+        case "desc":
             $dir = "DESC";
             break;
     }
@@ -120,8 +121,9 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
 
 
 
-function getProductImages($conn, $productId) {
-    $productId = (int)$productId;
+function getProductImages($conn, $productId)
+{
+    $productId = (int) $productId;
     $sql = "SELECT file_path, sequence_no FROM image WHERE product_id = $productId ORDER BY sequence_no";
 
     $result = mysqli_query($conn, $sql);
@@ -140,7 +142,8 @@ function getProductImages($conn, $productId) {
 
 
 
-function getCategoryInfo($category) {
+function getCategoryInfo($category)
+{
     $json = file_get_contents('assets/json/produktBeschreibung.json');
 
 
@@ -158,7 +161,8 @@ function getCategoryInfo($category) {
 }
 
 // Hilfsfunktion für Preis-Formatierung
-function formatPrice($price) {
+function formatPrice($price)
+{
     $formatted = number_format($price, 2, ',', '.');
     if (substr($formatted, -3) === ',00') {
         return substr($formatted, 0, -3) . ',-';
@@ -167,28 +171,108 @@ function formatPrice($price) {
 }
 
 // Hilfsfunktion für Spezifikationen
-function buildSpecifications($product) {
+function buildSpecifications($product)
+{
     $specs = [];
+    if ($product['category_name'] === 'PC' || $product['category_name'] === 'Laptop') {
 
-    if (!empty($product['processor_model'])) {
-        $specs[] = $product['processor_model'];
+        if (!empty($product['processor_model'])) {
+            $specs[] = $product['processor_model'];
+        }
+        if (!empty($product['gpu_model'])) {
+            $specs[] = $product['gpu_model'];
+        }
+        if (!empty($product['ram_capacity'])) {
+            $specs[] = $product['ram_capacity'] . ' GB ' . ($product['ram_type'] ?? 'RAM');
+        }
+        if (!empty($product['storage_capacity'])) {
+            $specs[] = $product['storage_capacity'] . ' GB ' . ($product['storage_type'] ?? 'Storage');
+        }
+        if (!empty($product['display_size'])) {
+            $specs[] = $product['display_size'] . '" Zoll';
+            if (!empty($product['resolution'])) {
+                $specs[] = $product['resolution'];
+            }
+        }
     }
-    if (!empty($product['gpu_model']) && !$product['gpu_integrated']) {
-        $specs[] = $product['gpu_model'];
+    if ($product['category_name'] === 'PC') {
+        if (!empty($product['os_name'])) {
+            $specs[] = $product['os_name'] ;
+        }
     }
-    if (!empty($product['ram_capacity'])) {
-        $specs[] = $product['ram_capacity'] . ' GB ' . ($product['ram_type'] ?? 'RAM');
-    }
-    if (!empty($product['storage_capacity'])) {
-        $specs[] = $product['storage_capacity'] . ' GB ' . ($product['storage_type'] ?? 'Storage');
-    }
-    if (!empty($product['display_size'])) {
-        $specs[] = $product['display_size'] . '" Zoll';
+
+
+    if ($product['subcategory_name'] === 'Monitor') {
+        if (!empty($product['display_size'])) {
+            $specs[] = $product['display_size'] . '" Zoll';
+        }
+        
+        if (!empty($product['refresh_rate_hz'])) {
+            $specs[] = $product['refresh_rate_hz'] . ' Hz';
+        }
+        if (!empty($product['panel_type'])) {
+            $specs[] = $product['panel_type'];
+        }
+
         if (!empty($product['resolution'])) {
             $specs[] = $product['resolution'];
+        }
+
+    }
+
+
+    if ($product['subcategory_name'] === 'Maus' || $product['subcategory_name'] === 'Tastatur') {
+        if (!empty($product['connectors_spec'])) {
+            $specs[] = $product['connectors_spec'];
+        }
+
+         if (!empty($product['feature_spec'])) {
+            $specs[] = $product['feature_spec'];
+            
         }
     }
 
     return $specs;
+}
+
+
+function generateFilter($filters, $product){
+      // Prozessor Filter
+                    if (!empty($product['processor_brand'])) {
+                        $filters['Prozessor'][] = $product['processor_brand'];
+                    }
+
+                    // GPU Filter
+                    if (!empty($product['gpu_brand'])) {
+                        $filters['Grafikkarte'][] = $product['gpu_brand'];
+                    }
+
+                    // RAM Filter
+                    if (!empty($product['ram_capacity'])) {
+                        $filters['RAM'][] = $product['ram_capacity'] . ' GB';
+                    }
+
+
+                    // Storage Filter
+                    if (!empty($product['storage_type'])) {
+                        $filters['Speicher'][] = $product['storage_type'];
+                    }
+
+                    if (!empty($product['display_size'])) {
+                        $filters['Displaygröße'][] = $product['display_size'] . '" Zoll';
+
+                    }
+
+                    if (!empty($product['refresh_rate_hz'])) {
+                        $filters['Bildwiederholrate'][] = $product['refresh_rate_hz'] . ' Hz';
+                        
+                    }
+
+                    if (!empty($product['os_name'])) {
+                        $filters['Betriebssystem'][] = $product['os_name']  ;
+
+                    }
+
+                    return $filters;
 }
 

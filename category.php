@@ -41,74 +41,79 @@ $categoryInfo = getCategoryInfo($category);
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?></div>
-            <ul class="sidebar-menu">
-                <?php if (!empty($categoryInfo['unterkategorien'])): ?>
-                    <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
-                        <li><a
-                                href="<?php echo htmlspecialchars($uk['link']); ?>"><?php echo htmlspecialchars($uk['name']); ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </ul>
+            <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?> 
+            <img src="/assets/images/image.png" alt="Ein/Ausklappen" onclick="toggleSidebar()"></div>
+            <div class="sidebar-all">
+                <ul class="sidebar-menu">
+                    <?php if (!empty($categoryInfo['unterkategorien'])): ?>
+                        <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
+                            <li><a
+                                    href="<?php echo htmlspecialchars($uk['link']); ?>"><?php echo htmlspecialchars($uk['name']); ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
 
-            <div class="filter-section">
-                <div class="filter-title">Auswahl filtern</div>
-
-                <!--    Sortierkriterium      (Michi) -->
+                <div class="filter-section">
+                    <div class="filter-title">Auswahl filtern</div>
 
 
 
-                <!-- Weiter Rinor -->
 
-                <?php
-                // Filter dynamisch generieren basierend auf verfügbaren Produkten
-                $filters = [];
 
-                foreach ($products as $product) {
-                    // Prozessor Filter
-                    if (!empty($product['processor_brand'])) {
-                        $filters['Prozessor'][] = $product['processor_brand'];
+                    <!-- Weiter Rinor -->
+
+                    <?php
+                    // Filter dynamisch generieren basierend auf verfügbaren Produkten
+                    $filters = [];
+
+                    foreach ($products as $product) {
+
+                        $filters = generateFilter($filters, $product);
+
                     }
 
-                    // RAM Filter
-                    if (!empty($product['ram_capacity'])) {
-                        $filters['RAM'][] = $product['ram_capacity'] . ' GB';
-                    }
+                    // Filter-HTML generieren
+                    if ($category !== 'alle' && $category !== 'zubehör') {
 
-                    // GPU Filter
-                    if (!empty($product['gpu_brand']) && !$product['gpu_integrated']) {
-                        $filters['Grafikkarte'][] = $product['gpu_brand'];
-                    }
 
-                    // Storage Filter
-                    if (!empty($product['storage_type'])) {
-                        $filters['Speicher'][] = $product['storage_type'];
-                    }
-                }
+                        foreach ($filters as $filterName => $values) {
+                            $uniqueValues = array_unique($values);
+                            if (count($uniqueValues) >= 1) {
+                                echo "<div class='filter-group'>";
+                                echo "<div class='filter-header' onclick='toggleFilter(this)'><span>$filterName</span><span class='arrow'>▼</span></div>";
 
-                // Filter-HTML generieren
-                foreach ($filters as $filterName => $values) {
-                    $uniqueValues = array_unique($values);
-                    if (count($uniqueValues) > 1) {
-                        echo "<div class='filter-group'>";
-                        echo "<div class='filter-header' onclick='toggleFilter(this)'><span>$filterName</span><span class='arrow'>▼</span></div>";
-                        echo "<ul class='filter-options'>";
+                                echo "<ul class='filter-options'>";
 
-                        foreach ($uniqueValues as $value) {
-                            $count = array_count_values($values)[$value];
-                            $id = strtolower(str_replace(' ', '-', $filterName . '-' . $value));
-                            echo "<li><input type='checkbox' id='$id' class='filter-checkbox'> <label for='$id'>$value ($count)</label></li>";
+                                foreach ($uniqueValues as $value) {
+                                    $count = array_count_values($values)[$value];
+                                    $id = strtolower(str_replace(' ', '-', $filterName . '-' . $value));
+                                    echo "<li><input type='checkbox' id='$id' class='filter-checkbox'> <label for='$id'>$value ($count)</label></li>";
+                                }
+
+                                echo "</ul>";
+                                echo "</div>";
+
+
+                            }
                         }
-
-                        echo "</ul>";
+                    } else {
+                        echo "<div class='filter-group'>";
+                        echo "<span class='no-filter'>Keine Filter verfügbar</span>";
                         echo "</div>";
+
+
                     }
-                }
-                ?>
-                <div class="filterButtons">
-            <a href=<?php echo 'category.php?category='. $category ?> class="reset-btn">Zurücksetzen </a>
-                <button class="safe-btn">Speichern</button>
+                    ?>
+                    <?php
+                    if ($category !== 'alle' && $category !== 'zubehör') {
+                        echo '<div class="filterButtons">';
+                        echo '<a href=category.php?category=' . $category . ' class="reset-btn">Zurücksetzen </a>';
+                        echo '<button class="safe-btn">Speichern</button>
+                        </div>';
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>
@@ -164,7 +169,7 @@ $categoryInfo = getCategoryInfo($category);
             <!-- Products Grid -->
             <div class="title-and-sort">
                 <h3 class="section-title">UNSERE TOPSELLER</h3>
-
+                <!--    Sortierkriterium      (Michi) -->
                 <div class="sort-container">
                     <select id="orderBy">
                         <option value="sales">Bestseller</option>
@@ -174,9 +179,9 @@ $categoryInfo = getCategoryInfo($category);
 
                     <input type="checkbox" id="sortDirection" class="hidden" />
                     <label for="sortDirection" onclick="toggleSort()">
-                        <p id="sortButton" >Aufsteigend</p>
+                        <p id="sortButton">Aufsteigend</p>
                         <svg class="arrow-direction" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
-                            width="30" height="30" fill="currentColor" >
+                            width="30" height="30" fill="currentColor">
                             <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                         </svg>
                     </label>
@@ -258,19 +263,22 @@ $categoryInfo = getCategoryInfo($category);
     <script>
 
 
-function toggleSort() {
-    const btn = document.getElementById('sortButton');
+        function toggleSort() {
+            const btn = document.getElementById('sortButton');
 
-    if (btn.textContent === 'Aufsteigend') {
-        btn.textContent = 'Absteigend';
-    } else {
-        btn.textContent = 'Aufsteigend';
-    }
+            if (btn.textContent === 'Aufsteigend') {
+                btn.textContent = 'Absteigend';
+            } else {
+                btn.textContent = 'Aufsteigend';
+            }
 
-    // Optional: Sortierfunktion aufrufen oder Daten neu laden
-    
-}
-</script>
+            // Optional: Sortierfunktion aufrufen oder Daten neu laden
+
+        }
+    </script>
+
+  
+
 </body>
 
 </html>
