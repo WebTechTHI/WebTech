@@ -42,7 +42,7 @@ $categoryInfo = getCategoryInfo($category);
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?> 
-            <img src="/assets/images/image.png" alt="Ein/Ausklappen" onclick="toggleSidebar()" class="toggle-icon"></div>
+            <img src="/assets/images/icons/filter-toggle.png" alt="Ein/Ausklappen" onclick="toggleSidebar()" class="toggle-icon"></div>
             <div class="sidebar-all" id="sidebarContent">
                 <ul class="sidebar-menu">
                     <?php if (!empty($categoryInfo['unterkategorien'])): ?>
