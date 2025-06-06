@@ -3,18 +3,18 @@ require_once 'db_verbindung.php';
 require_once 'categoryFunctions.php';
 
 // Kategorie aus URL-Parameter ermitteln
-$category = $_GET['category'] ?? 'alle';
-$filters = [
-    'ram' => $_GET['ram'] ?? null,
-    'gpu' => $_GET['gpu'] ?? null,
-    'processor' => $_GET['processor'] ?? null,
-    'storage' => $_GET['storage'] ?? null
-];
-
-$products = getProductsByCategory($conn, $category, "id", "asc");
-$categoryInfo = getCategoryInfo($category);
-
-?>
+$category = $_GET['category'] ?? 'alle';                                                                //Änderung Änderung Änderung Änderung
+$filters = [                                                                                            //Änderung Änderung Änderung Änderung
+    'ram' => $_GET['ram'] ?? null,                                                                      //Änderung Änderung Änderung Änderung
+    'gpu' => $_GET['gpu'] ?? null,                                                                      //Änderung Änderung Änderung Änderung
+    'processor' => $_GET['processor'] ?? null,                                                          //Änderung Änderung Änderung Änderung
+    'storage' => $_GET['storage'] ?? null                                                               //Änderung Änderung Änderung Änderung
+];                                                                                                      //Änderung Änderung Änderung Änderung
+                                                                                                        //Änderung Änderung Änderung Änderung
+$products = getProductsByCategory($conn, $category, "id", "asc");   //Änderung Änderung Änderung Änderung
+$categoryInfo = getCategoryInfo($category);                                                   //Änderung Änderung Änderung Änderung
+                                                                                                        //Änderung Änderung Änderung Änderung
+?>                                                                                                      <!--Änderung Änderung Änderung Änderung-->
 <!DOCTYPE html>
 <html lang="de">
 
@@ -39,6 +39,13 @@ $categoryInfo = getCategoryInfo($category);
 
     <div class="main-content">
 
+
+        <?php $orderBy = $_GET['orderBy'] ?? 'id';  // Standard sortieren nach ID
+        $direction = (isset($_GET['sortDirection']) && $_GET['sortDirection'] === 'desc') ? 'desc' : 'asc';
+
+        $products = getProductsByCategory($conn, $category, $orderBy, $direction);
+        ?>
+
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?></div>
@@ -52,26 +59,45 @@ $categoryInfo = getCategoryInfo($category);
                 <?php endif; ?>
             </ul>
 
+
             <div class="filter-section">
-                <div class="filter-title">Auswahl filtern</div>
-
+                    
                 <!--    Sortierkriterium      (Michi) -->
-
                 <div class="sort-container">
-                    <select id="orderBy">
-                        <option value="sales">Bestseller</option>
-                        <option value="price">Preis</option>
-                        <option value="name">Name</option>
-                    </select>
+                <div>Sortieren nach:</div>
 
-                    <input type="checkbox" id="sortDirection" class="hidden" />
-                    <label for="sortDirection">
-                        <svg class="arrow-direction" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
-                            width="30" height="30" fill="currentColor">
-                            <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                        </svg>
-                    </label>
-                </div>
+                    <!-- Formular zur Aktualisierung bei Anwenden von Sortier-Filtern -->
+                    <form method="GET" id="sortForm">  
+                        <div class="sort-check">                                                                   <!--Änderung Änderung Änderung Änderung-->                                                                     <!--Änderung Änderung Änderung Änderung-->
+                            <select style="text-indent:4px; width: 120px; text-transform:uppercase; font-weight: bold;" name="orderBy" id="orderBy" onchange="document.getElementById('sortForm').submit()">    <!--Änderung Änderung Änderung Änderung-->
+                                <option value="sales" <?php if ($orderBy === 'sales')                                                  
+                                    echo 'selected'; ?>>Bestseller                                                          <!--Änderung Änderung Änderung Änderung-->
+                                    </option>                                                                               <!--Änderung Änderung Änderung Änderung-->
+                                <option value="price" <?php if ($orderBy === 'price')
+                                    echo 'selected'; ?>>Preis                                                               <!--Änderung Änderung Änderung Änderung-->
+                                    </option>                                                                               <!--Änderung Änderung Änderung Änderung-->
+                                <option value="name" <?php if ($orderBy === 'name')
+                                    echo 'selected'; ?>>Name                                                                <!--Änderung Änderung Änderung Änderung-->
+                                    </option>                                                                               <!--Änderung Änderung Änderung Änderung-->
+                            </select>                                                                                       <!--Änderung Änderung Änderung Änderung-->
+                                                                                                                            <!--Änderung Änderung Änderung Änderung-->
+                            <input class="hidden" type="checkbox" id="sortDirection" name="sortDirection" value="desc" <?php if ($direction === 'desc')
+                                echo 'checked'; ?>                                                                                    
+                                onchange="document.getElementById('sortForm').submit()" />                                  <!--Änderung Änderung Änderung Änderung-->
+                            <label for="sortDirection">                                                                     <!--Änderung Änderung Änderung Änderung-->
+                                <svg class="arrow-direction" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+                                    width="30" height="30" fill="currentColor">                                             <!--Änderung Änderung Änderung Änderung-->
+                                    <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />          <!--Änderung Änderung Änderung Änderung-->
+                                </svg>                                                                                      <!--Änderung Änderung Änderung Änderung-->
+                            </label>                                                                                        <!--Änderung Änderung Änderung Änderung-->
+                        </div>                                                                                              <!--Änderung Änderung Änderung Änderung-->
+                    </form>                                                                                                 <!--Änderung Änderung Änderung Änderung-->
+                </div>  
+                
+
+                <span class="filter-title">Auswahl filtern</span>
+
+                                                                                                                    <!--Änderung Änderung Änderung Änderung-->
 
                 <!-- Weiter Rinor -->
 

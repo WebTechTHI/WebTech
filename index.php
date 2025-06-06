@@ -36,7 +36,7 @@
     </section>
 
 
-    <!-- Featured Products Section -->
+    <!-- Bestseller Section -->
     <section class="container">
         <h2 class="section-title">BESTSELLER</h2>
 

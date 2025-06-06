@@ -2,10 +2,10 @@
 
 
 
-function getProductsByCategory($conn, $category, $filters = []) {
+function getProductsByCategory($conn, $category, $orderBy, $direction, $filters = []) {
     $sql = "
         SELECT 
-            p.product_id, p.name, p.short_description, p.price, p.sale, p.alt_text, p.description,
+            p.product_id, p.name, p.short_description, p.price, p.sale, p.alt_text, p.description, p.sales,
             c.name as category_name, sc.name as subcategory_name,
             proc.model as processor_model, proc.brand as processor_brand, proc.cores as processor_cores, proc.base_clock_ghz as processor_clock,
             gpu.model as gpu_model, gpu.brand as gpu_brand, gpu.vram_gb as gpu_vram, gpu.integrated as gpu_integrated,
@@ -68,7 +68,36 @@ function getProductsByCategory($conn, $category, $filters = []) {
             break;
     }
 
-    $sql .= " ORDER BY p.sales";
+    //festlegen des übergebenen Sortierkriteriums in SQL (Michi)
+    switch ($orderBy) {
+        default:
+            $order = "p.product_id";
+            break;
+        case "sales":
+            $order = "p.sales";
+            break;
+        case "price":
+            $order = "p.price";
+            break;
+        case "name":
+            $order = "p.name";
+            break;
+    }
+
+    //festlegen der Sortierrichtung (Michi)
+    switch ($direction) {
+        default:
+            $dir = "ASC";
+            break;
+        case "asc":
+            $dir = "ASC";
+            break;
+        case"desc":
+            $dir = "DESC";
+            break;
+    }
+
+    $sql .= " ORDER BY " . $order . " " . $dir;
 
     $result = mysqli_query($conn, $sql);
 
@@ -90,8 +119,8 @@ function getProductsByCategory($conn, $category, $filters = []) {
 
 
 
-    
- function getProductImages($conn, $productId) {
+
+function getProductImages($conn, $productId) {
     $productId = (int)$productId;
     $sql = "SELECT file_path, sequence_no FROM image WHERE product_id = $productId ORDER BY sequence_no";
 
@@ -110,19 +139,19 @@ function getProductsByCategory($conn, $category, $filters = []) {
 
 
 
-    
-   function getCategoryInfo($category) {
-     $json = file_get_contents('assets/json/produktBeschreibung.json');
 
-    
+function getCategoryInfo($category) {
+    $json = file_get_contents('assets/json/produktBeschreibung.json');
+
+
     $data = json_decode($json, true);
 
-    
+
     $category = strtolower($category);
     if (isset($data[$category])) {
         return $data[$category];
     } else {
-        return 
+        return
             $data['alle'];
         ;
     }
@@ -140,7 +169,7 @@ function formatPrice($price) {
 // Hilfsfunktion für Spezifikationen
 function buildSpecifications($product) {
     $specs = [];
-    
+
     if (!empty($product['processor_model'])) {
         $specs[] = $product['processor_model'];
     }
@@ -159,7 +188,7 @@ function buildSpecifications($product) {
             $specs[] = $product['resolution'];
         }
     }
-    
+
     return $specs;
 }
 

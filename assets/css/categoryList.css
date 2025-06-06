@@ -70,6 +70,45 @@ body {
 }
 
 /* Filter Section - Responsive */
+/* sort by container (Michi) */
+.sort-container{
+    display:flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.sort-check{
+    display:flex;
+    justify-content: space-between;
+    padding:5px;
+    border: 2px solid rgba(155, 155, 155, 0.664);
+    border-radius: 7px;
+    background-color: rgba(228, 228, 228, 0.877);
+    margin: 20px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Standart unchecked -> pfeil nach oben (ascend)*/
+.arrow-direction {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+
+/* Drehung, wenn Checkbox aktiviert, also pfeil nach unten (descend) */
+#sortDirection:checked + label .arrow-direction {
+    transform: rotate(45deg);
+}
+
+/* filter weiter (Rinor) */
 .filter-section {
     background-color: white;
     margin: 20px;
