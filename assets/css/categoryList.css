@@ -30,6 +30,8 @@ body {
 /* Sidebar - Responsive */
 .sidebar {
     width: 100%;
+     max-width: 240px;
+     height: auto;   
     background-color: white;
     margin: 20px;
     padding: 0;
@@ -53,6 +55,26 @@ body {
     margin-right: 10px;
     cursor: pointer;
 } 
+
+.sidebar-all {
+    overflow: hidden;
+    max-height: 1000px;  /* Standard offen */
+    transition: all 0.5s ease;
+}
+
+.sidebar-all.closed {
+    max-height: 0px;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+
 
 
 .sidebar-menu {
@@ -367,6 +389,7 @@ body {
 .category-card {
     position: relative;
     width: 100%;
+    max-width: 350px;
     height: 180px;
     border-radius: 10px;
     overflow: hidden;
@@ -609,13 +632,12 @@ body {
     }
 
     .main-content {
+        display: flex;
         flex-direction: row;
+        align-items: flex-start;
     }
 
-    .sidebar {
-        width: 240px;
-        margin: 20px;
-    }
+    
 
     .products {
         padding: 0 20px 20px 0;
@@ -712,43 +734,6 @@ body {
 
 /* Desktop Styles */
 @media (min-width: 1024px) {
-       .category-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* exakt 3 Spalten */
-        gap: 20px;
-    }
-
-    .category-card {
-        width: 100%;   /* Karte passt sich automatisch an */
-        height: 200px; /* wie vorher */
-    }
-
-    .fixed-menu {
-        position: fixed;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .fixed-menu a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50px;
-        height: 50px;
-        background-color: white;
-        border: 1px solid #ddd;
-        margin-bottom: 1px;
-        color: #333;
-        text-decoration: none;
-        font-size: 18px;
-    }
-}
-
-/* Large Desktop */
-@media (min-width: 1200px) {
     .category-container {
         grid-template-columns: repeat(3, 1fr);
         justify-content: flex-start;
@@ -757,7 +742,23 @@ body {
     }
 
     .category-card {
-        width: 400px;
+        width: calc(33.33% - 35px);
+        flex-shrink: 0;
+    }
+
+}
+
+/* Large Desktop */
+@media (max-width: 1280px) {
+    .category-container {
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .category-card {
+        width: calc(33.33% - 35px);
         flex-shrink: 0;
     }
 }

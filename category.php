@@ -42,8 +42,8 @@ $categoryInfo = getCategoryInfo($category);
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?> 
-            <img src="/assets/images/image.png" alt="Ein/Ausklappen" onclick="toggleSidebar()"></div>
-            <div class="sidebar-all">
+            <img src="/assets/images/image.png" alt="Ein/Ausklappen" onclick="toggleSidebar()" class="toggle-icon"></div>
+            <div class="sidebar-all" id="sidebarContent">
                 <ul class="sidebar-menu">
                     <?php if (!empty($categoryInfo['unterkategorien'])): ?>
                         <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
@@ -277,7 +277,19 @@ $categoryInfo = getCategoryInfo($category);
         }
     </script>
 
-  
+<script>
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebarContent');
+    const icon = document.querySelector('.toggle-icon');
+
+    sidebar.classList.toggle('closed');
+    icon.classList.toggle('rotated');
+}
+</script>
+
+
+
+
 
 </body>
 
