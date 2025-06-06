@@ -107,7 +107,7 @@ $categoryInfo = getCategoryInfo($category);
                 }
                 ?>
                 <div class="filterButtons">
-            <button class="reset-btn">Zurücksetzen </button>
+            <a href=<?php echo 'category.php?category='. $category ?> class="reset-btn">Zurücksetzen </a>
                 <button class="safe-btn">Speichern</button>
                 </div>
             </div>
