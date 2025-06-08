@@ -30,11 +30,12 @@ body {
 /* Sidebar - Responsive */
 .sidebar {
     width: 100%;
-     max-width: 240px;
-     height: auto;   
+    max-width: 240px;
+    height: auto;
     background-color: white;
     margin: 20px;
     padding: 0;
+    border-radius: 10px;
 }
 
 .sidebar-title {
@@ -45,6 +46,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top-right-radius: 10px;
 }
 
 
@@ -54,11 +56,12 @@ body {
     vertical-align: middle;
     margin-right: 10px;
     cursor: pointer;
-} 
+}
 
 .sidebar-all {
     overflow: hidden;
-    max-height: 1000px;  /* Standard offen */
+    max-height: 1000px;
+    /* Standard offen */
     transition: all 0.5s ease;
 }
 
@@ -140,6 +143,7 @@ body {
     text-align: left;
     white-space: nowrap;
 }
+
 .sort-container select {
     padding: 5px;
     border-radius: 5px;
@@ -149,10 +153,10 @@ body {
 
 
 
-.sort-check{
-    display:flex;
+.sort-check {
+    display: flex;
     justify-content: space-between;
-    padding:5px;
+    padding: 5px;
     border: 2px solid rgba(155, 155, 155, 0.664);
     border-radius: 7px;
     background-color: rgba(228, 228, 228, 0.877);
@@ -174,13 +178,13 @@ body {
 }
 
 /* Drehung, wenn Checkbox aktiviert, also pfeil nach unten (descend) */
-#sortDirection:checked + label .arrow-direction {
+#sortDirection:checked+label .arrow-direction {
     transform: rotate(45deg);
 }
 
 /* filter weiter (Rinor) */
 .filter-section {
-    
+
     border-radius: 20px;
     margin: 20px;
     padding: 15px 15px 15px 0px;
@@ -201,7 +205,7 @@ body {
 .filter-header {
     display: flex;
     justify-content: space-between;
-    
+
     align-items: center;
     margin-bottom: 10px;
     border-bottom: 1px solid black;
@@ -247,6 +251,7 @@ body {
 .filter-options li:not(:last-child) {
     border-bottom: #ddd 1px solid;
 }
+
 .filterButtons {
     display: flex;
     justify-content: space-between;
@@ -260,7 +265,8 @@ body {
 }
 
 
-.reset-btn, .safe-btn {
+.reset-btn,
+.safe-btn {
     display: inline-block;
     padding: 5px 10px;
     background-color: #f5f5f5;
@@ -351,14 +357,26 @@ body {
     font-size: 18px;
     margin: 30px 0 20px;
     text-transform: uppercase;
+    position: relative;
+    display: inline-block; /* nur so breit wie der Text */
+}
+
+.section-title::after {
+    content: "";
     display: block;
+    width: 120px; 
+    height: 3px;
+    background-color: #c00;
+    margin-top: 7px;
 }
 
 .subtext {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     margin-bottom: 20px;
     color: #555;
+    max-width: 1200px; /* Oder z. B. 70ch für zeichenbasierte Breite */
+    word-wrap: break-word;
 }
 
 .read-more {
@@ -501,7 +519,7 @@ body {
 
 .product:hover .product-badge {
     top: -8px;
-    
+
 }
 
 .product-badge {
@@ -601,8 +619,16 @@ body {
     color: #0c0;
 }
 
+.button-container {
+    display: flex;
+    align-items: center;
+    
+    gap: 10px;
+}
+
 .buy-btn {
-    display: block;
+    flex-grow: 1;
+    /* Nimmt den restlichen Platz ein */
     background-color: #e00;
     color: white;
     text-align: center;
@@ -610,13 +636,38 @@ body {
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
-    border-radius: 25px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .buy-btn:hover {
     background-color: #c00;
-    transition: background-color 0.3s ease;
 }
+
+.favorite-btn {
+    background-color: #008500;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+
+
+}
+
+.favorite-btn:hover {
+    background-color: #006600;
+
+}
+
+.favorite-btn img {
+    width: 20px;
+    height: 20px;
+}
+
 
 /* Fixed Menu - Hide on Mobile */
 .fixed-menu {
@@ -637,7 +688,7 @@ body {
         align-items: flex-start;
     }
 
-    
+
 
     .products {
         padding: 0 20px 20px 0;

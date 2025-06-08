@@ -41,8 +41,10 @@ $categoryInfo = getCategoryInfo($category);
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?> 
-            <img src="/assets/images/icons/filter-toggle.png" alt="Ein/Ausklappen" onclick="toggleSidebar()" class="toggle-icon"></div>
+            <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?>
+                <img src="/assets/images/icons/filter-toggle.png" alt="Ein/Ausklappen" onclick="toggleSidebar()"
+                    class="toggle-icon">
+            </div>
             <div class="sidebar-all" id="sidebarContent">
                 <ul class="sidebar-menu">
                     <?php if (!empty($categoryInfo['unterkategorien'])): ?>
@@ -133,9 +135,7 @@ $categoryInfo = getCategoryInfo($category);
             <div class="section-info">
                 <h2><?php echo htmlspecialchars($categoryInfo['infoTitel']); ?></h2>
                 <p class="subtext"><?php echo htmlspecialchars($categoryInfo['infoText']); ?></p>
-                <div class="read-more">
-                    <a href="#">mehr lesen ▼</a>
-                </div>
+                
             </div>
 
 
@@ -225,8 +225,14 @@ $categoryInfo = getCategoryInfo($category);
                                         <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
                                     </div>
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
-                                    <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"
-                                        class="buy-btn">Mehr zum produkt</a>
+                                    <div class="button-container">
+                                        <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"
+                                            class="buy-btn">Mehr zum produkt</a>
+                                        <button class="favorite-btn">
+                                            <img src="/assets/images/icons/favorite-border.svg" alt="Favorit" />
+                                        </button>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -277,17 +283,29 @@ $categoryInfo = getCategoryInfo($category);
         }
     </script>
 
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebarContent');
+            const icon = document.querySelector('.toggle-icon');
+
+            sidebar.classList.toggle('closed');
+            icon.classList.toggle('rotated');
+        }
+    </script>
+
 <script>
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebarContent');
-    const icon = document.querySelector('.toggle-icon');
+  document.querySelectorAll('.favorite-btn').forEach(favBtn => {
+    const favImg = favBtn.querySelector('img');
 
-    sidebar.classList.toggle('closed');
-    icon.classList.toggle('rotated');
-}
+    favBtn.addEventListener('mouseenter', () => {
+      favImg.src = '/assets/images/icons/favorite.svg';
+    });
+
+    favBtn.addEventListener('mouseleave', () => {
+      favImg.src = '/assets/images/icons/favorite-border.svg';
+    });
+  });
 </script>
-
-
 
 
 
