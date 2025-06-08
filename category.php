@@ -110,7 +110,7 @@ $categoryInfo = getCategoryInfo($category);
                     <?php
                     if ($category !== 'alle' && $category !== 'zubehör') {
                         echo '<div class="filterButtons">';
-                        echo '<a href=category.php?category=' . $category . ' class="reset-btn">Zurücksetzen </a>';
+                        echo '<a href=category.php?category=' . $category . ' class="reset-btn">Zurücksetzen</a>';
                         echo '<button class="safe-btn">Anwenden</button>
                         </div>';
                     }
@@ -135,7 +135,7 @@ $categoryInfo = getCategoryInfo($category);
             <div class="section-info">
                 <h2><?php echo htmlspecialchars($categoryInfo['infoTitel']); ?></h2>
                 <p class="subtext"><?php echo htmlspecialchars($categoryInfo['infoText']); ?></p>
-                
+
             </div>
 
 
@@ -209,10 +209,13 @@ $categoryInfo = getCategoryInfo($category);
 
                         <div class="product">
                             <span class="product-badge"><?php echo $product['sale'] ? 'SALE' : 'TOP'; ?></span>
-                            <div class="product-image">
-                                <img src="<?php echo htmlspecialchars($firstImage); ?>"
-                                    alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>">
-                            </div>
+                            
+                                <div class="product-image">
+                                   <a class="product-image-buy"
+                                href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"> <img src="<?php echo htmlspecialchars($firstImage); ?>"
+                                        alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>"></a>
+                                </div>
+                            </a>
                             <div class="product-details">
                                 <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
                                 <ul class="product-specs">
@@ -293,19 +296,21 @@ $categoryInfo = getCategoryInfo($category);
         }
     </script>
 
-<script>
-  document.querySelectorAll('.favorite-btn').forEach(favBtn => {
-    const favImg = favBtn.querySelector('img');
+    <script>
+        document.querySelectorAll('.favorite-btn').forEach(favBtn => {
+            const favImg = favBtn.querySelector('img');
 
-    favBtn.addEventListener('mouseenter', () => {
-      favImg.src = '/assets/images/icons/favorite.svg';
-    });
+            favBtn.addEventListener('mouseenter', () => {
+                favImg.src = '/assets/images/icons/favorite.svg';
+            });
 
-    favBtn.addEventListener('mouseleave', () => {
-      favImg.src = '/assets/images/icons/favorite-border.svg';
-    });
-  });
-</script>
+            favBtn.addEventListener('mouseleave', () => {
+                favImg.src = '/assets/images/icons/favorite-border.svg';
+            });
+        });
+    </script>
+
+
 
 
 

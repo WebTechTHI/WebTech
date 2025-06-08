@@ -353,12 +353,17 @@ body {
     z-index: 0;
 }
 
+.section-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
 .section-title {
     font-size: 18px;
     margin: 30px 0 20px;
     text-transform: uppercase;
     position: relative;
-    display: inline-block; /* nur so breit wie der Text */
+    display: inline-block; 
 }
 
 .section-title::after {
@@ -555,6 +560,19 @@ body {
     transition: transform 0.3s ease;
 }
 
+.product-image .product-image-buy {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.product-image .product-image-buy img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
 .product-image img:hover {
     transform: scale(1.015);
     transition: transform 0.3s ease;
@@ -628,6 +646,7 @@ body {
 
 .buy-btn {
     flex-grow: 1;
+
     /* Nimmt den restlichen Platz ein */
     background-color: #e00;
     color: white;
