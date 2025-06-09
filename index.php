@@ -29,7 +29,7 @@
             <p class="hero-text">Entdecke unsere neue Generation an High-Performance Gaming-PCs mit den neuesten NVIDIA
                 RTX 5000 Grafikkarten für ultimative Gaming-Power.</p>
             <div class="hero-buttons">
-                <a href="#" class="hero-btn main-btn">JETZT ENTDECKEN</a>
+                <a href="category.php" class="hero-btn main-btn">JETZT ENTDECKEN</a>
                 <a href="#" class="hero-btn configure-btn">KONFIGURATOR</a>
             </div>
         </div>
@@ -107,32 +107,32 @@
         <h2 class="section-title">PRODUKTKATEGORIEN</h2>
         <div class="categories">
             <div class="category-card">
-                <img src="/api/placeholder/400/200" alt="Gaming PCs">
+                <img src="/assets/images/subcategory_images/gamingPc.png" alt="Gaming PCs">
                 <div class="category-overlay"></div>
                 <div class="category-content">
-                    <h3 class="category-title">Gaming PCs</h3>
-                    <p class="category-description">High-Performance Computer für Gamer</p>
-                    <a href="#" class="category-link">MEHR ERFAHREN</a>
+                    <h3 class="category-title">PCs</h3>
+                    <p class="category-description">Power für jeden Tag</p>
+                    <a href="category.php?category=pc" class="category-link">MEHR ERFAHREN</a>
                 </div>
             </div>
 
             <div class="category-card">
-                <img src="/api/placeholder/400/200" alt="Gaming Laptops">
+                <img src="/assets/images/subcategory_images/officeLaptop.png" alt="Gaming Laptops">
                 <div class="category-overlay"></div>
                 <div class="category-content">
-                    <h3 class="category-title">Gaming Laptops</h3>
-                    <p class="category-description">Mobile Gaming-Power für unterwegs</p>
-                    <a href="#" class="category-link">MEHR ERFAHREN</a>
+                    <h3 class="category-title">Laptops</h3>
+                    <p class="category-description">Leistung zum Mitnehmen</p>
+                    <a href="category.php?category=laptop" class="category-link">MEHR ERFAHREN</a>
                 </div>
             </div>
 
             <div class="category-card">
-                <img src="/api/placeholder/400/200" alt="Creator PCs">
+                <img src="/assets/images/subcategory_images/maus.png" alt="Creator PCs">
                 <div class="category-overlay"></div>
                 <div class="category-content">
-                    <h3 class="category-title">Creator PCs</h3>
-                    <p class="category-description">Für Kreativprofis und Content-Ersteller</p>
-                    <a href="#" class="category-link">MEHR ERFAHREN</a>
+                    <h3 class="category-title">zubehör</h3>
+                    <p class="category-description">Perfekte Ergänzung für dein Setup</p>
+                    <a href="category.php?category=zubehör" class="category-link">MEHR ERFAHREN</a>
                 </div>
             </div>
         </div>
