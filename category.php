@@ -4,12 +4,7 @@ require_once 'categoryFunctions.php';
 
 // Kategorie aus URL-Parameter ermitteln
 $category = $_GET['category'] ?? 'alle';
-$filters = [
-    'ram' => $_GET['ram'] ?? null,
-    'gpu' => $_GET['gpu'] ?? null,
-    'processor' => $_GET['processor'] ?? null,
-    'storage' => $_GET['storage'] ?? null
-];
+
 
 $products = getProductsByCategory($conn, $category, "id", "asc");
 $categoryInfo = getCategoryInfo($category);
@@ -89,16 +84,26 @@ $categoryInfo = getCategoryInfo($category);
 
                                 foreach ($uniqueValues as $value) {
                                     $count = array_count_values($values)[$value];
-                                    $id = strtolower(str_replace(' ', '-', $filterName . '-' . $value));
-                                    echo "<li><input type='checkbox' id='$id' class='filter-checkbox'> <label for='$id'>$value ($count)</label></li>";
+
+                                    // ID nur noch zur Label-Zuordnung, aber kein Split nötig im JS
+                                    $labelId = strtolower(str_replace(' ', '-', $filterName . '-' . $value));
+
+                                    echo "<li>
+                                            <input 
+                                                type='checkbox' 
+                                                id='$labelId' 
+                                                class='filter-checkbox' 
+                                                data-filter='" . strtolower($filterName) . "' 
+                                                value='" . htmlspecialchars($value) . "'>
+                                            <label for='$labelId'>" . htmlspecialchars($value) . " ($count)</label>
+                                        </li>";
                                 }
 
                                 echo "</ul>";
                                 echo "</div>";
-
-
                             }
                         }
+
                     } else {
                         echo "<div class='filter-group'>";
                         echo "<span class='no-filter'>Keine Filter verfügbar</span>";
@@ -110,8 +115,8 @@ $categoryInfo = getCategoryInfo($category);
                     <?php
                     if ($category !== 'alle' && $category !== 'zubehör') {
                         echo '<div class="filterButtons">';
-                        echo '<a href=category.php?category=' . $category . ' class="reset-btn">Zurücksetzen</a>';
-                        echo '<button class="safe-btn">Anwenden</button>
+                        echo '<button class="reset-btn" id="resetFilterBtn">Zurücksetzen</button>';
+                        echo '<button class="safe-btn" id="applyFilterBtn" type="button">Anwenden</button>
                         </div>';
                     }
                     ?>
@@ -208,13 +213,16 @@ $categoryInfo = getCategoryInfo($category);
                         ?>
 
                         <div class="product">
-                            <span class="product-badge"><?php echo $product['sale'] ? 'SALE' : 'TOP'; ?></span>
-                            
-                                <div class="product-image">
-                                   <a class="product-image-buy"
-                                href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"> <img src="<?php echo htmlspecialchars($firstImage); ?>"
+                            <?php if ($product['sale']) {
+                                echo '<span class="product-badge">SALE %</span>';
+                            }
+                            ?>
+                            <div class="product-image">
+                                <a class="product-image-buy"
+                                    href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"> <img
+                                        src="<?php echo htmlspecialchars($firstImage); ?>"
                                         alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>"></a>
-                                </div>
+                            </div>
                             </a>
                             <div class="product-details">
                                 <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
@@ -311,7 +319,60 @@ $categoryInfo = getCategoryInfo($category);
     </script>
 
 
+    <!-- Filter anwenden -->
+    <script>
+        document.getElementById('applyFilterBtn').addEventListener('click', () => {
+            document.querySelector('.products-grid').style.opacity = '0.5'; // Ladeanimation
+            
+            const selectedFilters = {};
 
+            document.querySelectorAll('.filter-checkbox:checked').forEach(cb => {
+                const filterName = cb.dataset.filter;
+                const value = cb.value;
+
+                if (!selectedFilters[filterName]) {
+                    selectedFilters[filterName] = [];
+                }
+                selectedFilters[filterName].push(value);
+            });
+
+
+            const category = new URLSearchParams(window.location.search).get('category') || 'alle';
+
+            fetch('filterProducts.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    category: category,
+                    filters: selectedFilters
+                })
+            })
+                .then(res => res.text())
+                .then(html => {
+                    document.querySelector('.products-grid').innerHTML = html;
+                    document.querySelector('.products-grid').style.opacity = '1';
+                })
+                .catch(err => {
+                    console.error('Fehler beim Filtern:', err);
+                });
+        });
+    </script>
+
+
+
+<script>
+document.getElementById('resetFilterBtn').addEventListener('click', () => {
+    // Alle Checkboxen des Filters deaktivieren
+    document.querySelectorAll('.filter-checkbox').forEach(cb => {
+        cb.checked = false;
+    });
+
+    // Optional: Danach gleich die Produkte neu laden
+    document.getElementById('applyFilterBtn').click();
+});
+</script>
 
 
 </body>

@@ -69,6 +69,50 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
             break;
     }
 
+
+    // Filter berücksichtigen
+if (!empty($filters)) {
+    foreach ($filters as $key => $values) {
+        if (empty($values)) continue;
+
+        // Werte escapen und als SQL-String vorbereiten
+        $escaped = [];
+        foreach ($values as $v) {
+            $escaped[] = "'" . mysqli_real_escape_string($conn, $v) . "'";
+        }
+
+        $valueString = implode(',', $escaped);
+
+        switch ($key) {
+            case 'ram':
+                $sql .= " AND ram.capacity_gb IN ($valueString)";
+                break;
+            case 'grafikkarte':
+                $sql .= " AND gpu.brand IN ($valueString)";
+                break;
+            case 'prozessor':
+                $sql .= " AND proc.brand IN ($valueString)";
+                break;
+            case 'speicher':
+                $sql .= " AND storage.storage_type IN ($valueString)";
+                break;
+            case 'displaygröße':
+                $sql .= " AND display.size_inch IN ($valueString)";
+                break;
+            case 'bildwiederholrate':
+                $sql .= " AND display.refresh_rate_hz IN ($valueString)";
+                break;
+            case 'betriebssystem':
+                
+                $sql .= " AND os.name IN ($valueString)";
+                break;
+        }
+    }
+}
+
+
+
+
     //festlegen des übergebenen Sortierkriteriums in SQL (Michi)
     switch ($orderBy) {
         default:
@@ -237,7 +281,7 @@ function buildSpecifications($product)
 
 
 function generateFilter($filters, $product){
-      // Prozessor Filter
+                    // Prozessor Filter
                     if (!empty($product['processor_brand'])) {
                         $filters['Prozessor'][] = $product['processor_brand'];
                     }
