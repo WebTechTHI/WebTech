@@ -28,9 +28,7 @@ ob_start(); // Startet Pufferspeicherung für Produkte
         <div class="product">
             <?php if ($product['sale']) {
                 echo '<span class="product-badge">SALE %</span>';
-            } else {
-                echo '<span class="product-badge">TOP</span>';
-            } ?>
+            }  ?>
             <div class="product-image">
                 <a class="product-image-buy" href="/productPages/product.php?id=<?php echo $product['product_id']; ?>">
                     <img src="<?php echo htmlspecialchars($firstImage); ?>"

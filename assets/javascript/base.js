@@ -76,7 +76,11 @@ function berechneNetto(){
 
 //----------AB HIER ALLES FÜR KATEGORIEN SEITE------------------//
 // -----------RINOR STUBLLA------------------//
-
+ function toggleFilter(header) {
+            const options = header.nextElementSibling;
+            options.classList.toggle('collapsed');
+            header.classList.toggle('open');
+        }
 
 // Um die Sidebar zu toggeln, wenn der Button geklickt wird
  function toggleSidebar() {
@@ -87,26 +91,49 @@ function berechneNetto(){
             icon.classList.toggle('rotated');
         }
 
+//Sortier funktion das es abwechselt zwischen Aufsteigend und Absteigend
+ function toggleSort() {
+            const btn = document.getElementById('sortButton');
 
-{
+            if (btn.textContent === 'Aufsteigend') {
+                btn.textContent = 'Absteigend';
+            } else {
+                btn.textContent = 'Aufsteigend';
+            }
+
+        }
+
+
+
+
 // damit das Herz weiß wird beim Hovern beim Produkt
-  document.querySelectorAll('.favorite-btn').forEach(favBtn => {
-            const favImg = favBtn.querySelector('img');
+function favoriteImage() {
+    document.querySelectorAll('.favorite-btn').forEach(favBtn => {
+        const favImg = favBtn.querySelector('img');
 
-            favBtn.addEventListener('mouseenter', () => {
-                favImg.src = '/assets/images/icons/favorite.svg';
-            });
-
-            favBtn.addEventListener('mouseleave', () => {
-                favImg.src = '/assets/images/icons/favorite-border.svg';
-            });
+        favBtn.addEventListener('mouseenter', () => {
+            favImg.src = '/assets/images/icons/favorite.svg';
         });
 
- } 
+        favBtn.addEventListener('mouseleave', () => {
+            favImg.src = '/assets/images/icons/favorite-border.svg';
+        });
+    });
+}
+
+
+ 
 
 
  {
-        // Wichtige Funktion/EventListener zum Filtern der Produkte !!!!!!!!!!!!!!!
+        
+document.addEventListener('DOMContentLoaded', () => {
+    //erstmal wichtig beim Start der Seite kurz Funktion aufzurufen damit die Herzen weiß werden
+    favoriteImage();
+
+
+    // ab hier geht normal weiter
+// Wichtige Funktion/EventListener zum Filtern der Produkte !!!!!!!!!!!!!!!
   document.getElementById('applyFilterBtn').addEventListener('click', () => {
             document.querySelector('.products-grid').style.opacity = '0.3'; // Ladeanimation
             document.querySelector('.filters').style.opacity = '0.3';
@@ -142,26 +169,36 @@ function berechneNetto(){
                     document.querySelector('.filters').innerHTML = data.filtersHtml;
                     document.querySelector('.products-grid').style.opacity = '1';
                     document.querySelector('.filters').style.opacity = '1';
+                    favoriteImage(); 
                 })
                 .catch(err => {
                     console.error('Fehler beim Filtern:', err);
                 });
-        });      
+        });     
 
 
-}
 
 
-{
     //Um die Filter Zurücksetzen
     document.getElementById('resetFilterBtn').addEventListener('click', () => {
             document.querySelectorAll('.filter-checkbox').forEach(cb => {
                 cb.checked = false;
             });
 
-            // Optional: Danach gleich die Produkte neu laden
+            
             document.getElementById('applyFilterBtn').click();
         });  
+
+
+
+
+
+
+    }); 
+
+
 }
+
+
 
 
