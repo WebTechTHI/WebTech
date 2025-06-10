@@ -61,7 +61,7 @@ $categoryInfo = getCategoryInfo($category);
                     <!-- Weiter Rinor -->
 
                     <?php
-                    // Filter dynamisch generieren basierend auf verfügbaren Produkten
+
                     $filters = [];
 
                     foreach ($products as $product) {
@@ -69,18 +69,25 @@ $categoryInfo = getCategoryInfo($category);
                         $filters = generateFilter($filters, $product);
 
                     }
-
+                    echo "<div class='filters'>";
                     // Filter-HTML generieren
                     if ($category !== 'alle' && $category !== 'zubehör') {
 
-
+                        $zaehler = 0;
                         foreach ($filters as $filterName => $values) {
                             $uniqueValues = array_unique($values);
+
                             if (count($uniqueValues) >= 1) {
                                 echo "<div class='filter-group'>";
-                                echo "<div class='filter-header' onclick='toggleFilter(this)'><span>$filterName</span><span class='arrow'>▼</span></div>";
+                                if ($zaehler == 0) {
+                                    echo "<div class='filter-header open' onclick='toggleFilter(this)'><span>$filterName</span><span class='arrow'>▼</span></div>";
+                                    echo "<ul class='filter-options'>";
+                                } else {
+                                    echo "<div class='filter-header' onclick='toggleFilter(this)'><span>$filterName</span><span class='arrow'>▼</span></div>";
+                                    echo "<ul class='filter-options collapsed'>";
+                                }
+                                $zaehler++;
 
-                                echo "<ul class='filter-options'>";
 
                                 foreach ($uniqueValues as $value) {
                                     $count = array_count_values($values)[$value];
@@ -111,6 +118,7 @@ $categoryInfo = getCategoryInfo($category);
 
 
                     }
+                    echo "</div>"; // Schließt die Filter-Div
                     ?>
                     <?php
                     if ($category !== 'alle' && $category !== 'zubehör') {
@@ -122,6 +130,7 @@ $categoryInfo = getCategoryInfo($category);
                     ?>
 
                 </div>
+
             </div>
         </div>
 
@@ -262,19 +271,7 @@ $categoryInfo = getCategoryInfo($category);
             header.classList.toggle('open');
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const allOptions = document.querySelectorAll('.filter-options');
-            const allHeaders = document.querySelectorAll('.filter-header');
 
-            allOptions.forEach((el, index) => {
-                if (index === 0) {
-                    el.classList.remove('collapsed'); // Erstes Element offen lassen
-                    allHeaders[index].classList.add('open');
-                } else {
-                    el.classList.add('collapsed'); // Alle anderen einklappen
-                }
-            });
-        });
     </script>
 
     <script>
@@ -322,8 +319,9 @@ $categoryInfo = getCategoryInfo($category);
     <!-- Filter anwenden -->
     <script>
         document.getElementById('applyFilterBtn').addEventListener('click', () => {
-            document.querySelector('.products-grid').style.opacity = '0.5'; // Ladeanimation
-            
+            document.querySelector('.products-grid').style.opacity = '0.3'; // Ladeanimation
+            document.querySelector('.filters').style.opacity = '0.3';
+
             const selectedFilters = {};
 
             document.querySelectorAll('.filter-checkbox:checked').forEach(cb => {
@@ -349,10 +347,12 @@ $categoryInfo = getCategoryInfo($category);
                     filters: selectedFilters
                 })
             })
-                .then(res => res.text())
-                .then(html => {
-                    document.querySelector('.products-grid').innerHTML = html;
+                .then(res => res.json())
+                .then(data => {
+                    document.querySelector('.products-grid').innerHTML = data.productsHtml;
+                    document.querySelector('.filters').innerHTML = data.filtersHtml;
                     document.querySelector('.products-grid').style.opacity = '1';
+                    document.querySelector('.filters').style.opacity = '1';
                 })
                 .catch(err => {
                     console.error('Fehler beim Filtern:', err);
@@ -362,17 +362,16 @@ $categoryInfo = getCategoryInfo($category);
 
 
 
-<script>
-document.getElementById('resetFilterBtn').addEventListener('click', () => {
-    // Alle Checkboxen des Filters deaktivieren
-    document.querySelectorAll('.filter-checkbox').forEach(cb => {
-        cb.checked = false;
-    });
+    <script>
+        document.getElementById('resetFilterBtn').addEventListener('click', () => {
+            document.querySelectorAll('.filter-checkbox').forEach(cb => {
+                cb.checked = false;
+            });
 
-    // Optional: Danach gleich die Produkte neu laden
-    document.getElementById('applyFilterBtn').click();
-});
-</script>
+            // Optional: Danach gleich die Produkte neu laden
+            document.getElementById('applyFilterBtn').click();
+        });
+    </script>
 
 
 </body>

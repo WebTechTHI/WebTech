@@ -73,54 +73,95 @@ function berechneNetto(){
 }
 
 
-//ab hier für suchfunktion
-let produkte = [];
 
-document.addEventListener('DOMContentLoaded', async function() {
-    const searchIcon = document.getElementById('searchIcon');
-    const suchFeld = document.getElementById('suchFeld');
-
-    produkte = await alleProdukte();
-    
-    searchIcon.addEventListener('click', function() {
-      suchFeld.classList.toggle('active');
-      if (suchFeld.classList.contains('active')) {
-        suchFeld.focus();
-      }
-    });
-  
-  });
+//----------AB HIER ALLES FÜR KATEGORIEN SEITE------------------//
+// -----------RINOR STUBLLA------------------//
 
 
-  function searchFunction() {
-    const searchValue = document.getElementById('suchFeld').value;
-    const gefundeneProdukte = produkte.filter(product => {
-        return (
-            product.name.toLowerCase().includes(searchValue) ||
-            product.kurzbeschreibung.toLowerCase().includes(searchValue) ||
-            product.kategorie.toLowerCase().includes(searchValue) ||
-            product.unterkategorie.toLowerCase().includes(searchValue)
-        );
-    });
-    console.log('Suchergebnisse:', gefundeneProdukte);
-   
-    
-  }
+// Um die Sidebar zu toggeln, wenn der Button geklickt wird
+ function toggleSidebar() {
+            const sidebar = document.getElementById('sidebarContent');
+            const icon = document.querySelector('.toggle-icon');
 
-  async function alleProdukte() {
-    try {
-        const response = await fetch('../assets/json/productList.json');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+            sidebar.classList.toggle('closed');
+            icon.classList.toggle('rotated');
         }
-        const products = await response.json();
-        return products;
-    }catch (error) {
-        console.error('Error fetching product data:', error);
-    }
+
+
+{
+// damit das Herz weiß wird beim Hovern beim Produkt
+  document.querySelectorAll('.favorite-btn').forEach(favBtn => {
+            const favImg = favBtn.querySelector('img');
+
+            favBtn.addEventListener('mouseenter', () => {
+                favImg.src = '/assets/images/icons/favorite.svg';
+            });
+
+            favBtn.addEventListener('mouseleave', () => {
+                favImg.src = '/assets/images/icons/favorite-border.svg';
+            });
+        });
+
+ } 
+
+
+ {
+        // Wichtige Funktion/EventListener zum Filtern der Produkte !!!!!!!!!!!!!!!
+  document.getElementById('applyFilterBtn').addEventListener('click', () => {
+            document.querySelector('.products-grid').style.opacity = '0.3'; // Ladeanimation
+            document.querySelector('.filters').style.opacity = '0.3';
+
+            const selectedFilters = {};
+
+            document.querySelectorAll('.filter-checkbox:checked').forEach(cb => {
+                const filterName = cb.dataset.filter;
+                const value = cb.value;
+
+                if (!selectedFilters[filterName]) {
+                    selectedFilters[filterName] = [];
+                }
+                selectedFilters[filterName].push(value);
+            });
+
+
+            const category = new URLSearchParams(window.location.search).get('category') || 'alle';
+
+            fetch('filterProducts.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    category: category,
+                    filters: selectedFilters
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.querySelector('.products-grid').innerHTML = data.productsHtml;
+                    document.querySelector('.filters').innerHTML = data.filtersHtml;
+                    document.querySelector('.products-grid').style.opacity = '1';
+                    document.querySelector('.filters').style.opacity = '1';
+                })
+                .catch(err => {
+                    console.error('Fehler beim Filtern:', err);
+                });
+        });      
+
+
 }
 
 
+{
+    //Um die Filter Zurücksetzen
+    document.getElementById('resetFilterBtn').addEventListener('click', () => {
+            document.querySelectorAll('.filter-checkbox').forEach(cb => {
+                cb.checked = false;
+            });
 
+            // Optional: Danach gleich die Produkte neu laden
+            document.getElementById('applyFilterBtn').click();
+        });  
+}
 
 
