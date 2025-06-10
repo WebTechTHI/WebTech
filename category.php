@@ -5,8 +5,10 @@ require_once 'categoryFunctions.php';
 // Kategorie aus URL-Parameter ermitteln
 $category = $_GET['category'] ?? 'alle';
 
-
+//SQL Produkte dynamisch geladen in variable products und nach Kategorie
 $products = getProductsByCategory($conn, $category, "id", "asc");
+
+//JSON Objekte dynamisch geladen in variable categoryInfo, für die allgemeinen Informationen zur Seite, z.B Seiten-Überschrift usw.
 $categoryInfo = getCategoryInfo($category);
 
 ?>
@@ -93,7 +95,7 @@ $categoryInfo = getCategoryInfo($category);
                                     $count = array_count_values($values)[$value];
 
                                     // ID nur noch zur Label-Zuordnung, aber kein Split nötig im JS
-                                    $labelId = strtolower(str_replace(' ', '-', $filterName . '-' . $value));
+                                    $labelId = $filterName . "_" . $value;
 
                                     echo "<li>
                                             <input 

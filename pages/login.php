@@ -78,7 +78,7 @@
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
 
-                //Erfolgsmeldung und Sound als Session speichern !!!! damit es auf user.php abgespielt wird worauf man geleitet wird!!
+                //Erfolgsmeldung htmlspecialchars() schützt HTML-Seiten davor, dass Benutzereingaben Code ausführen. wandelt z. B. <, >, " und & in sichere Zeichen um.!!
                 $_SESSION['erfolgsmeldung'] = "Willkommen, " . htmlspecialchars($user['username']) . "!<br> Ihre Benutzer ID lautet: " . $_SESSION['user_id'];
                 
 

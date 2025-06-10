@@ -38,7 +38,8 @@
     session_start();
     include '../db_verbindung.php';
    
-    //Prüfung ob fehld existiert mit iesset und mit !empty das es auch nicht leer ist
+    //Prüfung ob fehld existiert mit iesset und mit !empty das es auch nicht leer ist => String "" (leerer string) würde auch übertragen werden also
+    //  überprüfen das auch nicht leer ist
    if (
         isset($_POST['fromusernameregistration']) && isset($_POST['fromuserpasswordregistration'])
     && !empty($_POST['fromusernameregistration']) && !empty($_POST['fromuserpasswordregistration'])
@@ -48,7 +49,7 @@
     $username = $_POST['fromusernameregistration'];
     $password = $_POST['fromuserpasswordregistration'];
 
-    //Passwort hashen (sicherheit!!!)
+    //Passwort hashen (sicherheit!!!)PASSWORD_DEFAULT bedeutet: Nimm den sichersten Algorithmus, den PHP aktuell kennt
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     

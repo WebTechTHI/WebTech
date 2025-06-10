@@ -140,9 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const selectedFilters = {};
 
-            document.querySelectorAll('.filter-checkbox:checked').forEach(cb => {
-                const filterName = cb.dataset.filter;
-                const value = cb.value;
+            document.querySelectorAll('.filter-checkbox:checked').forEach(checkbox => {
+                const filterName = checkbox.dataset.filter;
+                const value = checkbox.value;
 
                 if (!selectedFilters[filterName]) {
                     selectedFilters[filterName] = [];
