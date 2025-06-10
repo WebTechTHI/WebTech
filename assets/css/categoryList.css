@@ -108,81 +108,6 @@ body {
     color: #e00;
 }
 
-/* Filter Section - Responsive */
-/* sort by container (Michi) */
-.title-and-sort {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.sort-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: #f0f0f0;
-    padding: 6px 10px;
-    border-radius: 10px;
-}
-
-.sort-container label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    min-width: 160px;
-}
-
-#sortButton {
-    min-width: 90px;
-    text-align: left;
-    white-space: nowrap;
-}
-
-.sort-container select {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-weight: bold;
-}
-
-
-
-.sort-check {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    border: 2px solid rgba(155, 155, 155, 0.664);
-    border-radius: 7px;
-    background-color: rgba(228, 228, 228, 0.877);
-    margin: 20px 0;
-}
-
-.hidden {
-    display: none;
-}
-
-/* Standart unchecked -> pfeil nach oben (ascend)*/
-.arrow-direction {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    transform: rotate(-45deg);
-}
-
-/* Drehung, wenn Checkbox aktiviert, also pfeil nach unten (descend) */
-#sortDirection:checked+label .arrow-direction {
-    transform: rotate(45deg);
-}
-
-/* filter weiter (Rinor) */
 .filter-section {
 
     border-radius: 20px;
@@ -296,6 +221,83 @@ body {
     text-decoration: underline;
     transition: background-color 0.3s ease;
 }
+
+
+/* Filter Section - Responsive */
+/* sort by container (Michi) */
+.title-and-sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #f0f0f0;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+.sort-container label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    min-width: 160px;
+}
+
+#sortButton {
+    min-width: 90px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.sort-container select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+}
+
+
+
+.sort-check {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border: 2px solid rgba(155, 155, 155, 0.664);
+    border-radius: 7px;
+    background-color: rgba(228, 228, 228, 0.877);
+    margin: 20px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Standart unchecked -> pfeil nach oben (ascend)*/
+.arrow-direction {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+
+/* Drehung, wenn Checkbox aktiviert, also pfeil nach unten (descend) */
+#sortDirection:checked+label .arrow-direction {
+    transform: rotate(45deg);
+}
+
+/* filter weiter (Rinor) */
 
 
 

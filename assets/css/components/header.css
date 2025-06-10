@@ -160,3 +160,85 @@ body {
     justify-content: center;
     font-weight: bold;
 }
+
+
+
+
+
+
+
+
+/* ======================= DAS IST NEU SUCHFUNKTION ======================= */	
+/* Search Icon und Suchfeld */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#search-icon {
+    background-image: url(/assets/images/icons/search.svg);
+    transition: opacity 0.3s ease;
+}
+
+#search-icon:hover {
+    opacity: 0.7;
+}
+
+/* Suchfeld Container */
+.search-field-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px;
+    min-width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 10;
+    display: none;
+}
+
+.search-field-container.active {
+    display: block;
+}
+
+/* Suchfeld Input */
+.search-input {
+    width: 100%;
+    background-color: #222;
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #e00;
+    color: white;
+}
+
+.search-input::placeholder {
+    color: #666;
+}
+
+/* Such-Button */
+.search-button {
+    background-color: #e00;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #c00;
+}
