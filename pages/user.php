@@ -15,8 +15,12 @@
     <link rel="stylesheet" href="/assets/css/specialHeader.css">
     <link rel="stylesheet" href="/assets/css/footer.css">
 
+
+    <!--JavaScript hier noch einfügen-->    
     <script src="/assets/javascript/toggleTheme.js"></script>
- 
+
+    <script src="/assets/javascript/Validierung_User.js"></script>
+    <script src="/assets/javascript/uhrzeit.js"></script>
 
 
 
@@ -76,6 +80,7 @@
     $password_input = trim($_POST['password']);
 
 
+
     //Passwort hashen oder behalten also altes aus default data
     if (!empty($password_input)) {      //The default algorithm to use for hashing if no algorithm is provided.
                                         //This may change in newer PHP releases when newer, stronger hashing algorithms are supported.
@@ -89,6 +94,25 @@
       $stmt_pw->close();
 
     }
+
+    //Hier prüfen ob benutzer schon in DB gibt. vergleiche eingegeben namen mit allen außer aktuell eingeloggten user -> doppelte einträge blockieren
+    $check_sql ="SELECT user_id FROM user WHERE username =? AND user_id != ?";
+    $check_stmt = $conn->prepare($check_sql);
+    $check_stmt->bind_param("si", $username, $user_id);
+    $check_stmt->execute();
+    $check_stmt->store_result();
+
+    if($check_stmt->num_rows > 0) {
+     $_SESSION['fehlermeldung'] = "Dieser Benutzername ist bereits vergeben";
+      $check_stmt->close();
+      header("Location: user.php");
+      exit;
+        
+    }
+      $check_stmt->close();
+    
+    
+
 
 
     //JEtzt noch in SQL updaten der daten falls neue eingabe
@@ -110,7 +134,7 @@
     ];
       
     } else {
-      echo "<div class='meldung-container meldung-fehler'> Fehler beim Speichern: " . $conn->error . "</div>";
+      $_SESSION['fehlermeldung'] = "Fehler beim Speichern: " . $conn->error;
     }
 
     $update_stmt->close();
@@ -119,11 +143,7 @@
 
 
 
-  // ====== Erfolgsmeldung anzeigen  =============
-  if (isset($_SESSION['erfolgsmeldung'])) {
-    echo "<div class='meldung-container meldung-erfolg'>" . $_SESSION['erfolgsmeldung'] . "</div>";
-    unset($_SESSION['erfolgsmeldung']); //1 mal anzeigen nur 
-  }
+
 
 
 
@@ -150,6 +170,21 @@
   }
 
 
+
+
+
+  // ====== Erfolgsmeldung anzeigen  =============
+  if (isset($_SESSION['erfolgsmeldung'])) {
+    echo "<div class='meldung-container meldung-erfolg'>" . $_SESSION['erfolgsmeldung'] . "</div>";
+    unset($_SESSION['erfolgsmeldung']); //1 mal anzeigen nur 
+  }
+
+
+  // ===== Fehlermeldung anzeigen =============== wenn session gesetzt
+  if (isset($_SESSION['fehlermeldung'])) {
+    echo "<div class='meldung-container meldung-fehler'>" . $_SESSION['fehlermeldung'] . "</div>";
+    unset($_SESSION['fehlermeldung']);
+  }
 
 ?>
 
@@ -269,10 +304,6 @@
         </nav>
     </footer>
 
-
-    <!--JavaScript hier noch einfügen-->
-    <script src="/assets/javascript/Validierung_User.js"></script>
-    <script src="/assets/javascript/uhrzeit.js"></script>
 
 
 </body>
