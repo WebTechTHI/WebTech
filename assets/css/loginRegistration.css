@@ -33,6 +33,11 @@ body {
   color: var(--text-color);
  }
 
+.headlinecolor {
+  color: var(--headline-color);
+}
+
+
 /* ========= Formulare ========= */ 
 .userInfoFormlogin, 
 .userInfoFormregistration { 
@@ -92,6 +97,18 @@ body {
  border: 2px solid var(--input-border-focus);
  outline: none;
  }
+
+
+/*========HIer für drop down liste für user.php (option färbt die Einträge im Dropdown, wenn man klickt.=========*/
+
+select.userInformationInput option {
+  color: var(--ci-black);
+
+}
+
+
+
+
 
 label { 
   color: var(--text-color);

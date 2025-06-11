@@ -66,8 +66,8 @@
         $fehlermeldung = "Achtung! Dieser Benutzername ist leider schon vergeben :(";
      } else {
         //SQL statement (prepared statement) 1. sql statement vorbereiten dann 2 strings einbinden
-        $stmt = $conn->prepare("INSERT INTO user (username, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $username, $hashedPassword);
+        $stmt = $conn->prepare("INSERT INTO user (username, password, richtiger_name, land, stadt, email) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $username, $hashedPassword, $richtigerName, $land, $stadt, $email);
 
 
 
