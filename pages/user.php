@@ -67,7 +67,7 @@
   if( $_SERVER['REQUEST_METHOD'] === 'POST' && isset ($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 
-    //Formulareingaben und bereinigen also whitespaces entferenn mit trim
+    //Formulareingaben holen aus formulaar und bereinigen also whitespaces entferenn mit trim vorne und hinten 
     $username = trim($_POST['username']);
     $richtiger_name = trim($_POST['richtiger_name']);
     $land = trim($_POST['land']);
@@ -158,7 +158,7 @@
 
         <!-- Ab Hier User Funktionen -->
    <form class="userInfoFormuser" action="user.php" method="POST">
-  <h1 class="formTitle">👤 Benutzerkonto</h1>
+  <h1 class="formTitle">Benutzerkonto</h1>
 
       <div id="liveClock" class="Clock"></div>
 
@@ -187,11 +187,11 @@
       <label for="userpassword">Passwort</label>
       <div>
         
-        <input class="userInformationInput" type="password" id="userpassword" name="password" value="<?= htmlspecialchars($defaultData['password']) ?>" minlength="3">
+        <input class="userInformationInput" type="password" id="userpassword" name="password" value="" minlength="3">
       </div>
     </div>
 
-    <input class="submitButton" type="submit" value="💾 Sichern">
+    <input class="submitButton" type="submit" value="Sichern">
   </div>
 
   <div class="infoRow">

@@ -123,7 +123,7 @@
  <!-- Überarbeiteter login.php – moderner & professioneller -->
 <form class="userInfoFormlogin" action="login.php" method="post">
 
-    <h1 class="formTitle" title="Please fill out the blanks">🔐Login</h1>
+    <h1 class="formTitle" title="Please fill out the blanks">Login</h1>
 
         <div id="liveClock" class="Clock"></div>
 

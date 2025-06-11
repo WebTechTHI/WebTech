@@ -49,8 +49,8 @@
     <p class="logoutMessage">Vielen Dank für Ihren Besuch. Wir hoffen, Sie bald wiederzusehen!</p>
 
     <div class="basketActions">
-      <a class="directionbutton" href="login.php">🔐 Zum Login</a>
-      <a class="directionbutton" href="/index.php">🏠 Zur Startseite</a>
+      <a class="directionbutton" href="login.php">Zum Login</a>
+      <a class="directionbutton" href="/index.php">Zur Startseite</a>
     </div>
   </form>
 
