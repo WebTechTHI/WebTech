@@ -16,6 +16,10 @@ $firstImage = $images[0]['file_path'];
 
 
 $specs = buildSpecifications($product);
+
+
+
+$relatedProducts = getRelatedProducts($conn, $product['category_name'], $productId);
 ?>
 
 
@@ -83,6 +87,7 @@ $specs = buildSpecifications($product);
 
 
     <div class="product-container">
+        
         <div class="product-gallery">
             <div class="main-image">
 
@@ -109,6 +114,7 @@ $specs = buildSpecifications($product);
 
             </div>
         </div>
+        
 
 
         <?php
@@ -147,7 +153,7 @@ $specs = buildSpecifications($product);
                 <div class="stock-text">Auf Lager, Lieferzeit 1-3 Werktage</div>
             </div>
 
-          
+
             <div class="qty-selector">
                 <label>Menge:</label>
                 <div class="qty-input">
@@ -180,150 +186,83 @@ $specs = buildSpecifications($product);
                 <div class="tab-item active">Produktdetails</div>
                 <div class="tab-item">Technische Daten</div>
                 <div class="tab-item">Bewertungen</div>
-                <div class="tab-item">Zubehör</div>
-                <div class="tab-item">FAQ</div>
+                <div class="tab-item">PLATZHALTER</div>
+                <div class="tab-item">PLATZHALTER</div>
             </div>
 
             <div class="tab-content">
-                <h3><?php echo htmlspecialchars($product['name'])?></h3>
-                <p><?php echo htmlspecialchars($product['description'])?></p>
 
-               
+                <h3>Produktbeschreibung </h3>
+                <p><?php echo htmlspecialchars($product['description']); ?></p>
+
+
 
                 <h3>Leistungsmerkmale:</h3>
                 <ul class="specs-list">
-                    <li>Herausragende Gaming-Performance in 4K und VR</li>
-                    <li>RGB-Beleuchtung für individuellen Style</li>
-                    <li>Leises Kühlsystem für optimale Temperaturen unter Last</li>
-                    <li>Hochwertiges MSI Gaming Mainboard mit vielen Anschlussmöglichkeiten</li>
-                    <li>2 Jahre Garantie und lebenslanger Support</li>
+                    <li>30 Tage Rückgaberecht</li>
+                    <li>Mindestens 2 Jahre Herstellergarantie</li>
+                    <li>Kostenfreier Standardversand</li>
+                    <li>Sichere und einfache Zahlungsabwicklung</li>
+                    <li>24/7 Kundenservice</li>
+                    <li>Umweltfreundliche Verpackung</li>
                 </ul>
+
 
                 <h3>Was ist im Lieferumfang enthalten?</h3>
                 <ul class="specs-list">
-                    <li>Gaming PC Ryzen 7 7700 - RTX 5070</li>
-                    <li>Netzkabel</li>
-                    <li>Handbuch und Treiber-CD</li>
-                    <li>Kostenloses Spiele-Bundle (limitierte Aktion)</li>
+                    <?php echo getLieferumfang($product); ?>
                 </ul>
 
-                <p>Alle Komponenten wurden sorgfältig ausgewählt und perfekt aufeinander abgestimmt. Nach der Montage
-                    wird jedes System einem ausführlichen Belastungstest unterzogen, um eine einwandfreie Funktion zu
-                    gewährleisten.</p>
+                <?php if ($product['category_name'] === 'PC'): ?>
+                    <h3>Montage und Qualitätssicherung</h3>
+
+                    <p>Alle Komponenten wurden sorgfältig ausgewählt und perfekt aufeinander abgestimmt. Nach der Montage
+                        wird jedes System einem ausführlichen Belastungstest unterzogen, um eine einwandfreie Funktion zu
+                        gewährleisten.</p>
+                    <p>Alle unsere PCs und Laptops werden in Deutschland von erfahrenen Technikern montiert. Wir
+                        verwenden ausschließlich hochwertige Komponenten von renommierten Herstellern.</p>
+
+                <?php endif; ?>
             </div>
         </div>
 
-        <div class="specs-table-container"
-            style="width: 100%; margin-top: 30px; padding: 20px; background-color: white; border: 1px solid #ddd;">
-            <h3 style="margin-bottom: 20px;">Technische Spezifikationen</h3>
+        <div class="specs-table-container">
+            <h3>Technische Spezifikationen</h3>
 
             <table class="specs-table">
-                <tr>
-                    <td>Prozessor</td>
-                    <td>AMD Ryzen 7 7700, 8 Kerne, 16 Threads, 5.3 GHz Max Boost</td>
-                </tr>
-                <tr>
-                    <td>Mainboard</td>
-                    <td>MSI B650 Gaming Mainboard, AM5 Sockel</td>
-                </tr>
-                <tr>
-                    <td>Arbeitsspeicher</td>
-                    <td>32GB (2x16GB) Corsair Vengeance RGB DDR5-6600 MHz</td>
-                </tr>
-                <tr>
-                    <td>Grafikkarte</td>
-                    <td>NVIDIA GeForce RTX 5070, 12GB GDDR6X, Gainward</td>
-                </tr>
-                <tr>
-                    <td>Festplatte / SSD</td>
-                    <td>1TB WD_BLACK SN850X NVMe SSD (Lesen: bis zu 7.300 MB/s)</td>
-                </tr>
-                <tr>
-                    <td>Netzteil</td>
-                    <td>BeQuiet! Straight Power 11 750W, 80+ Gold</td>
-                </tr>
-                <tr>
-                    <td>Gehäuse</td>
-                    <td>MLR Gaming Gehäuse mit Tempered Glass Seitenteil, 4x RGB Lüfter</td>
-                </tr>
-                <tr>
-                    <td>Kühlung</td>
-                    <td>BeQuiet! Dark Rock Pro 4 CPU-Kühler</td>
-                </tr>
-                <tr>
-                    <td>Betriebssystem</td>
-                    <td>Windows 11 Pro 64-bit</td>
-                </tr>
-                <tr>
-                    <td>WLAN</td>
-                    <td>Wi-Fi 6E (802.11ax) + Bluetooth 5.3</td>
-                </tr>
-                <tr>
-                    <td>Anschlüsse vorne</td>
-                    <td>2x USB 3.2 Gen1 Typ-A, 1x USB 3.2 Gen2 Typ-C, Audio In/Out</td>
-                </tr>
-                <tr>
-                    <td>Anschlüsse hinten</td>
-                    <td>4x USB 3.2 Gen1, 2x USB 3.2 Gen2, 1x USB 3.2 Gen2x2 Typ-C, 1x LAN (2.5 GBit), 5x Audio</td>
-                </tr>
-                <tr>
-                    <td>Grafikanschlüsse</td>
-                    <td>3x DisplayPort 1.4a, 1x HDMI 2.1</td>
-                </tr>
-                <tr>
-                    <td>Abmessungen</td>
-                    <td>45 cm x 21 cm x 45 cm (H x B x T)</td>
-                </tr>
-                <tr>
-                    <td>Gewicht</td>
-                    <td>ca. 12 kg</td>
-                </tr>
-                <tr>
-                    <td>Garantie</td>
-                    <td>2 Jahre Garantie, lebenslanger Support</td>
-                </tr>
+                <?php
+                foreach ($specs as $key => $values) {
+                    echo '<tr>';
+                    echo '<td>' . htmlspecialchars($key) . '</td>';
+                    echo '<td>' . htmlspecialchars(implode(', ', $values)) . '</td>';
+                    echo '</tr>';
+                }
+                ?>
+
             </table>
         </div>
 
         <div class="related-products">
             <h3 class="section-title">Das könnte Sie auch interessieren</h3>
-
             <div class="products-row">
-                <div class="related-product">
-                    <div class="related-product-image">
-                        <img src="/api/placeholder/200/180" alt="Gaming PC Ryzen 5">
-                    </div>
-                    <h4 class="related-product-title">Gaming PC Ryzen 5 7600X - RTX 4070</h4>
-                    <div class="related-product-price">€1.299.-</div>
-                    <a href="#" class="related-product-btn">Details</a>
-                </div>
+                <?php
+                foreach ($relatedProducts as $relatedProduct) {
+                    $relatedImages = getProductImages($conn, $relatedProduct['product_id']);
+                    $relatedFirstImage = $relatedImages[0]['file_path'];
 
-                <div class="related-product">
-                    <div class="related-product-image">
-                        <img src="/api/placeholder/200/180" alt="Gaming PC Ryzen 9">
-                    </div>
-                    <h4 class="related-product-title">Gaming PC Ryzen 9 7900X - RTX 5080 Ti</h4>
-                    <div class="related-product-price">€2.499.-</div>
-                    <a href="#" class="related-product-btn">Details</a>
-                </div>
+                    echo '<div class="related-product">';
+                    echo '<div class="related-product-image">';
+                    echo '<img src="' . htmlspecialchars($relatedFirstImage) . '" alt="' . htmlspecialchars($relatedProduct['name']) . '">';
+                    echo '</div>';
+                    echo '<h4 class="related-product-title">' . htmlspecialchars($relatedProduct['name']) . '</h4>';
+                    echo '<h5 class="related-product-subtitle">' . htmlspecialchars($relatedProduct['short_description']) . '</h5>';
+                    echo '<div class="related-product-price">€' . formatPrice($relatedProduct['price']) . '</div>';
+                    echo '<a href="/product.php?id=' . htmlspecialchars($relatedProduct['product_id']) . '" class="related-product-btn">Details</a>';
+                    echo '</div>';
 
-                <div class="related-product">
-                    <div class="related-product-image">
-                        <img src="/api/placeholder/200/180" alt="27 Zoll Gaming Monitor">
-                    </div>
-                    <h4 class="related-product-title">27 Zoll Gaming Monitor, 240Hz, 1ms, QHD</h4>
-                    <div class="related-product-price">€399.-</div>
-                    <a href="#" class="related-product-btn">Details</a>
-                </div>
-
-                <div class="related-product">
-                    <div class="related-product-image">
-                        <img src="/api/placeholder/200/180" alt="Gaming Headset">
-                    </div>
-                    <h4 class="related-product-title">MLR Pro Gaming Headset mit 7.1 Surround Sound</h4>
-                    <div class="related-product-price">€99.-</div>
-                    <a href="#" class="related-product-btn">Details</a>
-                </div>
+                }
+                ?>
+                
             </div>
         </div>
     </div>
