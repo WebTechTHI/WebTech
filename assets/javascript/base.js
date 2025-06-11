@@ -138,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.products-grid').style.opacity = '0.3'; // Ladeanimation
             document.querySelector('.filters').style.opacity = '0.3';
 
+            
+
             const selectedFilters = {};
 
             document.querySelectorAll('.filter-checkbox:checked').forEach(checkbox => {

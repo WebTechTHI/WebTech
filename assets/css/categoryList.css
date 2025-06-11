@@ -11,21 +11,35 @@ body {
 
 
 
-/* Breadcrumb - Responsive */
-.breadcrumb {
-    padding: 10px 20px;
-    background-color: #e6e6e6;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    flex-wrap: wrap;
-}
 
-.breadcrumb a {
-    color: #333;
-    text-decoration: none;
-}
+.breadcrumb {
+     padding: 12px 20px;
+     background-color: #f7f7f7;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     font-size: 14px;
+     flex-wrap: wrap;
+     border-bottom: 1px solid #e0e0e0;
+ }
+
+ .breadcrumb a {
+     color: #111111ce;
+     text-decoration: none;
+ }
+
+ .breadcrumb a:hover {
+     text-decoration: underline;
+ }
+
+
+ .breadcrumb span {
+     color: #333;
+     font-weight: bold;
+ }
+
+
+
 
 /* Sidebar - Responsive */
 .sidebar {

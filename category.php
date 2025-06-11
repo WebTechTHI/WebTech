@@ -29,10 +29,17 @@ $categoryInfo = getCategoryInfo($category);
 <body>
     <?php include 'components/header.html'; ?>
 
+    
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="index.html">MLR</a> › <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
-    </div>
+        <a href="index.html">MLR</a> › 
+        <?php if (!empty($categoryInfo['unterkategorien']) || $categoryInfo['breadcrumb'] == 'Angebote'): ?>
+        <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
+        <?php else: ?>
+            <a href="category.php?category=<?php echo htmlspecialchars($categoryInfo['oberkategorie']); ?>"><?php echo htmlspecialchars($categoryInfo['breadcrumbBefore']); ?></a> › 
+            <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
+<?php endif; ?>    
+</div>
 
     <div class="main-content">
 
@@ -248,7 +255,7 @@ $categoryInfo = getCategoryInfo($category);
                                     </div>
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                                     <div class="button-container">
-                                        <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"
+                                        <a href="product.php?id=<?php echo $product['product_id']; ?>"
                                             class="buy-btn">Mehr zum produkt</a>
                                         <button class="favorite-btn">
                                             <img src="/assets/images/icons/favorite-border.svg" alt="Favorit" />

@@ -320,3 +320,43 @@ function generateFilter($filters, $product){
                     return $filters;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getRelatedProducts($conn, $subcategory_name, $current_product_id) {
+    $subcategory_name = mysqli_real_escape_string($conn, $subcategory_name);
+    $current_product_id = (int)$current_product_id;
+
+    // Ruft 4 zufällige Produkte aus derselben Unterkategorie ab (außer dem aktuellen)
+    $sql = "
+        SELECT p.* 
+        FROM product p
+        JOIN subcategory sc ON p.subcategory_id = sc.subcategory_id
+        WHERE sc.name = '$subcategory_name' AND p.product_id != $current_product_id
+        ORDER BY RAND()
+        LIMIT 4
+    ";
+    
+    $result = mysqli_query($conn, $sql);
+    $products = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $products[] = $row;
+    }
+    return $products;
+}
