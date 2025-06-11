@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  session_unset();  //Inhalte löschen aus der session
+  session_destroy(); //session selbst löschen (session destroy lscht nicht inhalte von session deswegen unset wichtig)
+          //mit inhalte meine ich die variablen ===> dh. die variablen der session werden ncith geleert im skript sondern existieren noch weiter !!!!
+  ?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -17,6 +24,7 @@
   <script src="/assets/javascript/toggleTheme.js"></script>
 </head>
 
+
 <body class="backgroundpicture darkMode">
 
   <!-- HEADER -->
@@ -26,6 +34,9 @@
     </a>
     <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png" onclick="toggleTheme()" />
   </header>
+
+
+
 
   <!-- LOGOUT-Meldung -->
   <form class="userInfoFormlogin">

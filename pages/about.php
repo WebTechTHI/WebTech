@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 
-
+    <link rel="stylesheet" href="/assets/css/colors.css">
     <link rel="stylesheet" href="/assets/css/loginRegistration.css">
     <link rel="stylesheet" href="/assets/css/specialHeader.css">
     <link rel="stylesheet" href="/assets/css/footer.css">
-    <link rel="stylesheet" href="/assets/css/colors.css">
+ 
 
 
 <head>
@@ -15,7 +15,7 @@
     <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
 </head>
 
-<body>
+<body class="backgroundpicture darkMode">
     <header>
         <a href="/index.php">
             <img src="/assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
@@ -25,7 +25,7 @@
 
 
     <!--Ab Hier Body -->
-<main>
+<main class="userInfoFormuser">
     <h1 class="formTitle">Impressum</h1>
     <h4 class="formSubtitle">Informationen Impressum</h4>
 
