@@ -35,7 +35,7 @@ $relatedProducts = getRelatedProducts($conn, $product['category_name'], $product
     <link rel="stylesheet" href="/assets/css/mystyle.css">
 
 
-    <link rel="stylesheet" href="/assets/css/product.css">
+    <link rel="stylesheet" href="/assets/css/productSite.css">
     <link rel="stylesheet" href="/assets/css/warenkorbSide.css">
 
     <script src="/assets/javascript/base.js"></script>
