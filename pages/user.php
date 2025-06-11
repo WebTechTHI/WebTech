@@ -95,7 +95,8 @@
 
     }
 
-    //Hier prüfen ob benutzer schon in DB gibt. vergleiche eingegeben namen mit allen außer aktuell eingeloggten user -> doppelte einträge blockieren
+    //Hier prüfen ob benutzer schon in DB gibt. vergleiche eingegeben namen mit allen außer aktuell eingeloggten user
+    //  -> doppelte einträge blockieren
     $check_sql ="SELECT user_id FROM user WHERE username =? AND user_id != ?";
     $check_stmt = $conn->prepare($check_sql);
     $check_stmt->bind_param("si", $username, $user_id);
