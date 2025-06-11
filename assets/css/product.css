@@ -9,7 +9,7 @@
      background-color: #e6e6e6;
  }
 
- 
+
 
  .breadcrumb {
      padding: 12px 20px;
@@ -300,6 +300,7 @@
     margin: 30px 0;
     align-items: center;
 }
+
 
 .info-badge {
     display: flex;
