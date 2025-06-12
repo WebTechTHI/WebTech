@@ -38,7 +38,7 @@
 
     <!-- Bestseller Section -->
     <section class="container">
-        <h2 class="section-title">BESTSEEEEEEEEEEELLER</h2>
+        <h2 class="section-title">BESTSELLER</h2>
 
 
 
