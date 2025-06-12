@@ -243,7 +243,7 @@ $categoryInfo = getCategoryInfo($category);
                             ?>
                             <div class="product-image">
                                 <a class="product-image-buy"
-                                    href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"> <img
+                                    href="product.php?id=<?php echo $product['product_id']; ?>"> <img
                                       src="<?php echo htmlspecialchars($firstImage); ?>" 
                                         alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>"></a>
                             </div>
