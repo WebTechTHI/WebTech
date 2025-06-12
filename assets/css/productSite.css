@@ -52,7 +52,8 @@
      background-color: white;
      padding: 20px;
      border: 1px solid #ddd;
-       border-radius: 20px;    
+       border-radius: 20px;  
+       
  }
 
 
@@ -186,18 +187,24 @@
  }
 
  .stock-status {
-     display: flex;
+     display: inline-flex;
      align-items: center;
      margin-bottom: 50px;
      margin-top: 20px;
+     padding: 8px;
+     background-color: #04d1481a;
+     border-left: #0c0 solid 4px;
+     border-radius: 8px;
  }
 
+
  .stock-dot {
-     width: 12px;
-     height: 12px;
+     width: 10px;
+     height: 10px;
      background-color: #0c0;
      border-radius: 50%;
      margin-right: 8px;
+     
  }
 
  .stock-text {
