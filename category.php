@@ -4,9 +4,11 @@ require_once 'categoryFunctions.php';
 
 // Kategorie aus URL-Parameter ermitteln
 $category = $_GET['category'] ?? 'alle';
+$orderBy = $_GET['orderBy'] ?? 'id';
+$direction = $_GET['direction'] ?? 'asc';
 
 //SQL Produkte dynamisch geladen in variable products und nach Kategorie
-$products = getProductsByCategory($conn, $category, "id", "asc");
+$products = getProductsByCategory($conn, $category, $orderBy, $direction);
 
 //JSON Objekte dynamisch geladen in variable categoryInfo, für die allgemeinen Informationen zur Seite, z.B Seiten-Überschrift usw.
 $categoryInfo = getCategoryInfo($category);
@@ -29,17 +31,19 @@ $categoryInfo = getCategoryInfo($category);
 <body>
     <?php include 'components/header.html'; ?>
 
-    
+
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="index.html">MLR</a> › 
+        <a href="index.html">MLR</a> ›
         <?php if (!empty($categoryInfo['unterkategorien']) || $categoryInfo['breadcrumb'] == 'Angebote'): ?>
-        <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
-        <?php else: ?>
-            <a href="category.php?category=<?php echo htmlspecialchars($categoryInfo['oberkategorie']); ?>"><?php echo htmlspecialchars($categoryInfo['breadcrumbBefore']); ?></a> › 
             <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
-<?php endif; ?>    
-</div>
+        <?php else: ?>
+            <a
+                href="category.php?category=<?php echo htmlspecialchars($categoryInfo['oberkategorie']); ?>"><?php echo htmlspecialchars($categoryInfo['breadcrumbBefore']); ?></a>
+            ›
+            <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
+        <?php endif; ?>
+    </div>
 
     <div class="main-content">
 
@@ -195,14 +199,16 @@ $categoryInfo = getCategoryInfo($category);
                 <!--    Sortierkriterium      (Michi) -->
                 <div class="sort-container">
                     <select id="orderBy">
-                        <option value="sales">Bestseller</option>
-                        <option value="price">Preis</option>
-                        <option value="name">Name</option>
+                        <option value="sales" <?= $orderBy === 'sales' ? 'selected' : '' ?>>Bestseller</option>
+                        <option value="price" <?= $orderBy === 'price' ? 'selected' : '' ?>>Preis</option>
+                        <option value="name" <?= $orderBy === 'name' ? 'selected' : '' ?>>Name</option>
                     </select>
 
-                    <input type="checkbox" id="sortDirection" class="hidden" />
+                    <input type="checkbox" id="sortDirection" class="hidden" <?= $direction === 'desc' ? 'checked' : '' ?> />
                     <label for="sortDirection" onclick="toggleSort()">
-                        <p id="sortButton">Aufsteigend</p>
+                        <p id="sortButton">
+                            <?= ($direction === 'asc') ? 'Aufsteigend' : 'Absteigend'; ?>
+                        </p>
                         <svg class="arrow-direction" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
                             width="30" height="30" fill="currentColor">
                             <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
@@ -238,7 +244,7 @@ $categoryInfo = getCategoryInfo($category);
                             <div class="product-image">
                                 <a class="product-image-buy"
                                     href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"> <img
-                                        src="<?php echo htmlspecialchars($firstImage); ?>"
+                                      src="/uploads/Screenshot 2025-05-21 000750.png" 
                                         alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>"></a>
                             </div>
                             </a>
@@ -255,8 +261,8 @@ $categoryInfo = getCategoryInfo($category);
                                     </div>
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                                     <div class="button-container">
-                                        <a href="product.php?id=<?php echo $product['product_id']; ?>"
-                                            class="buy-btn">Mehr zum produkt</a>
+                                        <a href="product.php?id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr zum
+                                            produkt</a>
                                         <button class="favorite-btn">
                                             <img src="/assets/images/icons/favorite-border.svg" alt="Favorit" />
                                         </button>
@@ -272,6 +278,38 @@ $categoryInfo = getCategoryInfo($category);
     </div>
 
     <?php include 'components/footer.html'; ?>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderSelect = document.getElementById('orderBy');
+            const dirCheckbox = document.getElementById('sortDirection');
+            const currentParams = new URLSearchParams(window.location.search);
+            const categoryParam = currentParams.get('category') || 'alle';
+
+
+            // Wenn der User eine neue Sortier-Spalte auswählt
+            orderSelect.addEventListener('change', () => {
+                const params = new URLSearchParams(window.location.search);
+                params.set('orderBy', orderSelect.value);
+                // Kategorie beibehalten
+                params.set('category', categoryParam);
+                window.location.search = params.toString();
+            });
+
+            // Wenn der User auf das Richtungs-Toggle klickt
+            dirCheckbox.addEventListener('change', () => {
+
+                const params = new URLSearchParams(window.location.search);
+                // Checkbox=checked → desc, sonst asc
+                params.set('direction', dirCheckbox.checked ? 'desc' : 'asc');
+                params.set('category', categoryParam);
+
+                window.location.search = params.toString();
+            });
+        });
+    </script>
 
 </body>
 
