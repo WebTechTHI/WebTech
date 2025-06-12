@@ -48,7 +48,6 @@
 
 
             <div class="products-grid" id="product-container">
-                <div class="overlaywhite"></div>
 
                 <?php require_once 'db_verbindung.php';
                 require_once 'categoryFunctions.php';
@@ -84,7 +83,7 @@
                                     <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
                                 </div>
                                 <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
-                                <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"
+                                <a href="/product.php?id=<?php echo $product['product_id']; ?>"
                                     class="buy-btn">Mehr
                                     zum produkt</a>
                             </div>
@@ -105,7 +104,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {              //-----------------------
             const container = document.getElementById('product-container');              //-----------------------
-            const scrollAmount = 2; // Anzahl der Items            
+            const scrollAmount = 1; // Anzahl der Items            
             const itemWidth = document.querySelector('.product').offsetWidth + 15; // Breite + Gap              //-----------------------
 
             document.getElementById('scroll-left').addEventListener('click', () => {              //-----------------------
