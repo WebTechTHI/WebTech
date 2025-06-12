@@ -191,7 +191,7 @@ $categoryInfo = getCategoryInfo($category);
 
             <!-- Products Grid -->
             <div class="title-and-sort">
-                <h3 class="section-title">UNSERE TOPSELLER</h3>
+                <h3 class="section-title">UNSERE TOPppppppppppppppppSELLER</h3>
                 <!--    Sortierkriterium      (Michi) -->
                 <div class="sort-container">
                     <select id="orderBy">
