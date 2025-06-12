@@ -40,65 +40,83 @@
     <section class="container">
         <h2 class="section-title">BESTSELLER</h2>
 
-    <div class="products-grid">
-        <div class="overlaywhite"></div>
-<!---------------------------------WIP-------------------------------->
-<!---------------------------------WIP-------------------------------->
-<!---------------------------------WIP-------------------------------->
-<!---------------------------------WIP-------------------------------->
-<!---------------------------------WIP-------------------------------->
 
 
-    <?php require_once 'db_verbindung.php';
-    require_once 'categoryFunctions.php'; 
+        <div class="product-carousel-wrapper"> <!-- Button zum scrollen der produkte nach links -->
+            <button id="scroll-left" class="scroll-button">‹</button>
+            <!-- Button zum scrollen der produkte nach links -->
 
-    $products = getProductsByCategory($conn, '', 'sales', 'desc'); ?>
 
-        <?php foreach ($products as $product): ?>
-            <?php
-            // Erstes Bild laden
-            $images = getProductImages($conn, $product['product_id']);
+            <div class="products-grid" id="product-container">
+                <div class="overlaywhite"></div>
 
-            $firstImage = !empty($images) ? $images[0]['file_path'] : 'assets/images/placeholder.png';
+                <?php require_once 'db_verbindung.php';
+                require_once 'categoryFunctions.php';
 
-            // Spezifikationen aufbauen
-            $specs = buildSpecifications($product);
-            ?>
+                $products = getProductsByCategory($conn, '', 'sales', 'desc'); ?>
 
-            <div class="product">
-                <span class="product-badge"><?php echo $product['sale'] ? 'SALE' : 'TOP'; ?></span>
-                <div class="product-image">
-                    <img src="<?php echo htmlspecialchars($firstImage); ?>"
-                        alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>">
-                </div>
-                <div class="product-details">
-                    <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
-                    <ul class="product-specs">
-                        <?php foreach ($specs as $spec): ?>
-                            <li><?php echo htmlspecialchars($spec); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <div class="product-footer">
-                        <div class="price">
-                            <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                <?php foreach ($products as $product): ?>
+                    <?php
+                    // Erstes Bild laden
+                    $images = getProductImages($conn, $product['product_id']);
+
+                    $firstImage = !empty($images) ? $images[0]['file_path'] : 'assets/images/placeholder.png';
+
+                    // Spezifikationen aufbauen
+                    $specs = buildSpecifications($product);
+                    ?>
+
+                    <div class="product">
+                        <span class="product-badge"><?php echo $product['sale'] ? 'SALE' : 'TOP'; ?></span>
+                        <div class="product-image">
+                            <img src="<?php echo htmlspecialchars($firstImage); ?>"
+                                alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>">
                         </div>
-                        <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
-                        <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr
-                            zum produkt</a>
+                        <div class="product-details">
+                            <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
+                            <ul class="product-specs">
+                                <?php foreach ($specs as $spec): ?>
+                                    <li><?php echo htmlspecialchars($spec); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="price">
+                                    <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                                </div>
+                                <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
+                                <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>"
+                                    class="buy-btn">Mehr
+                                    zum produkt</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-                        
-        <?php endforeach; ?>
 
-    </div>
+                <?php endforeach; ?>
+
+            </div>
+
+
+            <button id="scroll-right" class="scroll-button">›</button>
+            <!-- Button zum scrollen der produkte nach rechts -->
+        </div> <!-- Button zum scrollen der produkte nach rechts -->
     </section>
 
 
-<!---------------------------------WIP-------------------------------->
-<!---------------------------------WIP-------------------------------->
-<!---------------------------------WIP-------------------------------->
-<!---------------------------------WIP-------------------------------->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {              //-----------------------
+            const container = document.getElementById('product-container');              //-----------------------
+            const scrollAmount = 2; // Anzahl der Items            
+            const itemWidth = document.querySelector('.product').offsetWidth + 15; // Breite + Gap              //-----------------------
+
+            document.getElementById('scroll-left').addEventListener('click', () => {              //-----------------------
+                container.scrollBy({ left: -itemWidth * scrollAmount, behavior: 'smooth' });              //-----------------------
+            });
+
+            document.getElementById('scroll-right').addEventListener('click', () => {              //-----------------------
+                container.scrollBy({ left: itemWidth * scrollAmount, behavior: 'smooth' });              //-----------------------
+            });
+        });
+    </script>
 
 
 
