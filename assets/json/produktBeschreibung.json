@@ -77,7 +77,9 @@
     "infoText": "Erlebe Gaming auf höchstem Niveau mit unseren speziell konfigurierten Gaming-PCs. Von Einsteiger-Systemen bis zu High-End Maschinen - jeder PC wird individuell zusammengestellt und getestet. Mit aktuellsten Grafikkarten, schnellen Prozessoren und optimaler Kühlung für maximale FPS in allen aktuellen Spielen.",
     "sidebarTitel": "GAMING PCS",
     "unterkategorien": [],
-    "breadcrumb": "Desktop PCs › Gaming PCs"
+    "oberkategorie": "pc",
+    "breadcrumbBefore": "Desktop-PCs",
+    "breadcrumb": "Gaming-PCs"
   },
   "officepc": {
     "titel": "OFFICE",
@@ -87,7 +89,9 @@
     "infoText": "Produktive Arbeit erfordert zuverlässige Technik. Unsere Office-PCs sind speziell für den Büroalltag konzipiert - mit energieeffizienten Komponenten, langen Wartungsintervallen und allem was Du für Office-Anwendungen, Videokonferenzen und Multitasking benötigst. Leise, sparsam und trotzdem leistungsstark.",
     "sidebarTitel": "OFFICE PCS",
     "unterkategorien": [],
-    "breadcrumb": "Desktop PCs › Office PCs"
+    "oberkategorie": "pc",
+    "breadcrumbBefore": "Desktop-PCs",
+    "breadcrumb": "Office-PCs"
   },
   "gaminglaptop": {
     "titel": "GAMING",
@@ -97,7 +101,9 @@
     "infoText": "Gaming ohne Kompromisse - auch unterwegs. Unsere Gaming-Laptops bieten Desktop-Performance in mobilem Format. Mit leistungsstarken Grafikkarten, schnellen Displays mit hohen Bildwiederholraten und effizienter Kühlung. Perfekt für LAN-Parties, Gaming unterwegs oder als Allround-System für Studium und Freizeit.",
     "sidebarTitel": "GAMING LAPTOPS",
     "unterkategorien": [],
-    "breadcrumb": "Laptops › Gaming Laptops"
+    "oberkategorie": "Laptop",
+    "breadcrumbBefore": "Laptops",
+    "breadcrumb": "Gaming-Laptops"
   },
   "officelaptop": {
     "titel": "OFFICE",
@@ -107,7 +113,9 @@
     "infoText": "Arbeiten wo Du willst - mit unseren Office-Laptops. Lange Akkulaufzeit, ergonomische Tastaturen, hochwertige Displays und zuverlässige Performance für alle Office-Anwendungen. Ideal für Home-Office, Außendienst oder als mobiler Arbeitsplatz. Mit Windows 11 Pro und umfassender Garantie.",
     "sidebarTitel": "OFFICE LAPTOPS",
     "unterkategorien": [],
-    "breadcrumb": "Laptops › Office Laptops"
+    "oberkategorie": "Laptop",
+    "breadcrumbBefore": "Laptops",
+    "breadcrumb": "Office-Laptops"
   },
   "monitor": {
     "titel": "GAMING",
@@ -117,7 +125,9 @@
     "infoText": "Der Monitor ist das Fenster zu deiner digitalen Welt. Ob Gaming-Monitor mit hohen Bildwiederholraten, 4K-Display für Creators oder ergonomischer Office-Monitor - bei uns findest Du das perfekte Display. Mit modernster Technik wie HDR, G-Sync/FreeSync und verschiedensten Größen von 24\" bis 32\".",
     "sidebarTitel": "MONITORE",
     "unterkategorien": [],
-    "breadcrumb": "Zubehör › Monitore"
+    "oberkategorie": "Zubehör",
+    "breadcrumbBefore": "Zubehör",
+    "breadcrumb": "Monitore"
   },
   "maus": {
     "titel": "GAMING",
@@ -127,7 +137,9 @@
     "infoText": "Die richtige Maus kann über Sieg oder Niederlage entscheiden. Unsere Gaming-Mäuse bieten präzise Sensoren, ergonomisches Design und anpassbare Features. Von ultraleichten Gaming-Mäuse für Esports bis zu vollausgestatteten MMO-Mäuse mit programmierbaren Tasten - für jeden Spielertyp das Richtige.",
     "sidebarTitel": "GAMING MÄUSE",
     "unterkategorien": [],
-    "breadcrumb": "Zubehör › Mäuse"
+    "oberkategorie": "Zubehör",
+     "breadcrumbBefore": "Zubehör",
+    "breadcrumb": "Mäuse"
   },
   "tastatur": {
     "titel": "GAMING",
@@ -137,7 +149,9 @@
     "infoText": "Spüre den Unterschied einer mechanischen Tastatur. Mit verschiedenen Switch-Typen, RGB-Beleuchtung und Gaming-Features wie Anti-Ghosting bieten unsere Tastaturen das perfekte Feedback für Gaming und Produktivität. Von kompakten 60% Layouts bis zu Full-Size Tastaturen mit Nummernblock.",
     "sidebarTitel": "GAMING TASTATUREN",
     "unterkategorien": [],
-    "breadcrumb": "Zubehör › Tastaturen"
+    "oberkategorie": "Zubehör",
+     "breadcrumbBefore": "Zubehör",
+    "breadcrumb": "Tastaturen"
   },
   "angebote": {
     "titel": "AKTUELLE",
