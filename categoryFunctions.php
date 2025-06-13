@@ -1,7 +1,8 @@
 <?php
 
 
-
+//getProductsByCategory() kombiniert über LEFT JOINs alle technischen Produktdaten
+//  und filtert dann dynamisch je nach URL-Parametern. Die Sortierung wird ebenfalls anhand von orderBy und direction festgelegt.
 function getProductsByCategory($conn, $category, $orderBy, $direction, $filters = [])
 {
     $sql = "

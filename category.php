@@ -2,6 +2,17 @@
 require_once 'db_verbindung.php';
 require_once 'categoryFunctions.php';
 
+
+//Wenn die Seite category.php aufgerufen wird, werden aus der URL die Kategorie und Sortierkriterien ausgelesen. 
+// In Zeile 22 wird dann getProductsByCategory() aus categoryFunctions.php aufgerufen. Diese Funktion baut ein SQL-Statement mit mehreren LEFT JOINs, 
+// um alle Produktinformationen aus verschiedenen Tabellen zu kombinieren. Abhängig vom übergebenen category-Wert wird die WHERE-Klausel angepasst, 
+// z. B. auf "c.name = 'PC'" (Angepasst mit Switch). Am Ende wird mit ORDER BY nach dem gewünschten Kriterium sortiert. Das Ergebnis ist ein Array mit Produktdaten, 
+// das dann ab Zeile 239 per foreach-Schleife im HTML ausgegeben wird. Zusätzlich werden über getProductImages() die Bilder geladen und 
+// über buildSpecifications() technische Details für jedes Produkt erstellt. 
+// Wenn ein User im Frontend die Sortierung ändert, wird per JavaScript das neue Kriterium in die URL geschrieben – 
+// - die Seite lädt sich neu und zeigt die sortierten Produkte.
+
+
 // Kategorie aus URL-Parameter ermitteln
 $category = $_GET['category'] ?? 'alle';
 $orderBy = $_GET['orderBy'] ?? 'id';
@@ -225,7 +236,7 @@ $categoryInfo = getCategoryInfo($category);
                         <p>Derzeit sind keine Produkte in dieser Kategorie verfügbar.</p>
                     </div>
                 <?php else: ?>
-                    <?php foreach ($products as $product): ?>
+                    <?php foreach ($products as $product):      // Schleife durch alle geladenen Produkte.  ?>       
                         <?php
                         // Erstes Bild laden
                         $images = getProductImages($conn, $product['product_id']);
