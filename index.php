@@ -42,6 +42,12 @@ switch ($page) {
         $controller->handleRequest();
         exit;    
 
+    case "product":
+        require_once "controller/ProductController.php";
+        $controller = new ProductController();
+        $controller->handleRequest();
+        exit; 
+
     //Hier weitere seiten ergänzen (login user category about etc.)
 
 

@@ -217,7 +217,7 @@
                             }
                             ?>
                             <div class="product-image">
-                                <a class="product-image-buy" href="product.php?id=<?php echo $product['product_id']; ?>"> <img
+                                <a class="product-image-buy" href="/index.php?page=product&id=<?php echo $product['product_id']; ?>"> <img
                                         src="<?php echo htmlspecialchars($firstImage); ?>"
                                         alt="<?php $product['name']; ?>"></a>
                             </div>
@@ -235,7 +235,7 @@
                                     </div>
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                                     <div class="button-container">
-                                        <a href="product.php?id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr zum
+                                        <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr zum
                                             produkt</a>
                                         <button class="favorite-btn">
                                             <img src="/assets/images/icons/favorite-border.svg" alt="Favorit" />
