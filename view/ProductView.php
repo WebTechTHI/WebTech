@@ -227,7 +227,7 @@
                     echo '<h4 class="related-product-title">' . htmlspecialchars($relatedProduct['name']) . '</h4>';
                     echo '<h5 class="related-product-subtitle">' . htmlspecialchars($relatedProduct['short_description']) . '</h5>';
                     echo '<div class="related-product-price">€' . formatPrice($relatedProduct['price']) . '</div>';
-                    echo '<a href="/product.php?id=' . htmlspecialchars($relatedProduct['product_id']) . '" class="related-product-btn">Details</a>';
+                    echo '<a href="/index.php?page=product&id=' . htmlspecialchars($relatedProduct['product_id']) . '" class="related-product-btn">Details</a>';
                     echo '</div>';
 
                 }
