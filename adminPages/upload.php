@@ -11,7 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $allowedTypes = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
         if (in_array($fileType, $allowedTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
-                echo "Die Datei " . htmlspecialchars(basename($_FILES["image"]["name"])) . " wurde erfolgreich hochgeladen.";
+                echo "Die Datei " . htmlspecialchars(basename($_FILES["image"]["name"])) . " wurde erfolgreich hochgeladen. <br>";
+                echo '<a href="/uploads/'
+                    . htmlspecialchars(basename($_FILES["image"]["name"]))
+                    . '" target="_blank" rel="noopener noreferrer">'
+                    . 'Bild anzeigen</a>';
+                echo "<br><a href='/adminPages/sendImages.php' >Zurück zum Upload</a>";
             } else {
                 echo "Fehler beim Hochladen der Datei.";
             }

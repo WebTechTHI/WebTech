@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../db_verbindung.php';
-require_once __DIR__ . '/../productFunctions.php';
+require_once  'productFunctions.php';
 
 class ProductModel
 {

@@ -15,9 +15,10 @@
 
 <body>
     <header style="display: flex; justify-content: space-between;">
-        <a href="../index.html">
+        <a href="/index.php">
             <img src="../assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader" style="width: 100px;">
         </a>
+        
         <img id="themeToggleBtn" class="toggleThemeSpecial" src="/assets/images/icons/darkmode-btn.png"
             onclick="toggleTheme()">
     </header>
@@ -25,6 +26,7 @@
     <h1>
         Admin Startseite
     </h1>
+    <a href="adminIndex.php">Zurück zum Adminindex</a>
 
     <div style="margin: 100px 0; display: flex; justify-content: center">
         <form action="upload.php" method="post" enctype="multipart/form-data">
