@@ -1,3 +1,41 @@
+<?php
+session_start();
+
+//Prüfen ob page paramenter da is
+$page = $_GET["page"] ?? "home";
+
+switch ($page) {
+    case "registration":
+        require_once "controller/RegistrationController.php";
+        $controller = new RegistrationController();
+        $controller->handleRequest();
+        exit; //damit restliche html nicht noch auch geladen wird
+        
+    case "login":
+        require_once "controller/LoginController.php";
+        $controller = new LoginController();
+        $controller->handleRequest();
+        exit;
+
+    case "user":
+        require_once "controller/UserController.php";
+        $controller = new UserController();
+        $controller->handleRequest();
+        exit;    
+
+
+        
+    //Hier weitere seiten ergänzen (login user category about etc.)
+
+
+    case "home":
+    default:
+        // keine Aktion -> der Rest von index.php wird normal ausgeführt (Startseite)
+        break;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -83,8 +121,7 @@
                                     <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
                                 </div>
                                 <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
-                                <a href="/product.php?id=<?php echo $product['product_id']; ?>"
-                                    class="buy-btn">Mehr
+                                <a href="/product.php?id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr
                                     zum produkt</a>
                             </div>
                         </div>
