@@ -111,7 +111,7 @@ switch ($page) {
             <div class="products-grid" id="product-container">
 
                 <?php require_once 'db_verbindung.php';
-                require_once 'categoryFunctions.php';
+                require_once 'model/categoryFunctions.php';
 
                 $products = getProductsByCategory($conn, '', 'sales', 'desc'); ?>
 
