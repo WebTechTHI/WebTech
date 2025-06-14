@@ -51,7 +51,7 @@
     <!-- FOOTER -->
     <footer>
         <nav>
-            <p>© 2025 MLR | <a href="about.php">Impressum</a></p>
+            <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
         </nav>
     </footer>
 

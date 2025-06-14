@@ -28,7 +28,13 @@ switch ($page) {
         require_once "controller/LogoutController.php";
         $controller = new LogoutController();
         $controller->handleRequest();
-        exit;    
+        exit;
+        
+    case "about":
+        require_once "controller/AboutController.php";
+        $controller = new AboutController();
+        $controller->handleRequest();
+        exit;
 
     //Hier weitere seiten ergänzen (login user category about etc.)
 
