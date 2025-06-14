@@ -36,6 +36,12 @@ switch ($page) {
         $controller->handleRequest();
         exit;
 
+    case "category":
+        require_once "controller/CategoryController.php";
+        $controller = new CategoryController();
+        $controller->handleRequest();
+        exit;    
+
     //Hier weitere seiten ergänzen (login user category about etc.)
 
 

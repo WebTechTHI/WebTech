@@ -9,12 +9,12 @@
     "unterkategorien": [
       {
         "name": "Gaming PCs",
-        "link": "/category.php?category=gamingpc",
+        "link": "/index.php?page=category&category=gamingpc",
         "bild": "assets/images/subcategory_images/gamingPc.png"
       },
       {
         "name": "Office PCs",
-        "link": "/category.php?category=officepc",
+        "link": "/index.php?page=category&category=officepc",
         "bild": "assets/images/subcategory_images/officePc.png"
       }
     ],
@@ -32,12 +32,12 @@
     "unterkategorien": [
       {
         "name": "Gaming Laptops",
-        "link": "/category.php?category=gaminglaptop",
+        "link": "/index.php?page=category&category=gaminglaptop",
         "bild": "assets/images/subcategory_images/gamingLaptop.png"
       },
       {
         "name": "Office Laptops",
-        "link": "/category.php?category=officelaptop",
+        "link": "/index.php?page=category&category=officelaptop",
         "bild": "assets/images/subcategory_images/officeLaptop.png"
       }
     ],
@@ -53,17 +53,17 @@
     "unterkategorien": [
       {
         "name": "Monitore",
-        "link": "/category.php?category=monitor",
+        "link": "/index.php?page=category&category=monitor",
         "bild": "assets/images/subcategory_images/monitor.png"
       },
       {
         "name": "Mäuse",
-        "link": "/category.php?category=maus",
+        "link": "/index.php?page=category&category=maus",
         "bild": "assets/images/subcategory_images/maus.png"
       },
       {
         "name": "Tastaturen",
-        "link": "/category.php?category=tastatur",
+        "link": "/index.php?page=category&category=tastatur",
         "bild": "assets/images/subcategory_images/tastatur.png"
       }
     ],
@@ -174,17 +174,17 @@
   "unterkategorien": [
     {
       "name": "Desktop PCs",
-      "link": "/category.php?category=pc",
+      "link": "/index.php?page=category&category=pc",
       "bild": "assets/images/subcategory_images/officePc.png"
     },
     {
       "name": "Laptops",
-      "link": "/category.php?category=laptop",
+      "link": "/index.php?page=category&category=laptop",
       "bild": "assets/images/subcategory_images/gamingLaptop.png"
     },
     {
       "name": "Zubehör",
-      "link": "/category.php?category=zubehör",
+      "link": "/index.php?page=category&category=zubehör",
       "bild": "assets/images/subcategory_images/monitor.png"
     }
   ],
