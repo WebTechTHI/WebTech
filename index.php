@@ -24,7 +24,12 @@ switch ($page) {
         exit;    
 
 
-        
+    case "logout":
+        require_once "controller/LogoutController.php";
+        $controller = new LogoutController();
+        $controller->handleRequest();
+        exit;    
+
     //Hier weitere seiten ergänzen (login user category about etc.)
 
 

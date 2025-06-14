@@ -26,7 +26,7 @@
 <body class="backgroundpicture darkMode">
 
     <header>
-        <a href="/index.php?page=user">
+        <a href="/index.php">
             <img src="/assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">
         </a>
 

@@ -7,7 +7,6 @@ class UserController
     public function handleRequest()
     {
 
-        session_start();
         $model = new UserModel();
 
         $defaultData = [

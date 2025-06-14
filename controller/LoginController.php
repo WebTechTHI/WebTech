@@ -23,7 +23,7 @@ class LoginController
                 $_SESSION["username"] = $result["username"];
                 $_SESSION["erfolgsmeldung"] = "Willkommen, " . htmlspecialchars($result['username']) . "!<br>Ihre Benutzer ID lautet: " . $result['user_id'];
 
-                header("Location: user.php");
+                header("Location: /index.php?page=user");
                 exit;
             }
         }
