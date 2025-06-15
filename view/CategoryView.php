@@ -115,7 +115,7 @@
                     if ($category !== 'alle' && $category !== 'zubehör') {
                         echo '<div class="filterButtons">';
                         echo '<button class="reset-btn" id="resetFilterBtn">Zurücksetzen</button>';
-                        echo '<button class="safe-btn" id="applyFilterBtn" type="button">Anwenden</button>
+                        echo '<button class="safe-btn" id="applyFilterBtn" type="button" disabled>Anwenden</button>
                         </div>';
                     }
                     ?>
@@ -284,6 +284,20 @@
             });
         });
     </script>
+
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    // Prüfen, ob ein Sort-Parameter gesetzt ist
+    if (params.has('orderBy')) {
+      const target = document.querySelector('.title-and-sort');
+      if (target) {
+        // sanft scrollen
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+</script>
 
 </body>
 

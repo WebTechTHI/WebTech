@@ -237,6 +237,11 @@ body {
 }
 
 
+#applyFilterBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Filter Section - Responsive */
 /* sort by container (Michi) */
 .title-and-sort {

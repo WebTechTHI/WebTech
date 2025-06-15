@@ -21,7 +21,7 @@ window.onscroll = function () {
 
 
 function getTotalPrice(priceWOTax) {
-    var bruttoPreis= priceWOTax * 1.19;
+    var bruttoPreis = priceWOTax * 1.19;
     return bruttoPreis.toFixed(2).replace(".", ",");
 }
 
@@ -51,23 +51,23 @@ function getTotalPrice(priceWOTax) {
     */
 
 function getPriceWOTax(priceWTax) {
-    var nettoPreis = priceWTax *100 / 119;
+    var nettoPreis = priceWTax * 100 / 119;
     return nettoPreis.toFixed(2);
-    
+
 }
 
-function berechneNetto(){
+function berechneNetto() {
     var brutto = document.getElementById("bruttoPreis");
     var netto = document.getElementById("nettoPreis");
 
     var text = brutto.textContent;
-    var bruttoText = text.replace("€", "").replace(",", ".").replace("Preis: ","").replace(".-","").trim();
+    var bruttoText = text.replace("€", "").replace(",", ".").replace("Preis: ", "").replace(".-", "").trim();
 
     if (document.getElementById("nettoPreisBox").checked) {
-        netto.innerHTML = "<strong>Netto: </strong>" + "€ " + getPriceWOTax(bruttoText).replace(".", ",") ;
-        netto.style.display = "block";  
+        netto.innerHTML = "<strong>Netto: </strong>" + "€ " + getPriceWOTax(bruttoText).replace(".", ",");
+        netto.style.display = "block";
     } else {
-        netto.style.display = "none";  
+        netto.style.display = "none";
     }
 
 }
@@ -76,32 +76,32 @@ function berechneNetto(){
 
 //----------AB HIER ALLES FÜR KATEGORIEN SEITE------------------//
 // -----------RINOR STUBLLA------------------//
- function toggleFilter(header) {
-            const options = header.nextElementSibling;
-            options.classList.toggle('collapsed');
-            header.classList.toggle('open');
-        }
+function toggleFilter(header) {
+    const options = header.nextElementSibling;
+    options.classList.toggle('collapsed');
+    header.classList.toggle('open');
+}
 
 // Um die Sidebar zu toggeln, wenn der Button geklickt wird
- function toggleSidebar() {
-            const sidebar = document.getElementById('sidebarContent');
-            const icon = document.querySelector('.toggle-icon');
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebarContent');
+    const icon = document.querySelector('.toggle-icon');
 
-            sidebar.classList.toggle('closed');
-            icon.classList.toggle('rotated');
-        }
+    sidebar.classList.toggle('closed');
+    icon.classList.toggle('rotated');
+}
 
 //Sortier funktion das es abwechselt zwischen Aufsteigend und Absteigend
- function toggleSort() {
-            const btn = document.getElementById('sortButton');
+function toggleSort() {
+    const btn = document.getElementById('sortButton');
 
-            if (btn.textContent === 'Aufsteigend') {
-                btn.textContent = 'Absteigend';
-            } else {
-                btn.textContent = 'Aufsteigend';
-            }
+    if (btn.textContent === 'Aufsteigend') {
+        btn.textContent = 'Absteigend';
+    } else {
+        btn.textContent = 'Aufsteigend';
+    }
 
-        }
+}
 
 
 
@@ -121,26 +121,38 @@ function favoriteImage() {
     });
 }
 
-
- 
-
-
- {
-        
-document.addEventListener('DOMContentLoaded', () => {
-    //erstmal wichtig beim Start der Seite kurz Funktion aufzurufen damit die Herzen weiß werden
-    favoriteImage();
+function initFilterUi() {
 
 
-    // ab hier geht normal weiter
-// Wichtige Funktion/EventListener zum Filtern der Produkte !!!!!!!!!!!!!!!
-  document.getElementById('applyFilterBtn').addEventListener('click', () => {
-            document.querySelector('.products-grid').style.opacity = '0.3'; // Ladeanimation
-            document.querySelector('.filters').style.opacity = '0.3';
+    const applyBtn = document.getElementById('applyFilterBtn');
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
 
-            
 
-            const selectedFilters = {};
+    function updateApplyButtonState() {
+        // true, wenn mindestens eine Checkbox gecheckt ist
+        const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+        applyBtn.disabled = !anyChecked;
+        applyBtn.title = anyChecked ? 'Filter anwenden' : 'Bitte mindestens einen Filter auswählen';
+
+    }
+
+    // Event-Listener an jede Checkbox hängen
+    checkboxes.forEach(cb => cb.addEventListener('change', updateApplyButtonState));
+
+    // Initialer Zustand
+    updateApplyButtonState();
+    
+}
+
+
+
+
+
+function applyFilters() {
+    document.querySelector('.products-grid').style.opacity = '0.3'; // Ladeanimation
+    document.querySelector('.filters').style.opacity = '0.3';
+
+          const selectedFilters = {};
 
             document.querySelectorAll('.filter-checkbox:checked').forEach(checkbox => {
                 const filterName = checkbox.dataset.filter;
@@ -171,32 +183,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelector('.filters').innerHTML = data.filtersHtml;
                     document.querySelector('.products-grid').style.opacity = '1';
                     document.querySelector('.filters').style.opacity = '1';
-                    favoriteImage(); 
+                    favoriteImage();
+                    initFilterUi();
                 })
                 .catch(err => {
                     console.error('Fehler beim Filtern:', err);
                 });
-        });     
+}
 
 
+{
 
+    document.addEventListener('DOMContentLoaded', () => {
+  initFilterUi();
+  favoriteImage();
 
-    //Um die Filter Zurücksetzen
-    document.getElementById('resetFilterBtn').addEventListener('click', () => {
-            document.querySelectorAll('.filter-checkbox').forEach(cb => {
-                cb.checked = false;
-            });
+  // Klick auf „Anwenden“
+  document.getElementById('applyFilterBtn')
+          .addEventListener('click', applyFilters);
 
-            
-            document.getElementById('applyFilterBtn').click();
-        });  
-
-
-
-
-
-
-    }); 
+  // Klick auf „Zurücksetzen“
+  document.getElementById('resetFilterBtn')
+          .addEventListener('click', () => {
+    // 1) Alle Checkboxen zurücksetzen
+    document.querySelectorAll('.filter-checkbox')
+            .forEach(cb => cb.checked = false);
+    // 2) Button-State neu setzen
+    initFilterUi();
+    // 3) Filter-Logik direkt aufrufen 
+    applyFilters();
+  });
+});
 
 
 }
