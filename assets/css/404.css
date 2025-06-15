@@ -11,6 +11,8 @@ body {
 .wrapper-404{
     flex-direction: column;
     gap: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {

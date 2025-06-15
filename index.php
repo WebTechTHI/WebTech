@@ -4,6 +4,7 @@ session_start();
 //Prüfen ob page paramenter da is
 $page = $_GET["page"] ?? "home";
 
+
 switch ($page) {
     case "registration":
         require_once "controller/RegistrationController.php";
