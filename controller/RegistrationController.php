@@ -12,7 +12,7 @@ class RegistrationController
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // ==> Validierung in JavaScript
-            $username = trim($_POST["fromusernameregistration"]);
+            $username = trim(string: $_POST["fromusernameregistration"]);
             $password = $_POST["fromuserpasswordregistration"];
 
 
