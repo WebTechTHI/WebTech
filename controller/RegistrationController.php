@@ -23,7 +23,8 @@ class RegistrationController
                 $fehlermeldung = $result["error"];
 
             } else {
-                $_SESSION["user_id"] = $result["success"];
+                $_SESSION['user'] = $model->getUserData($result["success"]); // zum setzen der benutzerinformationen, gleiches für login klasse noch anwenden. funktion in userFunctions definiert
+
                 $erfolgsmeldung = "Registrierung hat geklappt! Benutzer ID ist:  " . $result['success'];
             }
         }

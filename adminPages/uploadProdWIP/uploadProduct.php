@@ -63,7 +63,18 @@ $category = $_POST['category'] ?? '';
         <input type="text" name="desctiption" id="desctiption">
 
         <label for="display">Display:</label>
-        <input type="text" name="display" id="display">
+        <select name="display" id="display">
+
+        <?php
+        $displays = ['1','2'];
+            foreach ($displays as $display){
+                ?>
+
+                <option value="$display"><?php echo $display; ?></option>
+
+        <?php } ?>
+
+        </select>
 
         <label for="connector">Anschlusstyp:</label>
         <input type="text" name="connector" id="connector">

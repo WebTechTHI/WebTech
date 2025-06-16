@@ -1,5 +1,6 @@
 <?php
 require_once "db_verbindung.php";
+require_once 'userFunctions.php';
 
 class LoginModel
 {
@@ -30,7 +31,11 @@ class LoginModel
         }
 
         $stmt->close();
-        $conn->close();
+
         return $response;
+    }
+
+    public function getUserData($userId){
+        return getUserData($GLOBALS['conn'],$userId);
     }
 }

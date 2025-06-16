@@ -56,6 +56,12 @@ switch ($page) {
         $controller->handleRequest();
         exit;
 
+    case "admin":
+        require_once "controller/AdminController.php";
+        $controller = new AdminController();
+        $controller->handleRequest();
+        exit;
+
     default:
         require_once "controller/FileNotFoundController.php";
         $controller = new FileNotFoundController();
