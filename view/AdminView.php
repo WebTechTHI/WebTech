@@ -51,7 +51,7 @@ $category = $_POST['category'] ?? '';
                 <?php
                 foreach ($displays as $display) {
                     ?>
-                    <option value="value="<?php echo $display['display_id']; ?>""><?php echo $display['size_inch']; ?></option>
+                    <option value="value="<?php echo $display['display_id']; ?>""><?php echo $display['Name']; ?></option>
                 <?php } ?>
 
             </select>
@@ -122,7 +122,6 @@ $category = $_POST['category'] ?? '';
                 });
         });
     </script>
-
 
 </body>
 

@@ -5,8 +5,6 @@ class AdminModel
 {
     public function getComponents($type){
 
-
-
     $sql = "SELECT * FROM $type";
     $stmt = $GLOBALS['conn']->prepare($sql);
     $stmt->execute();
