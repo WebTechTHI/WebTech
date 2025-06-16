@@ -29,10 +29,10 @@
     <div class="breadcrumb">
         <a href="/index.php">MLR</a> 
         <a
-            href="/category.php?category=<?php echo htmlspecialchars($product['category_name']) ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['category_name'])); ?></a>
+            href="/index.php?page=category&category=<?php echo htmlspecialchars($product['category_name']) ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['category_name'])); ?></a>
         
         <a
-            href="/category.php?category=<?php echo htmlspecialchars(str_replace('-', '', $product['subcategory_name'])); ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['subcategory_name'])); ?></a>
+            href="/index.php?page=category&category=<?php echo htmlspecialchars(str_replace('-', '', $product['subcategory_name'])); ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['subcategory_name'])); ?></a>
         
         <span><?php echo htmlspecialchars($product['name']) ?></span>
     </div>
