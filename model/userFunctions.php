@@ -1,4 +1,6 @@
 <?php
+
+//frägt benutzerinformationen aus Datenbank ab und liefert diese in einem Array zurück
 function getUserData($conn, $userId)
 {
     $sql = "SELECT user_id, username, richtiger_name, land, stadt, email FROM user WHERE user_id = ?";

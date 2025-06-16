@@ -35,6 +35,8 @@ class LoginModel
         return $response;
     }
 
+
+    //frägt die benutzerinformationen aus der datenbank durch die benutzer id ab
     public function getUserData($userId){
         return getUserData($GLOBALS['conn'],$userId);
     }

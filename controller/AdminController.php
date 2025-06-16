@@ -22,7 +22,8 @@ class AdminController
             header("Location: index.php?page=login");
         exit;
 }
-        // an die View übergeben:
+
+        //Die view zeigen
        include 'view/AdminView.php';
     }
 }

@@ -5,7 +5,7 @@ class RegistrationController
 {
     public function handleRequest()
     {
-        
+
 
         $fehlermeldung = null;
         $erfolgsmeldung = null;
@@ -23,7 +23,8 @@ class RegistrationController
                 $fehlermeldung = $result["error"];
 
             } else {
-                $_SESSION['user'] = $model->getUserData($result["success"]); // zum setzen der benutzerinformationen, gleiches für login klasse noch anwenden. funktion in userFunctions definiert
+
+                $_SESSION['user'] = $model->getUserData($result["success"]); // zum setzen der benutzerinformationen im 'user'-array der session
 
                 $erfolgsmeldung = "Registrierung hat geklappt! Benutzer ID ist:  " . $result['success'];
             }
