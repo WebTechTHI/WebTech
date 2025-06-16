@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR - <?php echo htmlspecialchars($categoryInfo['sidebarTitel']); ?></title>
     <link rel="stylesheet" href="/assets/css/categoryList.css">
-    <link rel="stylesheet" href="/assets/css/mystyle.css">
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
     <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
@@ -18,13 +17,13 @@
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="index.html">MLR</a> ›
+        <a href="/index.php/page=home">Home</a> 
         <?php if (!empty($categoryInfo['unterkategorien']) || $categoryInfo['breadcrumb'] == 'Angebote'): ?>
             <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
         <?php else: ?>
             <a
                 href="/index.php?page=category&category=<?php echo htmlspecialchars($categoryInfo['oberkategorie']); ?>"><?php echo htmlspecialchars($categoryInfo['breadcrumbBefore']); ?></a>
-            ›
+            
             <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
         <?php endif; ?>
     </div>
@@ -176,7 +175,7 @@
                 <h3 class="section-title">UNSERE TOPSELLER</h3>
                 <!--    Sortierkriterium      (Michi) -->
                 <div class="sort-container">
-                    <select id="orderBy">
+                    <select class= "orderSelect" id="orderBy">
                         <option value="sales" <?= $orderBy === 'sales' ? 'selected' : '' ?>>Bestseller</option>
                         <option value="price" <?= $orderBy === 'price' ? 'selected' : '' ?>>Preis</option>
                         <option value="name" <?= $orderBy === 'name' ? 'selected' : '' ?>>Name</option>
@@ -289,7 +288,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     // Prüfen, ob ein Sort-Parameter gesetzt ist
-    if (params.has('orderBy')) {
+    if (params.has('orderBy') || params.has('direction')) {
       const target = document.querySelector('.title-and-sort');
       if (target) {
         // sanft scrollen
