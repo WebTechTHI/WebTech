@@ -10,12 +10,12 @@ class AdminController
         // alle Komponenten Laden (-> beim Neuanlegen von Produkten später auswählbar machen)
         $displays   = $model->getComponents('display');
         $gpus  = $model->getComponents('gpu');
-        $cpus   = $model->getComponents('cpu');
+        $cpus   = $model->getComponents('processor');
         $ram = $model->getComponents('ram');
         $networks = $model->getComponents('network');
-        $connectors = $model->getComponents('connector');
+        $connectors = $model->getComponents('connectors');
         $features = $model->getComponents('feature');
-        $operatingSystems = $model->getComponents('os');
+        $operatingSystems = $model->getComponents('operating_system');
         $storages = $model->getComponents('storage');
 
 
