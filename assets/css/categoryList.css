@@ -451,7 +451,6 @@ body {
 .section-title::after {
     content: "";
     display: block;
-    width: 120px;
     height: 3px;
     background-color: var(--color-red-primary);
     margin-top: 7px;
