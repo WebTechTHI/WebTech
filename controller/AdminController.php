@@ -18,6 +18,8 @@ class AdminController
         $operatingSystems = $model->getComponents('os');
         $storages = $model->getComponents('storage');
 
+
+        //Abfrage, ob der Admin angemeldet ist, falls nicht zurück zum logina
         if (!isset($_SESSION["user"]) || $_SESSION["user"]['username'] !== 'Admin') {
             header("Location: index.php?page=login");
         exit;
