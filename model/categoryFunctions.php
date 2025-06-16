@@ -324,22 +324,6 @@ function generateFilter($filters, $product){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function getRelatedProducts($conn, $subcategory_name, $current_product_id) {
     $subcategory_name = mysqli_real_escape_string($conn, $subcategory_name);
     $current_product_id = (int)$current_product_id;

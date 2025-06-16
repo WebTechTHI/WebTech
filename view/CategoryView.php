@@ -1,30 +1,3 @@
-<?php
-require_once 'db_verbindung.php';
-require_once 'categoryFunctions.php';
-
-
-//Wenn die Seite category.php aufgerufen wird, werden aus der URL die Kategorie und Sortierkriterien ausgelesen. 
-// In Zeile 22 wird dann getProductsByCategory() aus categoryFunctions.php aufgerufen. Diese Funktion baut ein SQL-Statement mit mehreren LEFT JOINs, 
-// um alle Produktinformationen aus verschiedenen Tabellen zu kombinieren. Abhängig vom übergebenen category-Wert wird die WHERE-Klausel angepasst, 
-// z. B. auf "c.name = 'PC'" (Angepasst mit Switch). Am Ende wird mit ORDER BY nach dem gewünschten Kriterium sortiert. Das Ergebnis ist ein Array mit Produktdaten, 
-// das dann ab Zeile 239 per foreach-Schleife im HTML ausgegeben wird. Zusätzlich werden über getProductImages() die Bilder geladen und 
-// über buildSpecifications() technische Details für jedes Produkt erstellt. 
-// Wenn ein User im Frontend die Sortierung ändert, wird per JavaScript das neue Kriterium in die URL geschrieben – 
-// - die Seite lädt sich neu und zeigt die sortierten Produkte.
-
-
-// Kategorie aus URL-Parameter ermitteln
-$category = $_GET['category'] ?? 'alle';
-$orderBy = $_GET['orderBy'] ?? 'id';
-$direction = $_GET['direction'] ?? 'asc';
-
-//SQL Produkte dynamisch geladen in variable products und nach Kategorie
-$products = getProductsByCategory($conn, $category, $orderBy, $direction);
-
-//JSON Objekte dynamisch geladen in variable categoryInfo, für die allgemeinen Informationen zur Seite, z.B Seiten-Überschrift usw.
-$categoryInfo = getCategoryInfo($category);
-
-?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -33,7 +6,6 @@ $categoryInfo = getCategoryInfo($category);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR - <?php echo htmlspecialchars($categoryInfo['sidebarTitel']); ?></title>
     <link rel="stylesheet" href="/assets/css/categoryList.css">
-    <link rel="stylesheet" href="/assets/css/mystyle.css">
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
     <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
@@ -45,13 +17,13 @@ $categoryInfo = getCategoryInfo($category);
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="index.html">MLR</a> ›
+        <a href="/index.php/page=home">Home</a> 
         <?php if (!empty($categoryInfo['unterkategorien']) || $categoryInfo['breadcrumb'] == 'Angebote'): ?>
             <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
         <?php else: ?>
             <a
-                href="category.php?category=<?php echo htmlspecialchars($categoryInfo['oberkategorie']); ?>"><?php echo htmlspecialchars($categoryInfo['breadcrumbBefore']); ?></a>
-            ›
+                href="/index.php?page=category&category=<?php echo htmlspecialchars($categoryInfo['oberkategorie']); ?>"><?php echo htmlspecialchars($categoryInfo['breadcrumbBefore']); ?></a>
+            
             <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
         <?php endif; ?>
     </div>
@@ -86,13 +58,7 @@ $categoryInfo = getCategoryInfo($category);
 
                     <?php
 
-                    $filters = [];
-
-                    foreach ($products as $product) {
-
-                        $filters = generateFilter($filters, $product);
-
-                    }
+                  
                     echo "<div class='filters'>";
                     // Filter-HTML generieren
                     if ($category !== 'alle' && $category !== 'zubehör') {
@@ -148,7 +114,7 @@ $categoryInfo = getCategoryInfo($category);
                     if ($category !== 'alle' && $category !== 'zubehör') {
                         echo '<div class="filterButtons">';
                         echo '<button class="reset-btn" id="resetFilterBtn">Zurücksetzen</button>';
-                        echo '<button class="safe-btn" id="applyFilterBtn" type="button">Anwenden</button>
+                        echo '<button class="safe-btn" id="applyFilterBtn" type="button" disabled>Anwenden</button>
                         </div>';
                     }
                     ?>
@@ -209,7 +175,7 @@ $categoryInfo = getCategoryInfo($category);
                 <h3 class="section-title">UNSERE TOPSELLER</h3>
                 <!--    Sortierkriterium      (Michi) -->
                 <div class="sort-container">
-                    <select id="orderBy">
+                    <select class= "orderSelect" id="orderBy">
                         <option value="sales" <?= $orderBy === 'sales' ? 'selected' : '' ?>>Bestseller</option>
                         <option value="price" <?= $orderBy === 'price' ? 'selected' : '' ?>>Preis</option>
                         <option value="name" <?= $orderBy === 'name' ? 'selected' : '' ?>>Name</option>
@@ -236,15 +202,12 @@ $categoryInfo = getCategoryInfo($category);
                         <p>Derzeit sind keine Produkte in dieser Kategorie verfügbar.</p>
                     </div>
                 <?php else: ?>
-                    <?php foreach ($products as $product):      // Schleife durch alle geladenen Produkte.  ?>       
+                    <?php foreach ($products as $product):      // Schleife durch alle geladenen Produkte.  ?>
                         <?php
-                        // Erstes Bild laden
-                        $images = getProductImages($conn, $product['product_id']);
 
-                        $firstImage = !empty($images) ? $images[0]['file_path'] : 'assets/images/placeholder.png';
+                        $firstImage = $product['images'][0]['file_path']
+                            ?? 'assets/images/placeholder.png';
 
-                        // Spezifikationen aufbauen
-                        $specs = buildSpecifications($product);
                         ?>
 
                         <div class="product">
@@ -253,16 +216,15 @@ $categoryInfo = getCategoryInfo($category);
                             }
                             ?>
                             <div class="product-image">
-                                <a class="product-image-buy"
-                                    href="product.php?id=<?php echo $product['product_id']; ?>"> <img
-                                      src="<?php echo htmlspecialchars($firstImage); ?>" 
-                                        alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>"></a>
+                                <a class="product-image-buy" href="/index.php?page=product&id=<?php echo $product['product_id']; ?>"> <img
+                                        src="<?php echo htmlspecialchars($firstImage); ?>"
+                                        alt="<?php $product['name']; ?>"></a>
                             </div>
                             </a>
                             <div class="product-details">
                                 <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
                                 <ul class="product-specs">
-                                    <?php foreach ($specs as $spec): ?>
+                                    <?php foreach ($product['specs'] as $spec): ?>
                                         <li><?php echo htmlspecialchars($spec); ?></li>
                                     <?php endforeach; ?>
                                 </ul>
@@ -272,7 +234,7 @@ $categoryInfo = getCategoryInfo($category);
                                     </div>
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                                     <div class="button-container">
-                                        <a href="product.php?id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr zum
+                                        <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr zum
                                             produkt</a>
                                         <button class="favorite-btn">
                                             <img src="/assets/images/icons/favorite-border.svg" alt="Favorit" />
@@ -321,6 +283,20 @@ $categoryInfo = getCategoryInfo($category);
             });
         });
     </script>
+
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    // Prüfen, ob ein Sort-Parameter gesetzt ist
+    if (params.has('orderBy') || params.has('direction')) {
+      const target = document.querySelector('.title-and-sort');
+      if (target) {
+        // sanft scrollen
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+</script>
 
 </body>
 

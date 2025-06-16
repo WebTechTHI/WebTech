@@ -1,26 +1,4 @@
-<?php
-require_once 'db_verbindung.php';
-require_once 'productFunctions.php';
 
-// Kategorie aus URL-Parameter ermitteln
-$productId = $_GET['id'] ?? '1'; // Standardwert 1, falls kein Parameter gesetzt ist
-
-$product = getProductById($conn, $productId);
-if (!$product) {
-    echo "<h1>Produkt nicht gefunden</h1>";
-    exit;
-}
-
-$images = getProductImages($conn, $productId);
-$firstImage = $images[0]['file_path'];
-
-
-$specs = buildSpecifications($product);
-
-
-
-$relatedProducts = getRelatedProducts($conn, $product['category_name'], $productId);
-?>
 
 
 <!DOCTYPE html>
@@ -49,13 +27,13 @@ $relatedProducts = getRelatedProducts($conn, $product['category_name'], $product
     <?php include 'components/header.html'; ?>
 
     <div class="breadcrumb">
-        <a href="/index.php">MLR</a> ›
+        <a href="/index.php">MLR</a> 
         <a
-            href="/category.php?category=<?php echo htmlspecialchars($product['category_name']) ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['category_name'])); ?></a>
-        ›
+            href="/index.php?page=category&category=<?php echo htmlspecialchars($product['category_name']) ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['category_name'])); ?></a>
+        
         <a
-            href="/category.php?category=<?php echo htmlspecialchars(str_replace('-', '', $product['subcategory_name'])); ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['subcategory_name'])); ?></a>
-        ›
+            href="/index.php?page=category&category=<?php echo htmlspecialchars(str_replace('-', '', $product['subcategory_name'])); ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['subcategory_name'])); ?></a>
+        
         <span><?php echo htmlspecialchars($product['name']) ?></span>
     </div>
 
@@ -97,7 +75,7 @@ $relatedProducts = getRelatedProducts($conn, $product['category_name'], $product
 
                 <?php
                 $counter = 0;
-                foreach ($images as $image) {
+                foreach ($product['images'] as $image) {
                     if ($counter === 0) {
                         echo '<div class="thumbnail active">
                             <img src="' . htmlspecialchars($image['file_path']) . '" alt=' . htmlspecialchars($product['name']) . '">
@@ -115,13 +93,6 @@ $relatedProducts = getRelatedProducts($conn, $product['category_name'], $product
             </div>
         </div>
         
-
-
-        <?php
-
-        $formattedId = sprintf('%04d', $productId);
-
-        ?>
 
         <div class="product-details">
             <?php
@@ -231,7 +202,7 @@ $relatedProducts = getRelatedProducts($conn, $product['category_name'], $product
 
             <table class="specs-table">
                 <?php
-                foreach ($specs as $key => $values) {
+                foreach ($product['specs'] as $key => $values) {
                     echo '<tr>';
                     echo '<td>' . htmlspecialchars($key) . '</td>';
                     echo '<td>' . htmlspecialchars(implode(', ', $values)) . '</td>';
@@ -246,9 +217,8 @@ $relatedProducts = getRelatedProducts($conn, $product['category_name'], $product
             <h3 class="section-title">Das könnte Sie auch interessieren</h3>
             <div class="products-row">
                 <?php
-                foreach ($relatedProducts as $relatedProduct) {
-                    $relatedImages = getProductImages($conn, $relatedProduct['product_id']);
-                    $relatedFirstImage = $relatedImages[0]['file_path'];
+                foreach ($related as $relatedProduct) {
+                    $relatedFirstImage = $relatedProduct['images'][0]['file_path'];
 
                     echo '<div class="related-product">';
                     echo '<div class="related-product-image">';
@@ -257,7 +227,7 @@ $relatedProducts = getRelatedProducts($conn, $product['category_name'], $product
                     echo '<h4 class="related-product-title">' . htmlspecialchars($relatedProduct['name']) . '</h4>';
                     echo '<h5 class="related-product-subtitle">' . htmlspecialchars($relatedProduct['short_description']) . '</h5>';
                     echo '<div class="related-product-price">€' . formatPrice($relatedProduct['price']) . '</div>';
-                    echo '<a href="/product.php?id=' . htmlspecialchars($relatedProduct['product_id']) . '" class="related-product-btn">Details</a>';
+                    echo '<a href="/index.php?page=product&id=' . htmlspecialchars($relatedProduct['product_id']) . '" class="related-product-btn">Details</a>';
                     echo '</div>';
 
                 }

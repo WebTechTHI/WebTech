@@ -35,6 +35,12 @@
     <a href="showImages.php" style="color: blue;">
         bilder ansehen
     </a>
+    <a href="uploadProdWIP/uploadProduct.php" style="color: blue;">
+        Produkte hinzufügen
+    </a>
+    <a href="uploadProdWIP/showProduct.php" style="color: blue;">
+        Produkte ansehen
+    </a>
 
     <footer style="margin-top: auto;">
 

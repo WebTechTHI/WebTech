@@ -88,6 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
 
     <h1>Hochgeladene Bilder</h1>
 
+    <a href="adminIndex.php">Zurück zum Adminindex</a>
+
     <?php if ($nachricht): ?>
         <p style="color: green; font-weight: bold; text-align: center;"><?php echo htmlspecialchars($nachricht); ?></p>
     <?php endif; ?>

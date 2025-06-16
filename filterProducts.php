@@ -1,6 +1,6 @@
 <?php
 require_once 'db_verbindung.php';
-require_once 'categoryFunctions.php';
+require_once 'model/categoryFunctions.php';
 
 // JSON-Body einlesen
 $data = json_decode(file_get_contents('php://input'), true);
