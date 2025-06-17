@@ -11,7 +11,7 @@ class AdminController
         $displays   = $model->getComponents('display');
         $gpus  = $model->getComponents('gpu');
         $cpus   = $model->getComponents('processor');
-        $ram = $model->getComponents('ram');
+        $rams = $model->getComponents('ram');
         $networks = $model->getComponents('network');
         $connectors = $model->getComponents('connectors');
         $features = $model->getComponents('feature');
