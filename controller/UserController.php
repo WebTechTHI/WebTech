@@ -30,6 +30,22 @@ class UserController
                 $email = trim($_POST["email"]);
                 $password_input = trim($_POST["password"]);
 
+                // == Sicher auf server seite für eingabe das die korrekt sind falls jemand js ausschaltet !!! =========
+                if (strlen($username) < 5 || !preg_match('/[A-Z]/', $username) || !preg_match('/[a-z]/', $username)) {
+                    $_SESSION["fehlermeldung"] = "Benutzername erfüllt nicht Anforderungen !";
+                    header("Location: /index.php?page=user");
+                    exit;
+                }
+
+
+                if (!empty($password_input) && strlen($password_input) < 10) {
+                    $_SESSION["fehlermeldung"] = "Passwort muss mind. 10 zeichen haben !";
+                    header("Location: /index.php?page=user");
+                    exit;
+                }
+
+
+
                 if (!empty($password_input)) {
                     $hashedPassword = password_hash($password_input, PASSWORD_DEFAULT);
                 } else {
