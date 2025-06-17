@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <?php $category = $_POST['category'] ?? ''; ?>
+  <?php $category = $_POST["category"] ?? ""; ?>
 
   <h1 style="text-align: center; color: var(--headline-color);">Produkte hochladen</h1>
 
@@ -23,10 +23,10 @@
 
     <label for="category">Bitte wählen Sie eine Produktkategorie:</label>
     <select name="category" id="category">
-      <option value="" disabled <?= $category == '' ? 'selected' : '' ?>>Bitte Kategorie wählen</option>
-      <option value="desktop" <?= $category == 'desktop' ? 'selected' : '' ?>>Desktop-PC</option>
-      <option value="laptop" <?= $category == 'laptop' ? 'selected' : '' ?>>Laptop</option>
-      <option value="accesories" <?= $category == 'accesories' ? 'selected' : '' ?>>Zubehör</option>
+      <option value="" disabled <?= $category == "" ? "selected" : "" ?>>Bitte Kategorie wählen</option>
+      <option value="desktop" <?= $category == "desktop" ? "selected" : "" ?>>Desktop-PC</option>
+      <option value="laptop" <?= $category == "laptop" ? "selected" : "" ?>>Laptop</option>
+      <option value="accesories" <?= $category == "accesories" ? "selected" : "" ?>>Zubehör</option>
     </select>
 
     <!-- Unterkategorie wählen-->
@@ -50,7 +50,7 @@
     <input type="text" name="description" id="description" />
 
 
-    <div class="component-container"></div>
+    <div id="component-container"></div>
 
 
 
@@ -59,9 +59,10 @@
     <div class="component-wrapper">
       <select name="display" id="display">
         <?php foreach ($displays as $display): ?>
-          <option value="<?= $display['display_id'] ?>">
-            <?= htmlspecialchars($display['brand'] . " " . $display['size_inch'] . "\", " . $display['resolution'] . "p, " . 
-                        $display['refresh_rate_hz'] . "Hz") ?></option>
+          <option value="<?= $display["display_id"] ?>">
+            <?= htmlspecialchars($display["brand"] . " " . $display["size_inch"] . "\", " . $display["resolution"] . "p, " .
+              $display["refresh_rate_hz"] . "Hz") ?>
+          </option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
@@ -73,19 +74,21 @@
     <div class="component-wrapper">
       <select name="connector" id="connector">
         <?php foreach ($connectors as $connector): ?>
-          <option value="<?= $connector['connectors_id'] ?>"><?= htmlspecialchars($connector['spec']) ?></option>
+          <option value="<?= $connector["connectors_id"] ?>"><?= htmlspecialchars($connector["spec"]) ?></option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
     </div>
-    
+
 
     <!-- Cpu-Auswahl -->
     <label for="cpu">Cpu:</label>
     <div class="component-wrapper">
       <select name="cpu" id="cpu">
         <?php foreach ($cpus as $cpu): ?>
-          <option value="<?= $cpu['cpu_id'] ?>"><?= htmlspecialchars($cpu['model'] . ", " . $cpu['cores'] . " cores, " . $cpu['base_clock_ghz'] . " GHz") ?></option>
+          <option value="<?= $cpu["cpu_id"] ?>">
+            <?= htmlspecialchars($cpu["model"] . ", " . $cpu["cores"] . " cores, " . $cpu["base_clock_ghz"] . " GHz") ?>
+          </option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
@@ -97,7 +100,9 @@
     <div class="component-wrapper">
       <select name="storage" id="storage">
         <?php foreach ($storages as $storage): ?>
-          <option value="<?= $storage['storage_id'] ?>"><?= htmlspecialchars($storage['brand'] . " " . $storage['capacity_gb'] . "Gb, " . $storage['storage_type']) ?></option>
+          <option value="<?= $storage["storage_id"] ?>">
+            <?= htmlspecialchars($storage["brand"] . " " . $storage["capacity_gb"] . "Gb, " . $storage["storage_type"]) ?>
+          </option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
@@ -109,31 +114,34 @@
     <div class="component-wrapper">
       <select name="gpu" id="gpu">
         <?php foreach ($gpus as $gpu): ?>
-          <option value="<?= $gpu['gpu_id'] ?>"><?= htmlspecialchars($gpu['brand'] . " " . $gpu['model'] . ", " . $gpu['vram_gb'] . "Gb") ?></option>
+          <option value="<?= $gpu["gpu_id"] ?>">
+            <?= htmlspecialchars($gpu["brand"] . " " . $gpu["model"] . ", " . $gpu["vram_gb"] . "Gb") ?></option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
     </div>
-    
+
 
     <!-- Operating-System-Auswahl -->
     <label for="os">Betriebssystem:</label>
     <div class="component-wrapper">
       <select name="os" id="os">
         <?php foreach ($operatingSystems as $os): ?>
-          <option value="<?= $os['os_id'] ?>"><?= htmlspecialchars($os['name']) ?></option>
+          <option value="<?= $os["os_id"] ?>"><?= htmlspecialchars($os["name"]) ?></option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
     </div>
-    
+
 
     <!-- Ram-Auswahl -->
     <label for="ram">Ram:</label>
     <div class="component-wrapper">
       <select name="ram" id="ram">
         <?php foreach ($rams as $ram): ?>
-          <option value="<?= $ram['ram_id'] ?>"><?= htmlspecialchars($ram['brand'] . " " . $ram['model'] . ", " . $ram['capacity_gb'] . "Gb " . $ram['ram_type']) ?></option>
+          <option value="<?= $ram["ram_id"] ?>">
+            <?= htmlspecialchars($ram["brand"] . " " . $ram["model"] . ", " . $ram["capacity_gb"] . "Gb " . $ram["ram_type"]) ?>
+          </option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
@@ -145,7 +153,7 @@
     <div class="component-wrapper">
       <select name="network" id="network">
         <?php foreach ($networks as $network): ?>
-          <option value="<?= $network['network_id'] ?>"><?= htmlspecialchars($network['spec']) ?></option>
+          <option value="<?= $network["network_id"] ?>"><?= htmlspecialchars($network["spec"]) ?></option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
@@ -157,7 +165,7 @@
     <div class="component-wrapper">
       <select name="feature" id="feature">
         <?php foreach ($features as $feature): ?>
-          <option value="<?= $feature['feature_id'] ?>"><?= htmlspecialchars($feature['spec']) ?></option>
+          <option value="<?= $feature["feature_id"] ?>"><?= htmlspecialchars($feature["spec"]) ?></option>
         <?php endforeach; ?>
       </select>
       <button type="button">+</button>
@@ -186,8 +194,8 @@
         });
 
 
-      //Laden von wählbaren Komponenten
-      fetch("/view/AdminComponentLoader.php")
+      // Komponenten dynamisch laden
+      fetch("/view/AdminComponentLoader.php?category=" + category)
         .then(response => response.text())
         .then(data => {
           document.getElementById("component-container").innerHTML = data;
