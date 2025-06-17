@@ -12,17 +12,32 @@
         <div class="top-bar">
             <img class="header-icon" id="themeToggleBtn" alt="toggle-theme-btn" onclick="toggleTheme()">
             <div class="login-user-container">
+
+                    <!-- Falls ein Admin angemeldet ist, kann dieser auf das Admin-panel zugreifen. -->
+                <?php if($_SESSION['user']['role_id'] === [1]){?>
                 <a href="/index.php?page=admin">ADMIN</a>
+                
+                <?php }?>
+
+                <!-- Der Login-button wird nur angezeigt, falls der Benutzer abgemeldet ist. -->
+                <?php if(!isset($_SESSION['user'])){?>
+
+
                 <a href="/index.php?page=login">
                     <img class="header-icon" src="/assets/images/icons/login.svg" alt="Login/Registrierung"
                         title="Login/Registrierung">
                 </a>
+
+                <?php } ?>
+
+                <?php if(isset($_SESSION['user'])){?>
                <a href="/index.php?page=logout">
                     <img class="header-icon" src="/assets/images/icons/logout.svg" alt="Logout" title="Logout">
                 </a>
                 <a href="/index.php?page=user">
                     <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
                 </a>
+                <?php }?>
             </div>
         </div>
 

@@ -24,7 +24,7 @@
 
 <body>
 
-    <?php include 'components/header.html'; ?>
+    <?php include 'components/header.php'; ?>
 
     <div class="breadcrumb">
         <a href="/index.php">MLR</a> 
