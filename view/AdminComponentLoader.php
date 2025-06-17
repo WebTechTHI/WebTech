@@ -1,30 +1,46 @@
 <?php
-$category = $_GET['category'] ?? '';
+ob_start(); // Output Buffer starten
+?>
 
-$options = '';
 
-switch ($category) {
-    case 'accesories':
-        $options .= '<option value="mouse">Maus</option>';
-        $options .= '<option value="keyboard">Tastatur</option>';
-        $options .= '<option value="monitor">Monitor</option>';
-        break;
+<!-- Display-Auswahl -->
+<label for="display">Display:</label>
+<div class="component-wrapper">
+  <select name="display" id="display">
+    <?php foreach ($displays as $display): ?>
+      <option value="<?= $display['display_id'] ?>">
+        <?= htmlspecialchars($display['brand'] . " " . $display['size_inch'] . "\", " . $display['resolution'] . "p, " . $display['refresh_rate_hz'] . "Hz") ?>
+      </option>
+    <?php endforeach; ?>
+  </select>
+  <button type="button">+</button>
+</div>
 
-    case 'desktop':
-        $options .= '<option value="desktop-gaming">Gaming-PC</option>';
-        $options .= '<option value="desktop-office">Office-PC</option>';
-        $options .= '<option value="none">Keine</option>';
-        break;
 
-    case 'laptop':
-        $options .= '<option value="laptop-gaming">Gaming-Laptop</option>';
-        $options .= '<option value="laptop-office">Office-Laptop</option>';
-        $options .= '<option value="none">Keine</option>';
-        break;
+<!-- Connector-Auswahl -->
+<label for="connector">Anschlusstyp:</label>
+<div class="component-wrapper">
+  <select name="connector" id="connector">
+    <?php foreach ($connectors as $connector): ?>
+      <option value="<?= $connector['connectors_id'] ?>"><?= htmlspecialchars($connector['spec']) ?></option>
+    <?php endforeach; ?>
+  </select>
+  <button type="button">+</button>
+</div>
 
-    default:
-        $options .= '<option value="">Bitte Kategorie wählen</option>';
-        break;
-}
 
-echo '<select name="subcategory" id="subcategory">' . $options . '</select>';
+<!-- zusätzliche-Features-Auswahl -->
+<label for="feature">Features:</label>
+<div class="component-wrapper">
+  <select name="feature" id="feature">
+    <?php foreach ($features as $feature): ?>
+      <option value="<?= $feature['feature_id'] ?>"><?= htmlspecialchars($feature['spec']) ?></option>
+    <?php endforeach; ?>
+  </select>
+  <button type="button">+</button>
+</div>
+
+<?php
+$htmlString = ob_get_clean();       // Alles aus dem Buffer holen
+echo $htmlString;                   //als String ausgeben
+?>

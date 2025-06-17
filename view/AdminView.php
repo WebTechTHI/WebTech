@@ -7,7 +7,7 @@
   <title>Admin Bereich - Produktverwaltung</title>
   <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon" />
 
-  <!-- Farben & Admin Styling -->
+  <!-- Styling -->
   <link rel="stylesheet" href="/assets/css/colors.css" />
   <link rel="stylesheet" href="/assets/css/admin.css" />
 </head>
@@ -50,6 +50,10 @@
     <input type="text" name="description" id="description" />
 
 
+    <div class="component-container"></div>
+
+
+
     <!-- Display-Auswahl -->
     <label for="display">Display:</label>
     <div class="component-wrapper">
@@ -62,7 +66,7 @@
       </select>
       <button type="button">+</button>
     </div>
-    
+
 
     <!-- Connector-Auswahl -->
     <label for="connector">Anschlusstyp:</label>
@@ -168,13 +172,25 @@
   </form>
 
   <script>
+
+    //asynchrones Laden von unterkategorien und entsprechenden Komponenten bei änderung der Hauptkategorie 
     document.getElementById("category").addEventListener("change", function () {
       const category = this.value;
 
-      fetch("/view/AdminComponentLoader.php?category=" + category)
+
+      //Laden von unterkategorien
+      fetch("/view/AdminSubcategoryLoader.php?category=" + category)
         .then(response => response.text())
         .then(data => {
           document.getElementById("subcategory-container").innerHTML = data;
+        });
+
+
+      //Laden von wählbaren Komponenten
+      fetch("/view/AdminComponentLoader.php")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("component-container").innerHTML = data;
         });
     });
   </script>
