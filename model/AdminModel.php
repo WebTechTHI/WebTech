@@ -13,7 +13,7 @@ class AdminModel
     $data = $result->fetch_assoc();
 
     $stmt->close();
-
+        $a = 1;
     return $result;
 }
     }
