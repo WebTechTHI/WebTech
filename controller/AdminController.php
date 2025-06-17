@@ -20,7 +20,7 @@ class AdminController
 
 
         //Abfrage, ob der Admin angemeldet ist, falls nicht zurück zum logina
-        if (!isset($_SESSION["user"]) || $_SESSION["user"]['username'] !== 'Admin') {
+        if ($_SESSION["user"]['role_id'] !== 1) {
             header("Location: index.php?page=login");
         exit;
 }

@@ -14,7 +14,7 @@
             <div class="login-user-container">
 
                     <!-- Falls ein Admin angemeldet ist, kann dieser auf das Admin-panel zugreifen. -->
-                <?php if($_SESSION['user']['role_id'] === [1]){?>
+                <?php if($_SESSION['user']['role_id'] === 1){?>
                 <a href="/index.php?page=admin">ADMIN</a>
                 
                 <?php }?>
@@ -34,7 +34,7 @@
                     <a href="/index.php?page=user">
                     <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
                 </a>
-                
+
                <a href="/index.php?page=logout">
                     <img class="header-icon" src="/assets/images/icons/logout.svg" alt="Logout" title="Logout">
                 </a>
