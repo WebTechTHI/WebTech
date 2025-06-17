@@ -1,0 +1,102 @@
+/* ========================= ADMIN AREA ========================= */
+
+.admin-form {
+  background-color: var(--form-bg);
+  border: 1px solid var(--form-border);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 800px;
+  width: 100%;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.admin-form h1,
+.admin-form h2 {
+    text-align: center;
+  color: var(--headline-color);
+  margin-bottom: 10px;
+}
+
+.admin-form label {
+  color: var(--text-color);
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="file"],
+.admin-form select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--form-border);
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  color: var(--input-color);
+  transition: background-color 0.2s, border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-form input[type="text"]:hover,
+.admin-form input[type="file"]:hover,
+.admin-form select:hover {
+  background-color: var(--input-bg-hover);
+  border-color: var(--input-border-hover);
+}
+
+.admin-form input[type="text"]:focus,
+.admin-form input[type="file"]:focus,
+.admin-form select:focus {
+  background-color: var(--input-bg-focus);
+  border-color: var(--input-border-focus);
+  outline: none;
+}
+
+.admin-form .component-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-form button,
+.admin-form input[type="submit"] {
+  background-color: var(--submit-bg);
+  color: var(--submit-text);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.admin-form button:hover,
+.admin-form input[type="submit"]:hover {
+  background-color: var(--submit-hover);
+}
+
+.admin-form .component-wrapper button {
+  flex-shrink: 0;
+  padding: 12px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.admin-form select {
+  flex: 1;
+}
+
+/* Responsive: Felder in Spalte bei schmalem Viewport */
+@media (max-width: 600px) {
+  .admin-form {
+    padding: 20px;
+  }
+
+  .admin-form .component-wrapper {
+    flex-direction: column;
+  }
+}
