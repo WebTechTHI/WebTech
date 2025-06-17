@@ -19,7 +19,7 @@
 
   <form class="admin-form" method="post" action="" enctype="multipart/form-data">
 
-    <h2>Eingabefelder aktuell auf Zubehör ausgelegt</h2>
+    <h2>Neues Produkt anlegen.</h2>
 
     <label for="category">Bitte wählen Sie eine Produktkategorie:</label>
     <select name="category" id="category">
@@ -29,6 +29,7 @@
       <option value="accesories" <?= $category == 'accesories' ? 'selected' : '' ?>>Zubehör</option>
     </select>
 
+    <!-- Unterkategorie wählen-->
     <label for="subcategory">Bitte wählen Sie die passende Unterkategorie:</label>
     <div id="subcategory-container">
       <select name="subcategory" id="subcategory" disabled>
