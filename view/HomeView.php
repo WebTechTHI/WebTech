@@ -16,7 +16,7 @@
 
 <body>
 
-    <?php require_once './components/header.html'; ?>
+    <?php include 'components/header.php'; ?>
 
 
     <!-- Hero Section -->
