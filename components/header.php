@@ -31,12 +31,14 @@
                 <?php } ?>
 
                 <?php if(isset($_SESSION['user'])){?>
+                    <a href="/index.php?page=user">
+                    <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
+                </a>
+                
                <a href="/index.php?page=logout">
                     <img class="header-icon" src="/assets/images/icons/logout.svg" alt="Logout" title="Logout">
                 </a>
-                <a href="/index.php?page=user">
-                    <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
-                </a>
+                
                 <?php }?>
             </div>
         </div>
