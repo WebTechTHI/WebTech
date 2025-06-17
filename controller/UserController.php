@@ -18,8 +18,9 @@ class UserController
             "email" => "MaxMustermann@email.de",
         ];
 
-        if (isset($_SESSION["user_id"])) {
-            $user_id = $_SESSION["user_id"];
+        if (isset($_SESSION['user']['user_id'])) {
+
+            $user_id = $_SESSION['user']["user_id"];
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $username = trim($_POST["username"]);
