@@ -35,7 +35,6 @@
         </div>
     </section>
 
-
     <!-- Bestseller Section -->
     <section class="container">
         <h2 class="section-title">BESTSELLER</h2>
@@ -99,6 +98,7 @@
 
 
     <!-- Categories Section -->
+    <div class="categories-wrapper">
     <section class="container">
         <h2 class="section-title">PRODUKTKATEGORIEN</h2>
         <div class="categories">
@@ -133,6 +133,7 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- Promos Section -->
     <section class="container">
@@ -155,7 +156,6 @@
             </div>
         </div>
     </section>
-
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">

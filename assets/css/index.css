@@ -14,7 +14,7 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 600px;
+    height: 800px;
     background-color: #111;
     margin-bottom: 40px;
 }
@@ -55,20 +55,7 @@ body {
     z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 40px;  /*     ---------------------------------    padding vergrößern nach unten mäßig
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    */
+    padding: 100px 40px 300px;
     color: white;
 }
 
@@ -124,29 +111,13 @@ body {
     transition: .3s;
 }
 
+.container{
+    align-items: center;
+    margin: 0 15vw 50px 15vw;
+}
+
+
 /* Featured Products Section */
-
-
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
 
 .product-carousel-wrapper {
     position: relative;
@@ -165,7 +136,7 @@ body {
 
 
 .scroll-button {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(59, 59, 59, 0.075);
     border: none;
     font-size: 30px;
     padding: 10px;
@@ -187,29 +158,6 @@ body {
     position: absolute;
     right: 0;
 }
-
-
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-
 
 
 .products-grid {
@@ -261,11 +209,6 @@ body {
     justify-content: center;
     height: 200px;
     overflow: hidden;
-
-
-    
-        
-
 }
 
 .product-image img {
@@ -362,13 +305,24 @@ body {
 }
 
 /* Categories Section */
+
+
+.section-title{
+    margin: 0 0 15px 30px;
+    display: inline-block;
+    border-bottom: #000 solid 4px;
+}
+
+.categories-wrapper{
+    background-color:rgb(221, 221, 221);
+    padding: 20px 0 0 0;
+    margin: 0 0 40px 0;
+}
+
 .categories {
     display: flex;
-    flex-direction: row;
     gap: 25px;
-    margin: 25px 0;
-    width: 90vw;
-    align-self: center;
+    width: 100%;
 }
 
 .category-card {
@@ -376,8 +330,7 @@ body {
     height: 200px;
     border-radius: 12px;
     overflow: hidden;
-    max-width: 500px;
-    width: 100%;
+    width:100%;
 }
 
 .category-card img {
@@ -525,13 +478,14 @@ body {
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 2px;
 }
 
 .testimonial {
     padding: 20px;
     border: 1px solid #eee;
     border-radius: 5px;
+    max-width: 400px;
 }
 
 .testimonial-text {
