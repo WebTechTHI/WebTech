@@ -128,11 +128,25 @@
             <div class="qty-selector">
                 <label>Menge:</label>
                 <div class="qty-input">
-                    <button class="qty-btn">-</button>
-                    <input class="qty-value" type="text" value="1" readonly>
-                    <button class="qty-btn">+</button>
+                    <button class="qty-btn" onclick="updateQtyValue('decrease');">-</button>
+                    <input class="qty-value" id="mengenValue" type="text" value="1" readonly>
+                    <button class="qty-btn" onclick="updateQtyValue('increase');">+</button>
                 </div>
             </div>
+
+          <script>
+    function updateQtyValue(operation) {
+        let menge = document.getElementById("mengenValue");
+        if (operation == "increase") {
+            menge.value++;
+        } 
+
+        if (operation == "decrease" &&menge.value >1) {
+            menge.value--;
+        } 
+    }
+</script>
+
 
             <div class="action-buttons">
                 <button class="buy-btn">IN DEN WARENKORB</button>
