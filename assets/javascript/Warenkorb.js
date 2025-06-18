@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const hinzufuegenBtn = document.querySelector('.buy-btn');
 
     let warenkorb = ladeWarenkorbAusLocalStorage();
+    aktualisiereWarenkorb();
 
 
     // Öffnen/Schließen des Warenkorbs
