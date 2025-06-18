@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -18,6 +15,7 @@
 
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
+    <script src="/assets/javascript/Warenkorb.js"></script>
 
 
 </head>
@@ -27,13 +25,13 @@
     <?php include 'components/header.php'; ?>
 
     <div class="breadcrumb">
-        <a href="/index.php">MLR</a> 
+        <a href="/index.php">MLR</a>
         <a
             href="/index.php?page=category&category=<?php echo htmlspecialchars($product['category_name']) ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['category_name'])); ?></a>
-        
+
         <a
             href="/index.php?page=category&category=<?php echo htmlspecialchars(str_replace('-', '', $product['subcategory_name'])); ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['subcategory_name'])); ?></a>
-        
+
         <span><?php echo htmlspecialchars($product['name']) ?></span>
     </div>
 
@@ -65,7 +63,7 @@
 
 
     <div class="product-container">
-        
+
         <div class="product-gallery">
             <div class="main-image">
 
@@ -92,7 +90,7 @@
 
             </div>
         </div>
-        
+
 
         <div class="product-details">
             <?php
@@ -134,22 +132,13 @@
                 </div>
             </div>
 
-          <script>
-    function updateQtyValue(operation) {
-        let menge = document.getElementById("mengenValue");
-        if (operation == "increase") {
-            menge.value++;
-        } 
 
-        if (operation == "decrease" &&menge.value >1) {
-            menge.value--;
-        } 
-    }
-</script>
 
 
             <div class="action-buttons">
-                <button class="buy-btn">IN DEN WARENKORB</button>
+                <button class="buy-btn" data-id="<?= $product['product_id'] ?>"
+                    data-name="<?= htmlspecialchars($product['name']) ?>" data-price="<?= $product['price'] ?>"
+                    data-image="<?= htmlspecialchars($firstImage) ?>">IN DEN WARENKORB</button>
                 <button class="wishlist-btn">ZUR WUNSCHLISTE HINZUFÜGEN</button>
             </div>
 
@@ -246,7 +235,7 @@
 
                 }
                 ?>
-                
+
             </div>
         </div>
     </div>
