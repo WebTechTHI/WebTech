@@ -94,7 +94,7 @@
         </div>
         
 
-        <div class="product-details">
+        <div class="product-details"> test
             <?php
             if ($product['sale']) {
                 echo '<span class="product-badge sale">SALE</span>';
