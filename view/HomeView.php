@@ -16,7 +16,7 @@
 
 <body>
 
-    <?php require_once './components/header.html'; ?>
+    <?php include 'components/header.php'; ?>
 
 
     <!-- Hero Section -->
@@ -35,18 +35,14 @@
         </div>
     </section>
 
-
     <!-- Bestseller Section -->
-    <section class="container">
-        <h2 class="section-title">BESTSELLER</h2>
+    <section class="container" id="bestseller-container">
 
 
-
-        <div class="product-carousel-wrapper"> <!-- Button zum scrollen der produkte nach links -->
-            <button id="scroll-left" class="scroll-button">‹</button>
-            <!-- Button zum scrollen der produkte nach links -->
-
-
+            <h2 class="section-title">BESTSELLER</h2>
+            <div class="product-carousel-wrapper">
+            <button id="scroll-left" class="scroll-button">‹</button> <!-- Button zum scrollen der produkte nach links -->
+            
             <div class="products-grid" id="product-container">
 
                 <?php foreach ($products as $product): 
@@ -79,9 +75,9 @@
                                     <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
                                 </div>
                                 <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
-                                <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr
-                                    zum produkt</a>
                             </div>
+                            <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr
+                                    zum produkt</a>
                         </div>
                     </div>
 
@@ -90,15 +86,16 @@
             </div>
 
 
-            <button id="scroll-right" class="scroll-button">›</button>
-            <!-- Button zum scrollen der produkte nach rechts -->
-        </div> <!-- Button zum scrollen der produkte nach rechts -->
+            <button id="scroll-right" class="scroll-button">›</button> <!-- Button zum scrollen der produkte nach rechts -->
+            </div>
+
     </section>
 
 
 
 
     <!-- Categories Section -->
+    <div class="categories-wrapper">
     <section class="container">
         <h2 class="section-title">PRODUKTKATEGORIEN</h2>
         <div class="categories">
@@ -133,6 +130,7 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- Promos Section -->
     <section class="container">
@@ -155,7 +153,6 @@
             </div>
         </div>
     </section>
-
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">

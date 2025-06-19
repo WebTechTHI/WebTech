@@ -19,8 +19,9 @@ class LoginController
             if (isset($result["error"])) {
                 $fehlermeldung = $result["error"];
             } else {
-                $_SESSION["user_id"] = $result["user_id"];
-                $_SESSION["username"] = $result["username"];
+                
+                $_SESSION['user'] = $model->getUserData($result["user_id"]);  //Setzen von Benutzerinformationen in 'user'-array
+
                 $_SESSION["erfolgsmeldung"] = "Willkommen, " . htmlspecialchars($result['username']) . "!<br>Ihre Benutzer ID lautet: " . $result['user_id'];
 
                 header("Location: /index.php?page=user");

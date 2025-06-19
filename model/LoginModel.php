@@ -1,5 +1,6 @@
 <?php
 require_once "db_verbindung.php";
+require_once 'userFunctions.php';
 
 class LoginModel
 {
@@ -30,7 +31,13 @@ class LoginModel
         }
 
         $stmt->close();
-        $conn->close();
+
         return $response;
+    }
+
+
+    //frägt die benutzerinformationen aus der datenbank durch die benutzer id ab
+    public function getUserData($userId){
+        return getUserData($GLOBALS['conn'],$userId);
     }
 }

@@ -14,7 +14,7 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 600px;
+    height: 800px;
     background-color: #111;
     margin-bottom: 40px;
 }
@@ -55,20 +55,7 @@ body {
     z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 40px;  /*     ---------------------------------    padding vergrößern nach unten mäßig
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    ---------------------------------
-    */
+    padding: 100px 40px 300px;
     color: white;
 }
 
@@ -124,35 +111,25 @@ body {
     transition: .3s;
 }
 
+.container{
+    align-items: center;
+    margin: 0 15vw 50px 15vw;
+}
+
+
 /* Featured Products Section */
-
-
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
+#bestseller-container{
+    width:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .product-carousel-wrapper {
-    position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    overflow: hidden;
+    gap: 15px;
 }
 
 #product-container {
@@ -160,12 +137,12 @@ body {
     overflow-x: auto;
     scroll-behavior: smooth;
     gap: 15px;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: 2px;
 }
 
 
 .scroll-button {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgb(218, 218, 218);
     border: none;
     font-size: 30px;
     padding: 10px;
@@ -175,40 +152,8 @@ body {
     transition:  0.2s ease;
 }
 .scroll-button:hover {
-    background-color: rgba(220,220,220,0.8);
+    background-color: rgba(182, 182, 182, 0.8);
 }
-
-#scroll-left {
-    position: absolute;
-    left: 0;
-}
-
-#scroll-right {
-    position: absolute;
-    right: 0;
-}
-
-
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
-/*---------------------*/
 
 
 
@@ -218,6 +163,7 @@ body {
     grid-template-columns: 1fr;
     gap: 15px;
     align-items: stretch;
+    max-width: 1115px;
 }
 
 
@@ -261,11 +207,6 @@ body {
     justify-content: center;
     height: 200px;
     overflow: hidden;
-
-
-    
-        
-
 }
 
 .product-image img {
@@ -287,6 +228,9 @@ body {
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+    background-color:rgb(246, 246, 246);
+    padding:13px;
+    border-radius: 5px;
 }
 
 .product-title {
@@ -321,6 +265,8 @@ body {
 
 .product-footer {
     margin-top: auto;
+    display:flex;
+    flex-direction: row;
 }
 
 .price {
@@ -362,13 +308,24 @@ body {
 }
 
 /* Categories Section */
+
+
+.section-title{
+    margin: 0 0 15px 30px;
+    display: inline-block;
+    border-bottom: #000 solid 4px;
+}
+
+.categories-wrapper{
+    background-color:rgb(221, 221, 221);
+    padding: 20px 0 0 0;
+    margin: 0 0 40px 0;
+}
+
 .categories {
     display: flex;
-    flex-direction: row;
     gap: 25px;
-    margin: 25px 0;
-    width: 90vw;
-    align-self: center;
+    width: 100%;
 }
 
 .category-card {
@@ -376,8 +333,7 @@ body {
     height: 200px;
     border-radius: 12px;
     overflow: hidden;
-    max-width: 500px;
-    width: 100%;
+    width:100%;
 }
 
 .category-card img {
@@ -525,13 +481,14 @@ body {
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 2px;
 }
 
 .testimonial {
     padding: 20px;
     border: 1px solid #eee;
     border-radius: 5px;
+    max-width: 400px;
 }
 
 .testimonial-text {

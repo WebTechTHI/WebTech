@@ -11,6 +11,8 @@
     z-index: 20;
     display: flex;
     flex-direction: column;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .warenkorbHeader {
@@ -20,6 +22,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top-left-radius: 20px;
 }
 
 .warenkorbSchliessen {
@@ -46,7 +49,7 @@
 .artikelBild {
     width: 70px;
     height: 70px;
-    object-fit: cover;
+    object-fit: contain;
     margin-right: 10px;
 }
 
@@ -57,6 +60,7 @@
 .artikelTitel {
     font-weight: bold;
     margin-bottom: 5px;
+    color: var(--wkSide-article-price-color);
 }
 
 .artikelPreis {
@@ -95,10 +99,15 @@
     text-align: right;
 }
 
+.artikelEntfernen:hover {
+text-decoration: underline;
+}
+
 .warenkorbFooter {
     padding: 15px;
     background-color: var(--wkSide-footer-bg-color);
     border-top: 1px solid var(--wkSide-footer-border);
+    border-bottom-left-radius: 20px;
 }
 
 .warenkorbGesamt {

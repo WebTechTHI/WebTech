@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -19,21 +16,28 @@
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
 
+    <script>
+        window.USER_ID = <?= isset($_SESSION['user']['user_id']) ? (int) $_SESSION['user']['user_id'] : 'null'; ?>;
+        console.log("USER_ID:", window.USER_ID);
+    </script>
+
+
+
 
 </head>
 
 <body>
 
-    <?php include 'components/header.html'; ?>
+    <?php include 'components/header.php'; ?>
 
     <div class="breadcrumb">
-        <a href="/index.php">MLR</a> 
+        <a href="/index.php">MLR</a>
         <a
             href="/index.php?page=category&category=<?php echo htmlspecialchars($product['category_name']) ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['category_name'])); ?></a>
-        
+
         <a
             href="/index.php?page=category&category=<?php echo htmlspecialchars(str_replace('-', '', $product['subcategory_name'])); ?>"><?php echo htmlspecialchars(getCategoryDisplayName($product['subcategory_name'])); ?></a>
-        
+
         <span><?php echo htmlspecialchars($product['name']) ?></span>
     </div>
 
@@ -56,7 +60,7 @@
                 <span>Gesamt:</span>
                 <span>0,00 €</span>
             </div>
-            <button class="zurKasseButton">Zur Kasse</button>
+            <button class="zurKasseButton">Zum Warenkorb</button>
         </div>
     </div>
 
@@ -65,7 +69,7 @@
 
 
     <div class="product-container">
-        
+
         <div class="product-gallery">
             <div class="main-image">
 
@@ -92,7 +96,7 @@
 
             </div>
         </div>
-        
+
 
         <div class="product-details">
             <?php
@@ -128,14 +132,19 @@
             <div class="qty-selector">
                 <label>Menge:</label>
                 <div class="qty-input">
-                    <button class="qty-btn">-</button>
-                    <input class="qty-value" type="text" value="1" readonly>
-                    <button class="qty-btn">+</button>
+                    <button class="qty-btn" onclick="updateQtyValue('decrease');">-</button>
+                    <input class="qty-value" id="mengenValue" type="text" value="1" readonly>
+                    <button class="qty-btn" onclick="updateQtyValue('increase');">+</button>
                 </div>
             </div>
 
+
+
+
             <div class="action-buttons">
-                <button class="buy-btn">IN DEN WARENKORB</button>
+                <button class="buy-btn" data-id="<?= $product['product_id'] ?>"
+                    data-name="<?= htmlspecialchars($product['name']) ?>" data-price="<?= $product['price'] ?>"
+                    data-image="<?= htmlspecialchars($firstImage) ?>">IN DEN WARENKORB</button>
                 <button class="wishlist-btn">ZUR WUNSCHLISTE HINZUFÜGEN</button>
             </div>
 
@@ -227,12 +236,12 @@
                     echo '<h4 class="related-product-title">' . htmlspecialchars($relatedProduct['name']) . '</h4>';
                     echo '<h5 class="related-product-subtitle">' . htmlspecialchars($relatedProduct['short_description']) . '</h5>';
                     echo '<div class="related-product-price">€' . formatPrice($relatedProduct['price']) . '</div>';
-                    echo '<a href="/index.php?page=product&id=' . htmlspecialchars($relatedProduct['product_id']) . '" class="related-product-btn">Details</a>';
+                    echo '<a href="/index.php?page=product&id=' . htmlspecialchars($relatedProduct['product_id']) . '" class="related-product-btn">Mehr Details</a>';
                     echo '</div>';
 
                 }
                 ?>
-                
+
             </div>
         </div>
     </div>
@@ -291,7 +300,7 @@
 
     </script>
 
-
+    <script src="/assets/javascript/Warenkorb.js"></script>
 </body>
 
 </html>

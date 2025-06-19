@@ -1,5 +1,6 @@
 <?php
 require_once 'db_verbindung.php';
+require_once 'userFunctions.php';
 
 class RegistrationModel
 {
@@ -40,9 +41,12 @@ class RegistrationModel
         }
 
         $check_stmt->close();
-        $conn->close();
 
         return $result;
+    }
+
+    public function getUserData($userId){
+        return getUserData($GLOBALS['conn'],$userId);
     }
 
 }
