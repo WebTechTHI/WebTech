@@ -82,8 +82,6 @@
 
 --testimonial-border: rgb(173, 173, 173);
 --testimonial-text: black;
-
-
 }
 
 /* ===================================== Dark Mode (Überschreibungen) ===================================== */ 
@@ -145,10 +143,8 @@
 --carousel-button-border--hover: #6e6e6e;
 --carousel-color: var(--ci-white);
 
---testimonial-border: rgb(92, 92, 92);
+--testimonial-border: rgb(97, 97, 97);
 --testimonial-text: rgb(228, 228, 228);
-
-
 }
 
 /* ===================================== Basis-Elemente (Global gültig) ===================================== */ 

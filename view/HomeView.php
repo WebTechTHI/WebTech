@@ -163,7 +163,7 @@
                         <p class="side-promo-text">Die neuesten Grafikkarten von NVIDIA sind jetzt verfügbar. Sichere
                             dir jetzt
                             die Leistung der nächsten Generation.</p>
-                        <a href="#" class="buy-btn">JETZT ENTDECKEN</a>
+                        <a href="#" class="hero-btn main-btn">JETZT ENTDECKEN</a>
                     </div>
                 </div>
             </section>

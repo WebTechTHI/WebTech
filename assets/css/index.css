@@ -324,7 +324,7 @@ body {
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
-    border-radius: 25px;
+    border-radius: 12px;
 }
 
 .buy-btn:hover {
@@ -437,13 +437,12 @@ body {
 }
 
 .main-promo {
-    background-color: #111;
-    color: white;
+    border: 2px solid var(--ci-red);
+    color: var(--product-text);
     padding: 30px;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    background-image: linear-gradient(to right, #000, #111);
     position: relative;
     overflow: hidden;
 }
@@ -482,12 +481,71 @@ body {
     opacity: 0.8;
 }
 
+
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
+
+
 .side-promo {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    position: relative;
+  position: relative;
+  padding: 30px;
+  border-radius: 10px solid white;
+  border: 2px solid transparent;   
+  color: white;
+  z-index: 0;
+  isolation: isolate;
+  z-index: 10;
 }
+
+
+@property --degree{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.side-promo::after, .side-promo::before{
+  content: '';
+  position: absolute;
+  height: 90%;
+  width: 90%;
+  background-image: conic-gradient(from var(--degree), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+
+.side-promo::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin{
+  from{
+    --degree: 0deg;
+  }
+  to{
+    --degree: 360deg;
+  }
+}
+
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
+/* -------------   */
 
 .side-promo-badge {
     position: absolute;
@@ -499,11 +557,13 @@ body {
     font-weight: bold;
     font-size: 18px;
     border-radius: 5px;
+    z-index: 2;
 }
 
 .side-promo-title {
     font-size: 20px;
     margin-bottom: 15px;
+    color: var(--product-text);
 }
 
 .side-promo-title span {
@@ -514,7 +574,7 @@ body {
     font-size: 14px;
     margin-bottom: 20px;
     line-height: 1.5;
-    color: #555;
+    color: var(--product-text);
 }
 
 /* Testimonials Section */
