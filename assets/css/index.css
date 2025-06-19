@@ -16,7 +16,7 @@ body {
     position: relative;
     height: 800px;
     background-color: #111;
-    margin-bottom: 0px;
+    margin-bottom: 60px;
 }
 
 .hero-image {
@@ -568,6 +568,7 @@ body {
     color: white;
     padding: 40px 0;
     border-bottom: #2e2e2e solid 3px;
+    margin: 100px 0 0 0;
 }
 
 .newsletter-inner {
