@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'none';
     });
 
-    // ✅ Produkt einzeln hinzufügen (sofort in DB)
+    // Produkt einzeln hinzufügen (sofort in DB)
     hinzufuegenBtn?.addEventListener('click', () => {
         if (!window.USER_ID || window.USER_ID === null || window.USER_ID === "null") {
             window.location.href = '/index.php?page=login';
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'block';
     });
 
-    // ✅ GANZEN LocalStorage-Warenkorb speichern & weiterleiten
+    // GANZEN LocalStorage-Warenkorb speichern & weiterleiten
     zurKasseButton?.addEventListener('click', () => {
         if (!window.USER_ID || window.USER_ID === null || window.USER_ID === "null") {
             window.location.href = '/index.php?page=login';

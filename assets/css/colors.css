@@ -13,10 +13,12 @@
 --footer-bg: var(--ci-grey-dark);
 --user-block-bg-color: rgba(255, 255, 255, 0.7);
 --user-block-border: #cccccc;
+
  
 
 /* Hintergrund & Text */ 
 --main-bg-color: var(--ci-grey-light);
+--secondary-bg-color: var();
 --text-color: var(--ci-black);
 --hr-color: var(--ci-grey);
 --headline-color: var(--ci-green);
@@ -58,12 +60,37 @@
 /* Footer */
 --footer-bg: var(--ci-grey-dark);
 --footer-color: var(--ci-white);
+
+
+/* Produktcontainer */
+--product-container: var(--secondary-bg-color);
+--product-specs-bg: rgb(248, 248, 248);
+--product-border: rgb(224, 224, 224);
+--product-border--hover: rgb(196, 196, 196);
+
+
+/* Index */
+--section-title: var(--ci-black);
+
+--product-text: #000000;
+
+--carousel-button-bg: var(--secondary-bg-color);
+--carousel-button--hover: rgb(230, 230, 230);
+--carousel-button-border: rgb(230, 230, 230);
+--carousel-button-border--hover: #c4c4c4;
+--carousel-color: var(--ci-black);
+
+--testimonial-border: rgb(173, 173, 173);
+--testimonial-text: black;
+
+
 }
 
 /* ===================================== Dark Mode (Überschreibungen) ===================================== */ 
 .darkMode { 
 --main-bg-color: #1a1a1a;
---text-color: #eeeeee;
+--secondary-bg-color: rgb(32, 32, 32);
+--text-color: #6e6e6e;
 --hr-color: #777777;
 --user-block-bg-color: rgba(75, 75, 75, 0.9);
 --user-block-border: #888888;
@@ -97,6 +124,31 @@
 --direction-bg: #09331b;
 --direction-hover: #092e18;
 --direction-text: var(--ci-black);
+
+
+
+/* Produktcontainer */
+--product-container: var(--main-bg-color);
+--product-specs-bg: rgb(34, 34, 34);
+--product-border: rgb(56, 56, 56);
+--product-border--hover: rgb(88, 88, 88);
+
+
+/* Index */
+--section-title: rgb(243, 243, 243);
+
+--product-text: #ffffff;
+
+--carousel-button: #3a3a3a;
+--carousel-button--hover: #5c5c5c;
+--carousel-button-border: #4a4a4a;
+--carousel-button-border--hover: #6e6e6e;
+--carousel-color: var(--ci-white);
+
+--testimonial-border: rgb(92, 92, 92);
+--testimonial-text: rgb(228, 228, 228);
+
+
 }
 
 /* ===================================== Basis-Elemente (Global gültig) ===================================== */ 
