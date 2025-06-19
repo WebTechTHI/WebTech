@@ -26,6 +26,19 @@
   color: var(--footer-color);
 }
 
+.cart-item img {
+  width: 50px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid var(--hr-color);
+}
+
 .cart-table th, 
 .cart-table td {
   padding: 15px 20px;
