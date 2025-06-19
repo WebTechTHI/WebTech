@@ -15,7 +15,13 @@
 
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
-    <script src="/assets/javascript/Warenkorb.js"></script>
+
+    <script>
+        window.USER_ID = <?= isset($_SESSION['user']['user_id']) ? (int) $_SESSION['user']['user_id'] : 'null'; ?>;
+        console.log("USER_ID:", window.USER_ID);
+    </script>
+
+
 
 
 </head>
@@ -54,7 +60,7 @@
                 <span>Gesamt:</span>
                 <span>0,00 €</span>
             </div>
-            <button class="zurKasseButton">Zur Kasse</button>
+            <button class="zurKasseButton">Zum Warenkorb</button>
         </div>
     </div>
 
@@ -294,7 +300,7 @@
 
     </script>
 
-
+    <script src="/assets/javascript/Warenkorb.js"></script>
 </body>
 
 </html>

@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const gesamt = document.querySelector('.warenkorbGesamt span:last-child');
     const leerText = document.querySelector('.leerNachricht');
     const hinzufuegenBtn = document.querySelector('.buy-btn');
+    const zurKasseButton = document.querySelector('.zurKasseButton');
 
     let warenkorb = ladeWarenkorbAusLocalStorage();
     aktualisiereWarenkorb();
 
-
-    // Öffnen/Schließen des Warenkorbs
+    // Öffnen/Schließen der Seitenleiste
     toggleBtn?.addEventListener('click', () => {
         container.classList.add('warenkorbOffen');
         overlay.style.display = 'block';
@@ -30,8 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'none';
     });
 
-    // In den Warenkorb hinzufügen
+    // ✅ Produkt einzeln hinzufügen (sofort in DB)
     hinzufuegenBtn?.addEventListener('click', () => {
+        if (!window.USER_ID || window.USER_ID === null || window.USER_ID === "null") {
+            window.location.href = '/index.php?page=login';
+            return;
+        }
+
         const menge = parseInt(mengeInput.value);
         const produkt = {
             id: hinzufuegenBtn.dataset.id,
@@ -50,8 +55,58 @@ document.addEventListener('DOMContentLoaded', function () {
         aktualisiereWarenkorb();
         speichereWarenkorbInLocalStorage(warenkorb);
 
+        // einzelnes Produkt sofort speichern
+        fetch('/api/addToCart.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                product_id: produkt.id,
+                quantity: menge
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log('Produkt in DB gespeichert');
+            } else {
+                console.error('Fehler:', data.message);
+            }
+        })
+        .catch(err => {
+            console.error('API Fehler:', err);
+        });
+
         container.classList.add('warenkorbOffen');
         overlay.style.display = 'block';
+    });
+
+    // ✅ GANZEN LocalStorage-Warenkorb speichern & weiterleiten
+    zurKasseButton?.addEventListener('click', () => {
+        if (!window.USER_ID || window.USER_ID === null || window.USER_ID === "null") {
+            window.location.href = '/index.php?page=login';
+            return;
+        }
+
+        // localStorage Warenkorb laden
+        const warenkorb = ladeWarenkorbAusLocalStorage();
+
+        fetch('/api/addToCart.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ items: warenkorb })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Danach weiterleiten zur Cart-Seite
+                window.location.href = '/index.php?page=cart';
+            } else {
+                console.error('Fehler:', data.message);
+            }
+        })
+        .catch(err => {
+            console.error('API Fehler:', err);
+        });
     });
 
     function aktualisiereWarenkorb() {
@@ -91,21 +146,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (warenkorb[i].quantity > 1) warenkorb[i].quantity--;
                 aktualisiereWarenkorb();
                 speichereWarenkorbInLocalStorage(warenkorb);
-
             });
 
             element.querySelector('.menge-plus').addEventListener('click', () => {
                 warenkorb[i].quantity++;
                 aktualisiereWarenkorb();
                 speichereWarenkorbInLocalStorage(warenkorb);
-
             });
 
             element.querySelector('.artikelEntfernen').addEventListener('click', () => {
                 warenkorb.splice(i, 1);
                 aktualisiereWarenkorb();
                 speichereWarenkorbInLocalStorage(warenkorb);
-
             });
         });
 
@@ -113,20 +165,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-  function updateQtyValue(operation) {
-        let menge = document.getElementById("mengenValue");
-        if (operation == "increase") {
-            menge.value++;
-        } 
-
-        if (operation == "decrease" &&menge.value >1) {
-            menge.value--;
-        } 
+function updateQtyValue(operation) {
+    let menge = document.getElementById("mengenValue");
+    if (operation == "increase") {
+        menge.value++;
     }
+    if (operation == "decrease" && menge.value > 1) {
+        menge.value--;
+    }
+}
 
-
-    function ladeWarenkorbAusLocalStorage() {
+function ladeWarenkorbAusLocalStorage() {
     const data = localStorage.getItem('warenkorb');
     return data ? JSON.parse(data) : [];
 }

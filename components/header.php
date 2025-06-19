@@ -3,7 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="/assets/css/components/header.css">
-    <link type="javascript" src="/assets/javascript/toggleTheme.js">
+    <script src="/assets/javascript/toggleTheme.js"></script> <!-- statt Link zu script geänder -->
+
 </head>
 
 <body>
@@ -13,33 +14,34 @@
             <img class="header-icon" id="themeToggleBtn" alt="toggle-theme-btn" onclick="toggleTheme()">
             <div class="login-user-container">
 
-                    <!-- Falls ein Admin angemeldet ist, kann dieser auf das Admin-panel zugreifen. -->
-                <?php if($_SESSION['user']['role_id'] === 1){?>
-                <a href="/index.php?page=admin">ADMIN</a>
-                
-                <?php }?>
-
-                <!-- Der Login-button wird nur angezeigt, falls der Benutzer abgemeldet ist. -->
-                <?php if(!isset($_SESSION['user'])){?>
-
-
-                <a href="/index.php?page=login">
-                    <img class="header-icon" src="/assets/images/icons/login.svg" alt="Login/Registrierung"
-                        title="Login/Registrierung">
-                </a>
+                <!-- Falls ein Admin angemeldet ist, kann dieser auf das Admin-panel zugreifen. -->
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role_id'] === 1) { ?>
+                    <!-- Nur diese Zeile ist neu eingefügt von Laurin -->
+                    <a href="/index.php?page=admin">ADMIN</a>
 
                 <?php } ?>
 
-                <?php if(isset($_SESSION['user'])){?>
-                    <a href="/index.php?page=user">
-                    <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
-                </a>
+                <!-- Der Login-button wird nur angezeigt, falls der Benutzer abgemeldet ist. -->
+                <?php if (!isset($_SESSION['user'])) { ?>
 
-               <a href="/index.php?page=logout">
-                    <img class="header-icon" src="/assets/images/icons/logout.svg" alt="Logout" title="Logout">
-                </a>
-                
-                <?php }?>
+
+                    <a href="/index.php?page=login">
+                        <img class="header-icon" src="/assets/images/icons/login.svg" alt="Login/Registrierung"
+                            title="Login/Registrierung">
+                    </a>
+
+                <?php } ?>
+
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <a href="/index.php?page=user">
+                        <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
+                    </a>
+
+                    <a href="/index.php?page=logout">
+                        <img class="header-icon" src="/assets/images/icons/logout.svg" alt="Logout" title="Logout">
+                    </a>
+
+                <?php } ?>
             </div>
         </div>
 
@@ -80,15 +82,16 @@
                         <a href="/configurator.php">Konfigurator</a>
                     </li>
                     <li>
-                        <a href="/index.php?page=category&category=angebote">Sale & Aktionen <span class="red-badge">5</span></a>
+                        <a href="/index.php?page=category&category=angebote">Sale & Aktionen <span
+                                class="red-badge">5</span></a>
                     </li>
                 </ul>
             </div>
 
             <!-- Warenkorb und Wunschliste-->
             <div class="wishlist-cart-container">
-             <!-- Suchfeld NEU NUR ZUM TESTEN-->   
-              <!-- ============================================-->   
+                <!-- Suchfeld NEU NUR ZUM TESTEN-->
+                <!-- ============================================-->
                 <div class="search-container">
                     <img class="header-icon" id="search-icon" src="/assets/images/icons/search.svg" alt="Suche"
                         title="Suche" onclick="toggleSearch()">
@@ -97,16 +100,18 @@
                         <button class="search-button" onclick="performSearch()">Suchen</button>
                     </div>
                 </div>
-                <!-- ============================================--> 
-                 <!-- Suchfeld NEU NUR ZUM TESTEN-->   
+                <!-- ============================================-->
+                <!-- Suchfeld NEU NUR ZUM TESTEN-->
                 <a href="/pages/wishlist.php" title="Wunschliste">
                     <img class="header-icon" id="wishlist-icon" src="/assets/images/icons/favorite-border.svg"
                         alt="wishlist">
                 </a>
-                <a href="/pages/shoppingBasket.php" class="cart">
+                <a href="/index.php?page=cart" class="cart">
                     MEIN WARENKORB
                     <span class="cart-badge">0</span>
                 </a>
+
+
             </div>
 
         </nav>
@@ -114,8 +119,8 @@
 
 
 
-    <!-- Suchfeld NEU NUR ZUM TESTEN-->   
-              <!-- ============================================--> 
+    <!-- Suchfeld NEU NUR ZUM TESTEN-->
+    <!-- ============================================-->
     <script>
         function toggleSearch() {
             const searchField = document.getElementById('search-field');

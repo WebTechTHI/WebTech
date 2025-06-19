@@ -11,7 +11,7 @@ switch ($page) {
         $controller = new RegistrationController();
         $controller->handleRequest();
         exit; //damit restliche html nicht noch auch geladen wird
-        
+
     case "login":
         require_once "controller/LoginController.php";
         $controller = new LoginController();
@@ -22,7 +22,7 @@ switch ($page) {
         require_once "controller/UserController.php";
         $controller = new UserController();
         $controller->handleRequest();
-        exit;    
+        exit;
 
 
     case "logout":
@@ -30,7 +30,7 @@ switch ($page) {
         $controller = new LogoutController();
         $controller->handleRequest();
         exit;
-        
+
     case "about":
         require_once "controller/AboutController.php";
         $controller = new AboutController();
@@ -41,14 +41,14 @@ switch ($page) {
         require_once "controller/CategoryController.php";
         $controller = new CategoryController();
         $controller->handleRequest();
-        exit;    
+        exit;
 
     case "product":
         require_once "controller/ProductController.php";
         $controller = new ProductController();
         $controller->handleRequest();
-        exit; 
-    
+        exit;
+
     case "":
     case "home":
         require_once "controller/HomeController.php";
@@ -61,6 +61,13 @@ switch ($page) {
         $controller = new AdminController();
         $controller->handleRequest();
         exit;
+
+    case "cart":
+        require_once "controller/CartController.php";
+        $controller = new CartController();
+        $controller->handleRequest();
+        exit;
+
 
     default:
         require_once "controller/FileNotFoundController.php";
