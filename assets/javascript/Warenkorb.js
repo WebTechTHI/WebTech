@@ -11,8 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const hinzufuegenBtn = document.querySelector('.buy-btn');
     const zurKasseButton = document.querySelector('.zurKasseButton');
 
-    let warenkorb = ladeWarenkorbAusLocalStorage();
-    aktualisiereWarenkorb();
+    // Initialisiere den Warenkorb basierend auf dem Benutzerstatus
+    if (window.USER_ID && window.USER_ID !== null && window.USER_ID !== "null" && window.USER_ID !== 0 && window.USER_ID !== "0") {
+        aktualisiereWarenkorbVomServer(); // Lädt vom Server, speichert in localStorage und aktualisiert UI
+    } else {
+        warenkorb = ladeWarenkorbAusLocalStorage(); // Für Gäste aus localStorage laden
+        aktualisiereWarenkorb(); // UI für Gäste aktualisieren
+    }
 
     // Öffnen/Schließen der Seitenleiste
     toggleBtn?.addEventListener('click', () => {
@@ -30,19 +35,27 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'none';
     });
 
-    // Produkt einzeln hinzufügen (sofort in DB)
+    // Produkt einzeln hinzufügen
     hinzufuegenBtn?.addEventListener('click', () => {
-        if (!window.USER_ID || window.USER_ID === null || window.USER_ID === "null") {
-            window.location.href = '/index.php?page=login';
+        // Login check removed - guests can add to cart (session cart)
+
+        const menge = parseInt(mengeInput?.value || '1'); // Default to 1 if mengeInput is not found or value is invalid
+        const produktId = hinzufuegenBtn.dataset.id;
+        const produktName = hinzufuegenBtn.dataset.name;
+        const produktPrice = parseFloat(hinzufuegenBtn.dataset.price);
+        const produktImage = hinzufuegenBtn.dataset.image;
+
+        if (!produktId || !produktName || isNaN(produktPrice) || !produktImage) {
+            console.error("Produkt-Daten unvollständig oder fehlerhaft:", hinzufuegenBtn.dataset);
+            alert("Fehler: Produktdaten konnten nicht geladen werden.");
             return;
         }
 
-        const menge = parseInt(mengeInput.value);
         const produkt = {
-            id: hinzufuegenBtn.dataset.id,
-            name: hinzufuegenBtn.dataset.name,
-            price: parseFloat(hinzufuegenBtn.dataset.price),
-            image: hinzufuegenBtn.dataset.image
+            id: produktId, // Ensure 'id' is used consistently
+            name: produktName,
+            price: produktPrice,
+            image: produktImage
         };
 
         const index = warenkorb.findIndex(e => e.id === produkt.id);
@@ -53,16 +66,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         aktualisiereWarenkorb();
-        speichereWarenkorbInLocalStorage(warenkorb);
+        speichereWarenkorbInLocalStorage(warenkorb); // Update localStorage for guests' immediate UI consistency
 
-        // einzelnes Produkt sofort speichern
+        // Produkt an Backend senden (speichert in DB für User, in Session für Gäste)
+        const payload = {
+            product_id: produkt.id, // Original key, backend might still use it for DB operations
+            id: produkt.id,         // For guest session cart consistency (id, name, price, image, quantity)
+            name: produkt.name,
+            price: produkt.price,
+            image: produkt.image,
+            quantity: menge
+        };
+
         fetch('/api/addToCart.php', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                product_id: produkt.id,
-                quantity: menge
-            })
+            body: JSON.stringify(payload)
         })
         .then(res => res.json())
         .then(data => {
@@ -80,15 +99,22 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'block';
     });
 
-    // GANZEN LocalStorage-Warenkorb speichern & weiterleiten
+    // GANZEN LocalStorage-Warenkorb mit Backend synchronisieren & weiterleiten zur Cart-Seite
     zurKasseButton?.addEventListener('click', () => {
-        if (!window.USER_ID || window.USER_ID === null || window.USER_ID === "null") {
-            window.location.href = '/index.php?page=login';
-            return;
-        }
+        // Login check removed. Guests will have their localStorage cart synced to their session cart.
+        // Logged-in users will have their localStorage cart merged with their DB cart.
 
-        // localStorage Warenkorb laden
-        const warenkorb = ladeWarenkorbAusLocalStorage();
+        const currentCartData = ladeWarenkorbAusLocalStorage();
+
+        // Ensure there's something to sync, though an empty array is fine for the API.
+        // if (currentCartData.length === 0) {
+        //     // If cart is empty, maybe just redirect? Or let API handle empty array.
+        //     // For now, we'll always sync, an empty cart sync might clear the session/db cart if not handled carefully by API.
+        //     // The current api/addToCart.php with `items` array expects to set quantities,
+        //     // so sending an empty items array might not do anything or might be interpreted as "clear cart"
+        //     // if the backend logic for items:[] is to replace the cart.
+        //     // Given current backend: `foreach ($data['items'] as $item)` - an empty array will simply do nothing.
+        // }
 
         fetch('/api/addToCart.php', {
             method: 'POST',
@@ -182,4 +208,42 @@ function ladeWarenkorbAusLocalStorage() {
 
 function speichereWarenkorbInLocalStorage(warenkorb) {
     localStorage.setItem('warenkorb', JSON.stringify(warenkorb));
+}
+
+// Globale Variable warenkorb, damit sie von aktualisiereWarenkorbVomServer aktualisiert werden kann
+let warenkorb = [];
+
+async function aktualisiereWarenkorbVomServer() {
+    try {
+        const response = await fetch('/api/getCart.php');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        if (data.status === 'success' && Array.isArray(data.items)) {
+            warenkorb = data.items.map(item => ({
+                ...item,
+                // Ensure quantity is a number, price is a number.
+                // getCart.php for logged-in users already casts price to float.
+                // getCart.php for guests also casts id, price, quantity.
+                // This is an additional safety net.
+                id: String(item.id), // Ensure ID is string, matching dataset and localStorage expectations
+                quantity: parseInt(item.quantity, 10),
+                price: parseFloat(item.price)
+            }));
+            speichereWarenkorbInLocalStorage(warenkorb);
+        } else {
+            console.error('Failed to fetch cart from server or invalid format:', data.message);
+            // Fallback or error handling: If server fails, maybe load from local storage?
+            // For now, if server call fails for logged-in user, they might see an empty/stale cart.
+            // Consider loading from localStorage as a fallback:
+            // warenkorb = ladeWarenkorbAusLocalStorage();
+        }
+    } catch (error) {
+        console.error('Error fetching cart from server:', error);
+        // Fallback for network errors etc.
+        // warenkorb = ladeWarenkorbAusLocalStorage();
+    }
+    aktualisiereWarenkorb(); // Update UI in all cases (success or error, to show empty or fallback)
 }
