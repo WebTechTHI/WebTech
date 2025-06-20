@@ -27,6 +27,7 @@ class CartModel {
         }
 
         return $items;
+
     }
 
     // ✅ 2) NEU: Session-Warenkorb verarbeiten, um View zu befüllen

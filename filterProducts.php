@@ -30,7 +30,7 @@ ob_start(); // Startet Pufferspeicherung für Produkte
                 echo '<span class="product-badge">SALE %</span>';
             }  ?>
             <div class="product-image">
-                <a class="product-image-buy" href="/productPages/product.php?id=<?php echo $product['product_id']; ?>">
+                <a class="product-image-buy" href="/index.php?page=product&id=<?php echo $product['product_id']; ?>">
                     <img src="<?php echo htmlspecialchars($firstImage); ?>"
                         alt="<?php echo htmlspecialchars($product['alt_text'] ?? $product['name']); ?>">
                 </a>
@@ -48,7 +48,7 @@ ob_start(); // Startet Pufferspeicherung für Produkte
                     </div>
                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                     <div class="button-container">
-                        <a href="/productPages/product.php?id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr zum
+                        <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr zum
                             produkt</a>
                         <button class="favorite-btn">
                             <img src="/assets/images/icons/favorite-border.svg" alt="Favorit" />

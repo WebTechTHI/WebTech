@@ -166,8 +166,6 @@
                 <div class="tab-item active">Produktdetails</div>
                 <div class="tab-item">Technische Daten</div>
                 <div class="tab-item">Bewertungen</div>
-                <div class="tab-item">PLATZHALTER</div>
-                <div class="tab-item">PLATZHALTER</div>
             </div>
 
             <div class="tab-content">
