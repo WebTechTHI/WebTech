@@ -9,26 +9,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const gesamt = document.querySelector('.warenkorbGesamt span:last-child');
     const leerText = document.querySelector('.leerNachricht');
     const hinzufuegenBtn = document.querySelector('.buy-btn');
-    const zurKasseButton = document.querySelector('.zurKasseButton');
+    const zumWarenkorbBtn = document.querySelector('.zurKasseButton');
 
     let warenkorb = [];
 
-    // ✅ NEU: Session-Warenkorb vom Server laden statt LocalStorage
+    // ✅ Session-Warenkorb vom Server laden (jetzt mit Produktdetails)
     fetch('/api/getCartSession.php')
         .then(res => res.json())
         .then(data => {
-            warenkorb = [];
-            for (const pid in data.cart) {
-                warenkorb.push({
-                    id: pid,
-                    quantity: data.cart[pid],
-                    // Optional: ohne Name/Preis/Image, wenn du das brauchst => hier befüllen
-                    name: '', 
-                    price: 0,
-                    image: ''
-                });
+            if (data.status === 'success') {
+                // ✅ Neue Struktur: Array von Objekten mit allen Details
+                warenkorb = data.cart || [];
+                aktualisiereWarenkorb();
             }
-            aktualisiereWarenkorb();
+        })
+        .catch(err => {
+            console.error('Fehler beim Laden des Warenkorbs:', err);
         });
 
     // Öffnen/Schließen der Seitenleiste
@@ -47,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'none';
     });
 
-    // Produkt hinzufügen ➜ NEU: nur Session verwenden!
+    // Produkt hinzufügen
     hinzufuegenBtn?.addEventListener('click', () => {
         const menge = parseInt(mengeInput.value);
         const produkt = {
@@ -67,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         aktualisiereWarenkorb();
 
-        // Sofort ins PHP Session schreiben
+        // Session updaten
         fetch('/api/addToCartSession.php', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -92,25 +88,15 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'block';
     });
 
-    // Checkout ➜ NEU: nur Session-Check & Weiterleitung
-    zurKasseButton?.addEventListener('click', () => {
-        fetch('/api/checkout.php')
-            .then(res => res.json())
-            .then(data => {
-                if (data.status === 'not_logged_in') {
-                    window.location.href = '/index.php?page=login';
-                } else {
-                    window.location.href = '/index.php?page=payment';
-                }
-            })
-            .catch(err => {
-                console.error('API Fehler:', err);
-            });
+    zumWarenkorbBtn?.addEventListener('click', () => { 
+        window.location.href = '/index.php?page=cart';
     });
 
     function aktualisiereWarenkorb() {
-        const artikelZahl = warenkorb.reduce((sum, e) => sum + e.quantity, 0);
-        if (anzahl) anzahl.textContent = artikelZahl;
+         if (anzahl) anzahl.textContent = warenkorb.length;
+
+         const headerBadge = document.querySelector('.cart-badge');
+        if (headerBadge) headerBadge.textContent = warenkorb.length;
 
         inhalt.innerHTML = '';
         if (warenkorb.length === 0) {
@@ -142,19 +128,20 @@ document.addEventListener('DOMContentLoaded', function () {
             inhalt.appendChild(element);
 
             element.querySelector('.menge-minus').addEventListener('click', () => {
-                if (warenkorb[i].quantity > 1) warenkorb[i].quantity--;
+                if (warenkorb[i].quantity > 1) {
+                    warenkorb[i].quantity--;
+                    aktualisiereWarenkorb();
 
-                aktualisiereWarenkorb();
-
-                // SOFORT Session updaten
-                fetch('/api/addToCartSession.php', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        product_id: artikel.id,
-                        quantity: -1 // Minus-Logik, du kannst auch eigene updateCartSession.php machen
-                    })
-                });
+                    // Session updaten
+                    fetch('/api/addToCartSession.php', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            product_id: artikel.id,
+                            quantity: -1
+                        })
+                    });
+                }
             });
 
             element.querySelector('.menge-plus').addEventListener('click', () => {

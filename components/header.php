@@ -1,3 +1,14 @@
+<?php
+$cartCount = 0;
+if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+    // Variante A: Zähle einfach die Items im Array
+    $cartCount = count($_SESSION['cart']);
+
+    // Variante B: Falls du pro Eintrag eine Menge speicherst, summiere die Quantitäten
+    // $cartCount = array_sum(array_column($_SESSION['cart'], 'quantity'));
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -108,7 +119,7 @@
                 </a>
                 <a href="/index.php?page=cart" class="cart">
                     MEIN WARENKORB
-                    <span class="cart-badge">0</span>
+                    <span class="cart-badge"><?= htmlspecialchars($cartCount, ENT_QUOTES, 'UTF-8') ?></span>
                 </a>
 
 
