@@ -494,8 +494,9 @@ body {
 .side-promo {
   position: relative;
   padding: 30px;
-  border-radius: 10px solid white;
+  border-radius: 10px ;
   border: 2px solid transparent;   
+  background-color:white;
   color: white;
   z-index: 0;
   isolation: isolate;
@@ -518,7 +519,7 @@ body {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  z-index: -1;
+  z-index: -5;
   padding: 3px;
   border-radius: 10px;
   animation: 3s spin linear infinite;
