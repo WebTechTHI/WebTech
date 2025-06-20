@@ -494,50 +494,44 @@ body {
 .side-promo {
   position: relative;
   padding: 30px;
-  border-radius: 10px ;
-  border: 2px solid transparent;   
-  background-color:white;
-  color: white;
+  border-radius: 10px;
+  color: rgb(36, 36, 36);
   z-index: 0;
-  isolation: isolate;
-  z-index: 10;
+  isolation: isolate; /* damit ::before hinter dem Inhalt bleibt */
 }
 
 
-@property --degree{
+
+.side-promo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 5px; /* Stärke des Rahmens */
+  border-radius: inherit;
+  background: conic-gradient(from var(--degree), rgb(201, 11, 11), rgb(25, 28, 202), rgb(201, 16, 16), rgb(26, 29, 209), rgb(201, 11, 11));
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: spin 3s linear infinite;
+  z-index: -1;
+}
+
+@property --degree {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
 
-.side-promo::after, .side-promo::before{
-  content: '';
-  position: absolute;
-  height: 90%;
-  width: 90%;
-  background-image: conic-gradient(from var(--degree), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  z-index: -5;
-  padding: 3px;
-  border-radius: 10px;
-  animation: 3s spin linear infinite;
-}
-
-.side-promo::before{
-  filter: blur(1.5rem);
-  opacity: 0.5;
-}
-
-@keyframes spin{
-  from{
+@keyframes spin {
+  from {
     --degree: 0deg;
   }
-  to{
+  to {
     --degree: 360deg;
   }
 }
+
 
 /* -------------   */
 /* -------------   */
