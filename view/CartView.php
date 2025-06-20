@@ -8,10 +8,9 @@
     <link rel="icon" href="../assets/images/logo/favicon.png" />
 
     <link rel="stylesheet" href="../assets/css/colors.css" />
-    <link rel="stylesheet" href="/assets/css/cartPage.css">    
+    <link rel="stylesheet" href="/assets/css/cartPage.css">
     <link rel="stylesheet" href="../assets/css/specialHeader.css" />
     <link rel="stylesheet" href="../assets/css/footer.css" />
-
     <link rel="stylesheet" href="../assets/css/warenkorbSide.css" />
 
     <script src="/assets/javascript/toggleTheme.js"></script>
@@ -28,7 +27,6 @@
             onclick="toggleTheme()" />
     </header>
 
-
     <main class="cart-page">
         <h1>Dein Warenkorb</h1>
 
@@ -38,15 +36,16 @@
             <div class="cart-items">
                 <?php $total = 0; ?>
                 <?php foreach ($cartItems as $item): ?>
-                    <?php $lineTotal = $item['price'] * $item['quantity']; ?>
-                    <?php $total += $lineTotal; ?>
-
+                    <?php
+                    $lineTotal = $item['price'] * $item['quantity'];
+                    $total += $lineTotal;
+                    ?>
                     <div class="cart-item">
                         <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                         <div class="details">
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                             <p>Preis: <?= number_format($item['price'], 2, ',', '.') ?> €</p>
-                            <p>Menge: <?= $item['quantity'] ?></p>
+                            <p>Menge: <?= (int) $item['quantity'] ?></p>
                             <p>Summe: <?= number_format($lineTotal, 2, ',', '.') ?> €</p>
                         </div>
                     </div>
@@ -55,7 +54,8 @@
 
             <h2>Gesamt: <?= number_format($total, 2, ',', '.') ?> €</h2>
 
-            <a href="checkout.php" class="btn-checkout">Zur Kasse</a>
+            <!-- ✅ Neue Checkout-Logik: Link auf die serverseitige checkout.php -->
+            <a href="/api/checkout.php" class="btn-checkout">Zur Kasse</a>
         <?php endif; ?>
     </main>
 
@@ -66,7 +66,6 @@
             <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
         </nav>
     </footer>
-
 
 </body>
 
