@@ -3,23 +3,18 @@ require_once __DIR__ . '/../model/CartModel.php';
 
 class CartController {
     public function handleRequest() {
-        // Kein session_start(), läuft global über index.php
+        // Session global aktiv (kommt über index.php)
 
-        // Korrekt prüfen: User eingeloggt & user_id vorhanden
-        if (!isset($_SESSION['user']) || !isset($_SESSION['user']['user_id'])) {
-            header('Location: /index.php?page=login');
-            exit;
+        // 1) Hole Session-Warenkorb (egal ob eingeloggt oder nicht)
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
         }
 
-        // user_id sauber lesen:
-        $userId = $_SESSION['user']['user_id'];
-
+        // 2) Mit CartModel die Produktinfos aus DB laden (Name, Preis, Bild etc.)
         $model = new CartModel();
-        $cartItems = $model->getCartItems($userId);
+        $cartItems = $model->getProductsFromSession($_SESSION['cart']);
 
+        // 3) Übergib an View
         include __DIR__ . '/../view/CartView.php';
     }
 }
-
-
-// Sicher prüfen    // Du hast nur $_SESSION['user'], keine user_id extra
