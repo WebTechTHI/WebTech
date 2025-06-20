@@ -509,7 +509,7 @@ body {
   padding: 5px; /* Stärke des Rahmens */
   border-radius: inherit;
   background: conic-gradient(from var(--degree), rgb(201, 11, 11), rgb(25, 28, 202), rgb(201, 16, 16), rgb(26, 29, 209), rgb(201, 11, 11));
-  -webkit-mask: 
+  -webkit-mask:                                     /*  definiert eine maske, in der das element sichtbar sein soll */
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
