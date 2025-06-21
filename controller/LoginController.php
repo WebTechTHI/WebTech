@@ -30,6 +30,12 @@ class LoginController
 
                 // Optionale Erfolgsmeldung
                 $_SESSION["erfolgsmeldung"] = "Willkommen, " . htmlspecialchars($result['username']) . "!<br>Ihre Benutzer ID lautet: " . $result['user_id'];
+                
+//                           Result enthält user id (und auch username) als Schlüssel das brauchen wir um getUserData aufzurufen mit genau der ID 
+//„Ich nehme aus $result nur die user_id.
+//Die gebe ich an getUserData — und DAS Ergebnis (komplettes User-Array) speichere ich als $_SESSION['user'].
+//So habe ich ab sofort ALLE User-Daten in der Session gespeichert, nicht nur die ID.“
+
 
                 // Weiterleitung ins Benutzerprofil
                 header("Location: /index.php?page=user");

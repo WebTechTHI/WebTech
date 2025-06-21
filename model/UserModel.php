@@ -4,6 +4,12 @@ require_once "db_verbindung.php";
 
 class UserModel
 {
+
+    //Ich habe getUserData einmal als allgemeine Helper-Funktion, um in jedem Model schnell auf Userdaten zugreifen zu können — z. B. beim Login und bei der Registrierung.
+    //Zusätzlich gibt’s getUserData nochmal im UserModel — dort sauber als OOP-Methode, speziell für den Profilbereich.
+    //So trenne ich allgemeine Helfer (userFunctions) von Models, die speziell nur für ein Feature sind
+
+
     public function getUserData($user_id)
     {
 
@@ -30,6 +36,7 @@ class UserModel
         return $defaultData;
     }
 
+    // Speichert geänderte Userdaten in DB hier wenn Function aufgerufen wird
     public function updateUserData($user_id, $username, $hashedPassword, $richtiger_name, $land, $stadt, $email)
     {
         global $conn;
@@ -44,6 +51,7 @@ class UserModel
 
 
 
+    // Prüft, ob Username bei anderem User schon existiert
     public function usernameExists($username, $user_id)
     {
 
@@ -60,6 +68,7 @@ class UserModel
     }
 
 
+    // Holt aktuelles Passwort, falls User kein neues eingibt
     public function getCurrentPassword($user_id)
     {
 

@@ -16,7 +16,6 @@
 
     <!--JavaScript hier noch einfügen-->
     <script src="/assets/javascript/toggleTheme.js"></script>
-
     <script src="/assets/javascript/Validierung_User.js"></script>
     <script src="/assets/javascript/uhrzeit.js"></script>
 
