@@ -27,7 +27,7 @@
     </header>
 
 
-
+    <!-- Wenn PHP Fehlermeldung existiert, dann zeige sie an -->
     <?php if (!empty($fehlermeldung)):              //Nur Farbe und Layout für Meldungen    ?>
         <div class="meldung-container meldung-fehler">
             <?= $fehlermeldung ?>
