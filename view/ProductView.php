@@ -5,11 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MLR - <?php echo htmlspecialchars($product['name']) ?></title>
+
     <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
-
-    <link rel="stylesheet" href="/assets/css/mystyle.css">
-
-
+    <link rel="stylesheet" href="/assets/css/colors.css">
     <link rel="stylesheet" href="/assets/css/productSite.css">
     <link rel="stylesheet" href="/assets/css/warenkorbSide.css">
 
@@ -20,9 +18,6 @@
         window.USER_ID = <?= isset($_SESSION['user']['user_id']) ? (int) $_SESSION['user']['user_id'] : 'null'; ?>;
         console.log("USER_ID:", window.USER_ID);
     </script>
-
-
-
 
 </head>
 

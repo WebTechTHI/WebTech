@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="/assets/css/index.css">
     <link rel="stylesheet" href="/assets/css/colors.css">
-    <link rel="stylesheet" href="/assets/css/mystyle.css">
 
     <script src="/assets/javascript/toggleTheme.js"></script>
     <script src="/assets/javascript/changeHero.js"></script>

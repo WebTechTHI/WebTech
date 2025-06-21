@@ -1,192 +1,332 @@
-/* ===================================== Farbdefinitionen – Corporate Design ===================================== */ 
-/* Primärfarben */ 
-:root { 
+/* ===================================== Farbdefinitionen – Corporate Design ===================================== */
+/* Primärfarben */
+:root {
   --ci-black: #0c0c0c;
---ci-white: #ffffff;
---ci-red: #d31e07;
---ci-red-dark: #870000;
---ci-grey-light: #eeeeee;
---ci-grey: #666666;
---ci-grey-dark: #333333;
---ci-green: #278d5e;
---header-bg: var(--ci-grey-dark);
---footer-bg: var(--ci-grey-dark);
---user-block-bg-color: rgba(255, 255, 255, 0.7);
---user-block-border: #cccccc;
+  --ci-white: #ffffff;
+  --ci-red: #d31e07;
+  --ci-red-dark: #870000;
+  --ci-grey-light: #eeeeee;
+  --ci-grey: #666666;
+  --ci-grey-dark: #333333;
+  --ci-green: #278d5e;
 
- 
+  /* Header & Footer */
+  --header-bg: var(--ci-grey-dark);
+  --footer-bg: var(--ci-grey-dark);
+  --footer-color: var(--ci-white);
 
-/* Hintergrund & Text */ 
---main-bg-color: var(--ci-grey-light);
---secondary-bg-color: var();
---text-color: var(--ci-black);
---hr-color: var(--ci-grey);
---headline-color: var(--ci-green);
- 
+  /* Hintergrund & Text */
+  --main-bg-color: var(--ci-grey-light);
+  --secondary-bg-color: var();
+  --text-color: var(--ci-black);
+  --hr-color: var(--ci-grey);
+  --headline-color: var(--ci-green);
 
-/* Links */ 
---link-color: var(--ci-black);
---link-hover-color: var(--ci-white);
- 
+  /* Links */
+  --link-color: var(--ci-black);
+  --link-hover-color: var(--ci-white);
 
-/* Formulare */ 
---form-bg: rgba(255, 255, 255, 0.2);
---form-border: var(--ci-black);
---input-bg: rgba(238, 238, 238, 0.678);
---input-color: var(--ci-black);
---input-placeholder: rgba(90, 90, 90, 0.7);
---input-border-hover: var(--ci-green);
---input-border-focus: rgba(0, 0, 0, 0.2);
---input-bg-hover: #e6e6e6;
---input-bg-focus: rgba(255, 255, 255, 0.6);
- 
+  /* Formulare */
+  --form-bg: rgba(255, 255, 255, 0.2);
+  --form-border: var(--ci-black);
+  --input-bg: rgba(238, 238, 238, 0.678);
+  --input-color: var(--ci-black);
+  --input-placeholder: rgba(90, 90, 90, 0.7);
+  --input-border-hover: var(--ci-green);
+  --input-border-focus: rgba(0, 0, 0, 0.2);
+  --input-bg-hover: #e6e6e6;
+  --input-bg-focus: rgba(255, 255, 255, 0.6);
 
-/* Buttons */ 
---submit-bg: var(--ci-red);
---submit-hover: var(--ci-red-dark);
---submit-text: var(--ci-white);
- 
+  /* Buttons */
+  --submit-bg: var(--ci-red);
+  --submit-hover: var(--ci-red-dark);
+  --submit-text: var(--ci-white);
 
---direction-bg: var(--ci-green);
---direction-hover: #10532c;
---direction-text: var(--ci-white);
- 
+  --direction-bg: var(--ci-green);
+  --direction-hover: #10532c;
+  --direction-text: var(--ci-white);
 
-/* Validierung */ 
---input-valid: green;
---input-invalid: red;
- 
+  /* Validierung */
+  --input-valid: green;
+  --input-invalid: red;
 
-/* Footer */
---footer-bg: var(--ci-grey-dark);
---footer-color: var(--ci-white);
+  /* Produktcontainer */
+  --product-container: var(--secondary-bg-color);
+  --product-specs-bg: rgb(248, 248, 248);
+  --product-border: rgb(224, 224, 224);
+  --product-border--hover: rgb(196, 196, 196);
 
+  /* Index */
+  --section-title: var(--ci-black);
+  --product-text: #000000;
 
-/* Produktcontainer */
---product-container: var(--secondary-bg-color);
---product-specs-bg: rgb(248, 248, 248);
---product-border: rgb(224, 224, 224);
---product-border--hover: rgb(196, 196, 196);
+  --carousel-button-bg: var(--secondary-bg-color);
+  --carousel-button--hover: rgb(230, 230, 230);
+  --carousel-button-border: rgb(230, 230, 230);
+  --carousel-button-border--hover: #c4c4c4;
+  --carousel-color: var(--ci-black);
 
+  --testimonial-border: rgb(173, 173, 173);
+  --testimonial-text: black;
 
-/* Index */
---section-title: var(--ci-black);
+  /* ============================================================
+     Ergänzungen aus mystyle.css 
+     ============================================================ */
 
---product-text: #000000;
+  /* Special-Header */
+  --special-header-bg-color: rgb(92, 92, 92);
 
---carousel-button-bg: var(--secondary-bg-color);
---carousel-button--hover: rgb(230, 230, 230);
---carousel-button-border: rgb(230, 230, 230);
---carousel-button-border--hover: #c4c4c4;
---carousel-color: var(--ci-black);
+  /* ShopHeader */
+  --shop-header-theader-bg-color: rgb(12, 12, 12);
+  --shop-header-bheader-bg-color: rgb(150, 35, 35);
+  --shop-header-tlvl-li-color: rgb(255, 255, 255);
+  --shop-header-tlvl-li--hover: rgb(63, 61, 61);
+  --shop-header-submenu-bg-color: rgb(73, 73, 73);
+  --shop-header-submenu-li-text-color: white;
+  --shop-header-submenu-li-bg-color--hover: rgb(219, 219, 219);
+  --shop-header-submenu-li-text-color--hover: rgb(46, 45, 45);
+  --shop-header-deals-bg-color: #3d3f3f;
 
---testimonial-border: rgb(173, 173, 173);
---testimonial-text: black;
+  /* User Form & Blocks */
+  --user-form-bg: rgb(245, 245, 245);
+  --user-form-border: rgb(28, 110, 164);
+  --user-form-title-color: rgb(0, 0, 0);
+  --user-form-subtitle-color: rgb(0, 0, 0);
+  --user-block-title-color: rgb(0, 0, 0);
+  --logout-message-color: rgb(0, 0, 0);
+
+  /* ProductInfo */
+  --prInfo-h1-color: rgb(0, 0, 0);
+  --prInfo-h2-color: rgb(110, 110, 110);
+  --prInfo-h3-border: rgb(172, 172, 172);
+  --prInfo-pr-container-bg-color: rgb(255, 255, 255);
+  --prInfo-pr-container-border: rgb(211, 211, 211);
+  --prInfo-top-price-color: rgb(0, 0, 0);
+  --prInfo-bottom-price-color: rgb(0, 0, 0);
+  --prInfo-net-price-label-color: rgb(0, 0, 0);
+  --prInfo-thumbnail-active-border: rgb(211, 30, 7);
+  --prInfo-mainImage-border: rgb(230, 223, 222);
+  --prInfo-mainImage-bg-color: rgb(248, 249, 250);
+  --prInfo-technical-details-seperating-lines: rgb(238, 238, 238);
+  --prInfo-description-color: rgb(0, 0, 0);
+  --prInfo-kaufContainer-bg-color: rgb(249, 249, 249);
+  --prInfo-kaufContainer-top-border: rgb(231, 231, 231);
+  --prInfo-warenkorbButton-bg-color: rgb(0, 0, 0);
+  --prInfo-warenkorbButton-color: rgb(255, 255, 255);
+  --prInfo-warenkorbButton-bg-color--hover: rgb(51, 51, 51);
+  --prInfo-warenkorbButton-bg-color--active: rgb(78, 78, 78);
+  --prInfo-amount-button-bg-color: rgb(224, 224, 224);
+  --prInfo-amount-button-bg-color--hover: rgb(204, 204, 204);
+  --prInfo-amount-button-bg-color--active: rgb(170, 170, 170);
+  --prInfo-amount-number-box-border: rgb(221, 221, 221);
+
+  /* WarenkorbSide */
+  --wkSide-wk-container-color: rgb(255, 255, 255);
+  --wkSide-empty-message-color: rgb(119, 119, 119);
+  --wkSide-header-bg-color: rgb(66, 66, 66);
+  --wkSide-header-color: rgb(255, 255, 255);
+  --wkSide-close-color: rgb(255, 255, 255);
+  --wkSide-article-border: rgb(238, 238, 238);
+  --wkSide-article-price-color: rgb(51, 51, 51);
+  --wkSide-article-amount-button-bg-bolor: rgb(240, 240, 240);
+  --wkSide-article-amount-display-border: rgb(221, 221, 221);
+  --wkSide-article-remove-color: rgb(255, 0, 0);
+  --wkSide-footer-bg-color: rgb(249, 249, 249);
+  --wkSide-footer-border: rgb(238, 238, 238);
+  --wkSide-footer-total-color: rgb(0, 0, 0);
+  --wkSide-checkout-button-bg-color: rgb(216, 24, 24);
+  --wkSide-checkout-button-color: rgb(255, 255, 255);
+  --wkSide-checkout-button-bg-color--hover: rgb(187, 4, 4);
+  --wkSide-toggle-cart-button-bg-color: rgb(0, 123, 255);
+  --wkSide-toggle-cart-button-color: rgb(255, 255, 255);
+  --wkSide-toggle-cart-button-amount-bg-color: rgb(255, 0, 0);
+  --wkSide-toggle-cart-button-amount-color: rgb(255, 255, 255);
+
+  /* ProductList */
+  --pl-category-color: rgb(51, 51, 51);
+  --pl-product-main-container-bg-color: rgb(255, 255, 255);
+  --pl-product-picture-bg-color: rgb(248, 248, 248);
+  --pl-product-main-heading-color: rgb(34, 34, 34);
+  --pl-product-subtitle-color: rgb(102, 102, 102);
+  --pl-description-text-color: rgb(102, 102, 102);
+  --pl-description-indicator-color: rgb(211, 30, 7);
+  --pl-price-tag-color: rgb(34, 34, 34);
+  --pl-add-to-basket-button-bg-color: rgb(40, 143, 45);
+  --pl-add-to-basket-button-bg-color--hover: rgb(22, 119, 19);
+  --pl-show-more-button-bg-color: rgb(211, 30, 7);
+  --pl-show-more-button-color: rgb(255, 255, 255);
+  --pl-show-more-button-bg-color--hover: rgb(183, 28, 6);
+  --pl-sale-tag-bg-color: rgb(211, 30, 7);
+  --pl-sale-tag-color: rgb(255, 255, 255);
 }
 
-/* ===================================== Dark Mode (Überschreibungen) ===================================== */ 
-.darkMode { 
---main-bg-color: #1a1a1a;
---secondary-bg-color: rgb(32, 32, 32);
---text-color: #6e6e6e;
---hr-color: #777777;
---user-block-bg-color: rgba(75, 75, 75, 0.9);
---user-block-border: #888888;
- 
+/* ===================================== Dark Mode (Überschreibungen) ===================================== */
+.darkMode {
+  --main-bg-color: #1a1a1a;
+  --secondary-bg-color: rgb(32, 32, 32);
+  --text-color: #6e6e6e;
+  --hr-color: #777777;
+  --user-block-bg-color: rgba(75, 75, 75, 0.9);
+  --user-block-border: #888888;
 
---header-bg: var(--ci-grey-dark);
---footer-bg: #222222;
---footer-color: var(--ci-white);
- 
+  --header-bg: var(--ci-grey-dark);
+  --footer-bg: #222222;
+  --footer-color: var(--ci-white);
 
---link-color: #eeeeee;
---link-hover-color: var(--ci-white);
- 
+  --link-color: #eeeeee;
+  --link-hover-color: var(--ci-white);
 
---form-bg: rgba(0, 0, 0, 0.3);
---form-border: var(--ci-black);
---input-bg: #3a3a3a;
---input-color: #ffffff;
---input-placeholder: rgba(200, 200, 200, 0.7);
---input-border-hover: var(--ci-green);
---input-border-focus: rgba(255, 255, 255, 0.2);
---input-bg-hover: #444444;
---input-bg-focus: rgba(255, 255, 255, 0.1);
- 
+  --form-bg: rgba(0, 0, 0, 0.3);
+  --form-border: var(--ci-black);
+  --input-bg: #3a3a3a;
+  --input-color: #ffffff;
+  --input-placeholder: rgba(200, 200, 200, 0.7);
+  --input-border-hover: var(--ci-green);
+  --input-border-focus: rgba(255, 255, 255, 0.2);
+  --input-bg-hover: #444444;
+  --input-bg-focus: rgba(255, 255, 255, 0.1);
 
---submit-bg: var(--ci-red-dark);
---submit-hover: #700000;
---submit-text: var(--ci-white);
- 
+  --submit-bg: var(--ci-red-dark);
+  --submit-hover: #700000;
+  --submit-text: var(--ci-white);
 
---direction-bg: #09331b;
---direction-hover: #092e18;
---direction-text: var(--ci-black);
+  --direction-bg: #09331b;
+  --direction-hover: #092e18;
+  --direction-text: var(--ci-black);
 
+  /* Produktcontainer */
+  --product-container: var(--main-bg-color);
+  --product-specs-bg: rgb(34, 34, 34);
+  --product-border: rgb(56, 56, 56);
+  --product-border--hover: rgb(88, 88, 88);
 
+  /* Index */
+  --section-title: rgb(243, 243, 243);
+  --product-text: #ffffff;
+  --carousel-button: #3a3a3a;
+  --carousel-button--hover: #5c5c5c;
+  --carousel-button-border: #4a4a4a;
+  --carousel-button-border--hover: #6e6e6e;
+  --carousel-color: var(--ci-white);
+  --testimonial-border: rgb(97, 97, 97);
+  --testimonial-text: rgb(228, 228, 228);
 
-/* Produktcontainer */
---product-container: var(--main-bg-color);
---product-specs-bg: rgb(34, 34, 34);
---product-border: rgb(56, 56, 56);
---product-border--hover: rgb(88, 88, 88);
+  /* Ergänzungen mystyle DarkMode */
+  --special-header-bg-color: rgb(43, 43, 43);
+  --shop-header-theader-bg-color: rgb(12, 12, 12);
+  --shop-header-bheader-bg-color: rgb(150, 35, 35);
+  --shop-header-tlvl-li-color: rgb(255, 255, 255);
+  --shop-header-tlvl-li--hover: rgb(63, 61, 61);
+  --shop-header-submenu-bg-color: rgb(73, 73, 73);
+  --shop-header-submenu-li-text-color: white;
+  --shop-header-submenu-li-bg-color--hover: rgb(219, 219, 219);
+  --shop-header-submenu-li-text-color--hover: rgb(46, 45, 45);
+  --shop-header-deals-bg-color: #3d3f3f;
 
+  --logout-message-color: rgb(255, 255, 255);
 
-/* Index */
---section-title: rgb(243, 243, 243);
+  --prInfo-h1-color: rgb(236, 236, 236);
+  --prInfo-h2-color: rgb(235, 235, 235);
+  --prInfo-h3-border: rgb(105, 105, 105);
+  --prInfo-pr-container-bg-color: rgb(59, 59, 59);
+  --prInfo-pr-container-border: rgb(83, 83, 83);
+  --prInfo-top-price-color: rgb(230, 230, 230);
+  --prInfo-bottom-price-color: rgb(255, 255, 255);
+  --prInfo-net-price-label-color: rgb(255, 255, 255);
+  --prInfo-thumbnail-active-border: rgb(170, 31, 12);
+  --prInfo-mainImage-border: rgb(100, 100, 100);
+  --prInfo-mainImage-bg-color: rgb(82, 82, 82);
+  --prInfo-technical-details-seperating-lines: rgb(182, 182, 182);
+  --prInfo-description-color: rgb(236, 236, 236);
+  --prInfo-kaufContainer-bg-color: rgb(77, 77, 77);
+  --prInfo-kaufContainer-top-border: rgb(75, 75, 75);
+  --prInfo-warenkorbButton-bg-color: rgb(206, 24, 24);
+  --prInfo-warenkorbButton-color: rgb(255, 255, 255);
+  --prInfo-warenkorbButton-bg-color--hover: rgb(156, 22, 22);
+  --prInfo-warenkorbButton-bg-color--active: rgb(128, 17, 17);
+  --prInfo-amount-button-bg-color: rgb(202, 202, 202);
+  --prInfo-amount-button-bg-color--hover: rgb(182, 182, 182);
+  --prInfo-amount-button-bg-color--active: rgb(170, 170, 170);
+  --prInfo-amount-number-box-border: rgb(182, 182, 182);
 
---product-text: #ffffff;
+  --wkSide-wk-container-color: rgb(83, 83, 83);
+  --wkSide-empty-message-color: rgb(245, 245, 245);
+  --wkSide-header-bg-color: rgb(61, 61, 61);
+  --wkSide-header-color: rgb(238, 238, 238);
+  --wkSide-close-color: rgb(231, 231, 231);
+  --wkSide-article-border: rgb(226, 226, 226);
+  --wkSide-article-price-color: rgb(255, 255, 255);
+  --wkSide-article-amount-button-bg-bolor: rgb(255, 255, 255);
+  --wkSide-article-amount-display-border: rgb(255, 255, 255);
+  --wkSide-article-remove-color: rgb(202, 9, 9);
+  --wkSide-footer-bg-color: rgb(70, 70, 70);
+  --wkSide-footer-border: rgb(112, 112, 112);
+  --wkSide-footer-total-color: rgb(255, 255, 255);
+  --wkSide-checkout-button-bg-color: rgb(214, 30, 30);
+  --wkSide-checkout-button-color: rgb(255, 255, 255);
+  --wkSide-checkout-button-bg-color--hover: rgb(187, 4, 4);
+  --wkSide-toggle-cart-button-bg-color: rgb(0, 123, 255);
+  --wkSide-toggle-cart-button-color: rgb(255, 255, 255);
+  --wkSide-toggle-cart-button-amount-bg-color: rgb(255, 0, 0);
+  --wkSide-toggle-cart-button-amount-color: rgb(255, 255, 255);
 
---carousel-button: #3a3a3a;
---carousel-button--hover: #5c5c5c;
---carousel-button-border: #4a4a4a;
---carousel-button-border--hover: #6e6e6e;
---carousel-color: var(--ci-white);
-
---testimonial-border: rgb(97, 97, 97);
---testimonial-text: rgb(228, 228, 228);
+  --pl-category-color: rgb(241, 241, 241);
+  --pl-product-main-container-bg-color: rgb(53, 53, 53);
+  --pl-product-picture-bg-color: rgb(78, 78, 78);
+  --pl-product-main-heading-color: rgb(235, 235, 235);
+  --pl-product-subtitle-color: rgb(255, 255, 255);
+  --pl-description-text-color: rgb(255, 255, 255);
+  --pl-description-indicator-color: rgb(211, 30, 7);
+  --pl-price-tag-color: rgb(255, 255, 255);
+  --pl-add-to-basket-button-bg-color: rgb(40, 143, 45);
+  --pl-add-to-basket-button-bg-color--hover: rgb(22, 119, 19);
+  --pl-show-more-button-bg-color: rgb(211, 30, 7);
+  --pl-show-more-button-color: rgb(255, 255, 255);
+  --pl-show-more-button-bg-color--hover: rgb(183, 28, 6);
+  --pl-sale-tag-bg-color: rgb(211, 30, 7);
+  --pl-sale-tag-color: rgb(255, 255, 255);
 }
 
-/* ===================================== Basis-Elemente (Global gültig) ===================================== */ 
-body { 
+/* ===================================== Basis-Elemente (Global gültig) ===================================== */
+body {
   background-color: var(--main-bg-color);
- color: var(--text-color);
- font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- margin: 0;
- display: flex;
- flex-direction: column;
- min-height: 100vh;
- }
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-main { 
+main {
   flex: 1;
- }
+}
 
-.container { 
+.container {
   width: 100%;
- max-width: 1200px;
- margin: 0 auto;
- padding: 0 15px;
- box-sizing: border-box;
- }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
 
-a { 
+a {
   color: var(--link-color);
- text-decoration: none;
- }
+  text-decoration: none;
+}
 
-a:hover { 
+a:hover {
   color: var(--link-hover-color);
- text-decoration: none;
- }
+  text-decoration: none;
+}
 
-hr { 
+hr {
   border: none;
- border-top: 2px solid var(--hr-color);
- margin: 20px 0;
- }
+  border-top: 2px solid var(--hr-color);
+  margin: 20px 0;
+}
 
-img { 
+img {
   max-width: 100%;
- height: auto;
- }
+  height: auto;
+}
