@@ -62,6 +62,8 @@
 
     <div class="warenkorbOverlay"></div>
 
+<!-- Meldungsblock für JS -->
+<div id="meldung-block"></div>
 
 
     <div class="product-container">
@@ -136,12 +138,14 @@
 
 
 
+            
 
             <div class="action-buttons">
                 <button class="buy-btn" data-id="<?= $product['product_id'] ?>"
                     data-name="<?= htmlspecialchars($product['name']) ?>" data-price="<?= $product['price'] ?>"
                     data-image="<?= htmlspecialchars($firstImage) ?>">IN DEN WARENKORB</button>
-                <button class="wishlist-btn">ZUR WUNSCHLISTE HINZUFÜGEN</button>
+                <button class="wishlist-btn" data-id="<?= $product['product_id'] ?>">ZUR WUNSCHLISTE HINZUFÜGEN</button>
+
             </div>
 
             <div class="additional-info">
@@ -301,6 +305,9 @@
             <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
         </nav>
     </footer>
+
+    <script src="/assets/javascript/Warenkorb.js"></script>
+<script src="/assets/javascript/addToWishlist.js"></script>
 
 </body>
 
