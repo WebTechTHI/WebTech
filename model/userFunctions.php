@@ -1,5 +1,7 @@
 <?php
 
+// Funktion: Holt vollständige Benutzerinfos anhand der user_id.
+// Wird z.B. nach erfolgreichem Login genutzt, um alle Daten in die Session zu speichern.
 //frägt benutzerinformationen aus Datenbank ab und liefert diese in einem Array zurück
 function getUserData($conn, $userId)
 {

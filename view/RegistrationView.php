@@ -34,7 +34,8 @@
 
     <!-- ============ PHP ab Hier Audio Meldung !!==================-->
 
-    <?php        //Hier werden CSS/ Formatierung von der jeweiligen Meldung festgelegt wenn diese aufgerufen wird im code darüber !!!
+    <?php
+    // Zeigt eine Fehlermeldung + spielt Fehler-Sound ab, wenn $fehlermeldung gesetzt ist
     if (isset($fehlermeldung)): ?>
         <div class='meldung-container meldung-fehler'>
             <?= $fehlermeldung ?>
@@ -45,7 +46,9 @@
     <?php endif; ?>
 
 
-    <?php if (isset($erfolgsmeldung)):       //Wenn erfolgreich angemeldet wurde dann wird wird erfolgsmeldung hier geworfen mit Audio :) !!!!!       ?>
+    <?php  
+    // Zeigt eine Erfolgsmeldung + spielt Erfolgs-Sound ab, wenn $erfolgsmeldung gesetzt ist
+    if (isset($erfolgsmeldung)): ?>
         <div class='meldung-container meldung-erfolg'>
             <?= $erfolgsmeldung ?>
             <audio autoplay>
