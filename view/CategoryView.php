@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLR - <?php echo htmlspecialchars($categoryInfo['sidebarTitel']); ?></title>
+
     <link rel="stylesheet" href="/assets/css/categoryList.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
     <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
@@ -17,13 +20,13 @@
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="/index.php/page=home">Home</a> 
+        <a href="/index.php/page=home">Home</a>
         <?php if (!empty($categoryInfo['unterkategorien']) || $categoryInfo['breadcrumb'] == 'Angebote'): ?>
             <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
         <?php else: ?>
             <a
                 href="/index.php?page=category&category=<?php echo htmlspecialchars($categoryInfo['oberkategorie']); ?>"><?php echo htmlspecialchars($categoryInfo['breadcrumbBefore']); ?></a>
-            
+
             <span><?php echo htmlspecialchars($categoryInfo['breadcrumb']); ?></span>
         <?php endif; ?>
     </div>
@@ -58,7 +61,7 @@
 
                     <?php
 
-                  
+
                     echo "<div class='filters'>";
                     // Filter-HTML generieren
                     if ($category !== 'alle' && $category !== 'zubehör') {
@@ -175,7 +178,7 @@
                 <h3 class="section-title">UNSERE TOPSELLER</h3>
                 <!--    Sortierkriterium      (Michi) -->
                 <div class="sort-container">
-                    <select class= "orderSelect" id="orderBy">
+                    <select class="orderSelect" id="orderBy">
                         <option value="sales" <?= $orderBy === 'sales' ? 'selected' : '' ?>>Bestseller</option>
                         <option value="price" <?= $orderBy === 'price' ? 'selected' : '' ?>>Preis</option>
                         <option value="name" <?= $orderBy === 'name' ? 'selected' : '' ?>>Name</option>
@@ -216,9 +219,9 @@
                             }
                             ?>
                             <div class="product-image">
-                                <a class="product-image-buy" href="/index.php?page=product&id=<?php echo $product['product_id']; ?>"> <img
-                                        src="<?php echo htmlspecialchars($firstImage); ?>"
-                                        alt="<?php $product['name']; ?>"></a>
+                                <a class="product-image-buy"
+                                    href="/index.php?page=product&id=<?php echo $product['product_id']; ?>"> <img
+                                        src="<?php echo htmlspecialchars($firstImage); ?>" alt="<?php $product['name']; ?>"></a>
                             </div>
                             </a>
                             <div class="product-details">
@@ -234,7 +237,8 @@
                                     </div>
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                                     <div class="button-container">
-                                        <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>" class="buy-btn">Mehr zum
+                                        <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>"
+                                            class="buy-btn">Mehr zum
                                             produkt</a>
                                         <button class="favorite-btn">
                                             <img src="/assets/images/icons/favorite-border.svg" alt="Favorit" />
@@ -285,18 +289,24 @@
     </script>
 
     <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    // Prüfen, ob ein Sort-Parameter gesetzt ist
-    if (params.has('orderBy') || params.has('direction')) {
-      const target = document.querySelector('.title-and-sort');
-      if (target) {
-        // sanft scrollen
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  });
-</script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            // Prüfen, ob ein Sort-Parameter gesetzt ist
+            if (params.has('orderBy') || params.has('direction')) {
+                const target = document.querySelector('.title-and-sort');
+                if (target) {
+                    // sanft scrollen
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+
+    <footer>
+        <nav>
+            <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
+        </nav>
+    </footer>
 
 </body>
 
