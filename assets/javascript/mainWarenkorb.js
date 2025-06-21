@@ -36,6 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event-Handler für +/- Buttons
    cartContainer.querySelectorAll('.qty-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+
+//================= HIER NOCHMAL DIE ÜBERPRÜFUNG OB COOKIES NOCH AKTIV SIND =======================
+      const consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookie_consent='));
+      const consentGiven = consentCookie ? consentCookie.split('=')[1] === 'accepted' : false;
+
+      if (!consentGiven) {
+          const banner = document.getElementById('cookie-consent-banner');
+          alert("Um Ihren Warenkorb zu verwalten, müssen Sie die Cookies akzeptieren.");
+          if (banner) {
+              banner.style.display = 'block';
+          }
+          return; // Wichtig: Funktion hier abbrechen
+      }
+//================= ÜBERPRÜFUNG ENDE ===========================================
+
       const itemEl = btn.closest('.cart-item');
       const pid    = itemEl.dataset.productId;
       const action = btn.dataset.action;
@@ -68,6 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event-Handler für Entfernen-Button
    cartContainer.querySelectorAll('.remove-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+
+//================= HIER NOCHMAL DIE ÜBERPRÜFUNG OB COOKIES NOCH AKTIV SIND =======================
+      const consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookie_consent='));
+      const consentGiven = consentCookie ? consentCookie.split('=')[1] === 'accepted' : false;
+
+      if (!consentGiven) {
+          const banner = document.getElementById('cookie-consent-banner');
+          alert("Um Ihren Warenkorb zu verwalten, müssen Sie die Cookies akzeptieren.");
+          if (banner) {
+              banner.style.display = 'block';
+          }
+          return; // Wichtig: Funktion hier abbrechen
+      }
+//================= ÜBERPRÜFUNG ENDE ===========================================
+
       const itemEl = btn.closest('.cart-item');
       const pid    = itemEl.dataset.productId;
 
