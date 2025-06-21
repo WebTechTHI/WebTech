@@ -22,9 +22,13 @@ class AdminModel
 
     public function uploadSubmit(){
 
+        /*
+        
+        HIER WIRD DIE UPLOAD FUNKION GESCHRIEBEN (EINFACH SQL ANFRAGE AN SERVER ZUM SPEICHERN DES PROD.)
+        
+        */
 
-
-        echo 'asdsdasadasddasasdasdasdasdadasdasdasd';
+        echo '<h1>asdsdasadasddasasdasdasdasdadasdasdasd</h1>';
     }
     }
 
