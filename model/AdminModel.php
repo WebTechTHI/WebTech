@@ -19,5 +19,12 @@ class AdminModel
 
     return $data;
 }
+
+    public function uploadSubmit(){
+
+
+
+        echo 'asdsdasadasddasasdasdasdasdadasdasdasd';
+    }
     }
 
