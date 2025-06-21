@@ -77,14 +77,14 @@
 
 
       //Laden von unterkategorien
-      fetch("/view/AdminComponents/AdminSubcategoryLoader.php?category=" + category)
+      fetch("/view/AdminComponents/AdminLoader/AdminSubcategoryLoader.php?category=" + category)
         .then(response => response.text())
         .then(data => {
           document.getElementById("subcategory-container").innerHTML = data;
         });
 
       //dynamisches Laden von Komponenten zur Auswahl
-        fetch("/view/AdminComponents/AdminComponentLoader.php?category=" + category)
+        fetch("/view/AdminComponents/AdminLoader/AdminComponentLoader.php?category=" + category)
     .then(response => response.text())
     .then(data => {
       document.getElementById("component-container").innerHTML = data;

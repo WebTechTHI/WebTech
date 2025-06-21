@@ -19,5 +19,16 @@ class AdminModel
 
     return $data;
 }
+
+    public function uploadSubmit(){
+
+        /*
+        
+        HIER WIRD DIE UPLOAD FUNKION GESCHRIEBEN (EINFACH SQL ANFRAGE AN SERVER ZUM SPEICHERN DES PROD.)
+        
+        */
+
+        echo '<h1>asdsdasadasddasasdasdasdasdadasdasdasd</h1>';
+    }
     }
 

@@ -63,9 +63,10 @@ switch ($page) {
         exit;
 
     case "admin":
+        $action = $_GET['action'] ?? 'index';
         require_once "controller/AdminController.php";
         $controller = new AdminController();
-        $controller->handleRequest();
+        $controller->handleRequest($action); 
         exit;
 
     case "cart":
