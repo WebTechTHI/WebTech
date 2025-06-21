@@ -92,7 +92,7 @@ switch ($category) {
     <?php break;
 
 
-    
+
   case 'laptop':    //displays werden zusätzlich von laptops benutzt ?>
 
 
@@ -146,7 +146,7 @@ switch ($category) {
       </div>
     </div>
 
-    
+
 
     <!-- Cpu-Auswahl -->
     <div class="select-wrapper">
@@ -170,7 +170,7 @@ switch ($category) {
     </div>
 
 
-    
+
     <!-- storage-Auswahl -->
     <div class="select-wrapper">
       <label for="storage">Storage:</label>
@@ -192,7 +192,7 @@ switch ($category) {
       </div>
     </div>
 
-    
+
 
     <!-- gpu-Auswahl -->
     <div class="select-wrapper">
@@ -223,7 +223,7 @@ switch ($category) {
       <div class="component-wrapper">
 
         <select name="os" id="os">
-        
+
           <option value="null">- keine -</option>
 
           <?php foreach ($operatingSystems as $os): ?>
@@ -245,6 +245,8 @@ switch ($category) {
 
         <select name="ram" id="ram">
 
+          <option value="null">- keine -</option>
+
           <?php foreach ($rams as $ram): ?>
             <option value="<?= $ram["ram_id"] ?>">
               <?= htmlspecialchars($ram["brand"] . " " . $ram["model"] . ", " . $ram["capacity_gb"] . "Gb " . $ram["ram_type"]) ?>
@@ -265,7 +267,7 @@ switch ($category) {
       <div class="component-wrapper">
 
         <select name="network" id="network">
-        
+
           <option value="null">- keine -</option>
 
           <?php foreach ($networks as $network): ?>
@@ -279,14 +281,14 @@ switch ($category) {
     </div>
 
 
-    
+
     <!-- zusätzliche-Features-Auswahl -->
     <div class="select-wrapper">
       <label for="feature">Features:</label>
       <div class="component-wrapper">
 
         <select name="feature" id="feature">
-          
+
           <option value="null">- keine -</option>
 
           <?php foreach ($features as $feature): ?>
