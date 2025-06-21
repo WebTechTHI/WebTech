@@ -70,6 +70,7 @@ body {
 
 
 .breadcrumb a:hover {
+    color: var(--color-text-muted);
     text-decoration: underline;
 }
 

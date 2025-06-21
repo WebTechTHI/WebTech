@@ -136,3 +136,27 @@ body {
     margin: 0 10px 12px;
     justify-content: right;
 }
+
+.impressum-cookies {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+    color: #aaa;
+    justify-content: center;
+}
+
+.impressum-cookies a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.impressum-cookies a:first-of-type::after {
+    content: "|";
+    margin-left: 10px;
+} 
+
+.impressum-cookies a:hover::after{
+    color: #aaa;
+}

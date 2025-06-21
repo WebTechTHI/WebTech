@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     declineBtn?.addEventListener('click', () => {
         setConsentCookie('declined');
         if(banner) banner.style.display = 'none';
-        // Korrekt: Löscht den Warenkorb-Cookie
+        window.location.reload(); 
         document.cookie = 'mlr_cart=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
     });
 

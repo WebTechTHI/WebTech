@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/assets/css/colors.css" />
     <link rel="stylesheet" href="/assets/css/loginregistration.css" /> <!-- Für Meldungs-Design -->
     <link rel="stylesheet" href="/assets/css/wishlistPage.css" />
-    <link rel="stylesheet" href="/assets/css/footer.css" />
+
 
     <!-- Scripts -->
     <script src="/assets/javascript/toggleTheme.js"></script>
@@ -59,7 +59,7 @@
         <?php endif; ?>
     </main>
 
-    <?php include 'components/footer.html'; ?>
+    <?php include 'components/footer.php'; ?>
 
     <!-- Wishlist Logik -->
     <script src="/assets/javascript/wishlist.js"></script>

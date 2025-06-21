@@ -7,11 +7,8 @@
     <title>MLR - <?php echo htmlspecialchars($product['name']) ?></title>
 
     <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/assets/css/colors.css">
     <link rel="stylesheet" href="/assets/css/productSite.css">
     <link rel="stylesheet" href="/assets/css/warenkorbSide.css">
-    <link rel="stylesheet" href="/assets/css/footer.css">
-
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
 
@@ -246,7 +243,7 @@
 
 
 
-    <?php include 'components/footer.html'; ?>
+    <?php include 'components/footer.php'; ?>
 
 
 
@@ -300,12 +297,7 @@
 
     <script src="/assets/javascript/Warenkorb.js"></script>
 
-    <footer>
-        <nav>
-            <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
-            <a href="#" id="manage-cookie-settings">Cookie-Einstellungen</a>
-        </nav>
-    </footer>
+   
 
  
 <script src="/assets/javascript/addToWishlist.js"></script>

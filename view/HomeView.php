@@ -240,7 +240,7 @@
 
 
     <!--    FOOTER    -->
-    <?php require_once './components/footer.html'; ?>
+    <?php require_once './components/footer.php'; ?>
 
 
 </body>

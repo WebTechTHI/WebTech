@@ -75,11 +75,13 @@ body {
 }
 
 .breadcrumb a:hover::after {
+    
     text-decoration: none;
 }
 
 
 .breadcrumb a:hover {
+    color: var(--color-text-muted);
     text-decoration: underline;
 }
 

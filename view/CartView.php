@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/assets/css/components/header.css" />
     <link rel="stylesheet" href="/assets/css/colors.css" />
     <link rel="stylesheet" href="/assets/css/cartPage.css">
-    <link rel="stylesheet" href="/assets/css/footer.css">
 
     <script src="/assets/javascript/toggleTheme.js"></script>
 
@@ -96,13 +95,7 @@
         <?php endif; ?>
     </main>
 
-    <?php include 'components/footer.html'; ?>
-
-    <footer>
-        <nav>
-            <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
-        </nav>
-    </footer>
+    <?php include 'components/footer.php'; ?>
 
 </body>
 

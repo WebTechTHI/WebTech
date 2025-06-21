@@ -7,8 +7,6 @@
     <title>MLR - <?php echo htmlspecialchars($categoryInfo['sidebarTitel']); ?></title>
 
     <link rel="stylesheet" href="/assets/css/categoryList.css">
-    <link rel="stylesheet" href="/assets/css/footer.css">
-
     <script src="/assets/javascript/base.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
     <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
@@ -254,7 +252,7 @@
         </div>
     </div>
 
-    <?php include 'components/footer.html'; ?>
+    <?php include 'components/footer.php'; ?>
 
 
 
@@ -301,13 +299,6 @@
             }
         });
     </script>
-
-    <footer>
-        <nav>
-            <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
-        </nav>
-    </footer>
-
 </body>
 
 </html>
