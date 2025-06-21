@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="darkMode">
+<body>
 
     <?php include './components/header.php'; ?>
 
