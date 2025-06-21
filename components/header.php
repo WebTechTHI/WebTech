@@ -28,7 +28,10 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                 <!-- Falls ein Admin angemeldet ist, kann dieser auf das Admin-panel zugreifen. -->
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role_id'] === 1) { ?>
                     <!-- Nur diese Zeile ist neu eingefügt von Laurin -->
-                    <a href="/index.php?page=admin">ADMIN</a>
+                    <a href="/index.php?page=admin">
+                        <img class="header-icon" src="/assets/images/icons/admin.svg" alt="Admin"
+                            title="Adminbereich">
+                    </a>
 
                 <?php } ?>
 

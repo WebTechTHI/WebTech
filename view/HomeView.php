@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="/assets/css/index.css">
     <link rel="stylesheet" href="/assets/css/colors.css">
-    <link rel="stylesheet" href="/assets/css/footer.css">
 
     <script src="/assets/javascript/toggleTheme.js"></script>
     <script src="/assets/javascript/changeHero.js"></script>
@@ -237,13 +236,12 @@
         </div>
     </section>
 
+
+
+
+    <!--    FOOTER    -->
     <?php require_once './components/footer.html'; ?>
 
-        <footer>
-        <nav>
-            <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
-        </nav>
-    </footer>
 
 </body>
 
