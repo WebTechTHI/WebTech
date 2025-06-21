@@ -50,8 +50,8 @@ switch ($page) {
         exit;
 
     case "wishlist":
-        require_once "controller/ProductController.php";
-        $controller = new ProductController();
+        require_once "controller/WishlistController.php";
+        $controller = new WishlistController();
         $controller->handleRequest();
         exit;
 
