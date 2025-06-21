@@ -49,6 +49,12 @@ switch ($page) {
         $controller->handleRequest();
         exit;
 
+    case "wishlist":
+        require_once "controller/ProductController.php";
+        $controller = new ProductController();
+        $controller->handleRequest();
+        exit;
+
     case "":
     case "home":
         require_once "controller/HomeController.php";

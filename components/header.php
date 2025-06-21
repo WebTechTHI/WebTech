@@ -116,7 +116,7 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                 </div>
                 <!-- ============================================-->
                 <!-- Suchfeld NEU NUR ZUM TESTEN-->
-                <a href="/pages/wishlist.php" title="Wunschliste">
+                <a href="/index.php?page=wishlist" title="Wunschliste">
                     <img class="header-icon" id="wishlist-icon" src="/assets/images/icons/favorite-border.svg"
                         alt="wishlist">
                 </a>
