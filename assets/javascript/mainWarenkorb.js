@@ -34,28 +34,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Event-Handler für +/- Buttons
-  cartContainer.querySelectorAll('.qty-btn').forEach(btn => {
+   cartContainer.querySelectorAll('.qty-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const itemEl = btn.closest('.cart-item');
       const pid    = itemEl.dataset.productId;
       const action = btn.dataset.action;
       const input  = itemEl.querySelector('.quantity-display');
+      let currentQty = parseInt(input.value);
       let delta = action === 'increase' ? 1 : -1;
-      if (parseInt(input.value) + delta < 1) return;
 
-      // Session updaten
-      fetch('/api/removeFromCartSession.php', {
+      if (currentQty + delta < 1) return; // Nicht unter 1 gehen lassen
+
+      // Cookie updaten durch Senden der Mengenänderung (+1 oder -1)
+      fetch('/api/addToCartCookie.php', { // <-- Geändert & Korrigiert
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           product_id: pid,
-          quantity: delta
+          quantity: delta // Sende die Änderung, nicht die absolute Menge
         })
       })
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
-          input.value = parseInt(input.value) + delta;
+          // UI aktualisieren
+          input.value = currentQty + delta;
           recalcSummary();
         }
       });
@@ -63,12 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Event-Handler für Entfernen-Button
-  cartContainer.querySelectorAll('.remove-btn').forEach(btn => {
+   cartContainer.querySelectorAll('.remove-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const itemEl = btn.closest('.cart-item');
       const pid    = itemEl.dataset.productId;
 
-      fetch('/api/removeFromCartSession.php', {
+      fetch('/api/removeFromCartCookie.php', { // <-- Geändert
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ product_id: pid })
@@ -78,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.status === 'success') {
           itemEl.remove();
           recalcSummary();
-          // Falls leer, leere Nachricht anzeigen:
           if (document.querySelectorAll('.cart-item').length === 0) {
             document.querySelector('.cart-items').innerHTML = '<p>Dein Warenkorb ist leer.</p>';
             document.querySelector('.cart-summary').remove();

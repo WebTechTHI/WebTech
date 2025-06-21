@@ -1,11 +1,20 @@
 <?php
-session_start();
+// api/getCartCookie.php
+
+session_start(); // Session wird hier nicht mehr für den Warenkorb, aber evtl. für andere Dinge (Login) benötigt
 header('Content-Type: application/json');
 
-// Datenbankverbindung einbinden
 require_once __DIR__ . '/../db_verbindung.php';
 
-if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
+$cookieName = 'mlr_cart';
+$cartData = [];
+
+// Warenkorb aus Cookie lesen
+if (isset($_COOKIE[$cookieName])) {
+    $cartData = json_decode($_COOKIE[$cookieName], true);
+}
+
+if (empty($cartData)) {
     echo json_encode(['status' => 'success', 'cart' => []]);
     exit;
 }
@@ -13,36 +22,29 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
 $cartWithDetails = [];
 
 // Alle Produkt-IDs aus dem Warenkorb sammeln
-$productIds = array_keys($_SESSION['cart']);
+$productIds = array_keys($cartData);
 $placeholders = str_repeat('?,', count($productIds) - 1) . '?';
 
-// SQL-Query mit MySQLi
+// SQL-Query bleibt identisch
 $sql = "
     SELECT 
-        p.product_id, 
-        p.name, 
-        p.price,
+        p.product_id, p.name, p.price,
         (SELECT file_path FROM image WHERE product_id = p.product_id ORDER BY sequence_no LIMIT 1) AS image
     FROM product p
     WHERE p.product_id IN ($placeholders)
-    
 ";
 
 $stmt = mysqli_prepare($conn, $sql);
 
 if ($stmt) {
-    // Parameter binden (alle als Integer)
     $types = str_repeat('i', count($productIds));
     mysqli_stmt_bind_param($stmt, $types, ...$productIds);
-    
-    // Query ausführen
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     
-    // Ergebnisse verarbeiten
     while ($product = mysqli_fetch_assoc($result)) {
         $productId = $product['product_id'];
-        $quantity = $_SESSION['cart'][$productId];
+        $quantity = $cartData[$productId]; // Menge aus unserem Cookie-Array holen
         
         $cartWithDetails[] = [
             'id' => $product['product_id'],
@@ -54,9 +56,7 @@ if ($stmt) {
     }
     
     mysqli_stmt_close($stmt);
-    
     echo json_encode(['status' => 'success', 'cart' => $cartWithDetails]);
-    
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Fehler beim Laden der Produktdaten']);
 }

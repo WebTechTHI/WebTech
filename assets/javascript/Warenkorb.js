@@ -14,18 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
     let warenkorb = [];
 
     // ✅ Session-Warenkorb vom Server laden (jetzt mit Produktdetails)
-    fetch('/api/getCartSession.php')
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success') {
-                // ✅ Neue Struktur: Array von Objekten mit allen Details
-                warenkorb = data.cart || [];
-                aktualisiereWarenkorb();
-            }
-        })
-        .catch(err => {
-            console.error('Fehler beim Laden des Warenkorbs:', err);
-        });
+fetch('/api/getCartCookie.php') // <-- Geändert
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            warenkorb = data.cart || [];
+            aktualisiereWarenkorb();
+        }
+    })
 
     // Öffnen/Schließen der Seitenleiste
     toggleBtn?.addEventListener('click', () => {
@@ -64,18 +60,18 @@ document.addEventListener('DOMContentLoaded', function () {
         aktualisiereWarenkorb();
 
         // Session updaten
-        fetch('/api/addToCartSession.php', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                product_id: produkt.id,
-                quantity: menge
-            })
+      fetch('/api/addToCartCookie.php', { // <-- Geändert
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            product_id: produkt.id,
+            quantity: menge
         })
+    })
         .then(res => res.json())
         .then(data => {
             if (data.status === 'success') {
-                console.log('Produkt in Session gespeichert');
+                console.log('Produkt in Cookie gespeichert');
             } else {
                 console.error('Fehler:', data.message);
             }
@@ -133,14 +129,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     aktualisiereWarenkorb();
 
                     // Session updaten
-                    fetch('/api/addToCartSession.php', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({
-                            product_id: artikel.id,
-                            quantity: -1
-                        })
-                    });
+                    fetch('/api/addToCartCookie.php', { // <-- Geändert
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        product_id: artikel.id,
+                        quantity: -1 // Sende -1 zum Reduzieren
+                    })
+                });
                 }
             });
 
@@ -148,26 +144,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 warenkorb[i].quantity++;
                 aktualisiereWarenkorb();
 
-                fetch('/api/addToCartSession.php', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        product_id: artikel.id,
-                        quantity: 1
-                    })
-                });
+               fetch('/api/addToCartCookie.php', { // <-- Geändert
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    product_id: artikel.id,
+                    quantity: 1 // Sende +1 zum Erhöhen
+                })
+            });
             });
 
             element.querySelector('.artikelEntfernen').addEventListener('click', () => {
                 warenkorb.splice(i, 1);
                 aktualisiereWarenkorb();
 
-                fetch('/api/removeFromCartSession.php', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        product_id: artikel.id
-                    })
+               fetch('/api/removeFromCartCookie.php', { // <-- Geändert
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    product_id: artikel.id
+                })
                 });
             });
         });
