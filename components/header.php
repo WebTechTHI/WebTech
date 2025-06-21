@@ -1,11 +1,20 @@
 <?php
-$cartCount = 0;
-if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
-    // Variante A: Zähle einfach die Items im Array
-    $cartCount = count($_SESSION['cart']);
+// Wenn wir eine Session verwenden, starten wir sie.
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    // Variante B: Falls du pro Eintrag eine Menge speicherst, summiere die Quantitäten
-    // $cartCount = array_sum(array_column($_SESSION['cart'], 'quantity'));
+// NEU: Warenkorb-Anzahl aus dem Cookie lesen
+$cartCount = 0;
+if (isset($_COOKIE['mlr_cart'])) {
+    $cartData = json_decode($_COOKIE['mlr_cart'], true);
+    if (is_array($cartData)) {
+        // Zählt die Anzahl der verschiedenen Produkte im Warenkorb
+        $cartCount = count($cartData); 
+        
+        // Alternative: Zählt die Gesamtmenge aller Produkte
+        // $cartCount = array_sum($cartData);
+    }
 }
 ?>
 
@@ -19,6 +28,21 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
 </head>
 
 <body>
+  <?php // =============== COOKIE FUNKTIONALITÄT IM HEADER EINGEBUNDEN ====================?>
+
+  
+   <div id="cookie-wrapper"> <!-- Ein Wrapper hilft uns, alles sauber zu halten -->
+       <?php include __DIR__ . '/cookie_banner.php'; ?>
+       <link rel="stylesheet" href="/assets/css/cookie-banner.css">
+       <script src="/assets/javascript/cookieConsent.js" defer></script>
+       <?php
+       if (!isset($_COOKIE['cookie_consent'])) {
+           echo '<style>#cookie-consent-banner { display: block !important; }</style>';
+       }
+       ?>
+
+
+<?php // =============== COOKIE FUNKTIONALITÄT IM HEADER EINGEBUNDEN ====================?>
     <div id="header">
         <!-- top header -->
         <div class="top-bar">

@@ -303,10 +303,11 @@
     <footer>
         <nav>
             <p>© 2025 MLR | <a href="/index.php?page=about">Impressum</a></p>
+            <a href="#" id="manage-cookie-settings">Cookie-Einstellungen</a>
         </nav>
     </footer>
 
-    <script src="/assets/javascript/Warenkorb.js"></script>
+ 
 <script src="/assets/javascript/addToWishlist.js"></script>
 
 </body>

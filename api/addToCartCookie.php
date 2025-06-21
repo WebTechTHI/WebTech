@@ -1,6 +1,21 @@
 <?php
 // api/addToCartCookie.php
 
+
+// Dies kommt ganz an den Anfang der Datei
+
+// Prüfen, ob der Nutzer die Cookies nicht akzeptiert hat
+if (!isset($_COOKIE['cookie_consent']) || $_COOKIE['cookie_consent'] !== 'accepted') {
+    // Wenn keine Zustimmung vorliegt, einen Fehler zurückgeben
+    header('Content-Type: application/json');
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Bitte akzeptieren Sie die Cookies, um den Warenkorb zu nutzen.',
+        'needs_consent' => true // Ein Flag, das wir im JS nutzen können
+    ]);
+    exit; // Wichtig: Skriptausführung hier beenden!
+}
+
 header('Content-Type: application/json');
 
 // 1. Daten aus dem Request holen

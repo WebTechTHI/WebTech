@@ -41,6 +41,21 @@ fetch('/api/getCartCookie.php') // <-- Geändert
 
     // Produkt hinzufügen
     hinzufuegenBtn?.addEventListener('click', () => {
+        // 1. Consent-Cookie prüfen
+        const consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookie_consent='));
+        const consentGiven = consentCookie ? consentCookie.split('=')[1] === 'accepted' : false;
+
+        if (!consentGiven) {
+            // KORREKTUR: Hol dir das Banner-Element hier direkt
+            const banner = document.getElementById('cookie-consent-banner');
+            alert("Für die Funktionalität des Warenkorbes müssen Sie die Cookies akzeptieren.");
+            if (banner) {
+                banner.style.display = 'block';
+            }
+            return; 
+        }
+
+        // --- Wenn die Zustimmung da ist, läuft der normale Code ab ---
         const menge = parseInt(mengeInput.value);
         const produkt = {
             id: hinzufuegenBtn.dataset.id,

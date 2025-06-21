@@ -1,4 +1,17 @@
 <?php
+// Dies kommt ganz an den Anfang der Datei
+
+// Prüfen, ob der Nutzer die Cookies nicht akzeptiert hat
+if (!isset($_COOKIE['cookie_consent']) || $_COOKIE['cookie_consent'] !== 'accepted') {
+    // Wenn keine Zustimmung vorliegt, einen Fehler zurückgeben
+    header('Content-Type: application/json');
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Bitte akzeptieren Sie die Cookies, um den Warenkorb zu nutzen.',
+        'needs_consent' => true // Ein Flag, das wir im JS nutzen können
+    ]);
+    exit; // Wichtig: Skriptausführung hier beenden!
+}
 // api/getCartCookie.php
 
 session_start(); // Session wird hier nicht mehr für den Warenkorb, aber evtl. für andere Dinge (Login) benötigt
