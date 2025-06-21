@@ -18,7 +18,7 @@
 </head>
 
 
-<body class="backgroundpicture darkMode">
+<body class="backgroundpicture">
 
     <!-- HEADER -->
     <header>

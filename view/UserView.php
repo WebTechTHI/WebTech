@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="backgroundpicture darkMode">
+<body class="backgroundpicture">
 
     <header>
         <a href="/index.php">

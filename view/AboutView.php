@@ -14,7 +14,7 @@
 </head>
 
 
-<body class="backgroundpicture darkMode">
+<body class="backgroundpicture">
     <header>
         <a href="/index.php">
             <img src="/assets/images/logo/logoDarkmode.png" alt="logo.png" class="logoHeader">

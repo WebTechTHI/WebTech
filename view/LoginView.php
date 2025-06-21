@@ -16,7 +16,7 @@
     <script src="/assets/javascript/toggleTheme.js"></script>
 </head>
 
-<body class="backgroundpicture darkMode">
+<body class="backgroundpicture">
 
     <header>
         <a href="/index.php">
