@@ -160,3 +160,7 @@ body {
 .impressum-cookies a:hover::after{
     color: #aaa;
 }
+
+#manage-cookie-settings{
+    cursor: pointer;
+}

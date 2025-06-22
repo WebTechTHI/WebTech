@@ -83,7 +83,7 @@
          
         <nav class="impressum-cookies">
             <a href="/index.php?page=about">Impressum</a>
-            <a href="#" id="manage-cookie-settings">Cookie-Einstellungen</a>
+            <a id="manage-cookie-settings">Cookie-Einstellungen</a>
         </nav>
     
     </footer>
