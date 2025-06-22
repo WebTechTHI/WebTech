@@ -19,15 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Versand
     const shipEl = document.querySelectorAll('.summary-row .summary-value')[1];
+    let mwst = 0;
     if (total > 29.99) {
       shipEl.textContent = 'Kostenlos';
+      mwst = total - netto;
     } else {
       shipEl.textContent = '4,99 €';
+      mwst = total - netto;
       total += 4.99;
+
     }
 
-    // MwSt.
-    const mwst = total * 0.19;
+    
+    
     document.querySelectorAll('.summary-row .summary-value')[2].textContent = mwst.toFixed(2).replace('.', ',') + ' €';
 
     // Gesamt

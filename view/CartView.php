@@ -47,7 +47,6 @@
                             </div>
 
                             <div class="item-total">
-                                <?= number_format($lineTotal, 2, ',', '.') ?> €
                             </div>
 
                             <button class="remove-btn">
@@ -62,7 +61,7 @@
 
                     <div class="summary-row">
                         <span class="summary-label">Zwischensumme (Netto):</span>
-                        <span class="summary-value"><?= number_format($total-$total*0.19, 2, ',', '.') ?> €</span>
+                        <span class="summary-value"></span>
                     </div>
 
                     <div class="summary-row">
@@ -71,19 +70,18 @@
                             <span class="summary-value">Kostenlos</span>
                         <?php else: ?>
                             <span class="summary-value">4,99 €</span>
-                         <?php   $total += 4.99; ?>
                         <?php endif; ?>        
                         
                     </div>
 
                     <div class="summary-row">
                         <span class="summary-label">MwSt. (19%):</span>
-                        <span class="summary-value"><?= number_format($total * 0.19, 2, ',', '.') ?> €</span>
+                        <span class="summary-value"></span>
                     </div>
 
                     <div class="summary-row total">
                         <span class="summary-label">Gesamt:</span>
-                        <span class="summary-value"><?= number_format($total, 2, ',', '.') ?> €</span>
+                        <span class="summary-value"></span>
                     </div>
 
                     <a href="/api/checkout.php" class="btn-checkout">Zur Kasse</a>
