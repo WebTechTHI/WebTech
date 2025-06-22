@@ -1,12 +1,12 @@
 <?php
 // Lädt das Model für Login rein
 require_once "model/LoginModel.php";
+require_once "model/CartModel.php"; // NEU: CartModel hier einbinden, damit wir die Merge-Funktion nutzen können.
 
 class LoginController
 {
     public function handleRequest()
     {
-
         $fehlermeldung = "";
         // Prüfe ob Formular abgeschickt wurde
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -14,7 +14,6 @@ class LoginController
             // Hole Benutzereingaben aus Formular            
             $username = trim($_POST["variablefromusername"]);
             $password = $_POST["variableformpassword"];
-
 
             // Erstelle LoginModel und prüfe Login (CheckLogin Funktion wird in Model gemacht)         
             $model = new LoginModel();
@@ -24,19 +23,40 @@ class LoginController
             if (isset($result["error"])) {
                 $fehlermeldung = $result["error"];
             } else {
+                // HIER IST DER LOGIN ERFOLGREICH - der perfekte Ort für den Merge.
 
                 // Speichere User-Daten in Session
-                $_SESSION['user'] = $model->getUserData($result["user_id"]);  //Setzen von Benutzerinformationen in 'user'-array
+                $_SESSION['user'] = $model->getUserData($result["user_id"]);
+
+                // ----- NEU: HIER STARTET DIE MERGE-LOGIK -----
+                
+                // 1. Prüfen, ob ein Cookie-Warenkorb überhaupt existiert.
+                if (isset($_COOKIE['mlr_cart']) && !empty($_COOKIE['mlr_cart'])) {
+                    
+                    // 2. Cookie-Daten holen und in ein PHP-Array umwandeln.
+                    $cookieCart = json_decode($_COOKIE['mlr_cart'], true);
+
+                    // 3. Sicherstellen, dass die Daten gültig sind.
+                    if (is_array($cookieCart) && !empty($cookieCart)) {
+                        
+                        // 4. CartModel instanziieren, um auf die DB-Funktionen zuzugreifen.
+                        $cartModel = new CartModel();
+                        
+                        // 5. Die Merge-Funktion aufrufen. Wir übergeben die ID des gerade eingeloggten Nutzers
+                        //    und den Inhalt des Cookie-Warenkorbs.
+                        $cartModel->mergeCookieCartWithDbCart($_SESSION['user']['user_id'], $cookieCart);
+
+                        // 6. Den lokalen Cookie löschen, da die Daten jetzt sicher in der Datenbank sind.
+                        //    Wir setzen das Ablaufdatum in die Vergangenheit.
+                        setcookie('mlr_cart', '', time() - 3600, '/');
+                    }
+                }
+                // ----- NEU: ENDE DER MERGE-LOGIK -----
+
 
                 // Optionale Erfolgsmeldung
                 $_SESSION["erfolgsmeldung"] = "Willkommen, " . htmlspecialchars($result['username']) . "!<br>Ihre Benutzer ID lautet: " . $result['user_id'];
                 
-//                           Result enthält user id (und auch username) als Schlüssel das brauchen wir um getUserData aufzurufen mit genau der ID 
-//„Ich nehme aus $result nur die user_id.
-//Die gebe ich an getUserData — und DAS Ergebnis (komplettes User-Array) speichere ich als $_SESSION['user'].
-//So habe ich ab sofort ALLE User-Daten in der Session gespeichert, nicht nur die ID.“
-
-
                 // Weiterleitung ins Benutzerprofil
                 header("Location: /index.php?page=user");
                 exit;

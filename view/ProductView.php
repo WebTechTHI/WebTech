@@ -295,7 +295,7 @@
 
     </script>
 
-    <script src="/assets/javascript/Warenkorb.js"></script>
+    <script src="/assets/javascript/Warenkorb.js" defer></script>
 
    
 

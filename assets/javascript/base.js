@@ -25,30 +25,7 @@ function getTotalPrice(priceWOTax) {
     return bruttoPreis.toFixed(2).replace(".", ",");
 }
 
-/*function berechneBrutto() {
-    var netto = document.getElementById("nettoPreis");
-    var brutto = document.getElementById("bruttoPreis");
 
-    var text = netto.textContent;
-    var nettoText = text.replace("€", "").replace(",", ".").replace("Netto:", "").trim();
-
-    if (document.getElementById("bruttoPreisBox").checked) {
-        const bruttoWert = getTotalPrice(parseFloat(nettoText));
-        let bruttoAnzeigen;
-
-        if (Number.isInteger(bruttoWert)) {
-            bruttoAnzeigen = bruttoWert + ',-';
-        } else {
-            bruttoAnzeigen = bruttoWert.toFixed(2).replace(".", ",");
-        }
-
-        brutto.innerHTML = "<strong>Preis: </strong>€ " + bruttoAnzeigen;
-        brutto.style.display = "block";
-    } else {
-        brutto.style.display = "none";
-    }
-}
-    */
 
 function getPriceWOTax(priceWTax) {
     var nettoPreis = priceWTax * 100 / 119;
@@ -56,21 +33,6 @@ function getPriceWOTax(priceWTax) {
 
 }
 
-function berechneNetto() {
-    var brutto = document.getElementById("bruttoPreis");
-    var netto = document.getElementById("nettoPreis");
-
-    var text = brutto.textContent;
-    var bruttoText = text.replace("€", "").replace(",", ".").replace("Preis: ", "").replace(".-", "").trim();
-
-    if (document.getElementById("nettoPreisBox").checked) {
-        netto.innerHTML = "<strong>Netto: </strong>" + "€ " + getPriceWOTax(bruttoText).replace(".", ",");
-        netto.style.display = "block";
-    } else {
-        netto.style.display = "none";
-    }
-
-}
 
 
 

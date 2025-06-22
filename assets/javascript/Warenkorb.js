@@ -4,195 +4,178 @@ document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.warenkorbContainer');
     const closeBtn = document.querySelector('.warenkorbSchliessen');
     const overlay = document.querySelector('.warenkorbOverlay');
-    const anzahl = document.querySelector('.warenkorbAnzahl');
-    const inhalt = document.querySelector('.warenkorbInhalt');
-    const gesamt = document.querySelector('.warenkorbGesamt span:last-child');
-    const leerText = document.querySelector('.leerNachricht');
     const hinzufuegenBtn = document.querySelector('.buy-btn');
-    const zumWarenkorbBtn = document.querySelector('.zurKasseButton');
 
-    let warenkorb = [];
+    // Funktion, um den Warenkorb vom Server zu holen und die Anzeige zu aktualisieren
+    function ladeUndZeigeWarenkorb() {
+        // HIER DIE ERSTE KORREKTUR: Verwende die neue, intelligente API
+        fetch('/api/getCart.php') 
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success' && data.cart) {
+                    aktualisiereWarenkorb(data.cart);
+                }
+            })
+            .catch(err => console.error("Fehler beim Laden des Warenkorbs:", err));
+    }
 
-    // ✅ Session-Warenkorb vom Server laden (jetzt mit Produktdetails)
-fetch('/api/getCartCookie.php') // <-- Geändert
-    .then(res => res.json())
-    .then(data => {
-        if (data.status === 'success') {
-            warenkorb = data.cart || [];
-            aktualisiereWarenkorb();
-        }
-    })
+    // Funktion, um die Anzeige basierend auf den Server-Daten zu rendern
+    function aktualisiereWarenkorb(warenkorbItems) {
+        const inhalt = document.querySelector('.warenkorbInhalt');
+        const gesamtEl = document.querySelector('.warenkorbGesamt span:last-child');
+        const anzahlEl = document.querySelector('.warenkorbAnzahl');
+        const headerBadge = document.querySelector('.cart-badge');
+        const leerText = document.querySelector('.leerNachricht');
 
-    // Öffnen/Schließen der Seitenleiste
-    toggleBtn?.addEventListener('click', () => {
-        container.classList.add('warenkorbOffen');
-        overlay.style.display = 'block';
-    });
-
-    closeBtn?.addEventListener('click', () => {
-        container.classList.remove('warenkorbOffen');
-        overlay.style.display = 'none';
-    });
-
-    overlay?.addEventListener('click', () => {
-        container.classList.remove('warenkorbOffen');
-        overlay.style.display = 'none';
-    });
-
-    // Produkt hinzufügen
-    hinzufuegenBtn?.addEventListener('click', () => {
-        // 1. Consent-Cookie prüfen
-        const consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookie_consent='));
-        const consentGiven = consentCookie ? consentCookie.split('=')[1] === 'accepted' : false;
-
-        if (!consentGiven) {
-            // KORREKTUR: Hol dir das Banner-Element hier direkt
-            const banner = document.getElementById('cookie-consent-banner');
-            alert("Für die Funktionalität des Warenkorbes müssen Sie die Cookies akzeptieren.");
-            if (banner) {
-                banner.style.display = 'block';
-            }
-            return; 
-        }
-
-        // --- Wenn die Zustimmung da ist, läuft der normale Code ab ---
-        const menge = parseInt(mengeInput.value);
-        const produkt = {
-            id: hinzufuegenBtn.dataset.id,
-            name: hinzufuegenBtn.dataset.name,
-            price: parseFloat(hinzufuegenBtn.dataset.price),
-            image: hinzufuegenBtn.dataset.image
-        };
-
-        // Sofort im Client aktualisieren
-        const index = warenkorb.findIndex(e => e.id === produkt.id);
-        if (index > -1) {
-            warenkorb[index].quantity += menge;
-        } else {
-            warenkorb.push({ ...produkt, quantity: menge });
-        }
-
-        aktualisiereWarenkorb();
-
-        // Session updaten
-      fetch('/api/addToCartCookie.php', { // <-- Geändert
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            product_id: produkt.id,
-            quantity: menge
-        })
-    })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success') {
-                console.log('Produkt in Cookie gespeichert');
-            } else {
-                console.error('Fehler:', data.message);
-            }
-        })
-        .catch(err => {
-            console.error('API Fehler:', err);
-        });
-
-        container.classList.add('warenkorbOffen');
-        overlay.style.display = 'block';
-    });
-
-    zumWarenkorbBtn?.addEventListener('click', () => { 
-        window.location.href = '/index.php?page=cart';
-    });
-
-    function aktualisiereWarenkorb() {
-         if (anzahl) anzahl.textContent = warenkorb.length;
-
-         const headerBadge = document.querySelector('.cart-badge');
-        if (headerBadge) headerBadge.textContent = warenkorb.length;
+        // Zähler aktualisieren
+        const gesamtMenge = warenkorbItems.reduce((sum, item) => sum + parseInt(item.quantity), 0);
+        if (anzahlEl) anzahlEl.textContent = gesamtMenge;
+        if (headerBadge) headerBadge.textContent = gesamtMenge;
 
         inhalt.innerHTML = '';
-        if (warenkorb.length === 0) {
-            inhalt.appendChild(leerText);
-            gesamt.textContent = '0,00 €';
+        if (warenkorbItems.length === 0) {
+            if (leerText) inhalt.appendChild(leerText);
+            if (gesamtEl) gesamtEl.textContent = '0,00 €';
             return;
         }
 
         let gesamtPreis = 0;
-
-        warenkorb.forEach((artikel, i) => {
-            gesamtPreis += artikel.price * artikel.quantity;
-
+        warenkorbItems.forEach(artikel => {
+            gesamtPreis += parseFloat(artikel.price) * parseInt(artikel.quantity);
+            
             const element = document.createElement('div');
             element.className = 'warenkorbArtikel';
+            // ACHTUNG: Die ID kommt jetzt aus artikel.product_id, nicht artikel.id
+            element.dataset.productId = artikel.product_id; 
             element.innerHTML = `
                 <img src="${artikel.image}" alt="${artikel.name}" class="artikelBild">
                 <div class="artikelDetails">
                     <div class="artikelTitel">${artikel.name}</div>
-                    <div class="artikelPreis">${artikel.price.toFixed(2).replace('.', ',')} €</div>
+                    <div class="artikelPreis">${parseFloat(artikel.price).toFixed(2).replace('.', ',')} €</div>
                     <div class="artikelMenge">
-                        <button class="mengenButton menge-minus" data-index="${i}">-</button>
+                        <button class="mengenButton menge-minus">-</button>
                         <input type="text" class="mengenEingabe" value="${artikel.quantity}" readonly>
-                        <button class="mengenButton menge-plus" data-index="${i}">+</button>
+                        <button class="mengenButton menge-plus">+</button>
                     </div>
-                    <button class="artikelEntfernen" data-index="${i}">Entfernen</button>
+                    <button class="artikelEntfernen">Entfernen</button>
                 </div>
             `;
             inhalt.appendChild(element);
-
-            element.querySelector('.menge-minus').addEventListener('click', () => {
-                if (warenkorb[i].quantity > 1) {
-                    warenkorb[i].quantity--;
-                    aktualisiereWarenkorb();
-
-                    // Session updaten
-                    fetch('/api/addToCartCookie.php', { // <-- Geändert
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        product_id: artikel.id,
-                        quantity: -1 // Sende -1 zum Reduzieren
-                    })
-                });
-                }
-            });
-
-            element.querySelector('.menge-plus').addEventListener('click', () => {
-                warenkorb[i].quantity++;
-                aktualisiereWarenkorb();
-
-               fetch('/api/addToCartCookie.php', { // <-- Geändert
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    product_id: artikel.id,
-                    quantity: 1 // Sende +1 zum Erhöhen
-                })
-            });
-            });
-
-            element.querySelector('.artikelEntfernen').addEventListener('click', () => {
-                warenkorb.splice(i, 1);
-                aktualisiereWarenkorb();
-
-               fetch('/api/removeFromCartCookie.php', { // <-- Geändert
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    product_id: artikel.id
-                })
-                });
-            });
         });
 
-        gesamt.textContent = `${gesamtPreis.toFixed(2).replace('.', ',')} €`;
+        if (gesamtEl) gesamtEl.textContent = `${gesamtPreis.toFixed(2).replace('.', ',')} €`;
     }
+
+    // Event Delegation für dynamisch erstellte Buttons
+    document.querySelector('.warenkorbInhalt').addEventListener('click', function(event) {
+        const target = event.target;
+        const artikelElement = target.closest('.warenkorbArtikel');
+        if (!artikelElement) return;
+
+        const productId = artikelElement.dataset.productId;
+
+   const mengeInput = artikelElement.querySelector('.mengenEingabe');
+    let aktuelleMenge = parseInt(mengeInput.value, 10);
+
+    if (target.classList.contains('menge-plus')) {
+        const neueMenge = aktuelleMenge + 1;
+        fetch('/api/updateCart.php', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ product_id: productId, quantity: 1 }) // +1 hinzufügen!
+        }).then(() => ladeUndZeigeWarenkorb());
+    }
+
+    if (target.classList.contains('menge-minus')) {
+        if (aktuelleMenge > 1) {
+            const neueMenge = aktuelleMenge - 1;
+            fetch('/api/updateCart.php', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ product_id: productId, quantity: -1 }) // -1 abziehen!
+            }).then(() => ladeUndZeigeWarenkorb());
+        } else {
+            // Optional: gleich entfernen, wenn Menge = 1 -> -1 gedrückt wird
+            fetch('/api/removeCartItem.php', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ product_id: productId })
+            }).then(() => ladeUndZeigeWarenkorb());
+        }
+    }
+
+    if (target.classList.contains('artikelEntfernen')) {
+        fetch('/api/removeCartItem.php', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ product_id: productId })
+        }).then(() => ladeUndZeigeWarenkorb());
+        }
+    });
+
+    // Produkt auf der Produktseite hinzufügen
+    hinzufuegenBtn?.addEventListener('click', () => {
+        const consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookie_consent='));
+        const consentGiven = consentCookie ? consentCookie.split('=')[1] === 'accepted' : false;
+
+        if (!consentGiven) {
+            const banner = document.getElementById('cookie-consent-banner');
+            alert("Für die Funktionalität des Warenkorbes müssen Sie die Cookies akzeptieren.");
+            if (banner) banner.style.display = 'block';
+            return; 
+        }
+
+        const menge = parseInt(mengeInput.value);
+        const produktId = hinzufuegenBtn.dataset.id;
+        
+        // HIER DIE DRITTE KORREKTUR: Verwende die neue, intelligente API
+        fetch('/api/updateCart.php', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ product_id: produktId, quantity: menge })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                ladeUndZeigeWarenkorb(); // Warenkorb neu laden, um Anzeige zu aktualisieren
+                container.classList.add('warenkorbOffen');
+                overlay.style.display = 'block';
+            } else {
+                console.error('Fehler:', data.message);
+            }
+        });
+    });
+
+    // Initiales Laden des Warenkorbs beim Seitenaufruf
+    ladeUndZeigeWarenkorb();
+
+    // Event Listener für die Sidebar (unverändert)
+toggleBtn?.addEventListener('click', () => {
+    container.classList.add('warenkorbOffen');
+    overlay.style.display = 'block';
 });
 
+closeBtn?.addEventListener('click', () => {
+    container.classList.remove('warenkorbOffen');
+    overlay.style.display = 'none';
+});
+
+overlay?.addEventListener('click', () => {
+    container.classList.remove('warenkorbOffen');
+    overlay.style.display = 'none';
+});
+    
+    document.querySelector('.zurKasseButton')?.addEventListener('click', () => { 
+        window.location.href = '/index.php?page=cart';
+    });
+});
+
+
 function updateQtyValue(operation) {
-    let menge = document.getElementById("mengenValue");
-    if (operation == "increase") {
-        menge.value++;
+    // KORREKTUR: Muss auf die ID 'mengenValue' zugreifen, nicht die Klasse 'mengenEingabe'
+    const mengeInput = document.getElementById("mengenValue"); 
+    if(!mengeInput) return;
+
+    let currentValue = parseInt(mengeInput.value, 10);
+    if (operation === "increase") {
+        mengeInput.value = currentValue + 1; // Du musst dem .value-Attribut zuweisen
     }
-    if (operation == "decrease" && menge.value > 1) {
-        menge.value--;
+    if (operation === "decrease" && currentValue > 1) {
+        mengeInput.value = currentValue - 1; // Du musst dem .value-Attribut zuweisen
     }
 }

@@ -4,9 +4,18 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// NEU: Warenkorb-Anzahl aus dem Cookie lesen
+require_once __DIR__ . '/../model/CartModel.php';
 $cartCount = 0;
-if (isset($_COOKIE['mlr_cart'])) {
+
+if (isset($_SESSION['user']['user_id'])) {
+  
+    $cartModel = new CartModel();
+    $dbCart = $cartModel->getCartFromDb($_SESSION['user']['user_id']);
+    
+     $cartCount = count($dbCart);
+
+} else{
+    if (isset($_COOKIE['mlr_cart'])) {
     $cartData = json_decode($_COOKIE['mlr_cart'], true);
     if (is_array($cartData)) {
         // Zählt die Anzahl der verschiedenen Produkte im Warenkorb
@@ -15,6 +24,7 @@ if (isset($_COOKIE['mlr_cart'])) {
         // Alternative: Zählt die Gesamtmenge aller Produkte
         // $cartCount = array_sum($cartData);
     }
+}
 }
 ?>
 

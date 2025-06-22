@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const cartContainer = document.querySelector('.cart-container');
+  const cartCounter = document.querySelector('.cart-badge');
   if (!cartContainer) return;
 
   // Helper: neue Summen berechnen und eintragen
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (currentQty + delta < 1) return; // Nicht unter 1 gehen lassen
 
       // Cookie updaten durch Senden der Mengenänderung (+1 oder -1)
-      fetch('/api/addToCartCookie.php', { // <-- Geändert & Korrigiert
+      fetch('/api/updateCart.php', { // <-- Geändert & Korrigiert
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const itemEl = btn.closest('.cart-item');
       const pid    = itemEl.dataset.productId;
 
-      fetch('/api/removeFromCartCookie.php', { // <-- Geändert
+      fetch('/api/removeCartItem.php', { // <-- Geändert
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ product_id: pid })
@@ -117,7 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       });
+       cartCounter.textContent = parseInt(cartCounter.textContent) - 1;
     });
+
+   
   });
   
   // Initiale Berechnung

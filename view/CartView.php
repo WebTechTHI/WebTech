@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MLR | Warenkorb</title>
     <link rel="icon" href="/assets/images/logo/favicon.png" />
-    <link rel="stylesheet" href="/assets/css/components/header.css" />
-    <link rel="stylesheet" href="/assets/css/colors.css" />
     <link rel="stylesheet" href="/assets/css/cartPage.css">
 
     <script src="/assets/javascript/toggleTheme.js"></script>
