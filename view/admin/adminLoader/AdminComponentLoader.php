@@ -32,7 +32,7 @@ switch ($category) {
 
         <select name="display" id="display">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($displays as $display): ?>
             <option value="<?= $display["display_id"] ?>">
@@ -56,7 +56,7 @@ switch ($category) {
 
         <select name="connector" id="connector">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($connectors as $connector): ?>
             <option value="<?= $connector["connectors_id"] ?>"><?= htmlspecialchars($connector["spec"]) ?></option>
@@ -77,7 +77,7 @@ switch ($category) {
 
         <select name="feature" id="feature">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($features as $feature): ?>
             <option value="<?= $feature["feature_id"] ?>"><?= htmlspecialchars($feature["spec"]) ?></option>
@@ -103,7 +103,7 @@ switch ($category) {
 
         <select name="display" id="display">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($displays as $display): ?>
             <option value="<?= $display["display_id"] ?>">
@@ -134,7 +134,7 @@ switch ($category) {
 
         <select name="connector" id="connector">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($connectors as $connector): ?>
             <option value="<?= $connector["connectors_id"] ?>"><?= htmlspecialchars($connector["spec"]) ?></option>
@@ -155,7 +155,7 @@ switch ($category) {
 
         <select name="cpu" id="cpu">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($cpus as $cpu): ?>
             <option value="<?= $cpu["cpu_id"] ?>">
@@ -178,7 +178,7 @@ switch ($category) {
 
         <select name="storage" id="storage">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($storages as $storage): ?>
             <option value="<?= $storage["storage_id"] ?>">
@@ -201,7 +201,7 @@ switch ($category) {
 
         <select name="gpu" id="gpu">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($gpus as $gpu): ?>
             <option value="<?= $gpu["gpu_id"] ?>">
@@ -224,7 +224,7 @@ switch ($category) {
 
         <select name="os" id="os">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($operatingSystems as $os): ?>
             <option value="<?= $os["os_id"] ?>"><?= htmlspecialchars($os["name"]) ?></option>
@@ -245,7 +245,7 @@ switch ($category) {
 
         <select name="ram" id="ram">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($rams as $ram): ?>
             <option value="<?= $ram["ram_id"] ?>">
@@ -268,7 +268,7 @@ switch ($category) {
 
         <select name="network" id="network">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($networks as $network): ?>
             <option value="<?= $network["network_id"] ?>"><?= htmlspecialchars($network["spec"]) ?></option>
@@ -289,7 +289,7 @@ switch ($category) {
 
         <select name="feature" id="feature">
 
-          <option value="null">- keine -</option>
+          <option value="">- keine -</option>
 
           <?php foreach ($features as $feature): ?>
             <option value="<?= $feature["feature_id"] ?>"><?= htmlspecialchars($feature["spec"]) ?></option>

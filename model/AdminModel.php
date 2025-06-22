@@ -28,24 +28,103 @@ class AdminModel
 
         /*
 
-        Alle werte Aus der Form auslesen und Speichern.
+        Alle werte Aus der Form auslesen und Speichern. Werte die nicht gesetzt sind, da die selektoren nicht geladen werden, wie beispielsweise die gpu beim anlegen
+        eines Monitors oder das os beim anlegen einer maus, müssen extra abgefragt werden (if-cases). wenn sie angezeigt werden aber nicht angewählt werden haben diese
+        einen leeren string (''), was ebenfalls geprüft werden muss.
 
         */
-        $subcategory = $_POST['subcategory'] ?? 1;
-        $name = $_POST['name'] ?? "";
-        $short_description = $_POST['short-description'] ?? "";
-        $description = $_POST['description'] ?? "";
-        $price = $_POST['price'] ?? "9999.99";
-        $display = $_POST['display'] ?? null;
-        $connector = $_POST['connector'] ?? null;
-        $feature = $_POST['feature'] ?? null;
-        $cpu = $_POST['cpu'] ?? null;
-        $gpu = $_POST['gpu'] ?? null;
-        $storage = $_POST['storage'] ?? null;
-        $os = $_POST['os'] ?? null;
-        $ram = $_POST['ram'] ?? null;
-        $network = $_POST['network'] ?? null;
-        $sale = $_POST['sale'] ?? null;
+
+
+        if (isset($_POST['subcategory'])) {
+            $subcategory = ($_POST['subcategory'] === '') ? 1 : $_POST['subcategory'];
+        } else {
+            $subcategory = 1;
+        }
+
+        if (isset($_POST['name'])) {
+            $name = ($_POST['name'] === '') ? "" : $_POST['name'];
+        } else {
+            $name = "";
+        }
+
+        if (isset($_POST['short-description'])) {
+            $short_description = ($_POST['short-description'] === '') ? "" : $_POST['short-description'];
+        } else {
+            $short_description = "";
+        }
+
+        if (isset($_POST["description"])) {
+            $description = ($_POST['description'] === '') ? "" : $_POST['description'];
+        } else {
+            $description = "";
+        }
+
+        if (isset($_POST["price"])) {
+            $price = ($_POST['price'] === '') ? "9999.99" : $_POST['price'];
+        } else {
+            $price = '9999.99';
+        }
+
+        if (isset($_POST['display'])) {
+            $display = ($_POST['display'] === '') ? null : $_POST['display'];
+        } else {
+            $display = null;
+        }
+
+        if (isset($_POST['connector'])) {
+            $connector = ($_POST['connector'] === '') ? null : $_POST['connector'];
+        } else {
+            $connector = null;
+        }
+
+        if (isset($_POST['feature'])) {
+            $feature = ($_POST['feature'] === '') ? null : $_POST['feature'];
+        } else {
+            $feature = null;
+        }
+
+        if (isset($_POST['cpu'])) {
+            $cpu = ($_POST['cpu'] === '') ? null : $_POST['cpu'];
+        } else {
+            $cpu = null;
+        }
+
+        if (isset($_POST['gpu'])) {
+            $gpu = ($_POST['gpu'] === '') ? null : $_POST['gpu'];
+        } else {
+            $gpu = null;
+        }
+
+        if (isset($_POST['storage'])) {
+            $storage = ($_POST['storage'] === '') ? null : $_POST['storage'];
+        } else {
+            $storage = null;
+        }
+
+        if (isset($_POST['os'])) {
+            $os = ($_POST['os'] === '') ? null : $_POST['os'];
+        } else {
+            $os = null;
+        }
+
+        if (isset($_POST['ram'])) {
+            $ram = ($_POST['ram'] === '') ? null : $_POST['ram'];
+        } else {
+            $ram = null;
+        }
+
+        if (isset($_POST['network'])) {
+            $network = ($_POST['network'] === '') ? null : $_POST['network'];
+        } else {
+            $network = null;
+        }
+
+        if (isset($_POST['sale'])) {
+            $sale = ($_POST['sale'] === '') ? 0 : $_POST['sale'];
+        } else {
+            $sale = 0;
+        }
+
 
 
         //SQL Anfrage vorbereiten
@@ -61,7 +140,7 @@ class AdminModel
 
         //Variablen belegen (Values setzen)
         $stmt->bind_param(
-            "ssssssssssssssss",
+            "ssdiiiiiiiiiiiss",
             $name,
             $short_description,
             $price,
