@@ -75,6 +75,12 @@ switch ($page) {
         $controller->handleRequest();
         exit;
 
+    case "checkout":
+        require_once "controller/CheckoutController.php";
+        $controller = new CheckoutController();
+        $controller->handleRequest();
+        exit;
+
 
     default:
         require_once "controller/FileNotFoundController.php";

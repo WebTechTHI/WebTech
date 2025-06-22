@@ -84,7 +84,7 @@
                         <span class="summary-value"></span>
                     </div>
 
-                    <a href="/api/checkout.php" class="btn-checkout">Zur Kasse</a>
+                    <a href="/index.php?page=checkout" class="btn-checkout">Zur Kasse</a>
                 </div>
             </div>
 
