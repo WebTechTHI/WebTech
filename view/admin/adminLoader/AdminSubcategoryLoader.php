@@ -5,21 +5,21 @@ $options = '';
 
 switch ($category) {
     case 'accesories':
-        $options .= '<option value="mouse">Maus</option>';
-        $options .= '<option value="keyboard">Tastatur</option>';
-        $options .= '<option value="monitor">Monitor</option>';
+        $options .= '<option value="6">Maus</option>';
+        $options .= '<option value="7">Tastatur</option>';
+        $options .= '<option value="5">Monitor</option>';
         break;
 
     case 'desktop':
-        $options .= '<option value="desktop-gaming">Gaming-PC</option>';
-        $options .= '<option value="desktop-office">Office-PC</option>';
-        $options .= '<option value="none">Keine</option>';
+        $options .= '<option value="2">Gaming-PC</option>';
+        $options .= '<option value="1">Office-PC</option>';
+        $options .= '<option value="">Keine</option>';
         break;
 
     case 'laptop':
-        $options .= '<option value="laptop-gaming">Gaming-Laptop</option>';
-        $options .= '<option value="laptop-office">Office-Laptop</option>';
-        $options .= '<option value="none">Keine</option>';
+        $options .= '<option value="3">Gaming-Laptop</option>';
+        $options .= '<option value="4">Office-Laptop</option>';
+        $options .= '<option value="">Keine</option>';
         break;
 
     default:

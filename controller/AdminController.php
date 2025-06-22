@@ -1,5 +1,5 @@
 <?php
-require_once 'model/AdminModel.php';
+require_once __DIR__ . '/../model/AdminModel.php';
 
 class AdminController
 {
@@ -35,19 +35,20 @@ class AdminController
             
             //Produkte Hochladen Formular
             case 'upload':
-                require 'view/admin/adminPages/';
+                require 'view/admin/adminPages/createProducts.php';
                 break;
 
 
             //Ändern von Produktdetails
             case 'edit':                   
-                require 'view/admin/adminPages/';
+                require 'view/admin/adminPages/AlterProducts.php';
                 break;
 
 
             //speichert änderungen an produkten
             case 'uploadSubmit':           
                 $model -> uploadSubmit();
+                require 'view/admin/adminPages/CreateProducts.php';
                 break;
 
 
