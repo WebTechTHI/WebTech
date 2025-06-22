@@ -69,7 +69,7 @@
 
 
             <div class="footer-bottom">
-                <div>© 2025 MLR GmbH. Alle Rechte vorbehalten. | Dies ist ein studentisches Projekt. Diese Seite stellt keine echten Produkte dar.</div>
+                <div>© 2025 MLR GmbH. Alle Rechte vorbehalten. | Die angegebenen Serviceleistungen sind FIKTIV und dienen zu Demonstrationszwecken.</div>
                 <div class="footer-payment">
                     <img id="visaIconFooter"></img>
                     <img id="mastercardIconFooter"></img>
