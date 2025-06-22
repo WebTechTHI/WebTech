@@ -57,16 +57,5 @@ class AdminController
                 break;
         }
 
-
-
-
-
-
-
-
-
-
-        //Die view zeigen
-        include 'view/AdminView.php';
     }
 }

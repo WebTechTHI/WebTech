@@ -33,12 +33,13 @@
                 <div>
                     <h4 class="footer-title">PRODUKTE</h4>
                     <ul class="footer-links">
-                        <li><a href="">Gaming PCs</a></li>
-                        <li><a href="">High-End PCs</a></li>
-                        <li><a href="">Silent PCs</a></li>
-                        <li><a href="">Creator PCs</a></li>
-                        <li><a href="">Gaming Laptops</a></li>
-                        <li><a href="">PC Konfigurator</a></li>
+                        <li><a href="/index.php?page=category&category=gamingpc">Gaming PCs</a></li>
+                        <li><a href="/index.php?page=category&category=officepc">Office PCs</a></li>
+                        <li><a href="/index.php?page=category&category=gaminglaptop">Gaming Laptops<a></li>
+                        <li><a href="/index.php?page=category&category=officelaptop">Office Laptops</a></li>
+                        <li><a href="/index.php?page=category&category=monitor">Monitore</a></li>
+                        <li><a href="/index.php?page=category&category=maus">Mäuse</a></li>
+                        <li><a href="/index.php?page=category&category=tastatur">Tastaturen</a></li>
                     </ul>
                 </div>
 

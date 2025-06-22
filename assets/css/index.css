@@ -182,10 +182,14 @@ body {
 .products-grid {
     display: flex;
     flex-direction: row;
-    grid-template-columns: 1fr;
     gap: 15px;
-    align-items: stretch;
     max-width: 1115px;
+}
+
+@media screen and (max-width: 1600px) {
+  .products-grid{
+    max-width: 550px;
+  }
 }
 
 
