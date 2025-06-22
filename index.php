@@ -66,12 +66,18 @@ switch ($page) {
         $action = $_GET['action'] ?? 'index';
         require_once "controller/AdminController.php";
         $controller = new AdminController();
-        $controller->handleRequest($action); 
+        $controller->handleRequest($action);
         exit;
 
     case "cart":
         require_once "controller/CartController.php";
         $controller = new CartController();
+        $controller->handleRequest();
+        exit;
+
+    case "checkout":
+        require_once "controller/CheckoutController.php";
+        $controller = new CheckoutController();
         $controller->handleRequest();
         exit;
 
