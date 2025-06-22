@@ -15,8 +15,8 @@
 <body>
 
 
-<a href="/view/admin/adminPages/CreateProducts.php">Neues Produkt anlegen.</a>
-<a href="/view/admin/adminPages/AlterProducts.php">Produkt bearbeiten.</a>
+<a href="/index.php?page=admin&action=upload">Neues Produkt anlegen.</a>
+<a href="/index.php?page=admin&action=edit">Produkt bearbeiten.</a>
 
 
 

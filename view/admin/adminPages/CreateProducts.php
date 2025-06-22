@@ -19,12 +19,13 @@
 
 
   <!-- Forumular zum anlegen neuer Produkte -->
-  <form class="admin-form" method="post" action="/controller/AdminController.php" enctype="multipart/form-data">
+  <form class="admin-form" method="post" action="/index.php?page=admin&action=uploadSubmit"
+    enctype="multipart/form-data">
 
     <h2>Neues Produkt anlegen.</h2>
 
 
-  <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
+    <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
     <label for="category">Bitte wählen Sie eine Produktkategorie:</label>
     <select name="category" id="category">
       <option value="" disabled <?= $category == "" ? "selected" : "" ?>>Bitte Kategorie wählen</option>
@@ -62,9 +63,19 @@
     <div id="component-container"></div>
 
 
-
+    <!-- Preis in Euro-->
     <label for="price">Preis:</label>
     <input type="text" name="price" id="price" />
+
+
+    <!-- Sale an oder aus -->
+    <label for="sale">Sale</label>
+    <select name="sale" id="sale">
+      <option value="0" selected>Standardpreis</option>
+      <option value="1">Im Angebot</option>
+    </select>
+
+
 
     <input type="submit" value="Absenden" />
   </form>
@@ -84,12 +95,12 @@
         });
 
       //dynamisches Laden von Komponenten zur Auswahl
-        fetch("/view/admin/adminLoader/AdminComponentLoader.php?category=" + category)
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("component-container").innerHTML = data;
+      fetch("/view/admin/adminLoader/AdminComponentLoader.php?category=" + category)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("component-container").innerHTML = data;
+        });
     });
-      });
   </script>
 </body>
 
