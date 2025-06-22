@@ -138,18 +138,6 @@ if (isset($_SESSION['user']['user_id'])) {
 
             <!-- Warenkorb und Wunschliste-->
             <div class="wishlist-cart-container">
-                <!-- Suchfeld NEU NUR ZUM TESTEN-->
-                <!-- ============================================-->
-                <div class="search-container">
-                    <img class="header-icon" id="search-icon" src="/assets/images/icons/search.svg" alt="Suche"
-                        title="Suche" onclick="toggleSearch()">
-                    <div class="search-field-container" id="search-field">
-                        <input type="text" class="search-input" placeholder="Produkte suchen..." id="search-input">
-                        <button class="search-button" onclick="performSearch()">Suchen</button>
-                    </div>
-                </div>
-                <!-- ============================================-->
-                <!-- Suchfeld NEU NUR ZUM TESTEN-->
                 <a href="/index.php?page=wishlist" title="Wunschliste">
                     <img class="header-icon" id="wishlist-icon" src="/assets/images/icons/favorite-border.svg"
                         alt="wishlist">
@@ -167,39 +155,7 @@ if (isset($_SESSION['user']['user_id'])) {
 
 
 
-    <!-- Suchfeld NEU NUR ZUM TESTEN-->
-    <!-- ============================================-->
-    <script>
-        function toggleSearch() {
-            const searchField = document.getElementById('search-field');
-            const searchInput = document.getElementById('search-input');
-
-            searchField.classList.toggle('active');
-
-            // Focus auf Input setzen wenn geöffnet
-            if (searchField.classList.contains('active')) {
-                setTimeout(() => searchInput.focus(), 100);
-            }
-        }
-
-        function performSearch() {
-            const searchTerm = document.getElementById('search-input').value;
-            if (searchTerm.trim()) {
-                // Hier kannst du die Suchlogik implementieren
-                window.location.href = `/search.php?q=${encodeURIComponent(searchTerm)}`;
-            }
-        }
-
-        // Schließe Suchfeld beim Klick außerhalb
-        document.addEventListener('click', function (event) {
-            const searchContainer = document.querySelector('.search-container');
-            const searchField = document.getElementById('search-field');
-
-            if (!searchContainer.contains(event.target)) {
-                searchField.classList.remove('active');
-            }
-        });
-    </script>
+ 
 </body>
 
 </html>
