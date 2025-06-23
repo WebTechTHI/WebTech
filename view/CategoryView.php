@@ -14,6 +14,16 @@
 
 <body>
     <?php include 'components/header.php'; ?>
+    <?php
+    // Wishlist aus Cookie holen (wichtig für Icon-Status)
+    $wishlist = [];
+    if (isset($_COOKIE['wishlist'])) {
+        $wishlist = json_decode($_COOKIE['wishlist'], true);
+        if (!is_array($wishlist))
+            $wishlist = [];
+    }
+    ?>
+
 
 
     <!-- Breadcrumb -->
@@ -236,12 +246,17 @@
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                                     <div class="button-container">
                                         <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>"
-                                            class="buy-btn">Mehr zum
-                                            produkt</a>
-                                        <button class="favorite-btn">
-                                            <img src="/assets/images/icons/favorite-border.svg" alt="Favorit" />
+                                            class="buy-btn">
+                                            Mehr zum Produkt
+                                        </a>
+                                        <?php
+                                        $isInWishlist = in_array($product['product_id'], $wishlist);
+                                        $icon = $isInWishlist ? 'favorite.svg' : 'favorite-border.svg';
+                                        ?>
+                                        <button class="favorite-btn" data-id="<?php echo $product['product_id']; ?>"
+                                            data-in-wishlist="<?php echo $isInWishlist ? '1' : '0'; ?>">
+                                            <img src="/assets/images/icons/<?php echo $icon; ?>" alt="Favorit">
                                         </button>
-
                                     </div>
                                 </div>
                             </div>
