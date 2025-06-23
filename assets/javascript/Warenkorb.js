@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Funktion, um den Warenkorb vom Server zu holen und die Anzeige zu aktualisieren
     function ladeUndZeigeWarenkorb() {
-        // HIER DIE ERSTE KORREKTUR: Verwende die neue, intelligente API
         fetch('/api/getCart.php') 
             .then(res => res.json())
             .then(data => {
