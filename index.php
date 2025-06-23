@@ -81,6 +81,18 @@ switch ($page) {
         $controller->handleRequest();
         exit;
 
+     case "order_success":
+        require_once "controller/OrderSuccessController.php";
+        $controller = new OrderSuccesController();
+        $controller->handleRequest();
+        exit;  
+        
+    case "orders":
+        require_once "controller/OrdersController.php";
+        $controller = new OrdersController();
+        $controller->handleRequest();
+        exit;    
+
 
     default:
         require_once "controller/FileNotFoundController.php";

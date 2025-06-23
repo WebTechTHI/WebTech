@@ -86,7 +86,7 @@ if (isset($_SESSION['user']['user_id'])) {
                     </a>
 
                     <a href="/index.php?page=logout">
-                        <img class="header-icon" src="/assets/images/icons/logout.svg" alt="Logout" title="Logout">
+                        <img class="header-icon user" src="/assets/images/icons/logout.svg" alt="Logout" title="Logout">
                     </a>
 
                 <?php } ?>

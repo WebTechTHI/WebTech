@@ -1,0 +1,88 @@
+/* assets/css/ordersPage.css */
+
+.orders-page-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.orders-page-container h1 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-list-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1.5fr 0.5fr;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #666;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.order-item-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1.5fr 0.5fr; /* Gleiche Spalten wie der Header */
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px 15px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease-in-out;
+}
+
+.order-item-container:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    border-color: #c00;
+    color: inherit;
+}
+
+.order-data {
+    font-size: 1em;
+}
+
+.order-arrow {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #c00;
+    text-align: right;
+}
+
+
+
+/* Beispiel-Farben für den Status */
+
+
+/* Nachricht für keine Bestellungen */
+.no-orders-message {
+    font-size: 1.2em;
+    color: #777;
+    text-align: center;
+    padding: 50px;
+    background-color: #f9f9f9;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+}
+
+.btn-shop-now {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #c00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}

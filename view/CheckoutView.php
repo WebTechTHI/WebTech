@@ -58,14 +58,18 @@
                     <p>
                         <?= htmlspecialchars($_SESSION['user']['richtiger_name'] ?? '') ?>
                     </p>
-                    <p>
-                    <?= htmlspecialchars($_SESSION['user'][''] ?? '') ?>
-                    <?= htmlspecialchars($_SESSION['user']['stadt'] ?? '') ?></p>
-                    <p>
-                        <?= htmlspecialchars($_SESSION['user']['straße'] ?? '') ?></p>
 
-                  <p> <strong>Kontakt:</strong></p> 
-                  <p> <?= htmlspecialchars($_SESSION['user']['email'] ?? '') ?> </p> 
+                    <p>
+                        <?= htmlspecialchars($_SESSION['user']['straße'] ?? '') ?>
+                    </p>
+                    <p>
+                        <?= htmlspecialchars($_SESSION['user']['plz'] ?? '') ?>
+                        <?= htmlspecialchars($_SESSION['user']['stadt'] ?? '') ?>
+                    </p>
+
+
+                    <p> <strong>Kontakt:</strong></p>
+                    <p> <?= htmlspecialchars($_SESSION['user']['email'] ?? '') ?> </p>
 
                 </div>
                 <!-- Zahlungsarten -->

@@ -1,6 +1,6 @@
 <?php
-// controller/CheckoutController.php
 
+require_once __DIR__ . '/../db_verbindung.php';
 require_once __DIR__ . '/../model/CartModel.php';
 require_once __DIR__ . '/../model/CheckoutModel.php'; // Das neue Model
 
@@ -36,7 +36,7 @@ class CheckoutController
         foreach ($cartItems as $item) {
             $subTotal += $item['price'] * $item['quantity'];
         }
-        $netto = $subTotal *100/119;
+        $netto = $subTotal * 100 / 119;
         $tax = $subTotal - $netto;
         $shippingCost = ($subTotal > 29.99) ? 0 : 4.99;
         $total = $subTotal + $shippingCost;
@@ -58,7 +58,7 @@ class CheckoutController
 
 
 
-                $checkoutModel = new CheckoutModel();
+            $checkoutModel = new CheckoutModel();
 
             // Wir übergeben die erstellte Adresse an das Model
             $orderId = $checkoutModel->createOrder($userId, $cartItems, $total, $shippingAddress);
@@ -68,7 +68,7 @@ class CheckoutController
                 $checkoutModel->clearUserCart($userId);
 
                 // Zur "Danke"-Seite weiterleiten
-                header('Location: /index.php?page=order_success');
+                header('Location: /index.php?page=order_success&id=' . $orderId);
                 exit;
             } else {
                 // Fehler bei der Bestellung
