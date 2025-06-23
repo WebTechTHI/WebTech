@@ -44,19 +44,19 @@
 
     <!-- Produktbild hochladen-->
     <label for="image">Bild hochladen:</label>
-    <input type="file" name="image" id="image" />
+    <input type="file" name="images[]" id="image" multiple>
 
     <!-- Produktname eingeben-->
     <label for="name">Name:</label>
-    <input type="text" name="name" id="name" />
+    <input type="text" name="name" id="name" >
 
     <!-- Produktbeschreibung eingeben-->
     <label for="short-description">Kurzbeschreibung:</label>
-    <input type="text" name="short-description" id="short-description" />
+    <input type="text" name="short-description" id="short-description" >
 
     <!-- Produktbeschreibung eingeben-->
     <label for="description">Beschreibung:</label>
-    <input type="text" name="description" id="description" />
+    <input type="text" name="description" id="description">
 
 
     <!-- container für dynamisches befüllen der Komponentenauswahl -->
@@ -65,7 +65,7 @@
 
     <!-- Preis in Euro-->
     <label for="price">Preis:</label>
-    <input type="text" name="price" id="price" />
+    <input type="text" name="price" id="price">
 
 
     <!-- Sale an oder aus -->
@@ -77,7 +77,7 @@
 
 
 
-    <input type="submit" value="Absenden" />
+    <input type="submit" value="Absenden" >
   </form>
 
   <script>

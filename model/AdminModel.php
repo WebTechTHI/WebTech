@@ -59,6 +59,12 @@ class AdminModel
             $description = "";
         }
 
+        if (isset($_FILES['images'])) {
+            $images = $_FILES['images'];
+        } else {
+            $images = null;
+        }
+
         if (isset($_POST["price"])) {
             $price = ($_POST['price'] === '') ? "9999.99" : $_POST['price'];
         } else {
@@ -164,6 +170,7 @@ class AdminModel
         $stmt->execute();
 
 
+
         //Feedback zu erfolgreichem / Erfolglosem Upload
         if ($stmt->affected_rows > 0) {
             echo "Produkt erfolgreich gespeichert.";
@@ -171,8 +178,52 @@ class AdminModel
             echo "Fehler beim Speichern: " . $stmt->error;
         }
 
-        $stmt->close();
+
+
+        //
+        //Ab hier: Fotos speichern
+        //
+
+
+        //letzte vergeben id in products speichern, um fotos zu produkten zuordnen zu können
+
+        $productId = $stmt->insert_id;
+
+
+        //Ordner für fotos erstellen
+        $uploadDir = __DIR__ . "/../uploads/" . $productId;
+
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        if (isset($_FILES['images'])) {
+            $amountImages = count($_FILES['images']['name']);
+
+
+            //jeden fotopfad in der datenbank speichern
+            for ($imageCount = 0; $imageCount < $amountImages; $imageCount++) {
+
+                //Temporär gespeichertes bild vom server holen und speichern. name des originalfotos speichern.
+                $tmpName = $_FILES['images']['tmp_name'][$imageCount];
+                $imageName = basename($_FILES['images']['name'][$imageCount]);
+
+                $filePath = "/uploads/$productId/$imageName";
+                $savePath = $uploadDir . '/' . $imageName;
+
+                move_uploaded_file($tmpName, $savePath);
+
+                $sequenceNumber = $imageCount + 1;
+
+                $stmt = $GLOBALS['conn']->prepare("INSERT INTO image (product_id, file_path, sequence_no) VALUES(?,?,?)");
+                $stmt->bind_param("isi", $productId, $filePath, ($sequenceNumber));
+                $stmt->execute();
+
+            }
+        }
 
     }
+
+
 }
 
