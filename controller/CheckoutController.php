@@ -53,7 +53,9 @@ class CheckoutController
             // Wir bauen den Adress-String aus den Feldern, die in deiner Tabelle existieren.
             // Der Null-Coalescing-Operator (??) sorgt dafür, dass kein Fehler auftritt, falls ein Feld leer ist.
             $shippingAddress = ($user['richtiger_name'] ?? 'N/A') . "\n" .
-                ($user['stadt'] ?? 'N/A') . "\n" .
+                ($user['straße'] ?? 'N/A') . "\n" .
+                ($user['plz'] ?? 'N/A') . ' ' . ($user['stadt'] ?? 'N/A') . "\n";
+
 
 
                 $checkoutModel = new CheckoutModel();
