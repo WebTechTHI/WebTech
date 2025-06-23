@@ -107,3 +107,52 @@ main.wishlist-page {
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+ 
+/* =============== MELDUNGS BLOCK bei Login und Registration bei php anmeldung !! ============== */ 
+.meldung-container { 
+  max-width: 500px; 
+  margin: 30px auto; 
+  padding: 20px 25px; 
+  border-radius: 16px; 
+  background-color: var(--user-block-bg-color); 
+  border: 2px solid var(--user-block-border); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+  font-size: 16px; font-weight: 500; 
+  animation: slideFadeIn 0.5s ease-out; 
+  transition: background-color 0.3s ease, border-color 0.3s ease; }
+
+/* Erfolgreich */ 
+.meldung-erfolg { 
+  background-color: rgba(39, 141, 94, 0.12); 
+  border-color: var(--ci-green); 
+  color: var(--ci-green); }
+
+/* Fehlermeldung */ 
+.meldung-fehler { background-color: rgba(211, 30, 7, 0.12); 
+  border-color: var(--ci-red); 
+  color: var(--ci-red); }
+
+/* Animation */ 
+@keyframes slideFadeIn { 
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  } 
+    to { 
+      opacity: 1;
+       transform: translateY(0); 
+      } 
+    }
+
+/* Responsive Verhalten */ 
+@media (max-width: 600px) { 
+  .meldung-container { 
+    width: 90%; font-size: 15px; 
+    padding: 15px 20px; 
+  } 
+}
+
