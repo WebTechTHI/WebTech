@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.querySelector('.warenkorbSchliessen');
     const overlay = document.querySelector('.warenkorbOverlay');
     const hinzufuegenBtn = document.querySelector('.buy-btn');
+    const headerAnzahl = document.querySelector('.cart-badge');
 
     // Funktion, um den Warenkorb vom Server zu holen und die Anzeige zu aktualisieren
     function ladeUndZeigeWarenkorb() {
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Zähler aktualisieren
         const gesamtMenge = warenkorbItems.reduce((sum, item) => sum + parseInt(item.quantity), 0);
         if (anzahlEl) anzahlEl.textContent = warenkorbItems.length;
+        if (headerAnzahl) headerAnzahl.textContent = warenkorbItems.length;
 
         inhalt.innerHTML = '';
         if (warenkorbItems.length === 0) {
