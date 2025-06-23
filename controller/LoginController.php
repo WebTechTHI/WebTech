@@ -29,19 +29,19 @@ class LoginController
                 $_SESSION['user'] = $model->getUserData($result["user_id"]);
 
                 // ----- NEU: HIER STARTET DIE MERGE-LOGIK -----
-                
+
                 // 1. Prüfen, ob ein Cookie-Warenkorb überhaupt existiert.
                 if (isset($_COOKIE['mlr_cart']) && !empty($_COOKIE['mlr_cart'])) {
-                    
+
                     // 2. Cookie-Daten holen und in ein PHP-Array umwandeln.
                     $cookieCart = json_decode($_COOKIE['mlr_cart'], true);
 
                     // 3. Sicherstellen, dass die Daten gültig sind.
                     if (is_array($cookieCart) && !empty($cookieCart)) {
-                        
+
                         // 4. CartModel instanziieren, um auf die DB-Funktionen zuzugreifen.
                         $cartModel = new CartModel();
-                        
+
                         // 5. Die Merge-Funktion aufrufen. Wir übergeben die ID des gerade eingeloggten Nutzers
                         //    und den Inhalt des Cookie-Warenkorbs.
                         $cartModel->mergeCookieCartWithDbCart($_SESSION['user']['user_id'], $cookieCart);
@@ -53,15 +53,30 @@ class LoginController
                 }
                 // ----- NEU: ENDE DER MERGE-LOGIK -----
 
+                if (isset($_SESSION['redirect_after_login'])) {
+                    // Ja, es gibt eine. Wir holen sie.
+                    $redirectTo = $_SESSION['redirect_after_login'];
 
-                // Optionale Erfolgsmeldung
-                $_SESSION["erfolgsmeldung"] = "Willkommen, " . htmlspecialchars($result['username']) . "!<br>Ihre Benutzer ID lautet: " . $result['user_id'];
-                
-                // Weiterleitung ins Benutzerprofil
-                header("Location: /index.php?page=user");
-                exit;
+                    // WICHTIG: Wir löschen die Variable aus der Session, damit sie beim nächsten Login nicht wieder verwendet wird.
+                    unset($_SESSION['redirect_after_login']);
+
+                    // Wir leiten den Nutzer zur gespeicherten URL weiter (z.B. zur Kasse).
+                    header("Location: " . $redirectTo);
+                    exit;
+                } else {
+                    // Nein, es gibt keine spezielle URL. Wir leiten zum Standardziel (Benutzerprofil) weiter.
+                    // Optionale Erfolgsmeldung
+                    $_SESSION["erfolgsmeldung"] = "Willkommen, " . htmlspecialchars($result['username']) . "!<br>Ihre Benutzer ID lautet: " . $result['user_id'];
+                    header("Location: /index.php?page=user");
+                    exit;
+                }
             }
         }
+        // Optionale Erfolgsmeldung
+
+
+        // Weiterleitung ins Benutzerprofil
+
 
         // Zeige View (immer, egal ob GET oder POST)
         require "view/LoginView.php";

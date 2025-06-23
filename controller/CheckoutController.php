@@ -4,21 +4,25 @@
 require_once __DIR__ . '/../model/CartModel.php';
 require_once __DIR__ . '/../model/CheckoutModel.php'; // Das neue Model
 
-class CheckoutController {
+class CheckoutController
+{
 
-    public function handleRequest() {
+    public function handleRequest()
+    {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
         // --- SICHERHEIT: Ist der Nutzer eingeloggt? ---
-        if (!isset($_SESSION['user']['id'])) {
+        if (!isset($_SESSION['user']['user_id'])) {
+
+            $_SESSION['redirect_after_login'] = '/index.php?page=checkout';
             // Nicht eingeloggt -> zur Login-Seite umleiten
             $_SESSION['login_redirect_message'] = "Bitte melden Sie sich an, um zur Kasse zu gehen.";
             header('Location: /index.php?page=login');
             exit;
         }
-        
+
         $userId = $_SESSION['user']['user_id'];
         $cartModel = new CartModel();
         $cartItems = $cartModel->getCartFromDb($userId);
@@ -34,33 +38,35 @@ class CheckoutController {
         foreach ($cartItems as $item) {
             $subTotal += $item['price'] * $item['quantity'];
         }
-
+        $netto = $subTotal *100/119;
+        $tax = $subTotal - $netto;
         $shippingCost = ($subTotal > 29.99) ? 0 : 4.99;
         $total = $subTotal + $shippingCost;
-        $tax = $total * 0.19; // Annahme: MwSt. wird auf den Gesamtpreis inkl. Versand berechnet
+
+
 
         // --- ANFRAGE VERARBEITEN ---
-       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // --- BESTELLUNG AUFGEBEN ---
 
             // HIER ERSTELLEN WIR DIE LIEFERADRESSE AUS DEINEN VORHANDENEN DATEN
             $user = $_SESSION['user'];
-            
+
             // Wir bauen den Adress-String aus den Feldern, die in deiner Tabelle existieren.
             // Der Null-Coalescing-Operator (??) sorgt dafür, dass kein Fehler auftritt, falls ein Feld leer ist.
             $shippingAddress = ($user['richtiger_name'] ?? 'N/A') . "\n" .
-                               ($user['stadt'] ?? 'N/A') . "\n" .
-                               ($user['land'] ?? 'N/A');
-            
-            $checkoutModel = new CheckoutModel();
-            
+                ($user['stadt'] ?? 'N/A') . "\n" .
+
+
+                $checkoutModel = new CheckoutModel();
+
             // Wir übergeben die erstellte Adresse an das Model
             $orderId = $checkoutModel->createOrder($userId, $cartItems, $total, $shippingAddress);
 
             if ($orderId) {
                 // Bestellung erfolgreich, jetzt den Warenkorb leeren
                 $checkoutModel->clearUserCart($userId);
-                
+
                 // Zur "Danke"-Seite weiterleiten
                 header('Location: /index.php?page=order_success');
                 exit;

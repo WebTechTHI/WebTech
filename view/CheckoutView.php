@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <title>MLR | Kasse</title>
     <!-- Binde hier deine globalen CSS-Dateien und Header ein -->
-    <?php include './components/header.php'; ?>
-    <link rel="stylesheet" href="/assets/css/checkoutPage.css"> <!-- Du musst diese CSS-Datei noch erstellen -->
+    
+    <link rel="stylesheet" href="/assets/css/checkoutPage.css">
 </head>
 <body>
+
+    <?php include 'components/header.php'; ?>
+
+
     <main class="checkout-page">
         <h1>Bestellung überprüfen</h1>
         
@@ -20,13 +24,23 @@
                 <h2>Ihre Bestellung</h2>
                 <?php foreach ($cartItems as $item): ?>
                     <div class="summary-item">
-                        <span class="item-name"><?= htmlspecialchars($item['quantity']) ?>x <?= htmlspecialchars($item['name']) ?></span>
-                        <span class="item-price"><?= number_format($item['price'] * $item['quantity'], 2, ',', '.') ?> €</span>
+                        <!-- Produktbild (falls vorhanden) -->
+                        <?php if(isset($item['image']) && !empty($item['image'])): ?>
+                            <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="item-image">
+                        <?php else: ?>
+                            <div class="item-image" style="background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.7rem;">Kein Bild</div>
+                        <?php endif; ?>
+                        
+                        <div class="item-details">
+                            <div class="item-name"><?= htmlspecialchars($item['name']) ?></div>
+                            <div class="item-quantity">Menge: <?= htmlspecialchars($item['quantity']) ?></div>
+                        </div>
+                        <div class="item-price"><?= number_format($item['price'] * $item['quantity'], 2, ',', '.') ?> €</div>
                     </div>
                 <?php endforeach; ?>
-                <hr>
+                
                 <div class="summary-total">
-                    <p><span>Zwischensumme:</span> <span><?= number_format($subTotal, 2, ',', '.') ?> €</span></p>
+                    <p><span>Zwischensumme (Netto):</span> <span><?= number_format($netto, 2, ',', '.') ?> €</span></p>
                     <p><span>Versandkosten:</span> <span><?= $shippingCost == 0 ? 'Kostenlos' : number_format($shippingCost, 2, ',', '.') . ' €' ?></span></p>
                     <p><span>inkl. 19% MwSt.:</span> <span><?= number_format($tax, 2, ',', '.') ?> €</span></p>
                     <p class="grand-total"><span>Gesamt:</span> <span><?= number_format($total, 2, ',', '.') ?> €</span></p>
@@ -34,26 +48,47 @@
             </div>
 
             <div class="order-action">
-                <h2>Ihre Daten</h2>
+                <h2>Bestellung abschließen</h2>
+                
                 <p><strong>Lieferadresse:</strong></p>
                 <p>
-        <!-- Wir zeigen die Felder an, die in deiner User-Tabelle existieren -->
-        <?= htmlspecialchars($_SESSION['user']['richtiger_name'] ?? '') ?><br>
-        <?= htmlspecialchars($_SESSION['user']['stadt'] ?? '') ?><br>
-        <?= htmlspecialchars($_SESSION['user']['land'] ?? '') ?><br>
-         <strong>Kontakt:</strong><br>
-        <?= htmlspecialchars($_SESSION['user']['email'] ?? '') ?>
+                    <?= htmlspecialchars($_SESSION['user']['richtiger_name'] ?? '') ?><br>
+                    <?= htmlspecialchars($_SESSION['user']['stadt'] ?? '') ?><br>
+                    <br>
+                    <strong>Kontakt:</strong><br>
+                    <?= htmlspecialchars($_SESSION['user']['email'] ?? '') ?>
                 </p>
+                
+                <!-- Zahlungsarten -->
+                <div class="payment-methods">
+                    <h3>Zahlungsart wählen</h3>
+                    <div class="payment-option">
+                        <input type="radio" id="paypal" name="payment_method" value="paypal" checked>
+                        <label for="paypal">PayPal</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="credit_card" name="payment_method" value="credit_card">
+                        <label for="credit_card">Kreditkarte</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="bank_transfer" name="payment_method" value="bank_transfer">
+                        <label for="bank_transfer">Überweisung</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="sofort" name="payment_method" value="sofort">
+                        <label for="sofort">Sofortüberweisung</label>
+                    </div>
+                </div>
                 
                 <!-- Das Formular sendet die Bestellung ab -->
                 <form method="POST" action="/index.php?page=checkout">
-                    <p>Mit dem Klick auf "Jetzt kostenpflichtig bestellen" gehen Sie einen rechtsverbindlichen Kaufvertrag ein.</p>
+                    <p class="terms-text">Mit dem Klick auf "Jetzt kostenpflichtig bestellen" gehen Sie einen rechtsverbindlichen Kaufvertrag ein.</p>
                     <button type="submit" class="btn-order-final">Jetzt kostenpflichtig bestellen</button>
                 </form>
             </div>
         </div>
     </main>
 
-    <?php include 'components/footer.html'; ?>
+    <?php include 'components/footer.php'; ?>
 </body>
 </html>

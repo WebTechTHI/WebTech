@@ -24,13 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const inhalt = document.querySelector('.warenkorbInhalt');
         const gesamtEl = document.querySelector('.warenkorbGesamt span:last-child');
         const anzahlEl = document.querySelector('.warenkorbAnzahl');
-        const headerBadge = document.querySelector('.cart-badge');
         const leerText = document.querySelector('.leerNachricht');
 
         // Zähler aktualisieren
         const gesamtMenge = warenkorbItems.reduce((sum, item) => sum + parseInt(item.quantity), 0);
-        if (anzahlEl) anzahlEl.textContent = gesamtMenge;
-        if (headerBadge) headerBadge.textContent = gesamtMenge;
+        if (anzahlEl) anzahlEl.textContent = warenkorbItems.length;
 
         inhalt.innerHTML = '';
         if (warenkorbItems.length === 0) {
