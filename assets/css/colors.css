@@ -20,7 +20,7 @@
   --secondary-bg-color: var();
   --text-color: var(--ci-black);
   --hr-color: var(--ci-grey);
-  --headline-color: var(--ci-green);
+  --headline-color: var(--ci-red);
 
   /* Links */
   --link-color: var(--ci-black);

@@ -1,63 +1,24 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
+    const removeBtns = document.querySelectorAll('.remove-from-wishlist-btn');
 
-    function showMessage(type, message) {
-        const block = document.getElementById('meldung-block');
-        block.innerHTML = `<div class="meldung-container ${type}">${message}</div>`;
-    }
+    removeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const pid = btn.dataset.id;
 
-    document.querySelectorAll('.move-to-cart-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            const pid = this.dataset.id;
+            // Hol Cookie
+            let wishlist = [];
+            if (document.cookie.split('; ').find(row => row.startsWith('wishlist='))) {
+                wishlist = JSON.parse(decodeURIComponent(document.cookie.split('; ').find(row => row.startsWith('wishlist=')).split('=')[1]));
+            }
 
-            fetch('/api/moveToCart.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'product_id=' + encodeURIComponent(pid)
-            })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                if (data.status === 'success') {
-                    showMessage('meldung-erfolg', 'Produkt wurde in den Warenkorb verschoben.');
-                    location.reload();
-                } else {
-                    showMessage('meldung-fehler', 'Fehler beim Verschieben.');
-                }
-            })
-            .catch(function (error) {
-                console.error('Fehler:', error);
-                showMessage('meldung-fehler', 'Ein unerwarteter Fehler ist aufgetreten.');
-            });
+            // Entferne das Produkt
+            wishlist = wishlist.filter(id => id != pid);
+
+            // Cookie neu setzen (1 Jahr)
+            document.cookie = `wishlist=${encodeURIComponent(JSON.stringify(wishlist))}; path=/; max-age=${60 * 60 * 24 * 365}`;
+
+            // Seite neu laden
+            location.reload();
         });
     });
-
-    const moveAllBtn = document.getElementById('move-all-to-cart-btn');
-    if (moveAllBtn) {
-        moveAllBtn.addEventListener('click', function () {
-            fetch('/api/moveAllToCart.php', {
-                method: 'POST'
-            })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                if (data.status === 'success') {
-                    showMessage('meldung-erfolg', 'Alle Produkte wurden in den Warenkorb verschoben.');
-                    location.reload();
-                } else if (data.status === 'empty') {
-                    showMessage('meldung-fehler', 'Die Wunschliste ist leer.');
-                } else {
-                    showMessage('meldung-fehler', 'Fehler beim Verschieben.');
-                }
-            })
-            .catch(function (error) {
-                console.error('Fehler:', error);
-                showMessage('meldung-fehler', 'Ein unerwarteter Fehler ist aufgetreten.');
-            });
-        });
-    }
-
 });
