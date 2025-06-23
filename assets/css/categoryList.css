@@ -167,6 +167,7 @@ body {
 
 .sidebar-menu a:hover {
     background-color: var(--color-gray-lightest);
+    color: var(--color-text-default);
     text-decoration: underline;
 }
 

@@ -15,9 +15,7 @@ class CheckoutController
 
         // --- SICHERHEIT: Ist der Nutzer eingeloggt? ---
         if (!isset($_SESSION['user']['user_id'])) {
-
             $_SESSION['redirect_after_login'] = '/index.php?page=checkout';
-            // Nicht eingeloggt -> zur Login-Seite umleiten
             $_SESSION['login_redirect_message'] = "Bitte melden Sie sich an, um zur Kasse zu gehen.";
             header('Location: /index.php?page=login');
             exit;
