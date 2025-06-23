@@ -130,7 +130,7 @@
                         <img src="/assets/images/subcategory_images/maus.png" alt="Creator PCs">
                         <div class="category-overlay"></div>
                         <div class="category-content">
-                            <h3 class="category-title">zubehör</h3>
+                            <h3 class="category-title">Zubehör</h3>
                             <p class="category-description">Perfekte Ergänzung für dein Setup</p>
                             <a href="category.php?category=zubehör" class="category-link">MEHR ERFAHREN</a>
                         </div>
