@@ -8,7 +8,6 @@
   <link rel="icon" href="/assets/images/logo/favicon.png" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/assets/css/components/header.css" />
   <link rel="stylesheet" href="/assets/css/colors.css" />
   <link rel="stylesheet" href="/assets/css/wishlist.css" />
 
