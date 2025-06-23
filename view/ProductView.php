@@ -34,6 +34,10 @@
         <span><?php echo htmlspecialchars($product['name']) ?></span>
     </div>
 
+
+    <!-- Meldungsblock für Feedback -->
+    <div id="meldung-block"></div>
+
     <!-- Warenkorb Button und Overlay -->
     <button class="warenkorbToggle">
         <img src="/assets/images/icons/shopping-cart.svg" style="width: 25px;">
@@ -59,8 +63,8 @@
 
     <div class="warenkorbOverlay"></div>
 
-<!-- Meldungsblock für JS -->
-<div id="meldung-block"></div>
+    <!-- Meldungsblock für JS -->
+    <div id="meldung-block"></div>
 
 
     <div class="product-container">
@@ -135,7 +139,7 @@
 
 
 
-            
+
 
             <div class="action-buttons">
                 <button class="buy-btn" data-id="<?= $product['product_id'] ?>"
@@ -297,10 +301,10 @@
 
     <script src="/assets/javascript/Warenkorb.js" defer></script>
 
-   
 
- 
-<script src="/assets/javascript/addToWishlist.js"></script>
+
+
+    <script src="/assets/javascript/addToWishlist.js"></script>
 
 </body>
 
