@@ -43,11 +43,6 @@
     </main>
 
 
-    <footer>
-        <nav>
-            <p>© 2025 MLR | <a href="about.php"><i>Impressum</i></a></p>
-        </nav>
-    </footer>
 
     <script src="/assets/javascript/toggleTheme.js"></script>
     
