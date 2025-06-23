@@ -1,32 +1,26 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const wishlistBtn = document.querySelector('.wishlist-btn');
+document.addEventListener('DOMContentLoaded', () => {
+    const wishlistBtn = document.querySelector('.wishlist-btn');
 
-  function showMessage(type, message) {
-    const block = document.getElementById('meldung-block');
-    block.innerHTML = `<div class="meldung-container ${type}">${message}</div>`;
-  }
+    if (wishlistBtn) {
+        wishlistBtn.addEventListener('click', () => {
+            const pid = wishlistBtn.dataset.id;
 
-  if (wishlistBtn) {
-    wishlistBtn.addEventListener('click', function () {
-      const pid = this.dataset.id;
+            // Cookie lesen
+            let wishlist = [];
+            if (document.cookie.split('; ').find(row => row.startsWith('wishlist='))) {
+                wishlist = JSON.parse(decodeURIComponent(
+                    document.cookie.split('; ').find(row => row.startsWith('wishlist=')).split('=')[1]
+                ));
+            }
 
-      fetch('/api/addToWishlist.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'product_id=' + encodeURIComponent(pid)
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          showMessage('meldung-erfolg', 'Produkt wurde zur Wunschliste hinzugefügt.');
-        } else {
-          showMessage('meldung-fehler', 'Fehler: ' + data.message);
-        }
-      })
-      .catch(err => {
-        console.error('Fehler:', err);
-        showMessage('meldung-fehler', 'Ein unerwarteter Fehler ist aufgetreten.');
-      });
-    });
-  }
+            // Prüfen ob schon drin
+            if (!wishlist.includes(pid)) {
+                wishlist.push(pid);
+                document.cookie = `wishlist=${encodeURIComponent(JSON.stringify(wishlist))}; path=/; max-age=${60 * 60 * 24 * 365}`;
+                alert('Produkt wurde zur Wunschliste hinzugefügt.');
+            } else {
+                alert('Produkt ist bereits auf der Wunschliste.');
+            }
+        });
+    }
 });

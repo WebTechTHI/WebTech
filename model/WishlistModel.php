@@ -3,12 +3,14 @@ require_once __DIR__ . '/../db_verbindung.php';
 
 class WishlistModel {
 
-    // Holt Produktdetails aus DB basierend auf Session-Wishlist
-    public function getProductsFromSession($wishlist) {
+    /**
+     * Holt Produktdetails aus DB basierend auf einer Liste von Produkt-IDs (z.B. aus Cookie)
+     */
+    public function getProductsByIds(array $wishlist) {
         global $conn;
         $products = [];
 
-        foreach ($wishlist as $pid => $dummy) {
+        foreach ($wishlist as $pid) {
             $sql = "
                 SELECT 
                     p.product_id, p.name, p.price,
@@ -23,26 +25,13 @@ class WishlistModel {
             $result = $stmt->get_result();
 
             if ($row = $result->fetch_assoc()) {
-                // Für Wishlist brauchst du keine Menge — nur Produkt
                 $products[] = $row;
             }
+
+            $stmt->close();
         }
 
         return $products;
     }
 
-    // (Optional) Produkt zur Session-Wishlist hinzufügen
-    public static function addProduct($pid) {
-        if (!isset($_SESSION['wishlist'])) {
-            $_SESSION['wishlist'] = [];
-        }
-        $_SESSION['wishlist'][$pid] = true;
-    }
-
-    // (Optional) Produkt aus Session-Wishlist entfernen
-    public static function removeProduct($pid) {
-        if (isset($_SESSION['wishlist'][$pid])) {
-            unset($_SESSION['wishlist'][$pid]);
-        }
-    }
 }
