@@ -1,5 +1,29 @@
 /* ========================= ADMIN AREA ========================= */
 
+.page-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-last-page{
+  font-size: 32px;
+margin: 40px 0 20px 0;
+color: white;
+padding: 12px 20px;
+background-color:rgb(171, 25, 25);
+border: 2px solid rgb(34, 34, 34);
+border-radius:14px;
+font-weight: 600;
+}
+
+.back-last-page:hover{
+  color: rgb(218, 218, 218);
+  background-color: rgb(144, 21, 21);
+  transform: translate(0, -1px);
+  transition: .1s;
+}
+
 .admin-form {
   background-color: var(--form-bg);
   border: 1px solid var(--form-border);
