@@ -81,6 +81,10 @@ if (isset($_SESSION['user']['user_id'])) {
                 <?php } ?>
 
                 <?php if (isset($_SESSION['user'])) { ?>
+                    <a href="/index.php?page=orders">
+                        <img class="header-icon" src="/assets/images/icons/bestellungen.svg" alt="Meine Bestellungen" title="Meine Bestellungen">
+                    </a>
+
                     <a href="/index.php?page=user">
                         <img class="header-icon" src="/assets/images/icons/account.svg" alt="Account" title="Account">
                     </a>
