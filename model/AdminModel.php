@@ -193,9 +193,10 @@ class AdminModel
         //Ordner für fotos erstellen
         $uploadDir = __DIR__ . "/../uploads/" . $productId;
 
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
+
+        mkdir($uploadDir, 0777, true);
+
+
 
         if (isset($_FILES['images'])) {
             $amountImages = count($_FILES['images']['name']);
@@ -208,13 +209,17 @@ class AdminModel
                 $tmpName = $_FILES['images']['tmp_name'][$imageCount];
                 $imageName = basename($_FILES['images']['name'][$imageCount]);
 
+
                 $filePath = "/uploads/$productId/$imageName";
                 $savePath = $uploadDir . '/' . $imageName;
 
                 move_uploaded_file($tmpName, $savePath);
 
+                //um eins erhöhen um richtige sequenznumer in datzenbank zu speichern, da diese bei 1 und nicht 0 anfangen
                 $sequenceNumber = $imageCount + 1;
 
+
+                //sql absetzen
                 $stmt = $GLOBALS['conn']->prepare("INSERT INTO image (product_id, file_path, sequence_no) VALUES(?,?,?)");
                 $stmt->bind_param("isi", $productId, $filePath, ($sequenceNumber));
                 $stmt->execute();

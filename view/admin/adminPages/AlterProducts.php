@@ -19,12 +19,13 @@
 
 
   <!-- Forumular zum anlegen neuer Produkte -->
-  <form class="admin-form" method="post" action="/controller/AdminController.php" enctype="multipart/form-data">
+  <form class="admin-form" method="post" action="/index.php?page=admin&action=uploadSubmit"
+    enctype="multipart/form-data">
 
     <h2>Neues Produkt anlegen.</h2>
 
 
-  <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
+    <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
     <label for="category">Bitte wählen Sie eine Produktkategorie:</label>
     <select name="category" id="category">
       <option value="" disabled <?= $category == "" ? "selected" : "" ?>>Bitte Kategorie wählen</option>
@@ -43,30 +44,40 @@
 
     <!-- Produktbild hochladen-->
     <label for="image">Bild hochladen:</label>
-    <input type="file" name="image" id="image" />
+    <input type="file" name="images[]" id="image" multiple>
 
     <!-- Produktname eingeben-->
     <label for="name">Name:</label>
-    <input type="text" name="name" id="name" />
+    <input type="text" name="name" id="name" >
 
     <!-- Produktbeschreibung eingeben-->
     <label for="short-description">Kurzbeschreibung:</label>
-    <input type="text" name="short-description" id="short-description" />
+    <input type="text" name="short-description" id="short-description" >
 
     <!-- Produktbeschreibung eingeben-->
     <label for="description">Beschreibung:</label>
-    <input type="text" name="description" id="description" />
+    <input type="text" name="description" id="description">
 
 
     <!-- container für dynamisches befüllen der Komponentenauswahl -->
     <div id="component-container"></div>
 
 
-
+    <!-- Preis in Euro-->
     <label for="price">Preis:</label>
-    <input type="text" name="price" id="price" />
+    <input type="text" name="price" id="price">
 
-    <input type="submit" value="Absenden" />
+
+    <!-- Sale an oder aus -->
+    <label for="sale">Sale</label>
+    <select name="sale" id="sale">
+      <option value="0" selected>Standardpreis</option>
+      <option value="1">Im Angebot</option>
+    </select>
+
+
+
+    <input type="submit" value="Absenden" >
   </form>
 
   <script>
@@ -76,20 +87,24 @@
       const category = this.value;
 
 
-      //Laden von unterkategorien
-      fetch("/view/AdminComponents/AdminLoader/AdminSubcategoryLoader.php?category=" + category)
+      //Laden von unterkategorien in select-Auswahl
+      fetch("/view/admin/adminLoader/AdminSubcategoryLoader.php?category=" + category)
         .then(response => response.text())
         .then(data => {
+
           document.getElementById("subcategory-container").innerHTML = data;
+
         });
 
-      //dynamisches Laden von Komponenten zur Auswahl
-        fetch("/view/AdminComponents/AdminLoader/AdminComponentLoader.php?category=" + category)
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("component-container").innerHTML = data;
+      //dynamisches Laden von Komponenten zur Auswal
+      fetch("/view/admin/adminLoader/AdminComponentLoader.php?category=" + category)
+        .then(response => response.text())
+        .then(data => {
+
+          document.getElementById("component-container").innerHTML = data;
+
+        });
     });
-      });
   </script>
 </body>
 
