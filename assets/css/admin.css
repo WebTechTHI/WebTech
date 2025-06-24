@@ -1,5 +1,3 @@
-/* ========================= ADMIN AREA ========================= */
-
 .page-wrapper{
   display: flex;
   flex-direction: column;
@@ -11,7 +9,7 @@
 margin: 40px 0 20px 0;
 color: white;
 padding: 12px 20px;
-background-color:rgb(171, 25, 25);
+background-color:var(--submit-bg);
 border: 2px solid rgb(34, 34, 34);
 border-radius:14px;
 font-weight: 600;
@@ -19,17 +17,19 @@ font-weight: 600;
 
 .back-last-page:hover{
   color: rgb(218, 218, 218);
-  background-color: rgb(144, 21, 21);
+  background-color: var(--submit-hover);
   transform: translate(0, -1px);
   transition: .1s;
 }
 
+
+/* styling für forms */
 .admin-form {
   background-color: var(--form-bg);
   border: 1px solid var(--form-border);
   border-radius: 8px;
   padding: 40px;
-  max-width: 800px;
+  max-width: 60vw;
   width: 100%;
   margin: 40px auto;
   display: flex;
@@ -41,16 +41,6 @@ font-weight: 600;
   display:flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.select-wrapper{
-  display:flex;
-  flex-direction: column;
-  margin:20px 0;
-}
-
-.select-wrapper label{
-  Margin: 0 0 10px;
 }
 
 .admin-form h1,
@@ -116,24 +106,7 @@ font-weight: 600;
   background-color: var(--submit-hover);
 }
 
-.admin-form .component-wrapper button {
-  flex-shrink: 0;
-  padding: 12px;
-  font-size: 18px;
-  line-height: 1;
-}
-
 .admin-form select {
   flex: 1;
 }
 
-/* Responsive: Felder in Spalte bei schmalem Viewport */
-@media (max-width: 600px) {
-  .admin-form {
-    padding: 20px;
-  }
-
-  .admin-form .component-wrapper {
-    flex-direction: column;
-  }
-}

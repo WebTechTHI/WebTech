@@ -22,15 +22,12 @@
 
     <a class="back-last-page" href="/index.php?page=admin">Zurück</a>
 
-    <h1 style="text-align: center; color: var(--headline-color);">Produkte hochladen</h1>
+    <h1 style="text-align: center; color: var(--headline-color);">Produkt erstellen</h1>
 
 
     <!-- Forumular zum anlegen neuer Produkte -->
     <form class="admin-form" method="post" action="/index.php?page=admin&action=uploadSubmit"
       enctype="multipart/form-data">
-
-      <h2>Neues Produkt anlegen.</h2>
-
 
       <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
       <label for="category">Bitte wählen Sie eine Produktkategorie:</label>
