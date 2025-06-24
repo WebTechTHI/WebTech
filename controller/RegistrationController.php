@@ -1,6 +1,7 @@
 <?php
 // Lädt das Registrierungs-Model
 require_once "model/RegistrationModel.php";
+require_once "model/CartModel.php";
 
 class RegistrationController
 {
@@ -35,6 +36,26 @@ class RegistrationController
                 $_SESSION['user'] = $model->getUserData($result["success"]); // zum setzen der benutzerinformationen im 'user'-array der session
                 $erfolgsmeldung = "Registrierung hat geklappt! Benutzer ID ist:  " . $result['success'];
             }
+
+              if (isset($_COOKIE['mlr_cart']) && !empty($_COOKIE['mlr_cart'])) {
+
+                    
+                    $cookieCart = json_decode($_COOKIE['mlr_cart'], true);
+
+                    
+                    if (is_array($cookieCart) && !empty($cookieCart)) {
+
+                        
+                        $cartModel = new CartModel();
+
+                      
+                        
+                        $cartModel->mergeCookieCartWithDbCart($_SESSION['user']['user_id'], $cookieCart);
+
+                    
+                        setcookie('mlr_cart', '', time() - 3600, '/');
+                    }
+                }
         }
         // Zeigt die View an wenn fertig
         require "view/RegistrationView.php";
