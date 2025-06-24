@@ -7,14 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const category = this.value;
 
       //Laden von unterkategorien in select-Auswahl
-      fetch("/view/admin/adminLoader/AdminSubcategoryLoader.php?category=" + category)
+      fetch("/view/admin/createProduct/SubcategoryLoader.php?category=" + category)
         .then(response => response.text())
         .then(data => {
           document.getElementById("subcategory-container").innerHTML = data;
         });
 
       //dynamisches Laden von Komponenten zur Auswahl
-      fetch("/view/admin/adminLoader/AdminComponentLoader.php?category=" + category)
+      fetch("/view/admin/createProduct/ComponentLoader.php?category=" + category)
         .then(response => response.text())
         .then(data => {
           document.getElementById("component-container").innerHTML = data;

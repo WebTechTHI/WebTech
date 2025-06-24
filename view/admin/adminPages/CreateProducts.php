@@ -8,7 +8,7 @@
   <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
 
   <!-- Script -->
-  <script src="/assets/javascript/admin/loadComponentsSubcategories.js"></script>
+  <script src="/assets/javascript/admin/createProductLoadView.js"></script>
 
   <!-- Styling -->
   <link rel="stylesheet" href="/assets/css/colors.css">

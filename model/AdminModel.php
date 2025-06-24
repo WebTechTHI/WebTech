@@ -6,7 +6,7 @@ class AdminModel
 
 
     //Lädt alle produkte aus der datenbank und speichert diese in einem array
-    public function getProducts()
+    public function getProducts($id)
     {
         $conn = $GLOBALS['conn'];
         $products = [];
@@ -34,8 +34,13 @@ class AdminModel
         LEFT JOIN operating_system os ON p.os_id = os.os_id
         LEFT JOIN network ON p.network_id = network.network_id
         LEFT JOIN connectors ON p.connectors_id = connectors.connectors_id
-        LEFT JOIN feature ON p.feature_id = feature.feature_id
-        ORDER BY p.product_id";
+        LEFT JOIN feature ON p.feature_id = feature.feature_id";
+
+        if($id != "none"){
+            $sql .= " WHERE p.product_id = " . $id;
+        }
+
+        $sql .= " ORDER BY p.product_id";
 
         $result = mysqli_query($conn, $sql);
 
@@ -48,7 +53,7 @@ class AdminModel
 
 
 
-    
+
     //Lädt die bilder eines gegebenen Rodukts
     public function getProductImages($productId)
     {

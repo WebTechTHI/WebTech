@@ -8,7 +8,7 @@
   <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon" />
 
   <!-- Script -->
-  <script src="/assets/javascript/admin/loadComponentsSubcategories.js"></script>
+  <script src="/assets/javascript/admin/alterProductLoadView.js"></script>
 
   <!-- Styling -->
   <link rel="stylesheet" href="/assets/css/colors.css" />
@@ -22,7 +22,7 @@
 
     <a class="back-last-page" href="/index.php?page=admin">Zurück</a>
 
-    <h1 style="text-align: center; color: var(--headline-color);">Produkt erstellen</h1>
+    <h1 style="text-align: center; color: var(--headline-color);">Produkt bearbeiten</h1>
 
 
     <!-- Forumular zum anlegen neuer Produkte -->
@@ -32,6 +32,7 @@
       <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
       <label for="category">Produktkategorie:</label>
       <select name="category" id="category">
+        <option ></option>
         <option value="desktop" <?= $category == "desktop" ? "selected" : "" ?>>Desktop-PC</option>
         <option value="laptop" <?= $category == "laptop" ? "selected" : "" ?>>Laptop</option>
         <option value="accesories" <?= $category == "accesories" ? "selected" : "" ?>>Zubehör</option>
