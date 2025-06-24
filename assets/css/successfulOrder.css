@@ -1,5 +1,12 @@
 /* assets/css/orderSuccessPage.css */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 .order-success-container {
     display: flex;
     justify-content: center;
