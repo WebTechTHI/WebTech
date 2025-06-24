@@ -16,6 +16,8 @@ $operatingSystems = $model->getComponents('operating_system');
 $storages = $model->getComponents('storage');
 
 
+//Produktinformationen laden
+$product = $model->getProductById(2);
 
 $category = $_GET['category'] ?? '';
 
@@ -23,6 +25,10 @@ $category = $_GET['category'] ?? '';
 switch ($category) {
   case 'accesories':
     ?>
+
+
+
+<? var_dump($product)?>
 
 
     <!-- Display-Auswahl -->
@@ -158,7 +164,7 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($cpus as $cpu): ?>
-            <option value="<?= $cpu["cpu_id"] ?>">
+            <option value="<?= $cpu["cpu_id"] ?>" <?= $cpu["cpu_id"] == $product['cpu_id'] ? 'selected' : '' ?>>
               <?= htmlspecialchars($cpu["model"] . ", " . $cpu["cores"] . " cores, " . $cpu["base_clock_ghz"] . " GHz") ?>
             </option>
           <?php endforeach; ?>

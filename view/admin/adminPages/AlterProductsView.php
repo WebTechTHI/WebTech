@@ -34,6 +34,7 @@
       <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
       <label for="category">Produktkategorie:</label>
       <select name="category" id="category">
+        <option value="" disabled <?= $category == "" ? "selected" : "" ?>>Bitte Kategorie wählen</option>
         <option value="desktop" <?= $category == "desktop" ? "selected" : "" ?>>Desktop-PC</option>
         <option value="laptop" <?= $category == "laptop" ? "selected" : "" ?>>Laptop</option>
         <option value="accesories" <?= $category == "accesories" ? "selected" : "" ?>>Zubehör</option>

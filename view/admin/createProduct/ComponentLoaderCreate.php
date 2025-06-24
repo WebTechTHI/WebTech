@@ -16,7 +16,6 @@ $operatingSystems = $model->getComponents('operating_system');
 $storages = $model->getComponents('storage');
 
 
-
 $category = $_GET['category'] ?? '';
 
 

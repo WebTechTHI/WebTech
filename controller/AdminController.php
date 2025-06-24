@@ -41,7 +41,7 @@ class AdminController
             case 'productList':
 
                 //produktinformationen laden
-                $productsRaw = $model->getProducts("none");
+                $productsRaw = $model->getProducts();
 
                 $products = [];
                 foreach ($productsRaw as $p) {
@@ -59,7 +59,6 @@ class AdminController
 
 
                 //Informationen zu bestimmten produkt laden, um zu selektieren bei auswahl
-                $product = ($model->getProducts($_GET['id']))[0];
 
                 require 'view/admin/adminPages/AlterProductsView.php';
                 break;
