@@ -13,9 +13,19 @@ class AdminController
         }
 
 
-
         //AdminModel laden
         $model = new AdminModel();
+
+        //Alle komponenten laden
+        $displays = $model->getComponents('display');
+        $gpus = $model->getComponents('gpu');
+        $cpus = $model->getComponents('processor');
+        $rams = $model->getComponents('ram');
+        $networks = $model->getComponents('network');
+        $connectors = $model->getComponents('connectors');
+        $features = $model->getComponents('feature');
+        $operatingSystems = $model->getComponents('operating_system');
+        $storages = $model->getComponents('storage');
 
 
         switch ($action) {
@@ -23,19 +33,7 @@ class AdminController
             //Produkte Hochladen Formular
             case 'upload':
 
-                //Alle komponenten laden
-                $displays = $model->getComponents('display');
-                $gpus = $model->getComponents('gpu');
-                $cpus = $model->getComponents('processor');
-                $rams = $model->getComponents('ram');
-                $networks = $model->getComponents('network');
-                $connectors = $model->getComponents('connectors');
-                $features = $model->getComponents('feature');
-                $operatingSystems = $model->getComponents('operating_system');
-                $storages = $model->getComponents('storage');
-
-
-                require 'view/admin/adminPages/createProducts.php';
+                require 'view/admin/adminPages/createProductsView.php';
                 break;
 
 
@@ -60,30 +58,17 @@ class AdminController
             case 'edit':
 
 
-                //Alle komponenten laden
-                $displays = $model->getComponents('display');
-                $gpus = $model->getComponents('gpu');
-                $cpus = $model->getComponents('processor');
-                $rams = $model->getComponents('ram');
-                $networks = $model->getComponents('network');
-                $connectors = $model->getComponents('connectors');
-                $features = $model->getComponents('feature');
-                $operatingSystems = $model->getComponents('operating_system');
-                $storages = $model->getComponents('storage');
+                //Informationen zu bestimmten produkt laden, um zu selektieren bei auswahl
+                $product = ($model->getProducts($_GET['id']))[0];
 
-
-                //Ausgewählte komponenten und inputs des zu bearbeitenden produkts abfragen
-                $product = $model->getProducts($_GET['id']);
-                var_dump($product[0]['product_id']);
-
-                require 'view/admin/adminPages/AlterProducts.php';
+                require 'view/admin/adminPages/AlterProductsView.php';
                 break;
 
 
             //speichert neu angelegte Produkte
             case 'uploadSubmit':
                 $model->uploadSubmit();
-                require 'view/admin/adminPages/CreateProducts.php';
+                require 'view/admin/adminPages/CreateProductsView.php';
                 break;
 
 
