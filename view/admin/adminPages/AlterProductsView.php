@@ -16,11 +16,13 @@
 </head>
 
 <body>
+
+
   <?php $category = $_POST["category"] ?? ""; ?>
 
   <div class="page-wrapper">
 
-    <a class="back-last-page" href="/index.php?page=admin">Zurück</a>
+    <a class="back-last-page" href="/index.php?page=admin&action=productList">Zurück</a>
 
     <h1 style="text-align: center; color: var(--headline-color);">Produkt bearbeiten</h1>
 
@@ -32,7 +34,6 @@
       <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
       <label for="category">Produktkategorie:</label>
       <select name="category" id="category">
-        <option ></option>
         <option value="desktop" <?= $category == "desktop" ? "selected" : "" ?>>Desktop-PC</option>
         <option value="laptop" <?= $category == "laptop" ? "selected" : "" ?>>Laptop</option>
         <option value="accesories" <?= $category == "accesories" ? "selected" : "" ?>>Zubehör</option>

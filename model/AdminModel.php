@@ -12,7 +12,7 @@ class AdminModel
         $products = [];
         $sql = "
         SELECT 
-            p.product_id, p.name, p.short_description, p.price, p.sale, p.alt_text, p.description, p.sales,
+            p.product_id, p.name, p.short_description, p.price, p.sale, p.subcategory_id, p.cpu_id, p.gpu_id, p.ram_id, p.storage_id, p.display_id , p.os_id , p.network_id , p.connectors_id, p.feature_id ,  p.alt_text, p.description, p.sales,
             c.name as category_name, sc.name as subcategory_name,
             proc.model as processor_model, proc.brand as processor_brand, proc.cores as processor_cores, proc.base_clock_ghz as processor_clock,
             gpu.model as gpu_model, gpu.brand as gpu_brand, gpu.vram_gb as gpu_vram, gpu.integrated as gpu_integrated,

@@ -1,5 +1,21 @@
 <?php
 
+require_once __DIR__ . '/../../../model/AdminModel.php';
+
+$model = new AdminModel();
+
+// alle Komponenten Laden (-> beim Neuanlegen von Produkten später auswählbar machen)
+$displays = $model->getComponents('display');
+$gpus = $model->getComponents('gpu');
+$cpus = $model->getComponents('processor');
+$rams = $model->getComponents('ram');
+$networks = $model->getComponents('network');
+$connectors = $model->getComponents('connectors');
+$features = $model->getComponents('feature');
+$operatingSystems = $model->getComponents('operating_system');
+$storages = $model->getComponents('storage');
+
+
 
 $category = $_GET['category'] ?? '';
 
