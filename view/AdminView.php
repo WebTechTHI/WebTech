@@ -14,11 +14,16 @@
 
 <body>
 
+<div class="page-wrapper">
+  <div class="directions-container">
+<h1>Modus auswählen</h1>
 
-<a href="/index.php?page=admin&action=upload">Neues Produkt anlegen.</a>
-<a href="/index.php?page=admin&action=edit">Produkt bearbeiten.</a>
+<a class="directions-button" href="/index.php?page=admin&action=upload">Neues Produkt anlegen</a>
+<a class="directions-button" href="/index.php?page=admin&action=productList">Produktliste anzeigen</a>
+</div>
 
-
+<a class="back-last-page" href="/index.php?page=home">Zurück zum Shop</a>
+</div>
 
 </body>
 

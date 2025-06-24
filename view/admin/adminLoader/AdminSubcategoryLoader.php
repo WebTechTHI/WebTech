@@ -13,13 +13,11 @@ switch ($category) {
     case 'desktop':
         $options .= '<option value="2">Gaming-PC</option>';
         $options .= '<option value="1">Office-PC</option>';
-        $options .= '<option value="">Keine</option>';
         break;
 
     case 'laptop':
         $options .= '<option value="3">Gaming-Laptop</option>';
         $options .= '<option value="4">Office-Laptop</option>';
-        $options .= '<option value="">Keine</option>';
         break;
 
     default:

@@ -39,13 +39,31 @@ class AdminController
                 break;
 
 
-            //Ändern von Produktdetails
-            case 'edit':                   
-                require 'view/admin/adminPages/AlterProducts.php';
+            
+            case 'productList':
+
+                //produktinformationen laden
+        $productsRaw = $model -> getProducts();
+        
+        $products = [];
+        foreach ($productsRaw as $p) {
+            $p['images'] = $model->getProductImages($p['product_id']);
+            $p['specs']  = $model->buildSpecifications($p);
+            $products[]  = $p;
+        }
+
+                require 'view/admin/adminPages/ProductListView.php';
                 break;
 
 
-            //speichert änderungen an produkten
+//Ändern von Produktdetails
+                case 'edit':
+
+                    require 'view/admin/adminPages/AlterProducts.php';
+                break;
+
+                
+            //speichert neu angelegte Produkte
             case 'uploadSubmit':           
                 $model -> uploadSubmit();
                 require 'view/admin/adminPages/CreateProducts.php';

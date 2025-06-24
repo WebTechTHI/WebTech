@@ -112,7 +112,7 @@
                         <div class="category-content">
                             <h3 class="category-title">PCs</h3>
                             <p class="category-description">Power für jeden Tag</p>
-                            <a href="category.php?category=pc" class="category-link">MEHR ERFAHREN</a>
+                            <a href="/index.php?page=category&category=pc" class="category-link">MEHR ERFAHREN</a>
                         </div>
                     </div>
 
@@ -122,7 +122,7 @@
                         <div class="category-content">
                             <h3 class="category-title">Laptops</h3>
                             <p class="category-description">Leistung zum Mitnehmen</p>
-                            <a href="category.php?category=laptop" class="category-link">MEHR ERFAHREN</a>
+                            <a href="/index.php?page=category&category=laptop" class="category-link">MEHR ERFAHREN</a>
                         </div>
                     </div>
 
@@ -132,7 +132,7 @@
                         <div class="category-content">
                             <h3 class="category-title">Zubehör</h3>
                             <p class="category-description">Perfekte Ergänzung für dein Setup</p>
-                            <a href="category.php?category=zubehör" class="category-link">MEHR ERFAHREN</a>
+                            <a href="/index.php?page=category&category=zubehör" class="category-link">MEHR ERFAHREN</a>
                         </div>
                     </div>
                 </div>

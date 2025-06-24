@@ -41,7 +41,7 @@ if (isset($_SESSION['user']['user_id'])) {
   <?php // =============== COOKIE FUNKTIONALITÄT IM HEADER EINGEBUNDEN ====================?>
 
   
-   <div id="cookie-wrapper"> <!-- Ein Wrapper hilft uns, alles sauber zu halten -->
+   <div id="cookie-wrapper">
        <?php include __DIR__ . '/cookie_banner.php'; ?>
        <link rel="stylesheet" href="/assets/css/cookie-banner.css">
        <script src="/assets/javascript/cookieConsent.js" defer></script>
