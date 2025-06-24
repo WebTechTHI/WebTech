@@ -35,7 +35,7 @@ class AdminModel
         LEFT JOIN network ON p.network_id = network.network_id
         LEFT JOIN connectors ON p.connectors_id = connectors.connectors_id
         LEFT JOIN feature ON p.feature_id = feature.feature_id ORDER BY p.product_id";
- 
+
 
         $result = mysqli_query($conn, $sql);
 
@@ -48,9 +48,13 @@ class AdminModel
 
 
     //Lädt die informationen zu einem einzelnen produkt
-    public function getProductById($id) {
+    public function getProductById($id)
+    {
         $conn = $GLOBALS['conn'];
-        $sql = "SELECT * FROM product WHERE product_id = " . $id;
+        $sql = "SELECT product.*, subcategory.category_id
+                FROM product
+                JOIN subcategory ON product.subcategory_id = subcategory.subcategory_id
+                WHERE product_id = " . $id;
 
         return mysqli_fetch_assoc(mysqli_query($conn, $sql));
 

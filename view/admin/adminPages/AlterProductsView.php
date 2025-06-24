@@ -8,6 +8,16 @@
   <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon" />
 
   <!-- Script -->
+
+  <!-- Definiert die variablen product und category um sie später über ajax
+  an componentsloaderview zu übergeben-->
+  <script>
+    const product = <?= json_encode($product) ?>;
+    const category = <?= json_encode($category) ?>;
+    const subcategory = <?= json_encode($subcategory) ?>;
+  </script>
+
+
   <script src="/assets/javascript/admin/alterProductLoadView.js"></script>
 
   <!-- Styling -->
@@ -17,8 +27,7 @@
 
 <body>
 
-
-  <?php $category = $_POST["category"] ?? ""; ?>
+  
 
   <div class="page-wrapper">
 
@@ -34,10 +43,10 @@
       <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->
       <label for="category">Produktkategorie:</label>
       <select name="category" id="category">
-        <option value="" disabled <?= $category == "" ? "selected" : "" ?>>Bitte Kategorie wählen</option>
-        <option value="desktop" <?= $category == "desktop" ? "selected" : "" ?>>Desktop-PC</option>
-        <option value="laptop" <?= $category == "laptop" ? "selected" : "" ?>>Laptop</option>
-        <option value="accesories" <?= $category == "accesories" ? "selected" : "" ?>>Zubehör</option>
+
+        <option value="desktop" <?= $category == "1" ? "selected" : "" ?>>Desktop-PC</option>
+        <option value="laptop" <?= $category == "2" ? "selected" : "" ?>>Laptop</option>
+        <option value="accesories" <?= $category == "3" ? "selected" : "" ?>>Zubehör</option>
       </select>
 
       <!-- Unterkategorie wählen-->
@@ -53,15 +62,17 @@
 
       <!-- Produktname eingeben-->
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name">
+      <input type="text" name="name" id="name" value="<?= $product['name']?>">
 
       <!-- Produktbeschreibung eingeben-->
       <label for="short-description">Kurzbeschreibung:</label>
-      <input type="text" name="short-description" id="short-description">
+      <input type="text" name="short-description" id="short-description" 
+        value="<?= $product['short_description']?>">
 
       <!-- Produktbeschreibung eingeben-->
       <label for="description">Beschreibung:</label>
-      <input type="text" name="description" id="description">
+      <input type="text" name="description" id="description"
+       value="<?= $product['description']?>">
 
 
       <!-- container für dynamisches befüllen der Komponentenauswahl -->
@@ -70,14 +81,14 @@
 
       <!-- Preis in Euro-->
       <label for="price">Preis:</label>
-      <input type="text" name="price" id="price">
+      <input type="text" name="price" id="price" value="<?= $product['price']?>">
 
 
       <!-- Sale an oder aus -->
       <label for="sale">Sale:</label>
       <select name="sale" id="sale">
-        <option value="0" selected>Standardpreis</option>
-        <option value="1">Im Angebot</option>
+        <option value="0" <?= $product['sale'] == 0 ? "selected" : '' ?>>Standardpreis</option>
+        <option value="1" <?= $product['sale'] == 1 ? "selected" : '' ?>>Im Angebot</option>
       </select>
 
 

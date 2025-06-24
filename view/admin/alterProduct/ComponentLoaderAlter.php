@@ -2,6 +2,15 @@
 
 require_once __DIR__ . '/../../../model/AdminModel.php';
 
+  //dekodiert produkt jason objekt aus javascript alterProductLooadView.js, 
+  // also das $produkt aus alterproductview
+  $jsInput = file_get_contents("php://input");
+$objects = json_decode($jsInput, true);
+
+
+$product = $objects["product"];
+$category = $objects["category"];
+
 $model = new AdminModel();
 
 // alle Komponenten Laden (-> beim Neuanlegen von Produkten später auswählbar machen)
@@ -16,19 +25,10 @@ $operatingSystems = $model->getComponents('operating_system');
 $storages = $model->getComponents('storage');
 
 
-//Produktinformationen laden
-$product = $model->getProductById(2);
-
-$category = $_GET['category'] ?? '';
-
-
 switch ($category) {
-  case 'accesories':
+  case 'accesories': //3 ist category id von zubehör
     ?>
 
-
-
-<? var_dump($product)?>
 
 
     <!-- Display-Auswahl -->
@@ -41,7 +41,7 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($displays as $display): ?>
-            <option value="<?= $display["display_id"] ?>">
+            <option value="<?= $display["display_id"] ?>" <?= $display["display_id"] == $product['display_id'] ? 'selected' : ''?>>
               <?= htmlspecialchars($display["brand"] . " " . $display["size_inch"] . "\", " . $display["resolution"] . "p, " .
                 $display["refresh_rate_hz"] . "Hz") ?>
             </option>
@@ -65,7 +65,9 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($connectors as $connector): ?>
-            <option value="<?= $connector["connectors_id"] ?>"><?= htmlspecialchars($connector["spec"]) ?></option>
+            <option value="<?= $connector["connectors_id"] ?>" <?= $connector["connectors_id"] == $product['connectors_id'] ? 'selected' : ''?>>
+              <?= htmlspecialchars($connector["spec"]) ?>
+            </option>
           <?php endforeach; ?>
 
         </select>
@@ -86,7 +88,9 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($features as $feature): ?>
-            <option value="<?= $feature["feature_id"] ?>"><?= htmlspecialchars($feature["spec"]) ?></option>
+            <option value="<?= $feature["feature_id"] ?>" <?= $feature["feature_id"] == $product['feature_id'] ? 'selected' : ''?>>
+              <?= htmlspecialchars($feature["spec"]) ?>
+            </option>
           <?php endforeach; ?>
 
         </select>
@@ -99,7 +103,8 @@ switch ($category) {
 
 
 
-  case 'laptop':    //displays werden zusätzlich von laptops benutzt ?>
+case 'laptop':   //2 ist category id von laptop
+   //displays werden zusätzlich von laptops benutzt ?>
 
 
     <!-- Display-Auswahl -->
@@ -112,7 +117,7 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($displays as $display): ?>
-            <option value="<?= $display["display_id"] ?>">
+            <option value="<?= $display["display_id"] ?>" <?= $display["display_id"] == $product['display_id'] ? 'selected' : ''?>>
               <?= htmlspecialchars($display["brand"] . " " . $display["size_inch"] . "\", " . $display["resolution"] . "p, " .
                 $display["refresh_rate_hz"] . "Hz") ?>
             </option>
@@ -129,7 +134,8 @@ switch ($category) {
 
 
 
-  case 'desktop':   //Alles restliche wird geteilt von laptops und desktop pcs genutzt  ?>
+  case 'desktop':   //1 ist category id von pcs
+  //Alles restliche wird geteilt von laptops und desktop pcs genutzt  ?>
 
 
 
@@ -143,7 +149,9 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($connectors as $connector): ?>
-            <option value="<?= $connector["connectors_id"] ?>"><?= htmlspecialchars($connector["spec"]) ?></option>
+            <option value="<?= $connector["connectors_id"] ?>" <?= $connector["connectors_id"] == $product['connectors_id'] ? 'selected' : ''?>>
+              <?= htmlspecialchars($connector["spec"]) ?>
+            </option>
           <?php endforeach; ?>
 
         </select>
@@ -187,7 +195,7 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($storages as $storage): ?>
-            <option value="<?= $storage["storage_id"] ?>">
+            <option value="<?= $storage["storage_id"] ?>" <?= $storage["storage_id"] == $product['storage_id'] ? 'selected' : ''?>>
               <?= htmlspecialchars($storage["brand"] . " " . $storage["capacity_gb"] . "Gb, " . $storage["storage_type"]) ?>
             </option>
           <?php endforeach; ?>
@@ -210,7 +218,7 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($gpus as $gpu): ?>
-            <option value="<?= $gpu["gpu_id"] ?>">
+            <option value="<?= $gpu["gpu_id"] ?>" <?= $gpu["gpu_id"] == $product['gpu_id'] ? 'selected' : ''?>>
               <?= htmlspecialchars($gpu["brand"] . " " . $gpu["model"] . ", " . $gpu["vram_gb"] . "Gb") ?>
             </option>
           <?php endforeach; ?>
@@ -233,7 +241,9 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($operatingSystems as $os): ?>
-            <option value="<?= $os["os_id"] ?>"><?= htmlspecialchars($os["name"]) ?></option>
+            <option value="<?= $os["os_id"] ?>" <?= $os["os_id"] == $product['os_id'] ? 'selected' : ''?>>
+              <?= htmlspecialchars($os["name"]) ?>
+            </option>
           <?php endforeach; ?>
 
         </select>
@@ -254,7 +264,7 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($rams as $ram): ?>
-            <option value="<?= $ram["ram_id"] ?>">
+            <option value="<?= $ram["ram_id"] ?>" <?= $ram["ram_id"] == $product['ram_id'] ? 'selected' : ''?>>
               <?= htmlspecialchars($ram["brand"] . " " . $ram["model"] . ", " . $ram["capacity_gb"] . "Gb " . $ram["ram_type"]) ?>
             </option>
           <?php endforeach; ?>
@@ -277,7 +287,9 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($networks as $network): ?>
-            <option value="<?= $network["network_id"] ?>"><?= htmlspecialchars($network["spec"]) ?></option>
+            <option value="<?= $network["network_id"] ?>" <?= $network["network_id"] == $product['network_id'] ? 'selected' : ''?>>
+              <?= htmlspecialchars($network["spec"]) ?>
+            </option>
           <?php endforeach; ?>
 
         </select>
@@ -298,7 +310,9 @@ switch ($category) {
           <option value="">- keine -</option>
 
           <?php foreach ($features as $feature): ?>
-            <option value="<?= $feature["feature_id"] ?>"><?= htmlspecialchars($feature["spec"]) ?></option>
+            <option value="<?= $feature["feature_id"] ?>" <?= $feature["feature_id"] == $product['feature_id'] ? 'selected' : ''?>>
+              <?= htmlspecialchars($feature["spec"]) ?>
+            </option>
           <?php endforeach; ?>
 
         </select>

@@ -58,7 +58,11 @@ class AdminController
             case 'edit':
 
 
-                //Informationen zu bestimmten produkt laden, um zu selektieren bei auswahl
+                //Informationen zu bestimmtem produkt laden, um zu selektieren bei auswahl
+                $product = $model->getProductById($_GET['id']);
+                $category = $product['category_id'];
+                $subcategory = $product['subcategory_id'];
+
 
                 require 'view/admin/adminPages/AlterProductsView.php';
                 break;
