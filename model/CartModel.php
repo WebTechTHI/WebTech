@@ -143,4 +143,20 @@ class CartModel {
         return $products;
     }
 
+    function getSaleCount() {
+    global $conn;
+    $sql = "SELECT sale FROM product";
+    $result = $conn->query($sql);
+
+    $saleCount = 0;
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            if ($row['sale'] == 1) {
+                $saleCount++;
+            }
+        }
+    }
+    return $saleCount;
+}
+
 }

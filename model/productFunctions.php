@@ -171,7 +171,7 @@ function getRelatedProducts($conn, $category_name, $current_product_id)
     $category_name = mysqli_real_escape_string($conn, $category_name);
     $current_product_id = (int) $current_product_id;
 
-    // Ruft 4 zufällige Produkte aus derselben Unterkategorie ab (außer dem aktuellen)
+    // Ruft 10 zufällige Produkte aus derselben Unterkategorie ab (außer dem aktuellen)
     $sql = "
        SELECT p.*
 FROM product p
@@ -190,6 +190,25 @@ LIMIT 10
         $products[] = $row;
     }
     return $products;
+}
+
+
+
+
+function getSaleCount() {
+    global $conn;
+    $sql = "SELECT sale FROM product";
+    $result = $conn->query($sql);
+
+    $saleCount = 0;
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            if ($row['sale'] == 1) {
+                $saleCount++;
+            }
+        }
+    }
+    return $saleCount;
 }
 
 

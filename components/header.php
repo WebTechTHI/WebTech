@@ -5,13 +5,15 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once __DIR__ . '/../model/CartModel.php';
+
+//=========== DAMIT DER WARENKORB ZÄHLER IMMER AKTUELL IST ==============
 $cartCount = 0;
 
 if (isset($_SESSION['user']['user_id'])) {
   
     $cartModel = new CartModel();
     $dbCart = $cartModel->getCartFromDb($_SESSION['user']['user_id']);
-    
+    // Zählt die Anzahl der verschiedenen Produkte im Warenkorb
      $cartCount = count($dbCart);
 
 } else{
@@ -20,12 +22,17 @@ if (isset($_SESSION['user']['user_id'])) {
     if (is_array($cartData)) {
         // Zählt die Anzahl der verschiedenen Produkte im Warenkorb
         $cartCount = count($cartData); 
-        
-        // Alternative: Zählt die Gesamtmenge aller Produkte
-        // $cartCount = array_sum($cartData);
+
     }
 }
 }
+//=========== DAMIT DER WARENKORB ZÄHLER IMMER AKTUELL IST ENDE ==============
+?>
+
+<?php 
+//============ DER ZÄHLER FÜR PRODUKTE IM SALE ========================
+ $cartModel = new CartModel();
+ $saleCount = $cartModel->getSaleCount(); 
 ?>
 
 <!DOCTYPE html>
@@ -51,8 +58,11 @@ if (isset($_SESSION['user']['user_id'])) {
        }
        ?>
 
+<?php // =============== COOKIE FUNKTIONALITÄT IM HEADER EINGEBUNDEN ENDE ====================?>
 
-<?php // =============== COOKIE FUNKTIONALITÄT IM HEADER EINGEBUNDEN ====================?>
+
+
+
     <div id="header">
         <!-- top header -->
         <div class="top-bar">
@@ -135,7 +145,7 @@ if (isset($_SESSION['user']['user_id'])) {
                     </li>
                     <li>
                         <a href="/index.php?page=category&category=angebote">Sale & Aktionen <span
-                                class="red-badge">5</span></a>
+                                class="red-badge"><?php echo $saleCount ?></span></a>
                     </li>
                 </ul>
             </div>
