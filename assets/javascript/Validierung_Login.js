@@ -78,7 +78,8 @@ function ValidierungLogin() {
 
 }
   //Muss auserhalb der Funktion stehen !!!!
-  //Hier Können die inputs quasi in den felder hören/listen wenn eine eingabe passiert bzw. sich was ändert !       --> Event Listener 
+  //Hier Können die inputs quasi in den felder hören/listen wenn eine eingabe passiert bzw. sich was ändert !       --> Event Listener
+  //  (ruft dann Funktion validierung auf und führ aus)
   // 
   //Statt als Event input = liveprüfung geht auch change (das ist wenn erst das feld verlässt nicht sofort) oder click als event !
   document.getElementById("usernamelogin").addEventListener("input", ValidierungLogin);
