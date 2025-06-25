@@ -69,7 +69,6 @@
 
                     <?php
 
-
                     echo "<div class='filters'>";
                     // Filter-HTML generieren
                     if ($category !== 'alle' && $category !== 'zubehör') {

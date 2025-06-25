@@ -189,7 +189,7 @@ function getProductImages($conn, $productId)
 
 function getCategoryInfo($category)
 {
-    $json = file_get_contents('assets/json/produktBeschreibung.json');
+    $json = file_get_contents('assets/json/categoryInfo.json');
 
 
     $data = json_decode($json, true);
