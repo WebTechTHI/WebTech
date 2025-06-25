@@ -160,6 +160,11 @@
                                 "Neuseeland"
                             ];
                             foreach ($länder as $einLand) {
+
+                                // Wenn das gespeicherte Land des Benutzers ($defaultData['land']) 
+                                // mit dem aktuellen Land ($einLand) übereinstimmt, 
+                                // dann wird dieses <option>-Element mit "selected" markiert.
+                                // So bleibt die Auswahl beim Seitenladen bestehen.
                                 $selected = ($defaultData['land'] === $einLand) ? 'selected' : '';
                                 echo "<option value='$einLand' $selected>$einLand</option>";
                             }
