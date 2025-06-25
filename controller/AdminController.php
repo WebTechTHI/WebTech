@@ -67,6 +67,13 @@ class AdminController
                 require 'view/admin/adminPages/AlterProductsView.php';
                 break;
 
+            
+
+            //speichert Änderungen an Produkten
+            case 'editSubmit':
+                $model->editSubmit($_GET['id']);
+                header("Location: /index.php?page=admin&action=productList");
+                break;
 
             //speichert neu angelegte Produkte
             case 'uploadSubmit':
@@ -74,6 +81,14 @@ class AdminController
                 require 'view/admin/adminPages/CreateProductsView.php';
                 break;
 
+            
+            //Produkt löschen
+case 'delete':
+
+        $model->deleteProduct($_GET['id']);
+        header("Location: /index.php?page=admin&action=productList");
+
+    break;
 
             //Admin Startseite (zur Modusauswahl)
             default:

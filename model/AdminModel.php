@@ -101,9 +101,217 @@ class AdminModel
 
 
 
+    //Speichert Änderungen an einem Produkt
+    public function editSubmit($id)
+    {
+
+        /*
+
+        Alle werte Aus der Form auslesen und Speichern. Werte die nicht gesetzt sind, da die selektoren nicht geladen werden, wie beispielsweise die gpu beim anlegen
+        eines Monitors oder das os beim anlegen einer maus, müssen extra abgefragt werden (if-cases). wenn sie angezeigt werden aber nicht angewählt werden haben diese
+        einen leeren string (''), was ebenfalls geprüft werden muss.
+
+        */
 
 
-    //speichert Anderungen im upload products Formular in der Datenbank.
+        if (isset($_POST['subcategory'])) {
+            $subcategory = ($_POST['subcategory'] === '') ? 1 : $_POST['subcategory'];
+        } else {
+            $subcategory = 1;
+        }
+
+        if (isset($_POST['name'])) {
+            $name = ($_POST['name'] === '') ? "" : $_POST['name'];
+        } else {
+            $name = "";
+        }
+
+        if (isset($_POST['short-description'])) {
+            $short_description = ($_POST['short-description'] === '') ? "" : $_POST['short-description'];
+        } else {
+            $short_description = "";
+        }
+
+        if (isset($_POST["description"])) {
+            $description = ($_POST['description'] === '') ? "" : $_POST['description'];
+        } else {
+            $description = "";
+        }
+
+        if (isset($_FILES['images'])) {
+            $images = $_FILES['images'];
+        } else {
+            $images = null;
+        }
+
+        if (isset($_POST["price"])) {
+            $price = ($_POST['price'] === '') ? "9999.99" : $_POST['price'];
+        } else {
+            $price = '9999.99';
+        }
+
+        if (isset($_POST['display'])) {
+            $display = ($_POST['display'] === '') ? null : $_POST['display'];
+        } else {
+            $display = null;
+        }
+
+        if (isset($_POST['connector'])) {
+            $connector = ($_POST['connector'] === '') ? null : $_POST['connector'];
+        } else {
+            $connector = null;
+        }
+
+        if (isset($_POST['feature'])) {
+            $feature = ($_POST['feature'] === '') ? null : $_POST['feature'];
+        } else {
+            $feature = null;
+        }
+
+        if (isset($_POST['cpu'])) {
+            $cpu = ($_POST['cpu'] === '') ? null : $_POST['cpu'];
+        } else {
+            $cpu = null;
+        }
+
+        if (isset($_POST['gpu'])) {
+            $gpu = ($_POST['gpu'] === '') ? null : $_POST['gpu'];
+        } else {
+            $gpu = null;
+        }
+
+        if (isset($_POST['storage'])) {
+            $storage = ($_POST['storage'] === '') ? null : $_POST['storage'];
+        } else {
+            $storage = null;
+        }
+
+        if (isset($_POST['os'])) {
+            $os = ($_POST['os'] === '') ? null : $_POST['os'];
+        } else {
+            $os = null;
+        }
+
+        if (isset($_POST['ram'])) {
+            $ram = ($_POST['ram'] === '') ? null : $_POST['ram'];
+        } else {
+            $ram = null;
+        }
+
+        if (isset($_POST['network'])) {
+            $network = ($_POST['network'] === '') ? null : $_POST['network'];
+        } else {
+            $network = null;
+        }
+
+        if (isset($_POST['sale'])) {
+            $sale = ($_POST['sale'] === '') ? 0 : $_POST['sale'];
+        } else {
+            $sale = 0;
+        }
+
+
+
+        //SQL Anfrage vorbereiten
+
+        $sql = "UPDATE product SET
+
+                name = ?, short_description = ?, price = ?, sale = ?, subcategory_id = ?, cpu_id = ?, 
+                gpu_id = ?, ram_id = ?, storage_id = ?, display_id = ?, os_id = ?, network_id = ?,
+                connectors_id = ?, feature_id = ?, alt_text = ?, description = ?
+
+                WHERE product_id = ?";
+
+        $stmt = $GLOBALS['conn']->prepare($sql);
+
+
+        //Variablen belegen (Values setzen)
+        $stmt->bind_param(
+            "ssdiiiiiiiiiiissi",
+            $name,
+            $short_description,
+            $price,
+            $sale,
+            $subcategory,
+            $cpu,
+            $gpu,
+            $ram,
+            $storage,
+            $display,
+            $os,
+            $network,
+            $connector,
+            $feature,
+            $name,
+            $description,
+            $id
+        );
+
+
+        //Ausführen der SQL abfrage (und hoffen dass es klappt)
+        $stmt->execute();
+
+
+
+        //Feedback zu erfolgreichem / Erfolglosem Upload
+        if ($stmt->affected_rows > 0) {
+            echo "Produkt erfolgreich gespeichert.";
+        } else {
+            echo "Fehler beim Speichern: " . $stmt->error;
+        }
+
+
+
+        //
+        //Ab hier: Fotos speichern
+        //
+
+
+        //Ordner für fotos erstellen
+        $uploadDir = __DIR__ . "/../uploads/" . $id;
+
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+
+        if (isset($_FILES['images'])) {
+            $amountImages = count($_FILES['images']['name']);
+
+
+            //jeden fotopfad in der datenbank speichern
+            for ($imageCount = 0; $imageCount < $amountImages; $imageCount++) {
+
+                //Temporär gespeichertes bild vom server holen und speichern. name des originalfotos speichern.
+                $tmpName = $_FILES['images']['tmp_name'][$imageCount];
+                $imageName = basename($_FILES['images']['name'][$imageCount]);
+
+                //pfade für 
+                $filePath = "/uploads/$id/$imageName";
+                $savePath = $uploadDir . '/' . $imageName;
+
+                move_uploaded_file($tmpName, $savePath);
+
+                //um eins erhöhen um richtige sequenznumer in datzenbank zu speichern, da diese bei 1 und nicht 0 anfangen
+                $sequenceNumber = $imageCount + 1;
+
+
+                //sql absetzen
+                $stmt = $GLOBALS['conn']->prepare("INSERT INTO image (product_id, file_path, sequence_no) VALUES(?,?,?)");
+                $stmt->bind_param("isi", $id, $filePath, ($sequenceNumber));
+                $stmt->execute();
+
+                if ($stmt->affected_rows > 0) {
+                    echo "<h1>Änderungen erfolgreich gespeichert.</h1>";
+                } else {
+                    echo "Fehler beim Speichern: " . $stmt->error;
+                }
+            }
+        }
+
+    }
+
+    //legt Datensatz für ein neues produkt in der Datenbank an
     public function uploadSubmit()
     {
 
@@ -254,7 +462,7 @@ class AdminModel
 
         //Feedback zu erfolgreichem / Erfolglosem Upload
         if ($stmt->affected_rows > 0) {
-            echo "Produkt erfolgreich gespeichert.";
+            echo "<h1>Produkt erfolgreich gespeichert.</h1>";
         } else {
             echo "Fehler beim Speichern: " . $stmt->error;
         }
@@ -305,11 +513,31 @@ class AdminModel
                 $stmt->bind_param("isi", $productId, $filePath, ($sequenceNumber));
                 $stmt->execute();
 
+                if ($stmt->affected_rows > 0) {
+                    echo "<h1>Bilder erfolgreich hochgeladen.</h1>";
+                } else {
+                    echo "Fehler beim Speichern: " . $stmt->error;
+                }
+
             }
         }
 
     }
 
+    //Produkt löschen, bilder bleiben noch bestehen
+    public function deleteProduct($id)
+    {
 
+        $stmt = $GLOBALS['conn']->prepare("DELETE FROM product WHERE product_id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+
+        if ($stmt->affected_rows > 0) {
+            echo "<h1>Löschen erfolgreich.</h1>";
+        } else {
+            echo "Fehler beim Löschen: " . $stmt->error;
+        }
+    }
 }
 

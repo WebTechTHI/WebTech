@@ -37,7 +37,7 @@
 
 
     <!-- Forumular zum anlegen neuer Produkte -->
-    <form class="admin-form" method="post" action="/index.php?page=admin&action=uploadSubmit"
+    <form class="admin-form" method="post" action="/index.php?page=admin&action=editSubmit&id=<?=$_GET['id']?>"
       enctype="multipart/form-data">
 
       <!-- Als erstes muss eine Kategorie ausgewählt werden, um anschließend die richtigen Untekategorien und Komponenten zu laden.-->

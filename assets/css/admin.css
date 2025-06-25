@@ -96,6 +96,28 @@
     color: var(--product-text);
 }
 
+.delete-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    background-color: rgb(215, 14, 14);
+    border-radius: 10%;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    z-index: 30;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.delete-button:hover {
+    background-color: rgb(170, 15, 15);
+}
 
 .product:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -211,7 +233,7 @@
 
 .edit-product {
     display: block;
-    background-color: #e00;
+    background-color: rgb(204, 20, 20);
     color: white;
     text-align: center;
     padding: 12px;
@@ -221,8 +243,8 @@
     border-radius: 12px;
 }
 
-.buy-btn:hover {
-    background-color: #c00;
+.edit-product:hover {
+    background-color: rgb(157, 18, 18);
     transition: background-color 0.3s ease;
 }
 
