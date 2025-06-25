@@ -699,16 +699,36 @@ body {
     color: var(--color-red-primary);
 }
 
-.product-footer {
-    margin-top: auto;
+.price-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
+
+.old-price {
+    color: var(--color-gray-medium);
+    font-size: 15px;
+    text-decoration: line-through;
+    margin-right: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
 
 .price {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
     color: var(--color-black);
+    display: inline-block;
+    vertical-align: middle;
 }
+
+.price.onsale {
+    color: var(--color-red-primary);
+}
+
 
 .price-prefix {
     font-size: 16px;

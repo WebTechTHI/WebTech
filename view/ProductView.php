@@ -116,15 +116,30 @@
             </div>
 
             <div class="price-container">
-                <div class="price"><span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
-                </div>
+                <?php if (!empty($product['old_price']) && $product['old_price'] > $product['price'] && $product['sale'] == 1): ?>
+                    <div class="old-price">
+                        <span class="price-prefix">€</span>
+                        <span class="price-strike"><?php echo formatPrice($product['old_price']); ?></span>
+                    </div>
 
+                    <div class="price onsale">
+                        <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                    </div>
+                <?php else: ?>
+
+                    <div class="price">
+                        <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                    </div>
+
+                <?php endif; ?>
                 <div class="tax-info">inkl. 19% MwSt., zzgl. Versandkosten</div>
             </div>
 
-            <div class="stock-status">
-                <div class="stock-dot green"></div>
-                <div class="stock-text">Auf Lager, Lieferzeit 1-3 Werktage</div>
+            <div class="stock-status <?php echo $product['stock_status']; ?>">
+                <div class="stock-dot <?php echo $product['stock_status']; ?>"></div>
+                <div class="stock-text <?php echo $product['stock_status']; ?>">
+                    <?php echo $statusText[$product['stock_status']] ?? ''; ?>
+                </div>
             </div>
 
 
@@ -142,9 +157,13 @@
 
 
             <div class="action-buttons">
+                <?php if ($product['stock_status'] === 'red'): ?>
+                    <button class="buy-btn disabled" disabled>Derzeit nicht verfügbar</button>
+                <?php else: ?>
                 <button class="buy-btn" data-id="<?= $product['product_id'] ?>"
                     data-name="<?= htmlspecialchars($product['name']) ?>" data-price="<?= $product['price'] ?>"
                     data-image="<?= htmlspecialchars($firstImage) ?>">IN DEN WARENKORB</button>
+                <?php endif; ?>
                 <button class="wishlist-btn" data-id="<?= $product['product_id'] ?>">ZUR WUNSCHLISTE HINZUFÜGEN</button>
 
             </div>

@@ -240,9 +240,15 @@
                                     <?php endforeach; ?>
                                 </ul>
                                 <div class="product-footer">
-                                    <div class="price">
-                                        <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
+                                    <div class="price-row">
+                                        <?php if (!empty($product['old_price']) && $product['old_price'] > $product['price'] && $product['sale'] == 1): ?>
+                                            <span class="old-price">€<?php echo formatPrice($product['old_price']); ?></span>
+                                            <span class="price onsale">€<?php echo formatPrice($product['price']); ?></span>
+                                        <?php else: ?>
+                                            <span class="price">€<?php echo formatPrice($product['price']); ?></span>
+                                        <?php endif; ?>
                                     </div>
+
                                     <div class="financing"><span>Jetzt mit 0% Finanzierung</span></div>
                                     <div class="button-container">
                                         <a href="/index.php?page=product&id=<?php echo $product['product_id']; ?>"

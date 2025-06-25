@@ -7,7 +7,7 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
 {
     $sql = "
         SELECT 
-            p.product_id, p.name, p.short_description, p.price, p.sale, p.alt_text, p.description, p.sales,
+            p.product_id, p.name, p.short_description, p.price, p.old_price, p.sale, p.alt_text, p.description, p.sales,
             c.name as category_name, sc.name as subcategory_name,
             proc.model as processor_model, proc.brand as processor_brand, proc.cores as processor_cores, proc.base_clock_ghz as processor_clock,
             gpu.model as gpu_model, gpu.brand as gpu_brand, gpu.vram_gb as gpu_vram, gpu.integrated as gpu_integrated,
