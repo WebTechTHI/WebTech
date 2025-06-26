@@ -68,20 +68,6 @@ function toggleSort() {
 
 
 
-// damit das Herz weiß wird beim Hovern beim Produkt (ABER macht die WISHLIST KAPUTT)
-/* function favoriteImage() {
-    document.querySelectorAll('.favorite-btn').forEach(favBtn => {
-        const favImg = favBtn.querySelector('img');
-
-        favBtn.addEventListener('mouseenter', () => {
-            favImg.src = '/assets/images/icons/favorite.svg';
-        });
-
-        favBtn.addEventListener('mouseleave', () => {
-            favImg.src = '/assets/images/icons/favorite-border.svg';
-        });
-    });
-} */
 
 function initFilterUi() {
 
@@ -91,9 +77,13 @@ function initFilterUi() {
 
 
     function updateApplyButtonState() {
-        // true, wenn mindestens eine Checkbox gecheckt ist
+        // true, wenn mindestens eine Checkbox gecheckt ist (anyChecked ist boolean)
         const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+
+        //die zeile greift nur wenn anyChecked (boolean) false ist also wenn keine checkbox angeclickt wurde
         applyBtn.disabled = !anyChecked;
+
+        //Prüft boolean ob true (dann button deaktiviert =)
         applyBtn.title = anyChecked ? 'Filter anwenden' : 'Bitte mindestens einen Filter auswählen';
 
     }
@@ -110,6 +100,7 @@ function initFilterUi() {
 
 
 
+//Kernfunktion für die AJAX- Filterung
 function applyFilters() {
     document.querySelector('.products-grid').style.opacity = '0.3'; // Ladeanimation
     document.querySelector('.filters').style.opacity = '0.3';
@@ -145,7 +136,7 @@ function applyFilters() {
                     document.querySelector('.filters').innerHTML = data.filtersHtml;
                     document.querySelector('.products-grid').style.opacity = '1';
                     document.querySelector('.filters').style.opacity = '1';
-                    favoriteImage();
+                 
                     initFilterUi();
                 })
                 .catch(err => {
@@ -158,7 +149,7 @@ function applyFilters() {
 
     document.addEventListener('DOMContentLoaded', () => {
   initFilterUi();
-  favoriteImage();
+ 
 
   // Klick auf „Anwenden“
   document.getElementById('applyFilterBtn')
