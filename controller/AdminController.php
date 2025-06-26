@@ -36,7 +36,7 @@ class AdminController
                 require 'view/admin/adminPages/createProductsView.php';
                 break;
 
-                //speichert neu angelegte Produkte
+            //speichert neu angelegte Produkte
             case 'uploadSubmit':
                 $model->uploadSubmit();
                 require 'view/admin/adminPages/CreateProductsView.php';
@@ -72,7 +72,7 @@ class AdminController
                 require 'view/admin/adminPages/AlterProductsView.php';
                 break;
 
-            
+
 
             //speichert Änderungen an Produkten
             case 'editSubmit':
@@ -80,68 +80,68 @@ class AdminController
                 header("Location: /index.php?page=admin&action=productList");
                 break;
 
-            
 
-            
+
+
             //Produkt löschen
-case 'delete':
+            case 'delete':
 
-        $model->deleteProduct($_GET['id']);
-        header("Location: /index.php?page=admin&action=productList");
+                $model->deleteProduct($_GET['id']);
+                header("Location: /index.php?page=admin&action=productList");
 
-    break;
+                break;
 
 
-    //Userliste anzeigen
-    case "userList":
+            //Userliste anzeigen
+            case "userList":
 
-        $users = $model->getUsers();
+                $users = $model->getUsers();
 
-        require 'view/admin/adminPages/UserListView.php';
+                require 'view/admin/adminPages/UserListView.php';
                 break;
 
 
 
-                //User anzeigen
-    case "user":
+            //User anzeigen
+            case "user":
 
 
-        $user = $model->getUserById($_GET["user-id"]);
+                $user = $model->getUserById($_GET["user-id"]);
 
-        //lädt bestellungen für angegebene userid
-        $orders = $model->getOrdersById($_GET['user-id']);
+                //lädt bestellungen für angegebene userid
+                $orders = $model->getOrdersByUser($_GET['user-id']);
 
-        require 'view/admin/adminPages/UserView.php';
+                require 'view/admin/adminPages/UserView.php';
                 break;
 
 
 
-                //Orderliste anzeigen
-    case "orderList":
+            //Orderliste anzeigen
+            case "orderList":
 
-        //lädt alle bestellungen
-        $orders = $model->getOrders();
+                //lädt alle bestellungen
+                $orders = $model->getOrders();
 
-        require 'view/admin/adminPages/OrderListView.php';
+                require 'view/admin/adminPages/OrderListView.php';
                 break;
 
 
 
-                //Order anzeigen
-    case "order":
-        
+            //Order anzeigen
+            case "order":
 
-        //Lädt bestellungen für angegebene bestellungs-id
-        $order = $model->getOrderById($_GET['order-id']);
-        require 'view/admin/adminPages/OrderView.php';
+
+                //Lädt bestellungen für angegebene bestellungs-id
+                $order = $model->getOrderById($_GET['order-id']);
+                require 'view/admin/adminPages/OrderView.php';
                 break;
 
 
-                //speichert änderungen an einer bestellung
-        case 'orderStatusChange':
+            //speichert änderungen an einer bestellung
+            case 'orderStatusChange':
 
-            $model->changeStatus($_GET('order-id'));
-            break;
+                $model->changeOrderStatus($_GET('order-id'), $_GET['status']);
+                break;
 
             //Admin Startseite (zur Modusauswahl)
             default:

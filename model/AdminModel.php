@@ -539,5 +539,145 @@ class AdminModel
             echo "Fehler beim Löschen: " . $stmt->error;
         }
     }
+
+
+    //user funktionen
+
+    //alle user aus datenbank abrufen und zurückgeben
+    public function getUsers()
+    {
+
+
+        $sql = "SELECT * FROM user";
+        $stmt = $GLOBALS['conn']->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        $stmt->close();
+
+        return $data;
+    }
+
+
+    //gibt user aus datenbank zurück
+    public function getUserById($id)
+    {
+
+
+        $sql = "SELECT * FROM user WHERE user_id = " . $id;
+        $stmt = $GLOBALS['conn']->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+
+        $stmt->close();
+
+        return $data;
+    }
+
+
+    //gibt alle bestellungen eines benutzers zurück
+    public function getOrdersByUser($id)
+    {
+
+
+        $sql = "SELECT * FROM orders WHERE user_id = " . $id;
+        $stmt = $GLOBALS['conn']->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        $stmt->close();
+
+        return $data;
+    }
+
+
+
+    public function getOrders()
+    {
+
+
+        $sql = "SELECT * FROM orders";
+        $stmt = $GLOBALS['conn']->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        $stmt->close();
+
+        return $data;
+    }
+
+
+    //gibt spezifische bestellung nqahc gegebener orderId 
+    public function getOrderById($id)
+    {
+
+
+        $sql = "SELECT * FROM orders WHERE order_id = " . $id;
+        $stmt = $GLOBALS['conn']->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+
+        $stmt->close();
+
+        return $data;
+    }
+
+
+    //ändert status einer bestellung
+    public function changeOrderStatus($id,$status)
+    {
+        $sql = "UPDATE orders 
+                SET status = ? 
+                WHERE order_id = ?";
+
+        $stmt = $GLOBALS['conn']->prepare($sql);
+
+
+        //Variablen belegen (Values setzen)
+        $stmt->bind_param(
+            "si",
+            $id,
+            $status
+        );
+
+
+        //Ausführen der SQL abfrage (und hoffen dass es klappt)
+        $stmt->execute();
+
+
+
+        //Feedback zu erfolgreichem / Erfolglosem Upload
+        if ($stmt->affected_rows > 0) {
+            echo "<h1 style=" . "text-align:center" . ">Produkt erfolgreich gespeichert.</h1>";
+        } else {
+            echo "Fehler beim Speichern: " . $stmt->error;
+        }
+    }
+
+
+
+
 }
 
