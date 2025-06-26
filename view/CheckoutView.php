@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MLR | Kasse</title>
-    <!-- Binde hier deine globalen CSS-Dateien und Header ein -->
+ 
 
     <link rel="stylesheet" href="/assets/css/checkoutPage.css">
 </head>
@@ -41,10 +41,11 @@
 
                 <div class="summary-total">
                     <p><span>Zwischensumme (Netto):</span> <span><?= number_format($netto, 2, ',', '.') ?> €</span></p>
+                    <p><span>inkl. 19% MwSt.:</span> <span><?= number_format($tax, 2, ',', '.') ?> €</span></p>
                     <p><span>Versandkosten:</span>
                         <span><?= $shippingCost == 0 ? 'Kostenlos' : number_format($shippingCost, 2, ',', '.') . ' €' ?></span>
                     </p>
-                    <p><span>inkl. 19% MwSt.:</span> <span><?= number_format($tax, 2, ',', '.') ?> €</span></p>
+                    
                     <p class="grand-total"><span>Gesamt:</span> <span><?= number_format($total, 2, ',', '.') ?> €</span>
                     </p>
                 </div>

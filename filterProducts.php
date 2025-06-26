@@ -1,20 +1,21 @@
-<!-- Kein Ersatz für categoryView!
 
- Es ist ein Hilfs-Skript nur für AJAX. Es wird nicht direkt im Browser angezeigt, sondern:
-
-        Empfängt die Filter-Daten.
-
-        Fragt gefilterte Produkte aus der DB ab (getProductsByCategory(...)).
-
-        Baut neue HTML-Blöcke (Produktliste + Sidebar).
-
-        Antwortet nur mit diesen Blöcken im JSON.
-
-        JavaScript im Browser ersetzt dann nur Teile der aktuellen Seite damit.
-
-        bleiben also auf categoryView, aber Inhalte ändern sich dynamisch! -->
 
 <?php
+//-- Kein Ersatz für categoryView!
+
+ //Es ist ein Hilfs-Skript nur für AJAX. Es wird nicht direkt im Browser angezeigt, sondern:
+
+ //       Empfängt die Filter-Daten.
+
+ //       Fragt gefilterte Produkte aus der DB ab (getProductsByCategory(...)).
+
+ //       Baut neue HTML-Blöcke (Produktliste + Sidebar).
+
+//        Antwortet nur mit diesen Blöcken im JSON.
+
+ //       JavaScript im Browser ersetzt dann nur Teile der aktuellen Seite damit.
+
+ //       bleiben also auf categoryView, aber Inhalte ändern sich dynamisch! 
 require_once 'db_verbindung.php';
 require_once 'model/categoryFunctions.php';
 
@@ -127,10 +128,10 @@ echo json_encode([
     'productsHtml' => $productsHtml,
     'filtersHtml' => $filtersHtml
 ]);
+// -- filterProducts.php baut nur das HTML für die Produktliste und Filter – serverseitig.
+
+// base.js nimmt das fertige HTML (aus dem JSON) und ersetzt damit live Teile des DOM auf der Seite categoryView.php.
+
+// categoryView.php selbst wird dabei nie neu geladen! 
 ?>
 
-<!-- filterProducts.php baut nur das HTML für die Produktliste und Filter – serverseitig.
-
-base.js nimmt das fertige HTML (aus dem JSON) und ersetzt damit live Teile des DOM auf der Seite categoryView.php.
-
-categoryView.php selbst wird dabei nie neu geladen! -->

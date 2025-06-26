@@ -1,4 +1,55 @@
-/* Checkout Page Styling - MLR Style */
+:root {
+    --background: #f5f5f5;
+    --background-card: #fff;
+    --background-input: #fafafa;
+    --background-img: #f8f9fa;
+
+    --border: #e0e0e0;
+    --border-card: #e0e0e0;
+    --border-section: #e0e0e0;
+    --border-payment: #e0e0e0;
+    --border-payment-hover: #dc3545;
+
+    --shadow-card: 0 2px 4px rgba(0,0,0,0.1);
+
+    --primary: #dc3545;
+    --primary-hover: #c82333;
+    --primary-active: #bd2130;
+    --accent: #dc3545;
+
+    --text-main: #333;
+    --text-secondary: #666;
+    --text-muted: #777;
+    --text-contrast: #fff;
+    --text-link: #dc3545;
+}
+
+.darkMode {
+    --background: #222;
+    --background-card: #2a2a2a;
+    --background-input: #232323;
+    --background-img: #232323;
+
+    --border: #444;
+    --border-card: #444;
+    --border-section: #444;
+    --border-payment: #555;
+    --border-payment-hover: #ff5050;
+
+    --shadow-card: 0 2px 8px rgba(0,0,0,0.5);
+
+    --primary: #ff5050;
+    --primary-hover: #d43232;
+    --primary-active: #a82222;
+    --accent: #ff5050;
+
+    --text-main: #fff;
+    --text-secondary: #ccc;
+    --text-muted: #aaa;
+    --text-contrast: #fff;
+    --text-link: #ff5050;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +58,14 @@
 }
 
 .checkout-page {
-    background-color: #f5f5f5;
+    background-color: var(--background);
     min-height: 100vh;
     padding: 2rem 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .checkout-page h1 {
-    color: #333;
+    color: var(--text-main);
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 2rem;
@@ -23,8 +74,8 @@
 
 /* Error Message */
 .error-message {
-    background-color: #dc3545;
-    color: white;
+    background-color: var(--primary);
+    color: var(--text-contrast);
     padding: 1rem;
     border-radius: 4px;
     margin-bottom: 1.5rem;
@@ -42,20 +93,20 @@
 
 /* Order Summary Section */
 .order-summary {
-    background: white;
+    background: var(--background-card);
     border-radius: 8px;
     padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-card);
     height: fit-content;
 }
 
 .order-summary h2 {
-    color: #333;
+    color: var(--text-main);
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-section);
 }
 
 /* Product Item Display */
@@ -63,7 +114,7 @@
     display: flex;
     align-items: center;
     padding: 1rem 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--border-card);
     gap: 1rem;
 }
 
@@ -80,7 +131,7 @@
     height: 60px;
     object-fit: cover;
     border-radius: 4px;
-    background-color: #f8f9fa;
+    background-color: var(--background-img);
 }
 
 .item-details {
@@ -89,19 +140,19 @@
 
 .item-name {
     font-weight: 500;
-    color: #333;
+    color: var(--text-main);
     font-size: 0.95rem;
     margin-bottom: 0.25rem;
 }
 
 .item-quantity {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.85rem;
 }
 
 .item-price {
     font-weight: 600;
-    color: #333;
+    color: var(--text-main);
     font-size: 1rem;
 }
 
@@ -109,7 +160,6 @@
 .summary-total {
     margin-top: 7rem;
     padding-top: 1rem;
-    
 }
 
 .summary-total p {
@@ -117,56 +167,51 @@
     justify-content: space-between;
     margin: 0.5rem 0;
     font-size: 0.9rem;
-    color: #333;
+    color: var(--text-main);
 }
 
 .grand-total {
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     padding-top: 0.5rem;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--border-section);
     margin-top: 0.5rem;
 }
 
 /* Order Action Section */
 .order-action {
-    background: white;
+    background: var(--background-card);
     border-radius: 8px;
     padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-card);
     height: fit-content;
 }
 
-
 .order-action h2 {
-    color: #333;
+    color: var(--text-main);
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-section);
 }
 
 .order-adress p {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0.25rem 0;
-    
 }
 .order-adress p strong {
     display: inline-block;
     margin-bottom: 0.7rem;
-     color: #333;
+    color: var(--text-main);
     font-weight: 600;
     margin-bottom: 0.4rem;
 }
 
 .order-adress p:nth-of-type(5) strong {
     margin-top: 1rem;
-   
 }
-
-
 
 /* Payment Methods */
 .payment-methods {
@@ -174,7 +219,7 @@
 }
 
 .payment-methods h3 {
-    color: #333;
+    color: var(--text-main);
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -185,33 +230,34 @@
     align-items: center;
     margin-bottom: 0.75rem;
     padding: 0.75rem;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-payment);
     border-radius: 4px;
     cursor: pointer;
+    background: var(--background-input);
     transition: all 0.2s ease;
 }
 
 .payment-option:hover {
-    border-color: #dc3545;
-    background-color: #fafafa;
+    border-color: var(--border-payment-hover);
+    background-color: var(--background-img);
 }
 
 .payment-option input[type="radio"] {
     margin-right: 0.75rem;
-    accent-color: #dc3545;
+    accent-color: var(--primary);
 }
 
 .payment-option label {
     cursor: pointer;
     font-size: 0.9rem;
-    color: #333;
+    color: var(--text-main);
 }
 
 /* Order Button */
 .btn-order-final {
     width: 100%;
-    background-color: #dc3545;
-    color: white;
+    background-color: var(--primary);
+    color: var(--text-contrast);
     border: none;
     padding: 1rem 1.5rem;
     border-radius: 4px;
@@ -223,17 +269,17 @@
 }
 
 .btn-order-final:hover {
-    background-color: #c82333;
+    background-color: var(--primary-hover);
 }
 
 .btn-order-final:active {
-    background-color: #bd2130;
+    background-color: var(--primary-active);
 }
 
 /* Terms Text */
 .terms-text {
     font-size: 0.8rem;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.4;
     margin-bottom: 1rem;
 }
@@ -242,16 +288,16 @@
 hr {
     border: none;
     height: 1px;
-    background-color: #e0e0e0;
+    background-color: var(--border-section);
     margin: 1rem 0;
 }
-
-/* Responsive Design */
-
 
 /* Focus States for Accessibility */
 .btn-order-final:focus,
 .payment-option:focus-within {
-    outline: 2px solid #dc3545;
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
+
+/* Responsive Design */
+/* ... deine Media Queries ggf. am Ende ergänzen ... */

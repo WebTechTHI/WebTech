@@ -35,7 +35,7 @@
 
                         <!-- KORREKTUR HIER: Klassen direkt auf das div anwenden -->
                         <div class="order-data">
-                            <?= htmlspecialchars($order['status']) ?>
+                            <?= htmlspecialchars($order['status_name']) ?>
                         </div>
 
                         <div class="order-data"><?= number_format($order['total_amount'], 2, ',', '.') ?> €</div>

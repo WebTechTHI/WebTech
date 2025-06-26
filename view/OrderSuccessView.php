@@ -15,63 +15,67 @@
     <?php include './components/header.php'; ?>
 
     <main class="order-success-container">
+
         <div class="success-card">
-            <div class="success-icon">
-                <!-- Ein schöner grüner Haken als SVG -->
-                <img src="/assets/images/haken.svg" alt="Bestellung erfolgreich" />
-            </div>
-
-            <h1>Vielen Dank für Ihre Bestellung!</h1>
-
-            <p class="confirmation-text">
-                Ihre Bestellung mit der Nummer <strong>#<?= htmlspecialchars($order['order_id']) ?></strong> wurde
-                erfolgreich entgegengenommen.
-                Eine Bestätigungs-E-Mail wird in Kürze an
-                <strong><?= htmlspecialchars($_SESSION['user']['email']) ?></strong> gesendet.
-            </p>
-
-            <div class="order-details-box">
-                <h2>Bestellübersicht</h2>
-
-                <div class="info-section">
-                    <div>
-                        <strong>Bestelldatum:</strong>
-                        <p><?= date('d.m.Y, H:i', strtotime($order['order_date'])) ?> Uhr</p>
-                    </div>
-                    <div>
-                        <strong>Gesamtbetrag:</strong>
-                        <p><?= number_format($order['total_amount'], 2, ',', '.') ?> €</p>
-                    </div>
+            <div class="order-status"><?= $order['status_name'] ?></div>
+            <div class="order-center">
+                <div class="success-icon">
+                    <!-- Ein schöner grüner Haken als SVG -->
+                    <img src="/assets/images/haken.svg" alt="Bestellung erfolgreich" />
                 </div>
 
-                <div class="info-section">
-                    <div>
-                        <strong>Lieferadresse:</strong>
-                        <p><?= nl2br(htmlspecialchars($order['shipping_address'])) ?></p>
-                    </div>
-                </div>
+                <h1>Vielen Dank für Ihre Bestellung!</h1>
 
-                <h3>Ihre Artikel</h3>
-                <div class="ordered-items-list">
-                    <?php foreach ($order['items'] as $item): ?>
-                        <div class="ordered-item">
-                            <a href="index.php?page=product&id=<?php echo htmlspecialchars($item['product_id']) ?>">
-                                <img src="<?= htmlspecialchars($item['image'] ?? '/assets/images/placeholder.jpg') ?>"
-                                    alt="<?= htmlspecialchars($item['name']) ?>" class="item-image"></a>
-                            <div class="item-details">
-                                <span class="item-name"><?= htmlspecialchars($item['name']) ?></span>
-                                <span class="item-quantity">Menge: <?= htmlspecialchars($item['quantity']) ?></span>
-                            </div>
-                            <span
-                                class="item-price"><?= number_format($item['price_per_item'] * $item['quantity'], 2, ',', '.') ?>
-                                €</span>
+                <p class="confirmation-text">
+                    Ihre Bestellung mit der Nummer <strong>#<?= htmlspecialchars($order['order_id']) ?></strong> wurde
+                    erfolgreich entgegengenommen.
+                    Eine Bestätigungs-E-Mail wird in Kürze an
+                    <strong><?= htmlspecialchars($_SESSION['user']['email']) ?></strong> gesendet.
+                </p>
+
+                <div class="order-details-box">
+                    <h2>Bestellübersicht</h2>
+
+                    <div class="info-section">
+                        <div>
+                            <strong>Bestelldatum:</strong>
+                            <p><?= date('d.m.Y, H:i', strtotime($order['order_date'])) ?> Uhr</p>
                         </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
+                        <div>
+                            <strong>Gesamtbetrag:</strong>
+                            <p><?= number_format($order['total_amount'], 2, ',', '.') ?> €</p>
+                        </div>
+                    </div>
 
-            <a href="/index.php?page=orders" class="btn btn-primary">Meine Bestellungen ansehen</a>
-            <a href="/index.php" class="btn btn-secondary">Weiter einkaufen</a>
+                    <div class="info-section">
+                        <div>
+                            <strong>Lieferadresse:</strong>
+                            <p><?= nl2br(htmlspecialchars($order['shipping_address'])) ?></p>
+                        </div>
+                    </div>
+
+                    <h3>Ihre Artikel</h3>
+                    <div class="ordered-items-list">
+                        <?php foreach ($order['items'] as $item): ?>
+                            <div class="ordered-item">
+                                <a href="index.php?page=product&id=<?php echo htmlspecialchars($item['product_id']) ?>">
+                                    <img src="<?= htmlspecialchars($item['image'] ?? '/assets/images/placeholder.jpg') ?>"
+                                        alt="<?= htmlspecialchars($item['name']) ?>" class="item-image"></a>
+                                <div class="item-details">
+                                    <span class="item-name"><?= htmlspecialchars($item['name']) ?></span>
+                                    <span class="item-quantity">Menge: <?= htmlspecialchars($item['quantity']) ?></span>
+                                </div>
+                                <span
+                                    class="item-price"><?= number_format($item['price_per_item'] * $item['quantity'], 2, ',', '.') ?>
+                                    €</span>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <a href="/index.php?page=orders" class="btn btn-primary">Meine Bestellungen ansehen</a>
+                <a href="/index.php" class="btn btn-secondary">Weiter einkaufen</a>
+            </div>
         </div>
     </main>
 

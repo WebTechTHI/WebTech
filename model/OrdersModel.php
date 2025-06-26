@@ -4,10 +4,16 @@ class OrdersModel {
      public function getAllOrdersByUserId($userId) {
         global $conn;
 
-        $sql = "SELECT order_id, user_id, order_date, status, total_amount 
-                FROM orders 
-                WHERE user_id = ? 
-                ORDER BY order_date DESC"; // Neueste Bestellungen zuerst
+        $sql = "SELECT 
+                o.order_id, 
+                o.user_id, 
+                o.order_date, 
+                o.total_amount, 
+                s.status_name
+            FROM orders o
+            JOIN order_status s ON o.status_id = s.order_status_id
+            WHERE o.user_id = ? 
+            ORDER BY o.order_date DESC"; // Neueste Bestellungen zuerst
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('i', $userId);

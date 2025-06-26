@@ -1,4 +1,33 @@
-/* assets/css/orderSuccessPage.css */
+:root {
+    --background: #f4f6f9;
+    --card-bg: #fff;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --border: #e0e0e0;
+    --border-secondary: #f0f0f0;
+    --item-bg: #f9f9f9;
+    --primary: #c00;
+    --primary-hover: #a00;
+    --text-main: #333;
+    --text-sub: #555;
+    --text-muted: #666;
+    --text-muted-2: #777;
+    --btn-text: #fff;
+}
+
+.darkMode {
+    --background: #181b1f;
+    --card-bg: #22262b;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    --border: #333a42;
+    --border-secondary: #333a42;
+    --item-bg: #32373f;
+   
+    --text-main: #fff;
+    --text-sub: #e0e0e0;
+    --text-muted: #aaa;
+    --text-muted-2: #aaa;
+    --btn-text: #fff;
+}
 
 * {
     margin: 0;
@@ -12,22 +41,38 @@
     justify-content: center;
     align-items: flex-start;
     padding: 40px 20px;
-    background-color: #f4f6f9; /* Heller Hintergrund für die ganze Seite */
+    background-color: var(--background);
     min-height: 80vh;
 }
 
+.order-center{
+    text-align: center;
+}
+
 .success-card {
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow);
     padding: 40px;
     max-width: 800px;
     width: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .success-icon {
     margin-bottom: 20px;
+}
+
+.order-status{
+   color: var(--text-main);
+    border: var(--text-main) 1px solid;
+    border-radius: 20px;
+    padding: 8px;
+    border-left: var(--text-main) 5px solid;
+    margin-left: auto;
+    margin-bottom: 16px;
+    
 }
 
 .success-icon img {
@@ -37,23 +82,24 @@
 
 .success-card h1 {
     font-size: 2.5em;
-    color: #333;
+    color: var(--text-main);
     margin-bottom: 15px;
 }
 
 .confirmation-text {
     font-size: 1.1em;
-    color: #555;
+    color: var(--text-sub);
     line-height: 1.6;
     margin-bottom: 30px;
 }
 
 .order-details-box {
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 25px;
     margin-bottom: 30px;
     text-align: left;
+    background: var(--card-bg);
 }
 
 .order-details-box h2 {
@@ -61,8 +107,9 @@
     margin-top: 0;
     margin-bottom: 25px;
     font-size: 1.8em;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 2px solid var(--border-secondary);
     padding-bottom: 15px;
+    color: var(--text-main);
 }
 
 .info-section {
@@ -75,18 +122,18 @@
 }
 
 .info-section div {
-    flex-basis: 45%; /* Lässt Platz für Lücken */
+    flex-basis: 45%;
 }
 
 .info-section strong {
-    color: #333;
+    color: var(--text-main);
     display: block;
     margin-bottom: 5px;
 }
 
 .info-section p {
     margin: 0;
-    color: #666;
+    color: var(--text-muted);
     line-height: 1.5;
 }
 
@@ -95,6 +142,7 @@
     margin-bottom: 15px;
     font-size: 1.4em;
     text-align: left;
+    color: var(--text-main);
 }
 
 .ordered-items-list {
@@ -106,7 +154,7 @@
 .ordered-item {
     display: flex;
     align-items: center;
-    background-color: #f9f9f9;
+    background-color: var(--item-bg);
     padding: 10px;
     border-radius: 6px;
 }
@@ -127,17 +175,18 @@
 .item-name {
     font-weight: bold;
     display: block;
+    color: var(--text-main);
 }
 
 .item-quantity {
-    color: #777;
+    color: var(--text-muted-2);
     font-size: 0.9em;
 }
 
 .item-price {
     font-weight: bold;
     font-size: 1.1em;
-    color: #333;
+    color: var(--text-main);
 }
 
 /* Buttons */
@@ -154,22 +203,22 @@
 }
 
 .btn-primary {
-    background-color: #c00;
-    color: #ffffff;
+    background-color: var(--primary);
+    color: var(--btn-text);
 }
 
 .btn-primary:hover {
-    background-color: #a00;
+    background-color: var(--primary-hover);
 }
 
 .btn-secondary {
     background-color: transparent;
-    color: #c00;
-    border-color: #c00;
+    color: var(--primary);
+    border-color: var(--primary);
     border-width: 2px;
 }
 
 .btn-secondary:hover {
-    background-color: #c00;
-    color: #ffffff;
+    background-color: var(--primary);
+    color: var(--btn-text);
 }
