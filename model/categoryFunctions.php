@@ -81,18 +81,23 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
 //Filter hier sind erst wichtig wenn auf der Seite Filter ausgewählt wurden um die mit ajax zu laden, dann wird die funktion mit den Filtern aufgerufen
     // Filter berücksichtigen
     if (!empty($filters)) {
+
+        //Schreibweise um schlüssel und dazugehörigen wert (key, values) gleichzeitig zu bekommen deswegen =>
         foreach ($filters as $key => $values) {
+            //Wenn ein wert leer ist wird übersprungen (mit continue)
             if (empty($values))
                 continue;
 
-            // Werte escapen und als SQL-String vorbereiten
-            $escaped = [];
+            // Werte escapen und als SQL-String vorbereiten //======= Wir bereiten die Werte so auf, dass sie sicher in die SQL-Abfrage eingebaut werden können
+            $escaped = [];  // In das $escaped-Array schreiben wir die bereinigten (escaped) Filterwerte,
+                            //damit wir sie später sicher in die SQL-Abfrage einbauen können – im richtigen Format für IN (...)
             foreach ($values as $v) {
                 $escaped[] = "'" . mysqli_real_escape_string($conn, $v) . "'";
             }
 
             $valueString = implode(',', $escaped);
 
+            //Je nachdem welcher Filter verarbeitet wird wird dieser an die große SQL abfrage angehängt
             switch ($key) {
                 case 'ram':
                     $sql .= " AND ram.capacity_gb IN ($valueString)";
