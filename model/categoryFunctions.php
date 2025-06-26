@@ -232,6 +232,10 @@ function formatPrice($price)
 // Hilfsfunktion für Spezifikationen 
 //  Diese Funktion baut die Spezifikationen eines Produkts basierend auf der Kategorie und den verfügbaren Daten zusammen
 //  und gibt sie als Array zurück. 
+
+//Brauchen die Funktion buildSpecifications() Weil die Produktdaten in der Datenbank viel zu viele Spalten haben.
+//Wir wollen im Frontend nur die wichtigsten 4–6 Infos anzeigen, nicht 20+ Felder
+
 function buildSpecifications($product)
 {
     $specs = [];
