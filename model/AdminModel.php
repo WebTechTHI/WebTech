@@ -588,7 +588,7 @@ class AdminModel
     {
 
 
-        $sql = "SELECT * FROM orders WHERE user_id = " . $id;
+        $sql = "SELECT orders.* FROM orders JOIN user on orders.user_id = user.user_id WHERE user_id = " . $id;
         $stmt = $GLOBALS['conn']->prepare($sql);
         $stmt->execute();
 
@@ -610,7 +610,8 @@ class AdminModel
     {
 
 
-        $sql = "SELECT * FROM orders";
+        $sql = "SELECT orders.* FROM orders JOIN user on orders.user_id = user.user_id";
+
         $stmt = $GLOBALS['conn']->prepare($sql);
         $stmt->execute();
 

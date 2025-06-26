@@ -80,7 +80,7 @@
   gap: 80px;
 }
 
-.product {
+.product{
   border-radius: 10px;
   flex-direction: row;
   background-color: var(--product-container);
@@ -260,6 +260,123 @@
   background-color: rgb(157, 18, 18);
   transition: background-color 0.3s ease;
 }
+
+
+/*   ------------  Orders  ---------  */
+
+.orders-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.order {
+  background-color: white;
+  border: 2px solid rgb(185, 185, 185);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: border-color 0.2s ease-in-out;
+  border-bottom: 5px solid rgb(185, 185, 185);
+}
+
+.order:hover {
+  border-bottom: 5px solid rgb(199, 18, 18);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--red);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.order-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.order-status-more {
+  display:flex;
+  flex-direction:row;
+  font-size: 14px;
+  justify-content: right;
+  align-items: center;
+  gap:12px;
+  margin: 6px 0 0 0;
+}
+
+.more{
+  padding: 10px 20px;
+  background-color: rgb(210, 21, 21);
+  font-size: 16px;
+  color:white;
+  font-weight:bold;
+  border-radius: 8px;
+}
+
+.more:hover{
+  background-color:rgb(159, 25, 25);
+  transition: .2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.33);
+}
+
+.status-styling{
+  border: 2px solid rgb(196, 196, 196);
+  padding: 4px 7px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
+  
+}
+
+.status-styling:hover{
+  background-color: rgb(188, 23, 23);
+  transition: .2s ease-in-out;
+  border: 2px solid rgb(196, 196, 196);
+  padding: 4px 7px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.4);
+  color:white;
+}
+
+.order-status-more label {
+  font-weight: bold;
+  font-size:16px;
+}
+
+.status-styling:hover select{
+  color:white;
+  transition: .2s ease-in-out;
+}
+
+.order-status-more select {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background-color: transparent;
+  border:none;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.status-styling:has(select:focus), .status-styling select:focus{ 
+  color:white;
+  background-color:rgb(188, 23, 23);
+}
+
 
 
 
