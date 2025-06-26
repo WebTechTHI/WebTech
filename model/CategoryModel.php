@@ -2,6 +2,7 @@
 require_once 'db_verbindung.php';
 require_once 'categoryFunctions.php';
 
+// alle funktionen werden in categoryFunctions.php definiert
 class CategoryModel
 {
     public function getProducts($category, $orderBy, $direction)

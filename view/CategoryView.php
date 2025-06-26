@@ -27,6 +27,7 @@
 
 
     <!-- Breadcrumb -->
+     <!-- Breadcrumb für die Kategorie, sollte eine Kategorie eine Oberkateogrie haben sind oben 3 elemente (Home, Oberkategorie, unterkategorie) ansosnten nur (Home, Oberkategorie) -->
     <div class="breadcrumb">
         <a href="/index.php/page=home">Home</a>
         <?php if (!empty($categoryInfo['unterkategorien']) || $categoryInfo['breadcrumb'] == 'Angebote'): ?>
@@ -49,8 +50,9 @@
             </div>
             <div class="sidebar-all" id="sidebarContent">
                 <ul class="sidebar-menu">
+                    <!-- Sollt die Kategorie eine Oberkategorie sein dann sollen Unterkategorie Links in der Sidebar sein -->
                     <?php if (!empty($categoryInfo['unterkategorien'])): ?>
-                        <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?>
+                        <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?> <!-- Schleife durch alle Unterkategorien -->
                             <li><a
                                     href="<?php echo htmlspecialchars($uk['link']); ?>"><?php echo htmlspecialchars($uk['name']); ?></a>
                             </li>
@@ -71,14 +73,20 @@
 
                     echo "<div class='filters'>";
                     // Filter-HTML generieren
+                    // nur wenn die Kategorie nicht 'alle' oder 'zubehör' ist
+                    // dann werden die Filter angezeigt
                     if ($category !== 'alle' && $category !== 'zubehör') {
-
+                        // zaehler ist hier nur wichtig um die erste Filter-Gruppe zu öffnen
                         $zaehler = 0;
                         foreach ($filters as $filterName => $values) {
+                            // unique Werte für den Filter
+                            // array_unique entfernt doppelte Werte aus dem Array
                             $uniqueValues = array_unique($values);
 
                             if (count($uniqueValues) >= 1) {
                                 echo "<div class='filter-group'>";
+                                // hier werden die Filter-Überschriften generiert
+                                // wenn der Zähler 0 ist, dann wird die Gruppe geöffnet, sonst geschlossen
                                 if ($zaehler == 0) {
                                     echo "<div class='filter-header open' onclick='toggleFilter(this)'><span>$filterName</span><span class='arrow'>▼</span></div>";
                                     echo "<ul class='filter-options'>";
@@ -90,11 +98,17 @@
 
 
                                 foreach ($uniqueValues as $value) {
+                                    // Zähle die Anzahl der Vorkommen des Wertes in der Liste
                                     $count = array_count_values($values)[$value];
 
-                                    // ID nur noch zur Label-Zuordnung, aber kein Split nötig im JS
+                                    // Erstelle eine eindeutige ID für das Label
+                                    // Diese ID wird für das Label verwendet, damit es mit dem Input-Feld verknüpft ist
+                                    // Die ID wird aus dem Filter-Namen und dem Wert zusammengesetzt
                                     $labelId = $filterName . "_" . $value;
 
+                                    // hier wird die Checkbox für den Filter generiert
+                                    // die Checkbox hat eine Klasse "filter-checkbox" und ein data-Attribut "data-filter"
+                                    // das data-Attribut enthält den Filter-Namen in Kleinbuchstaben
                                     echo "<li>
                                             <input 
                                                 type='checkbox' 
@@ -112,6 +126,7 @@
                         }
 
                     } else {
+                        // Wenn keine Filter verfügbar sind, wird eine Nachricht angezeigt
                         echo "<div class='filter-group'>";
                         echo "<span class='no-filter'>Keine Filter verfügbar</span>";
                         echo "</div>";
@@ -121,6 +136,8 @@
                     echo "</div>"; // Schließt die Filter-Div
                     ?>
                     <?php
+                    // Wenn die Kategorie nicht 'alle' oder 'zubehör' ist, werden die Filter-Buttons angezeigt
+                    // Diese Buttons sind zum Zurücksetzen und Anwenden der Filter
                     if ($category !== 'alle' && $category !== 'zubehör') {
                         echo '<div class="filterButtons">';
                         echo '<button class="reset-btn" id="resetFilterBtn">Zurücksetzen</button>';
@@ -134,9 +151,9 @@
             </div>
         </div>
 
-        <!-- Main Products Area -->
+        
         <div class="products">
-            <!-- Banner -->
+           
             <div class="banner">
                 <div class="banner-content">
                     <h1><span><?php echo htmlspecialchars($categoryInfo['titel']); ?></span>
@@ -152,7 +169,8 @@
 
             </div>
 
-
+            <!-- Unterkategorien -->
+            <!-- Wenn die Kategorie Unterkategorien hat, dann werden diese angezeigt -->
             <?php if (!empty($categoryInfo['unterkategorien'])): ?>
                 <h3 class="section-title">UNTERKATEGORIE WÄHLEN:</h3>
 
@@ -181,11 +199,14 @@
 
 
             <!-- Products Grid -->
+            
             <div class="title-and-sort">
                 <h3 class="section-title">UNSERE TOPSELLER</h3>
                 <!--    Sortierkriterium      (Michi) -->
                 <div class="sort-container">
+                    
                     <select class="orderSelect" id="orderBy">
+                        <!-- Die Optionen für die Sortierung -->
                         <option value="sales" <?= $orderBy === 'sales' ? 'selected' : '' ?>>Bestseller</option>
                         <option value="price" <?= $orderBy === 'price' ? 'selected' : '' ?>>Preis</option>
                         <option value="name" <?= $orderBy === 'name' ? 'selected' : '' ?>>Name</option>
@@ -205,8 +226,11 @@
             </div>
 
 
-
+            <!-- Products Grid -->
+            <!-- Hier werden die Produkte angezeigt, die in der Kategorie sind -->
             <div class="products-grid">
+                <!-- Wenn keine Produkte in der Kategorie sind, wird eine Nachricht angezeigt -->
+                <!-- Diese Nachricht wird nur angezeigt, wenn die Kategorie leer ist -->
                 <?php if (empty($products)): ?>
                     <div class="no-products" style="text-align: center; padding: 40px; color: #666;">
                         <p>Derzeit sind keine Produkte in dieser Kategorie verfügbar.</p>
@@ -214,14 +238,16 @@
                 <?php else: ?>
                     <?php foreach ($products as $product):      // Schleife durch alle geladenen Produkte.  ?>
                         <?php
-
+                        // Hier wird das erste Bild des Produkts ausgewählt
+                        // Wenn das Produkt keine Bilder hat, wird ein Platzhalter-Bild verwendet
                         $firstImage = $product['images'][0]['file_path']
                             ?? 'assets/images/placeholder.png';
 
                         ?>
-
+                        
                         <div class="product">
                             <?php if ($product['sale']) {
+                                // wenn das Produkt im sale dann erstelle ein Badge oben rechts SALE
                                 echo '<span class="product-badge">SALE %</span>';
                             }
                             ?>
@@ -235,11 +261,13 @@
                                 <h4 class="product-title"><?php echo htmlspecialchars($product['name']); ?></h4>
                                 <ul class="product-specs">
                                     <?php foreach ($product['specs'] as $spec): ?>
+                                    <!-- Hier werden alle Specs eines produktes als Listeneintrag in html gesetzt und im Produkt container dargestellt-->
                                         <li><?php echo htmlspecialchars($spec); ?></li>
                                     <?php endforeach; ?>
                                 </ul>
                                 <div class="product-footer">
                                     <div class="price-row">
+                                    <!-- Rabatt Preis anzeigen, wenn Sale gesetzt ist, es einen alten Preis gibt und dieser höher ist als der aktuelle Preis -->
                                         <?php if (!empty($product['old_price']) && $product['old_price'] > $product['price'] && $product['sale'] == 1): ?>
                                             <span class="old-price">€<?php echo formatPrice($product['old_price']); ?></span>
                                             <span class="price onsale">€<?php echo formatPrice($product['price']); ?></span>

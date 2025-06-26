@@ -32,8 +32,9 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
         LEFT JOIN feature ON p.feature_id = feature.feature_id
     ";
 
+    // Kategorie name wird in kleinbuchstaben umgewandelt, um die Abfrage zu vereinheitlichen
     $category = strtolower($category);
-
+    // je nachdem übergebenen Kategorie-Parameter wird die WHERE-Klausel angepasst
     switch ($category) {
         case 'angebote':
             $sql .= " WHERE p.sale = 1";
@@ -70,46 +71,47 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
             break;
     }
 
-
+//Filter hier sind erst wichtig wenn auf der Seite Filter ausgewählt wurden um die mit ajax zu laden, dann wird die funktion mit den Filtern aufgerufen
     // Filter berücksichtigen
-if (!empty($filters)) {
-    foreach ($filters as $key => $values) {
-        if (empty($values)) continue;
+    if (!empty($filters)) {
+        foreach ($filters as $key => $values) {
+            if (empty($values))
+                continue;
 
-        // Werte escapen und als SQL-String vorbereiten
-        $escaped = [];
-        foreach ($values as $v) {
-            $escaped[] = "'" . mysqli_real_escape_string($conn, $v) . "'";
-        }
+            // Werte escapen und als SQL-String vorbereiten
+            $escaped = [];
+            foreach ($values as $v) {
+                $escaped[] = "'" . mysqli_real_escape_string($conn, $v) . "'";
+            }
 
-        $valueString = implode(',', $escaped);
+            $valueString = implode(',', $escaped);
 
-        switch ($key) {
-            case 'ram':
-                $sql .= " AND ram.capacity_gb IN ($valueString)";
-                break;
-            case 'grafikkarte':
-                $sql .= " AND gpu.brand IN ($valueString)";
-                break;
-            case 'prozessor':
-                $sql .= " AND proc.brand IN ($valueString)";
-                break;
-            case 'speicher':
-                $sql .= " AND storage.storage_type IN ($valueString)";
-                break;
-            case 'displaygröße':
-                $sql .= " AND display.size_inch IN ($valueString)";
-                break;
-            case 'bildwiederholrate':
-                $sql .= " AND display.refresh_rate_hz IN ($valueString)";
-                break;
-            case 'betriebssystem':
-                
-                $sql .= " AND os.name IN ($valueString)";
-                break;
+            switch ($key) {
+                case 'ram':
+                    $sql .= " AND ram.capacity_gb IN ($valueString)";
+                    break;
+                case 'grafikkarte':
+                    $sql .= " AND gpu.brand IN ($valueString)";
+                    break;
+                case 'prozessor':
+                    $sql .= " AND proc.brand IN ($valueString)";
+                    break;
+                case 'speicher':
+                    $sql .= " AND storage.storage_type IN ($valueString)";
+                    break;
+                case 'displaygröße':
+                    $sql .= " AND display.size_inch IN ($valueString)";
+                    break;
+                case 'bildwiederholrate':
+                    $sql .= " AND display.refresh_rate_hz IN ($valueString)";
+                    break;
+                case 'betriebssystem':
+
+                    $sql .= " AND os.name IN ($valueString)";
+                    break;
+            }
         }
     }
-}
 
 
 
@@ -166,6 +168,8 @@ if (!empty($filters)) {
 
 
 
+// getProductImages() holt alle Bilder eines Produkts aus der Datenbank
+//  und sortiert sie nach der Reihenfolge (sequence_no).
 function getProductImages($conn, $productId)
 {
     $productId = (int) $productId;
@@ -186,7 +190,8 @@ function getProductImages($conn, $productId)
 
 
 
-
+// getCategoryInfo() lädt die Kategorie-Informationen aus der JSON-Datei
+//  assets/json/categoryInfo.json. Diese Datei enthält Informationen zu jeder Kategorie
 function getCategoryInfo($category)
 {
     $json = file_get_contents('assets/json/categoryInfo.json');
@@ -215,7 +220,10 @@ function formatPrice($price)
     return $formatted;
 }
 
-// Hilfsfunktion für Spezifikationen
+
+// Hilfsfunktion für Spezifikationen 
+//  Diese Funktion baut die Spezifikationen eines Produkts basierend auf der Kategorie und den verfügbaren Daten zusammen
+//  und gibt sie als Array zurück. 
 function buildSpecifications($product)
 {
     $specs = [];
@@ -242,7 +250,7 @@ function buildSpecifications($product)
     }
     if ($product['category_name'] === 'PC') {
         if (!empty($product['os_name'])) {
-            $specs[] = $product['os_name'] ;
+            $specs[] = $product['os_name'];
         }
     }
 
@@ -251,7 +259,7 @@ function buildSpecifications($product)
         if (!empty($product['display_size'])) {
             $specs[] = $product['display_size'] . '" Zoll';
         }
-        
+
         if (!empty($product['refresh_rate_hz'])) {
             $specs[] = $product['refresh_rate_hz'] . ' Hz';
         }
@@ -271,9 +279,9 @@ function buildSpecifications($product)
             $specs[] = $product['connectors_spec'];
         }
 
-         if (!empty($product['feature_spec'])) {
+        if (!empty($product['feature_spec'])) {
             $specs[] = $product['feature_spec'];
-            
+
         }
     }
 
@@ -281,67 +289,47 @@ function buildSpecifications($product)
 }
 
 
-function generateFilter($filters, $product){
-                    // Prozessor Filter
-                    if (!empty($product['processor_brand'])) {
-                        $filters['Prozessor'][] = $product['processor_brand'];
-                    }
-
-                    // GPU Filter
-                    if (!empty($product['gpu_brand'])) {
-                        $filters['Grafikkarte'][] = $product['gpu_brand'];
-                    }
-
-                    // RAM Filter
-                    if (!empty($product['ram_capacity'])) {
-                        $filters['RAM'][] = $product['ram_capacity'] . ' GB';
-                    }
 
 
-                    // Storage Filter
-                    if (!empty($product['storage_type'])) {
-                        $filters['Speicher'][] = $product['storage_type'];
-                    }
-
-                    if (!empty($product['display_size'])) {
-                        $filters['Displaygröße'][] = $product['display_size'] . '" Zoll';
-
-                    }
-
-                    if (!empty($product['refresh_rate_hz'])) {
-                        $filters['Bildwiederholrate'][] = $product['refresh_rate_hz'] . ' Hz';
-                        
-                    }
-
-                    if (!empty($product['os_name'])) {
-                        $filters['Betriebssystem'][] = $product['os_name']  ;
-
-                    }
-
-                    return $filters;
-}
-
-
-
-
-function getRelatedProducts($conn, $subcategory_name, $current_product_id) {
-    $subcategory_name = mysqli_real_escape_string($conn, $subcategory_name);
-    $current_product_id = (int)$current_product_id;
-
-    // Ruft 4 zufällige Produkte aus derselben Unterkategorie ab (außer dem aktuellen)
-    $sql = "
-        SELECT p.* 
-        FROM product p
-        JOIN subcategory sc ON p.subcategory_id = sc.subcategory_id
-        WHERE sc.name = '$subcategory_name' AND p.product_id != $current_product_id
-        ORDER BY RAND()
-        LIMIT 4
-    ";
-    
-    $result = mysqli_query($conn, $sql);
-    $products = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $products[] = $row;
+// generateFilter() erstellt die Filter für die Sidebar basierend auf den Produktdaten
+//  und fügt sie dem übergebenen Filter-Array hinzu.
+function generateFilter($filters, $product)
+{
+    // Prozessor Filter
+    if (!empty($product['processor_brand'])) {
+        $filters['Prozessor'][] = $product['processor_brand'];
     }
-    return $products;
+
+    // GPU Filter
+    if (!empty($product['gpu_brand'])) {
+        $filters['Grafikkarte'][] = $product['gpu_brand'];
+    }
+
+    // RAM Filter
+    if (!empty($product['ram_capacity'])) {
+        $filters['RAM'][] = $product['ram_capacity'] . ' GB';
+    }
+
+
+    // Storage Filter
+    if (!empty($product['storage_type'])) {
+        $filters['Speicher'][] = $product['storage_type'];
+    }
+
+    if (!empty($product['display_size'])) {
+        $filters['Displaygröße'][] = $product['display_size'] . '" Zoll';
+
+    }
+
+    if (!empty($product['refresh_rate_hz'])) {
+        $filters['Bildwiederholrate'][] = $product['refresh_rate_hz'] . ' Hz';
+
+    }
+
+    if (!empty($product['os_name'])) {
+        $filters['Betriebssystem'][] = $product['os_name'];
+
+    }
+
+    return $filters;
 }

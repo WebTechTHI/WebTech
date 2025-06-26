@@ -3,23 +3,29 @@ class CategoryController
 {
     public function handleRequest()
     {
+        // Parameter auslesen aus der URL 
         $category = $_GET['category'] ?? 'alle';
         $orderBy = $_GET['orderBy'] ?? 'id';
         $direction = $_GET['direction'] ?? 'asc';
         $model = new CategoryModel();
-        // 1) rohe Produkte laden 
+
+
+        // rohe Produkte laden 
         $productsRaw = $model->getProducts($category, $orderBy, $direction);
+        //  Kategorie-Info laden aus der JSON-Datei /assets/json/categoryInfo.json
         $categoryInfo = $model->getCategoryInfo($category); 
         
-        // 2) für jedes Produkt Bilder & Specs vorbereiten 
+        //  für jedes Produkt Bilder & Specs vorbereiten 
+        //  (hier wird die Datenbank abgefragt)
         $products = [];
         foreach ($productsRaw as $p) {
             $p['images'] = $model->getProductImages($p['product_id']);
             $p['specs'] = $model->buildSpecifications($p);
+            // 
             $products[] = $p;
         }
         
-        // 3) Filter-Daten (falls du sie brauchst) 
+        //  Filter-Daten um die Sidebar zu füllen 
         $filters = [];
         foreach ($productsRaw as $p) {
             $filters = generateFilter($filters, $p);
