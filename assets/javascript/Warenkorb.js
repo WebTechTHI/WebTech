@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Elemente initialisieren 
+    // Elemente initialisieren (holen von ProductView auf Produktseite nicht sidebar Warenkorb)
     const mengeInput = document.getElementById("mengenValue");
     const toggleBtn = document.querySelector('.warenkorbToggle');
     const container = document.querySelector('.warenkorbContainer');
@@ -26,14 +26,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Funktion, um die Anzeige basierend auf den Server-Daten zu rendern
     function aktualisiereWarenkorb(warenkorbItems) {
-        // Elemente für die Anzeige
+
+        // Elemente für die Anzeige holen aus ProductView Sidebar(DOM Elemente)
         const inhalt = document.querySelector('.warenkorbInhalt');
         const gesamtEl = document.querySelector('.warenkorbGesamt span:last-child');
         const anzahlEl = document.querySelector('.warenkorbAnzahl');
         const leerText = document.querySelector('.leerNachricht');
 
-        // Zähler aktualisieren
+        // Zähler aktualisieren         Lauf durch alle Warenkorb-Artikel und rechne die quantity-Werte zusammen. Fang bei 0 an
         const gesamtMenge = warenkorbItems.reduce((sum, item) => sum + parseInt(item.quantity), 0);
+
         //Hier wird die Anzahl der Artikel im SideWarenkorb und Warenkorb im header aktualisiert
         if (anzahlEl) anzahlEl.textContent = warenkorbItems.length;
         if (headerAnzahl) headerAnzahl.textContent = warenkorbItems.length;
@@ -46,16 +48,23 @@ document.addEventListener('DOMContentLoaded', function () {
             if (gesamtEl) gesamtEl.textContent = '0,00 €';
             return;
         }
+
         // Ansonsten Warenkorb-Artikel anzeigen
         let gesamtPreis = 0;
-        // Hier wird der Warenkorb mit den Artikeln gefüllt
+
+        // Hier wird der Warenkorb mit den Artikeln gefüllt (jeder artikel einzelnd)
         warenkorbItems.forEach(artikel => {
+
             // Hier wird der Gesamtpreis berechnet indem Preis jedes Artikels mit der Menge multipliziert
             gesamtPreis += parseFloat(artikel.price) * parseInt(artikel.quantity);
+
             // Hier wird der Artikel in den Warenkorb eingefügt
             const element = document.createElement('div');
             element.className = 'warenkorbArtikel';
             element.dataset.productId = artikel.product_id; 
+
+
+            //Artikel darstellen in Sidebar
             element.innerHTML = `
                 <img src="${artikel.image}" alt="${artikel.name}" class="artikelBild">
                 <div class="artikelDetails">
@@ -89,9 +98,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const productId = artikelElement.dataset.productId;
 
         // Hier wird die Menge des Artikels aktualisiert, wenn auf die Menge +/- oder Entfernen geklickt wird
-   const mengeInput = artikelElement.querySelector('.mengenEingabe');
-    let aktuelleMenge = parseInt(mengeInput.value, 10);
+        const mengeInput = artikelElement.querySelector('.mengenEingabe');
+        let aktuelleMenge = parseInt(mengeInput.value, 10);
 
+
+
+            //1. Fall wenn + gedrückt wird
     //wenn die Menge geändert wird (in dem Fall auf + geklickt wird), dann wird die api aufgerufen 
     if (target.classList.contains('menge-plus')) {
         const neueMenge = aktuelleMenge + 1;
@@ -101,6 +113,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then(() => ladeUndZeigeWarenkorb());
     }
 
+
+
+            //2. Fall wenn - gedrückt wird
 //wenn die Menge geändert wird (in dem Fall auf - geklickt wird), dann wird die api aufgerufen 
     if (target.classList.contains('menge-minus')) {
         if (aktuelleMenge > 1) {
@@ -117,6 +132,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }).then(() => ladeUndZeigeWarenkorb());
         }
     }
+
+
+
+
+            //3. Fall wenn entfernen gedrückt wird
     // Hier wird der Artikel entfernt, wenn auf Entfernen geklickt wird
     // wenn auf Entfernen geklickt wird, dann wird die api aufgerufen
     if (target.classList.contains('artikelEntfernen')) {
@@ -127,12 +147,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+
+
     // Wenn man auf den Zum Warenkorb-Button klickt, wird die Menge aus dem Input-Feld genommen
     // und die API aufgerufen, um den Artikel zum Warenkorb hinzuzufügen
     hinzufuegenBtn?.addEventListener('click', () => {
+
         // Cookie-Zustimmung prüfen 
         const consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookie_consent='));
         const consentGiven = consentCookie ? consentCookie.split('=')[1] === 'accepted' : false;
+
         // wenn kein Cookie-Zustimmung gegeben wurde, dann wird eine Nachricht angezeigt und der Banner wird angezeigt
         // und die Funktion wird abgebrochen, damit der Warenkorb nicht aktualisiert wird
         if (!consentGiven) {
@@ -141,6 +165,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (banner) banner.style.display = 'block';
             return; 
         }
+
+
+
         // Hier wird die Menge aus dem Input-Feld genommen und die API aufgerufen, um den Artikel zum Warenkorb hinzuzufügen
         const menge = parseInt(mengeInput.value);
         const produktId = hinzufuegenBtn.dataset.id;
@@ -150,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
             method: 'POST', headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ product_id: produktId, quantity: menge })
         })
+
         // Hier wird die Antwort der API verarbeitet
         // und der Warenkorb neu geladen, um die Anzeige zu aktualisieren
         .then(res => res.json())
@@ -194,7 +222,7 @@ overlay?.addEventListener('click', () => {
 });
 
 //kleine Hilfsfunktion, um die Menge im Input-Feld zu aktualisieren
-// Diese Funktion wird aufgerufen, wenn die Menge im Input-Feld geändert wird
+// Diese Funktion wird aufgerufen, wenn die Menge im Input-Feld geändert wird (Funktion wird aufgerufen von ProductView)
 function updateQtyValue(operation) {
     const mengeInput = document.getElementById("mengenValue"); 
     if(!mengeInput) return;
