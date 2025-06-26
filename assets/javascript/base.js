@@ -53,7 +53,7 @@ function toggleSidebar() {
     icon.classList.toggle('rotated');
 }
 
-//Sortier funktion das es abwechselt zwischen Aufsteigend und Absteigend
+//Sortier funktion das es abwechselt zwischen Aufsteigend und Absteigend (Aber hier nur Optik tatsächliche "funktion" wird in categoryFunctions gemacht mit direction variable)
 function toggleSort() {
     const btn = document.getElementById('sortButton');
 
