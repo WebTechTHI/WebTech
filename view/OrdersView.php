@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MLR | Meine Bestellungen</title>
 
-    <link rel="stylesheet" href="/assets/css/ordersPage.css"> <!-- Du musst diese CSS-Datei noch erstellen -->
+    <link rel="stylesheet" href="/assets/css/ordersPage.css"> 
 </head>
 
 <body>
