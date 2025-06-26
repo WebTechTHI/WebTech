@@ -1,4 +1,34 @@
-/* assets/css/ordersPage.css */
+:root {
+    --background: #fff;
+    --background-alt: #f9f9f9;
+    --border: #e0e0e0;
+    --border-secondary: #ddd;
+    --border-header: #ccc;
+    --border-dashed: #ddd;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --primary: #c00;
+    --text-primary: #222;
+    --text-secondary: #666;
+    --text-muted: #777;
+    --btn-bg: #c00;
+    --btn-text: #fff;
+}
+
+.darkMode {
+    --background: #2a2a2a;
+    --background-alt: #232323;
+    --border: #444;
+    --border-secondary: #444;
+    --border-header: #666;
+    --border-dashed: #666;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --primary: #ff5050;
+    --text-primary: #fff;
+    --text-secondary: #ccc;
+    --text-muted: #aaa;
+    --btn-bg: #ff5050;
+    --btn-text: #fff;
+}
 
 * {
     margin: 0;
@@ -16,9 +46,10 @@
 .orders-page-container h1 {
     font-size: 2.2em;
     margin-bottom: 30px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-secondary);
     padding-bottom: 15px;
     text-align: center;
+    color: var(--text-primary);
 }
 
 .orders-list {
@@ -31,56 +62,52 @@
     grid-template-columns: 1fr 2fr 2fr 1.5fr 0.5fr;
     padding: 10px 15px;
     font-weight: bold;
-    color: #666;
-    border-bottom: 2px solid #ccc;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border-header);
     margin-bottom: 10px;
+    background: var(--background-alt);
 }
 
 .order-item-container {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1.5fr 0.5fr; /* Gleiche Spalten wie der Header */
+    grid-template-columns: 1fr 2fr 2fr 1.5fr 0.5fr;
     align-items: center;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--background);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 20px 15px;
     margin-bottom: 15px;
     text-decoration: none;
-    color: inherit;
+    color: var(--text-primary);
     transition: all 0.2s ease-in-out;
 }
 
 .order-item-container:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px var(--shadow);
     transform: translateY(-3px);
-    border-color: #c00;
-    color: inherit;
+    border-color: var(--primary);
+    color: var(--text-primary);
 }
 
 .order-data {
     font-size: 1em;
+    color: var(--text-primary);
 }
 
 .order-arrow {
     font-size: 1.5em;
     font-weight: bold;
-    color: #c00;
+    color: var(--primary);
     text-align: right;
 }
 
-
-
-/* Beispiel-Farben für den Status */
-
-
-/* Nachricht für keine Bestellungen */
 .no-orders-message {
     font-size: 1.2em;
-    color: #777;
+    color: var(--text-muted);
     text-align: center;
     padding: 50px;
-    background-color: #f9f9f9;
-    border: 1px dashed #ddd;
+    background-color: var(--background-alt);
+    border: 1px dashed var(--border-dashed);
     border-radius: 8px;
 }
 
@@ -89,8 +116,8 @@
     width: fit-content;
     margin: 20px auto 0;
     padding: 10px 20px;
-    background-color: #c00;
-    color: #fff;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
     text-decoration: none;
     border-radius: 5px;
 }

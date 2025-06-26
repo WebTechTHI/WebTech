@@ -107,4 +107,8 @@ class CheckoutModel {
 
         return $order;
     }
+
+    public static function formatNumber( $number) { 
+        return number_format($number, 2, ',', '.');
+    }
 }
