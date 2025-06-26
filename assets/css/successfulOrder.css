@@ -45,6 +45,10 @@
     min-height: 80vh;
 }
 
+.order-center{
+    text-align: center;
+}
+
 .success-card {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -52,11 +56,23 @@
     padding: 40px;
     max-width: 800px;
     width: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .success-icon {
     margin-bottom: 20px;
+}
+
+.order-status{
+   color: var(--text-main);
+    border: var(--text-main) 1px solid;
+    border-radius: 20px;
+    padding: 8px;
+    border-left: var(--text-main) 5px solid;
+    margin-left: auto;
+    margin-bottom: 16px;
+    
 }
 
 .success-icon img {
