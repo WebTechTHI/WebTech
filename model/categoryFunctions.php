@@ -291,7 +291,7 @@ function buildSpecifications($product)
 
 
 
-// generateFilter() erstellt die Filter für die Sidebar basierend auf den Produktdaten
+// generateFilter() erstellt die Filter für die Sidebar basierend auf den Produktdaten (arbeitet ausschließlich mit bereits geladenen Produktdaten)
 //  und fügt sie dem übergebenen Filter-Array hinzu.
 function generateFilter($filters, $product)
 {
