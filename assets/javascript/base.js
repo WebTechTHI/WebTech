@@ -148,8 +148,10 @@ function applyFilters() {
 
 {
 
+
+    //Das hier ausführen wenn seite vollständig geladen ist (DOMContentLoaded)
     document.addEventListener('DOMContentLoaded', () => {
-  initFilterUi();
+  initFilterUi();      // Setzt den Zustand der Filterbuttons
  
 
   // Klick auf „Anwenden“
@@ -161,11 +163,11 @@ function applyFilters() {
           .addEventListener('click', () => {
     // 1) Alle Checkboxen zurücksetzen
     document.querySelectorAll('.filter-checkbox')
-            .forEach(cb => cb.checked = false);
+            .forEach(cb => cb.checked = false);             // alle Checkboxen deaktivieren
     // 2) Button-State neu setzen
-    initFilterUi();
+    initFilterUi();                                         // Button-Status neu setzen
     // 3) Filter-Logik direkt aufrufen 
-    applyFilters();
+    applyFilters();                                         // Neue Abfrage ohne Filter (und das dann anzeigen)
   });
 });
 
