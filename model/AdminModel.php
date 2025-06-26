@@ -255,7 +255,7 @@ class AdminModel
 
         //Feedback zu erfolgreichem / Erfolglosem Upload
         if ($stmt->affected_rows > 0) {
-            echo "Produkt erfolgreich gespeichert.";
+            echo "<h1 style=" . "text-align:center" . ">Produkt erfolgreich gespeichert.</h1>";
         } else {
             echo "Fehler beim Speichern: " . $stmt->error;
         }
@@ -462,7 +462,7 @@ class AdminModel
 
         //Feedback zu erfolgreichem / Erfolglosem Upload
         if ($stmt->affected_rows > 0) {
-            echo "<h1>Produkt erfolgreich gespeichert.</h1>";
+            echo "<h1 style=" . "text-align:center" . ">Produkt erfolgreich gespeichert.</h1>";
         } else {
             echo "Fehler beim Speichern: " . $stmt->error;
         }
@@ -514,7 +514,7 @@ class AdminModel
                 $stmt->execute();
 
                 if ($stmt->affected_rows > 0) {
-                    echo "<h1>Bilder erfolgreich hochgeladen.</h1>";
+                    echo "<h1 style=" . "text-align:center" . ">Bilder erfolgreich hochgeladen.</h1>";
                 } else {
                     echo "Fehler beim Speichern: " . $stmt->error;
                 }
@@ -534,7 +534,7 @@ class AdminModel
 
 
         if ($stmt->affected_rows > 0) {
-            echo "<h1>Löschen erfolgreich.</h1>";
+            echo "<h1 style=" . "text-align:center" . ">Löschen erfolgreich.</h1>";
         } else {
             echo "Fehler beim Löschen: " . $stmt->error;
         }
