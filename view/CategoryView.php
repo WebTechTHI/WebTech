@@ -26,7 +26,8 @@
 
 
 
-    <!-- Breadcrumb -->
+
+    <!-- ============ Breadcrumb ============ -->
      <!-- Breadcrumb für die Kategorie, sollte eine Kategorie eine Oberkateogrie haben sind oben 3 elemente (Home, Oberkategorie, unterkategorie) ansosnten nur (Home, Oberkategorie) -->
     <div class="breadcrumb">
         <a href="/index.php/page=home">Home</a>
@@ -42,7 +43,10 @@
 
     <div class="main-content">
 
-        <!-- Sidebar -->
+
+
+    
+        <!-- ============ Sidebar ============-->
         <div class="sidebar">
             <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?>
                 <img src="/assets/images/icons/filter-toggle.png" alt="Ein/Ausklappen" onclick="toggleSidebar()"
