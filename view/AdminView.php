@@ -20,6 +20,9 @@
 
 <a class="directions-button" href="/index.php?page=admin&action=upload">Neues Produkt anlegen</a>
 <a class="directions-button" href="/index.php?page=admin&action=productList">Produktliste anzeigen</a>
+<a class="directions-button" href="/index.php?page=admin&action=upload">Benutzer verwalten</a>
+<a class="directions-button" href="/index.php?page=admin&action=productList">Bestellungen anzeigen</a>
+
 </div>
 
 <a class="back-last-page" href="/index.php?page=home">Zurück zum Shop</a>
