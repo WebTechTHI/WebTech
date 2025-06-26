@@ -68,8 +68,8 @@ function toggleSort() {
 
 
 
-// damit das Herz weiß wird beim Hovern beim Produkt
-function favoriteImage() {
+// damit das Herz weiß wird beim Hovern beim Produkt (ABER macht die WISHLIST KAPUTT)
+/* function favoriteImage() {
     document.querySelectorAll('.favorite-btn').forEach(favBtn => {
         const favImg = favBtn.querySelector('img');
 
@@ -81,7 +81,7 @@ function favoriteImage() {
             favImg.src = '/assets/images/icons/favorite-border.svg';
         });
     });
-}
+} */
 
 function initFilterUi() {
 
