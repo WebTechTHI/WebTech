@@ -121,6 +121,8 @@ function applyFilters() {
             //Window.Location.search ist BOM zugriff auf Browser infos sozusagen
             const category = new URLSearchParams(window.location.search).get('category') || 'alle';
 
+
+            //Ajax Fetch Request mit JavaScript
             fetch('filterProducts.php', {
                 method: 'POST',
                 headers: {
