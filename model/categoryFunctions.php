@@ -34,7 +34,7 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
     // Warum LEFT JOIN?
     //Damit auch unvollständige Produkte (z. B. ohne GPU) angezeigt werden.
     //Sonst würden sie bei einem normalen INNER JOIN komplett rausfliegen.
-
+    //Haupttabelle ist product → alle anderen Tabellen werden drangejoined.
 
 
 
@@ -204,6 +204,7 @@ function getCategoryInfo($category)
     $json = file_get_contents('assets/json/categoryInfo.json');
 
 
+    //Das true sorgt dafür, dass der JSON-String als assoziatives Array eingelesen wird und nicht als Objekt
     $data = json_decode($json, true);
 
 
