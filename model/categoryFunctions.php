@@ -31,6 +31,13 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
         LEFT JOIN connectors ON p.connectors_id = connectors.connectors_id
         LEFT JOIN feature ON p.feature_id = feature.feature_id
     ";
+    // Warum LEFT JOIN?
+    //Damit auch unvollständige Produkte (z. B. ohne GPU) angezeigt werden.
+    //Sonst würden sie bei einem normalen INNER JOIN komplett rausfliegen.
+
+
+
+
 
     // Kategorie name wird in kleinbuchstaben umgewandelt, um die Abfrage zu vereinheitlichen
     $category = strtolower($category);
