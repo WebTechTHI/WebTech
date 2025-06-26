@@ -45,7 +45,7 @@
 
 
 
-    
+
         <!-- ============ Sidebar ============-->
         <div class="sidebar">
             <div class="sidebar-title"><?php echo strtoupper($categoryInfo['sidebarTitel']); ?>
@@ -56,7 +56,7 @@
                 <ul class="sidebar-menu">
                     <!-- Sollt die Kategorie eine Oberkategorie sein dann sollen Unterkategorie Links in der Sidebar sein -->
                     <?php if (!empty($categoryInfo['unterkategorien'])): ?>
-                        <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?> <!-- Schleife durch alle Unterkategorien -->
+                        <?php foreach ($categoryInfo['unterkategorien'] as $uk): ?> <!-- Schleife durch alle Unterkategorien dynamisch erzeugen -->
                             <li><a
                                     href="<?php echo htmlspecialchars($uk['link']); ?>"><?php echo htmlspecialchars($uk['name']); ?></a>
                             </li>
