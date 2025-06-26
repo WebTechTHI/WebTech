@@ -1,6 +1,7 @@
 <?php
 
 
+// Hole das Produkt anhand der ID aus der Datenbank
 function getProductbyId($conn, $productId)
 {
     $sql = "
@@ -43,6 +44,9 @@ function getProductbyId($conn, $productId)
 
 
 
+
+
+// Funktion um den Breadcrumb für die Produktseite zu generieren
 function getCategoryDisplayName($category)
 {
     $map = [
@@ -63,6 +67,9 @@ function getCategoryDisplayName($category)
 
 
 
+
+
+// Funktion um die Bilder für das Produkt zu holen
 function getProductImages($conn, $productId)
 {
     $productId = (int) $productId;
@@ -79,6 +86,10 @@ function getProductImages($conn, $productId)
 }
 
 
+
+
+// Funktion um den Preis zu formatieren
+// z.B. 1234.56 wird zu 1.234,56 und 1234.00 wird zu 1.234,-
 function formatPrice($price)
 {
     $formatted = number_format($price, 2, ',', '.');
@@ -92,6 +103,10 @@ function formatPrice($price)
 
 
 
+// Funktion um die Spezifikationen des Produkts zu bauen
+// Diese Funktion nimmt ein Produkt-Array und baut ein assoziatives Array mit den Spezifikationen
+// Die Spezifikationen werden nach Kategorien gruppiert, z.B. 'Prozessor', 'Grafikkarte', 'Arbeitsspeicher' usw.
+// Wenn eine Spezifikation nicht vorhanden ist, wird sie nicht hinzugefügt
 function buildSpecifications($product)
 {
     $specs = [];
@@ -153,6 +168,11 @@ function buildSpecifications($product)
 }
 
 
+
+
+
+
+// Funktion um den Lieferumfang des Produkts zu bestimmen
 function getLieferumfang($product)
 {
     if ($product['category_name'] === 'PC' || $product['category_name'] === 'Laptop' || $product['subcategory_name'] === 'Monitor') {
@@ -166,6 +186,10 @@ function getLieferumfang($product)
 }
 
 
+
+
+
+// Funktion um ähnliche Produkte aus der gleichen Kategorie zu holen damit unten auf der Produktseite ähnliche Produkte angezeigt werden
 function getRelatedProducts($conn, $category_name, $current_product_id)
 {
     $category_name = mysqli_real_escape_string($conn, $category_name);
@@ -195,6 +219,10 @@ LIMIT 10
 
 
 
+
+
+// Funktion um die Anzahl der Produkte im Sale zu zählen
+// Diese Funktion zählt die Anzahl der Produkte, die im Sale sind (sale = 1)
 function getSaleCount() {
     global $conn;
     $sql = "SELECT sale FROM product";

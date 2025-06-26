@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../db_verbindung.php';
 require_once  'productFunctions.php';
 
+// alle Funktionen werden in der Datei productFunctions.php definiert
 class ProductModel
 {
     public function getProductById(int $id): ?array

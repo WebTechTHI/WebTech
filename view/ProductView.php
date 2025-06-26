@@ -22,7 +22,7 @@
 <body>
 
     <?php include 'components/header.php'; ?>
-
+    <?php // Hier wird der Breadcrumb für ein produkt erstellt (lade Hauptkategorie name und untrekategorie name und als letztes produktname) ?>
     <div class="breadcrumb">
         <a href="/index.php">MLR</a>
         <a
@@ -75,7 +75,7 @@
                 <img src="<?php echo $firstImage ?>" alt="<?php echo htmlspecialchars($product['name']) ?>">
             </div>
             <div class="thumbnail-row">
-
+                <!-- Thumbnails für die Bilder des Produkts -->
                 <?php
                 $counter = 0;
                 foreach ($product['images'] as $image) {
@@ -99,6 +99,7 @@
 
         <div class="product-details">
             <?php
+            //Sollte sale sein, dann zeige SALE Badge, sonst TOP Badge
             if ($product['sale']) {
                 echo '<span class="product-badge sale">SALE</span>';
             } else {
@@ -116,6 +117,7 @@
             </div>
 
             <div class="price-container">
+            <!-- Rabatt Preis anzeigen, wenn Sale gesetzt ist, es einen alten Preis gibt und dieser höher ist als der aktuelle Preis -->
                 <?php if (!empty($product['old_price']) && $product['old_price'] > $product['price'] && $product['sale'] == 1): ?>
                     <div class="old-price">
                         <span class="price-prefix">€</span>
@@ -126,7 +128,7 @@
                         <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
                     </div>
                 <?php else: ?>
-
+                    <!-- Wenn kein Sale, dann zeige nur den aktuellen Preis an -->
                     <div class="price">
                         <span class="price-prefix">€</span><?php echo formatPrice($product['price']); ?>
                     </div>
@@ -134,7 +136,7 @@
                 <?php endif; ?>
                 <div class="tax-info">inkl. 19% MwSt., zzgl. Versandkosten</div>
             </div>
-
+            <!-- Lagerstatus je nachdem was gesetz ist in Datenbank, der text dafür wurde im Controller konfiguriert ($statusText)-->
             <div class="stock-status <?php echo $product['stock_status']; ?>">
                 <div class="stock-dot <?php echo $product['stock_status']; ?>"></div>
                 <div class="stock-text <?php echo $product['stock_status']; ?>">
@@ -157,12 +159,15 @@
 
 
             <div class="action-buttons">
+                <!-- Wenn der Lagerstatus rot ist, dann Button deaktivieren und Text anzeigen -->
                 <?php if ($product['stock_status'] === 'red'): ?>
                     <button class="buy-btn disabled" disabled>Derzeit nicht verfügbar</button>
                 <?php else: ?>
-                <button class="buy-btn" data-id="<?= $product['product_id'] ?>"
-                    data-name="<?= htmlspecialchars($product['name']) ?>" data-price="<?= $product['price'] ?>"
-                    data-image="<?= htmlspecialchars($firstImage) ?>">IN DEN WARENKORB</button>
+                    <!-- Wenn der Lagerstatus nicht rot ist, dann Button aktivieren -->
+                     <!-- Button zum Warenkorb hinzufügen, der name, ID und, erstes Bild des Produktes als dataset speichert -->
+                    <button class="buy-btn" data-id="<?= $product['product_id'] ?>"
+                        data-name="<?= htmlspecialchars($product['name']) ?>" data-price="<?= $product['price'] ?>"
+                        data-image="<?= htmlspecialchars($firstImage) ?>">IN DEN WARENKORB</button>
                 <?php endif; ?>
                 <button class="wishlist-btn" data-id="<?= $product['product_id'] ?>">ZUR WUNSCHLISTE HINZUFÜGEN</button>
 

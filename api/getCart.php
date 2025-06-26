@@ -1,6 +1,7 @@
 <?php
-// /api/getCart.php
-
+// API-Endpunkt zum Abrufen des Warenkorbs
+// Liefert entweder die Daten aus der Datenbank (eingeloggter Nutzer) oder aus dem Cookie (Gast)
+// Die Daten werden als JSON zurückgegeben
 session_start();
 header('Content-Type: application/json');
 
@@ -9,6 +10,8 @@ require_once __DIR__ . '/../model/CartModel.php';
 $cartModel = new CartModel();
 $cartItems = [];
 
+// Prüfen, ob der Nutzer eingeloggt ist oder ob Cookies gelesen werden dürfen
+// und ob ein Warenkorb-Cookie existiert
 if (isset($_SESSION['user']['user_id'])) {
     // ---- EINGELOGGTER NUTZER (DATENBANK-LOGIK) ----
     $userId = $_SESSION['user']['user_id'];
