@@ -36,6 +36,11 @@ class AdminController
                 require 'view/admin/adminPages/createProductsView.php';
                 break;
 
+                //speichert neu angelegte Produkte
+            case 'uploadSubmit':
+                $model->uploadSubmit();
+                require 'view/admin/adminPages/CreateProductsView.php';
+                break;
 
 
             case 'productList':
@@ -75,11 +80,7 @@ class AdminController
                 header("Location: /index.php?page=admin&action=productList");
                 break;
 
-            //speichert neu angelegte Produkte
-            case 'uploadSubmit':
-                $model->uploadSubmit();
-                require 'view/admin/adminPages/CreateProductsView.php';
-                break;
+            
 
             
             //Produkt löschen
@@ -89,6 +90,58 @@ case 'delete':
         header("Location: /index.php?page=admin&action=productList");
 
     break;
+
+
+    //Userliste anzeigen
+    case "userList":
+
+        $users = $model->getUsers();
+
+        require 'view/admin/adminPages/UserListView.php';
+                break;
+
+
+
+                //User anzeigen
+    case "user":
+
+
+        $user = $model->getUserById($_GET["user-id"]);
+
+        //lädt bestellungen für angegebene userid
+        $orders = $model->getOrdersById($_GET['user-id']);
+
+        require 'view/admin/adminPages/UserView.php';
+                break;
+
+
+
+                //Orderliste anzeigen
+    case "orderList":
+
+        //lädt alle bestellungen
+        $orders = $model->getOrders();
+
+        require 'view/admin/adminPages/OrderListView.php';
+                break;
+
+
+
+                //Order anzeigen
+    case "order":
+        
+
+        //Lädt bestellungen für angegebene bestellungs-id
+        $order = $model->getOrderById($_GET['order-id']);
+        require 'view/admin/adminPages/OrderView.php';
+                break;
+
+
+                //speichert änderungen an einer bestellung
+        case 'orderStatusChange':
+
+            $model->changeStatus($_GET('order-id'));
+            break;
 
             //Admin Startseite (zur Modusauswahl)
             default:
