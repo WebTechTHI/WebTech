@@ -1,4 +1,5 @@
-// RINOR STUBLLA
+// LAURIN SCHNITZER
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -270,4 +271,4 @@ function updateQtyValue(operation) {
 }
 
 
-// RINOR STUBLLA ENDE
+// LAURIN SCHNITZER ENDE
