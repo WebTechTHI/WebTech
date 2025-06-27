@@ -1,3 +1,5 @@
+/* MICHAEL PIETSCH */
+
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -578,3 +580,5 @@
 .admin-form select {
   flex: 1;
 }
+
+/* MICHAEL PIETSCH ENDE */

@@ -1,3 +1,6 @@
+/* Rinor STUBLLA */
+
+
 :root {
     --color-white: #ffffff;
     --color-black: #000000;
@@ -674,6 +677,14 @@ body {
  --color-text-default: #ffffff;
     --color-text-muted: rgba(255, 255, 255, 0.7);
 }
+
+/* Rinor STUBLLA Ende*/
+
+
+
+
+/* Rinor STUBLLA*/
+
 /* ===================== Meldungsblock für ProductView ===================== */
 
 .meldung-container {
@@ -711,3 +722,6 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Laurin Schnitzer Ende*/
+

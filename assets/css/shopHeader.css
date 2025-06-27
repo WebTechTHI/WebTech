@@ -1,3 +1,6 @@
+/* Laurin Schnitzer */
+
+
 header {
     position: sticky;
     z-index: 5;
@@ -182,3 +185,5 @@ header {
     max-height: 50px;
     transform: translate(-20%);
 }
+
+/* Laurin Schnitzer Ende*/
