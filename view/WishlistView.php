@@ -37,7 +37,8 @@
                 <p class="price"><?= number_format($item['price'], 2, ',', '.') ?> €</p>
               </div>
             </a>
-            <button class="remove-from-wishlist-btn" data-id="<?= htmlspecialchars($item['product_id']) ?>">Entfernen</button>
+            <button class="remove-from-wishlist-btn"
+              data-id="<?= htmlspecialchars($item['product_id']) ?>">Entfernen</button>
           </div>
         <?php endforeach; ?>
       </div>

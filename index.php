@@ -90,17 +90,17 @@ switch ($page) {
         $controller->handleRequest();
         exit;
 
-     case "order_success":
+    case "order_success":
         require_once "controller/OrderSuccessController.php";
         $controller = new OrderSuccesController();
         $controller->handleRequest();
-        exit;  
-        
+        exit;
+
     case "orders":
         require_once "controller/OrdersController.php";
         $controller = new OrdersController();
         $controller->handleRequest();
-        exit;    
+        exit;
 
 
     default:

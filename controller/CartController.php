@@ -17,12 +17,15 @@ class CartController {
 
         // Prüfen: Ist der Nutzer eingeloggt?
         if (isset($_SESSION['user']['user_id'])) {
+
             // ---- JA, EINGELOGGTER NUTZER (DATENBANK-LOGIK) ----
             $userId = $_SESSION['user']['user_id'];
+
             // Nutze die neue Funktion, um den kompletten Warenkorb aus der DB zu holen.
             $cartItems = $model->getCartFromDb($userId);
 
         } else {
+            
             // ---- NEIN, GAST (COOKIE-LOGIK) ----
             // Prüfen, ob der Gast Cookies akzeptiert hat und ein Warenkorb-Cookie existiert.
             if (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] === 'accepted' && isset($_COOKIE['mlr_cart'])) {

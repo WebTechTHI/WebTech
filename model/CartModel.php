@@ -3,6 +3,10 @@ require_once __DIR__ . '/../db_verbindung.php';
 
 class CartModel {
 
+
+
+    //Produkte holen aus variable Cart
+    //Als array alle Produkte zurück geben
     public function getProductsForCart($cart) {
         global $conn;
         $products = [];
@@ -31,6 +35,11 @@ class CartModel {
     }
 
 
+
+
+    
+    //Wenn Benutzer eingeloggt ist führen wir das hier aus und holen seine Items aus DB
+    //Wird ausgeführt wenn eingeloggter user Sidebar oder CartView öffnet
        public function getCartFromDb($userId) {
         global $conn;
         $sql = "
@@ -55,6 +64,12 @@ class CartModel {
         return $items;
     }
 
+
+
+
+
+    //Entfernen Produkt aus DB
+    //Wenn User eingeloggt ist greifen wir auf sein DB zu => wird aus removeCartItem.php ausgerufen
      public function removeProductFromDb($userId, $productId) {
         global $conn;
         $sql = "DELETE FROM cart WHERE user_id = ? AND product_id = ?";
@@ -63,6 +78,11 @@ class CartModel {
         $stmt->execute();
     }
 
+
+
+
+    //Dafür da die Zuständige Menge zu ändern (Wenn user eingeloggt ist)
+    //Wird immer von updateCart.php aufgerufen (Das wiederum von Sidebar oder CartView)
  public function addOrUpdateProductInDb($userId, $productId, $quantity) {
         global $conn;
 
@@ -96,6 +116,12 @@ class CartModel {
 
 
    
+
+
+
+    //Übertragen die Artikel aus Cookie Warenkorb in DB ===> Wenn user sich einloggt !
+    //Von Login Controller aufrufen und dann hier ==> für jedes Produkt eintrag in DB erstellen 
+    // (mit schhleife addOrUpdateProductInDb aufrufen)
     public function mergeCookieCartWithDbCart($userId, $cookieCart) {
         // Gehe durch jedes Produkt im Cookie-Warenkorb...
         foreach ($cookieCart as $productId => $quantity) {
@@ -105,6 +131,13 @@ class CartModel {
     }
 
 
+
+
+
+
+    //Wenn Benutzer nicht eingeloggt ist 
+    //Wird Aufgerufen wenn Gast den Warenkrob öffnet (Sidebar/getCart) => Müssen daten laden wie Produkte ausschauen da auf cookie
+    //nur gespeichert ist welches produkt(id) und menge(int)
     public function getProductsFromCookieData($cookieCart) {
         global $conn;
         $products = [];
@@ -143,6 +176,12 @@ class CartModel {
         return $products;
     }
 
+
+
+
+
+    //Zählen der Produkte die mit Sale makeirt sind
+    //===> Wird von header gebraucht
     function getSaleCount() {
     global $conn;
     $sql = "SELECT sale FROM product";

@@ -1,12 +1,14 @@
 <?php
 require_once __DIR__ . '/../db_verbindung.php';
 
-class WishlistModel {
+class WishlistModel
+{
 
     /**
      * Holt Produktdetails aus DB basierend auf einer Liste von Produkt-IDs (z.B. aus Cookie)
      */
-    public function getProductsByIds(array $wishlist) {
+    public function getProductsByIds(array $wishlist)
+    {
         global $conn;
         $products = [];
 

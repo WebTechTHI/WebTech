@@ -32,9 +32,11 @@ class AdminController
 
             //Produkte Hochladen Formular
             case 'upload':
-
                 require 'view/admin/adminPages/createProductsView.php';
                 break;
+
+
+
 
             //speichert neu angelegte Produkte
             case 'uploadSubmit':
@@ -43,34 +45,32 @@ class AdminController
                 break;
 
 
-            case 'productList':
 
+
+            case 'productList':
                 //produktinformationen laden
                 $productsRaw = $model->getProducts();
-
                 $products = [];
                 foreach ($productsRaw as $p) {
                     $p['images'] = $model->getProductImages($p['product_id']);
                     $p['specs'] = $model->buildSpecifications($p);
                     $products[] = $p;
                 }
-
                 require 'view/admin/adminPages/ProductListView.php';
                 break;
 
 
+
+
             //Ändern von Produktdetails
             case 'edit':
-
-
                 //Informationen zu bestimmtem produkt laden, um zu selektieren bei auswahl
                 $product = $model->getProductById($_GET['id']);
                 $category = $product['category_id'];
                 $subcategory = $product['subcategory_id'];
-
-
                 require 'view/admin/adminPages/AlterProductsView.php';
                 break;
+
 
 
 
@@ -85,46 +85,44 @@ class AdminController
 
             //Produkt löschen
             case 'delete':
-
                 $model->deleteProduct($_GET['id']);
                 header("Location: /index.php?page=admin&action=productList");
-
                 break;
+
+
 
 
             //Userliste anzeigen
             case "userList":
-
                 $users = $model->getUsers();
-
                 require 'view/admin/adminPages/UserListView.php';
                 break;
 
 
 
+
             //User anzeigen
             case "user":
-
-
                 $user = $model->getUserById($_GET["user-id"]);
 
                 //lädt bestellungen für angegebene userid
                 $orders = $model->getOrdersByUser($_GET['user-id']);
-
                 require 'view/admin/adminPages/UserView.php';
                 break;
 
 
+
+
             //Ändert den Verechtigungsstatus in der Datenbank
             case 'updateUserStatus':
-
                 $data = json_decode(file_get_contents("php://input"), true);
                 $user_id = (int) $data['id'];
                 $status_id = (int) $data['value'];
 
                 $model->updateUserStatus($user_id, $status_id);
-
                 break;
+
+
 
 
             //Orderliste anzeigen
@@ -132,20 +130,21 @@ class AdminController
 
                 //lädt alle bestellungen
                 $orders = $model->getOrders();
-
                 require 'view/admin/adminPages/OrderListView.php';
                 break;
+
 
 
 
             //Order anzeigen
             case "order":
 
-
                 //Lädt bestellungen für angegebene bestellungs-id
                 $order = $model->getOrderById($_GET['order-id']);
                 require 'view/admin/adminPages/OrderView.php';
                 break;
+
+
 
 
             //Ändert den bestellstatus in der datenbank
@@ -156,9 +155,11 @@ class AdminController
                 $status_id = (int) $data['value'];
 
                 $model->updateOrderStatus($order_id, $status_id);
-
                 break;
 
+
+
+                
             //Admin Startseite (zur Modusauswahl)
             default:
                 require 'view/AdminView.php';

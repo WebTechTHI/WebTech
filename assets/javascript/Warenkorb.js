@@ -8,10 +8,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const hinzufuegenBtn = document.querySelector('.buy-btn');
     const headerAnzahl = document.querySelector('.cart-badge');
 
+
+
+
     // direkt beim Laden der Seite den Warenkorb vom Server laden
     // und die Anzeige aktualisieren
     ladeUndZeigeWarenkorb();
 
+
+
+
+
+
+    //AJAX Hier
     // Funktion, um den Warenkorb vom Server zu holen und die Anzeige zu aktualisieren mit der Funktion ladeUndZeigeWarenkorb
     function ladeUndZeigeWarenkorb() {
         fetch('/api/getCart.php') 
@@ -24,7 +33,13 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(err => console.error("Fehler beim Laden des Warenkorbs:", err));
     }
 
-    // Funktion, um die Anzeige basierend auf den Server-Daten zu rendern
+
+
+
+
+
+
+    //Die Funktion übernimmt die DOM Darstellung (DOM Manipulation)
     function aktualisiereWarenkorb(warenkorbItems) {
 
         // Elemente für die Anzeige holen aus ProductView Sidebar(DOM Elemente)
@@ -63,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
             element.className = 'warenkorbArtikel';
             element.dataset.productId = artikel.product_id; 
 
-
             //Artikel darstellen in Sidebar
             element.innerHTML = `
                 <img src="${artikel.image}" alt="${artikel.name}" class="artikelBild">
@@ -85,6 +99,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Hier wird der Gesamtpreis im Warenkorb aktualisiert
         if (gesamtEl) gesamtEl.textContent = `${gesamtPreis.toFixed(2).replace('.', ',')} €`;
     }
+
+
+
+
+
+
+
 
     // Event Listener für die Warenkorb-Interaktionen
     // Hier wird der Warenkorb aktualisiert, wenn auf die Menge +/- oder Entfernen geklickt wird
@@ -135,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
             //3. Fall wenn entfernen gedrückt wird
     // Hier wird der Artikel entfernt, wenn auf Entfernen geklickt wird
     // wenn auf Entfernen geklickt wird, dann wird die api aufgerufen
@@ -148,6 +168,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+
+
+
+
+    
 
     // Wenn man auf den Zum Warenkorb-Button klickt, wird die Menge aus dem Input-Feld genommen
     // und die API aufgerufen, um den Artikel zum Warenkorb hinzuzufügen
@@ -194,6 +219,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     
+
+
+
+
+
 
     // Event Listener für die Sidebar 
 
