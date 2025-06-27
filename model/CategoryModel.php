@@ -1,5 +1,6 @@
 <?php
-//RINOR STUBLLA 
+//LAURIN SCHNITZER 
+
 
 require_once 'db_verbindung.php';
 require_once 'categoryFunctions.php';
@@ -30,5 +31,5 @@ class CategoryModel
         return buildSpecifications($product);
     }
 }
-//RINOR STUBLLA ENDE
+//LAURIN SCHNITZER ENDE
 

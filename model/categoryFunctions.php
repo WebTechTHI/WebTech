@@ -1,5 +1,5 @@
 <?php
-//RINOR STUBLLA 
+//LAURIN SCHNITZER
 
 
 //getProductsByCategory() kombiniert über LEFT JOINs alle technischen Produktdaten
@@ -352,5 +352,6 @@ function generateFilter($filters, $product)
     return $filters;
 }
 
-//RINOR STUBLLA ENDE
+//LAURIN SCHNITZER ENDE
+
 

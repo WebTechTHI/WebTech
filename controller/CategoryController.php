@@ -1,5 +1,5 @@
 <?php 
-//RINOR STUBLLA 
+//LAURIN SCHNITZER
 
 require_once 'model/CategoryModel.php';
 class CategoryController
@@ -37,6 +37,6 @@ class CategoryController
         // an die View übergeben: 
         include __DIR__ . '/../view/CategoryView.php';
     }
-//RINOR STUBLLA ENDE
+//LAURIN SCHNITZER ENDE
 
 }
