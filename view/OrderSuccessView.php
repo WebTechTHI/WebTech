@@ -17,10 +17,11 @@
     <main class="order-success-container">
 
         <div class="success-card">
-            <div class="order-status"><?= $order['status_name'] ?></div>
+            <div class="order-status"><?= $orderStatus ?></div>
+            
             <div class="order-center">
                 <div class="success-icon">
-                    <!-- Ein schöner grüner Haken als SVG -->
+                    
                     <img src="/assets/images/haken.svg" alt="Bestellung erfolgreich" />
                 </div>
 

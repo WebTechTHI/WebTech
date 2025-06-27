@@ -28,5 +28,26 @@ class OrdersModel {
         return $orders;
     }
 
+       public function getStatus($status) {
+    switch ($status) {
+        case 'pending':
+            return 'Ausstehend';
+        case 'processing':
+            return 'In Bearbeitung';
+        case 'shipped':
+            return 'Versandt';
+        case 'delivered':
+            return 'Zugestellt';
+        case 'cancelled':
+            return 'Storniert';
+        case 'returned':
+            return 'Zurückgegeben';
+        case 'failed':
+            return 'Fehlgeschlagen';
+        default:
+            return 'Ausstehend'; 
+    }
+}
+
     
 }

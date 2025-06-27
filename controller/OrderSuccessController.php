@@ -26,6 +26,7 @@ class OrderSuccesController
             exit;
         }
 
+        $orderStatus = $model->getStatus($order['status_name']);
         // --- Übergib die Daten an die View ---
         include __DIR__ . '/../view/OrderSuccessView.php';
     }

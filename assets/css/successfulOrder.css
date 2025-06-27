@@ -58,6 +58,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative; 
 }
 
 .success-icon {
@@ -65,14 +66,15 @@
 }
 
 .order-status{
-   color: var(--text-main);
+    color: var(--text-main);
     border: var(--text-main) 1px solid;
     border-radius: 20px;
     padding: 8px;
     border-left: var(--text-main) 5px solid;
-    margin-left: auto;
-    margin-bottom: 16px;
-    
+    position: absolute; 
+    top: 20px; 
+    right: 20px; 
+    margin: 0; 
 }
 
 .success-icon img {

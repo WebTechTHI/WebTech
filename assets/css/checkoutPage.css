@@ -38,7 +38,7 @@
 
     --shadow-card: 0 2px 8px rgba(0,0,0,0.5);
 
-    --primary: #ff5050;
+   
     --primary-hover: #d43232;
     --primary-active: #a82222;
     --accent: #ff5050;
@@ -211,6 +211,70 @@
 
 .order-adress p:nth-of-type(5) strong {
     margin-top: 1rem;
+}
+
+/* Coupons Section */
+.coupons {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px solid var(--border-section);
+    border-radius: 6px;
+    background: var(--background-input);
+}
+
+.coupons h3 {
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.coupons .discounter-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--background-card);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s ease;
+}
+
+.coupons .discounter-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+.coupons .discounter-input::placeholder {
+    color: var(--text-muted);
+}
+
+.coupons .dicounter-btn {
+    width: 100%;
+    background-color: var(--accent);
+    color: var(--text-contrast);
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.coupons .dicounter-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.coupons .dicounter-btn:active {
+    background-color: var(--primary-active);
+}
+
+.coupons .dicounter-btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 /* Payment Methods */

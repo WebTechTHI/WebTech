@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MLR | Kasse</title>
- 
+
 
     <link rel="stylesheet" href="/assets/css/checkoutPage.css">
 </head>
@@ -45,7 +45,7 @@
                     <p><span>Versandkosten:</span>
                         <span><?= $shippingCost == 0 ? 'Kostenlos' : number_format($shippingCost, 2, ',', '.') . ' €' ?></span>
                     </p>
-                    
+
                     <p class="grand-total"><span>Gesamt:</span> <span><?= number_format($total, 2, ',', '.') ?> €</span>
                     </p>
                 </div>
@@ -73,7 +73,12 @@
                     <p> <?= htmlspecialchars($_SESSION['user']['email'] ?? '') ?> </p>
 
                 </div>
-                <!-- Zahlungsarten -->
+
+                <div class="coupons">
+                    <h3>Rabattcode eingeben:</h3>
+                    <input type="text" class="discounter-input" placeholder="MLR2025 ">
+                    <button class="dicounter-btn">Einlösen</button>
+                </div>
                 <div class="payment-methods">
                     <h3>Zahlungsart wählen</h3>
                     <div class="payment-option">
@@ -94,7 +99,7 @@
                     </div>
                 </div>
 
-                <!-- Das Formular sendet die Bestellung ab -->
+                
                 <form method="POST" action="/index.php?page=checkout">
                     <p class="terms-text">Mit dem Klick auf "Jetzt kostenpflichtig bestellen" gehen Sie einen
                         rechtsverbindlichen Kaufvertrag ein.</p>
