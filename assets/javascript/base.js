@@ -68,7 +68,8 @@ function toggleSort() {
 
 
 
-
+//initialize Filter User Interface (initFilterUi) ist dafür da das der Anwenden Button bei Filter nur aktiv ist 
+// wenn mind. 1 Filter geklickt wurde => sonst deaktiviert
 function initFilterUi() {
 
 
@@ -80,7 +81,7 @@ function initFilterUi() {
         // true, wenn mindestens eine Checkbox gecheckt ist (anyChecked ist boolean)
         const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
 
-        //die zeile greift nur wenn anyChecked (boolean) false ist also wenn keine checkbox angeclickt wurde
+        //die zeile greift nur wenn anyChecked (boolean) false ist also wenn keine checkbox angeclickt wurde (wird aber immer ausgeführt)
         applyBtn.disabled = !anyChecked;
 
         //Prüft boolean ob true (dann button deaktiviert =)
