@@ -1,5 +1,7 @@
 <?php
+//LAURIN SCHNITZER 
 require_once __DIR__ . '/../db_verbindung.php';
+
 
 class WishlistModel
 {
@@ -37,3 +39,4 @@ class WishlistModel
     }
 
 }
+//LAURIN SCHNITZER ENDE

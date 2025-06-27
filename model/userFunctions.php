@@ -1,4 +1,5 @@
 <?php
+//MICHAEL PIETSCH 
 
 // Funktion: Holt vollständige Benutzerinfos anhand der user_id.
 // Wird z.B. nach erfolgreichem Login genutzt, um alle Daten in die Session zu speichern.
@@ -17,3 +18,5 @@ function getUserData($conn, $userId)
 
     return $data;
 }
+//MICHAEL PIETSCH ENDE
+

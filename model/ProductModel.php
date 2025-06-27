@@ -1,4 +1,6 @@
 <?php
+//RINOR STUBLLA 
+
 require_once __DIR__ . '/../db_verbindung.php';
 require_once  'productFunctions.php';
 
@@ -30,3 +32,6 @@ class ProductModel
         return getRelatedProducts($GLOBALS['conn'], $category, $currentId);
     }
 }
+
+//RINOR STUBLLA ENDE
+

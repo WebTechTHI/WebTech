@@ -1,5 +1,5 @@
 <?php
-
+//MICHAEL PIETSCH
 require_once __DIR__ . '/../db_verbindung.php'; // Datenbankverbindung
 
 class ConfiguratorModel {

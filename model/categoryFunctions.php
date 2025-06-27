@@ -1,4 +1,5 @@
 <?php
+//RINOR STUBLLA 
 
 
 //getProductsByCategory() kombiniert über LEFT JOINs alle technischen Produktdaten
@@ -350,3 +351,6 @@ function generateFilter($filters, $product)
 
     return $filters;
 }
+
+//RINOR STUBLLA ENDE
+

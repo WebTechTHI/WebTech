@@ -1,4 +1,5 @@
 <?php
+//RINOR STUBLLA
 require_once __DIR__ . '/../db_verbindung.php';
 
 class CartModel {
@@ -199,3 +200,5 @@ class CartModel {
 }
 
 }
+//RINOR STUBLLA ENDE
+

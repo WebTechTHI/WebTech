@@ -1,4 +1,5 @@
 <?php
+//MICHAEL PIETSCH
 require_once __DIR__ . '../../db_verbindung.php';
 require_once "categoryFunctions.php";
 class AdminModel
@@ -764,6 +765,7 @@ class AdminModel
         }
     }
 
+//MICHAEL PIETSCH ENDE
 
 }
 

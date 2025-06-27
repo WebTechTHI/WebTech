@@ -1,4 +1,5 @@
 <?php
+//RINOR STUBLLA 
 
 
 // Hole das Produkt anhand der ID aus der Datenbank
@@ -239,5 +240,6 @@ function getSaleCount() {
     return $saleCount;
 }
 
+//RINOR STUBLLA ENDE
 
 

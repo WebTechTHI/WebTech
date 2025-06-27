@@ -1,4 +1,5 @@
 <?php
+//LAURIN SCHNITZER 
 
 require_once "db_verbindung.php";
 
@@ -84,3 +85,5 @@ class UserModel
         return $password;
     }
 }
+//LAURIN SCHNITZER ENDE
+

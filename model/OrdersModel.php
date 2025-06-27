@@ -1,4 +1,6 @@
 <?php
+//RINOR STUBLLA 
+
 require_once __DIR__ . '/../db_verbindung.php';
 class OrdersModel {
      public function getAllOrdersByUserId($userId) {
@@ -51,3 +53,4 @@ class OrdersModel {
 
     
 }
+//RINOR STUBLLA ENDE

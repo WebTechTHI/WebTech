@@ -1,4 +1,6 @@
 <?php
+//LAURIN SCHNITZER
+
 require_once 'db_verbindung.php';
 require_once 'userFunctions.php';
 
@@ -58,3 +60,4 @@ class RegistrationModel
     }
 
 }
+//LAURIN SCHNITZER ENDE
