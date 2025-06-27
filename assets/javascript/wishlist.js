@@ -21,4 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
             location.reload();
         });
     });
+
+    //Wishlist.js ist für das entfernen des Produkts da aus dem cookie (hinzufügen auf Product view)
 });
