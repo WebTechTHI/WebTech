@@ -1,6 +1,8 @@
 
 
 <?php
+//RINOR STUBLLA
+
 //-- Kein Ersatz für categoryView!
 
  //Es ist ein Hilfs-Skript nur für AJAX. Es wird nicht direkt im Browser angezeigt, sondern:

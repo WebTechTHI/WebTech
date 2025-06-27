@@ -1,4 +1,5 @@
 <?php
+//LAURIN SCHNITZER
 //Verbindungsdaten zur Datenbank aufbauen
 $servername = "mlr-shop.de";
 $username = "shopuser";
@@ -15,4 +16,7 @@ mysqli_set_charset($conn, "utf8mb4");
 if(!$conn) {
     die("Verbindung fehlgeschlagen: " . mysqli_connect_error());
 }
+
+//LAURIN SCHNITZER ENDE
+
 ?>
