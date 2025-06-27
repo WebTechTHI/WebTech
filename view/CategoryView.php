@@ -7,7 +7,7 @@
     <title>MLR - <?php echo htmlspecialchars($categoryInfo['sidebarTitel']); ?></title>
 
     <link rel="stylesheet" href="/assets/css/categoryList.css">
-    <script src="/assets/javascript/base.js"></script>
+    <script src="/assets/javascript/categoryFilter.js"></script>
     <script src="/assets/javascript/toggleTheme.js"></script>
     <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
 </head>

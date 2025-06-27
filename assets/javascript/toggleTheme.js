@@ -1,3 +1,6 @@
+// MICHAEL PIETSCH
+
+
 //Beim wechseln des modus werden die Quellen entsprechend neu besetzt    
 function toggleTheme() {
 
@@ -58,3 +61,5 @@ window.addEventListener('DOMContentLoaded', () => {
         
     }
 });
+
+// MICHAEL PIETSCH ENDE

@@ -1,4 +1,7 @@
 
+// LAURIN SCHNITZER
+
+
 /* Skript für Registration */
    
 function ValidierungRegistration() {
@@ -128,4 +131,7 @@ function confirmAction(message) {
         window.location = "../index.html";
     }
 }
+
+// LAURIN SCHNITZER ENDE
+
 

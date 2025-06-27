@@ -1,3 +1,6 @@
+// LAURIN SCHNITZER
+
+
 /* Skript für User */
 function ValidierungUser() {
   const username = document.getElementById("username").value;
@@ -52,3 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("username").addEventListener("input", ValidierungUser);
   document.getElementById("userpassword").addEventListener("input", ValidierungUser);
 });
+
+// LAURIN SCHNITZER ENDE
+

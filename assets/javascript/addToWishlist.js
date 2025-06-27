@@ -1,3 +1,6 @@
+//LAURIN SCHNIZER
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const wishlistBtn = document.querySelector('.wishlist-btn');
 
@@ -29,3 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+//LAURIN SCHNIZER ENDE
+

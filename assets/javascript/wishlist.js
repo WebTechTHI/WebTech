@@ -1,3 +1,6 @@
+// LAURIN SCHNITZER
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const removeBtns = document.querySelectorAll('.remove-from-wishlist-btn');
 
@@ -24,3 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Wishlist.js ist für das entfernen des Produkts da aus dem cookie (hinzufügen auf Product view)
 });
+
+// LAURIN SCHNITZER ENDE
+
