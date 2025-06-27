@@ -1,5 +1,5 @@
 <?php
-//RINOR STUBLLA ENDE
+//RINOR STUBLLA
 
 
 require_once __DIR__ . '/../db_verbindung.php'; // Datenbankverbindung
