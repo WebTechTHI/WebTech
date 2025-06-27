@@ -47,6 +47,10 @@ class AdminModel
     }
 
 
+
+
+
+
     //Lädt die informationen zu einem einzelnen produkt
     public function getProductById($id)
     {
@@ -60,6 +64,12 @@ class AdminModel
 
     }
 
+
+
+
+
+
+
     //Lädt die bilder eines gegebenen Rodukts
     public function getProductImages($productId)
     {
@@ -70,11 +80,18 @@ class AdminModel
 
 
 
+
+
+
     //gibt die spezifikationen eines gegebenen produkts
     public function buildSpecifications($product)
     {
         return buildSpecifications($product);
     }
+
+
+
+
 
 
 
@@ -98,6 +115,14 @@ class AdminModel
 
         return $data;
     }
+
+
+
+
+
+
+
+    
 
 
 
@@ -311,6 +336,18 @@ class AdminModel
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     //legt Datensatz für ein neues produkt in der Datenbank an
     public function uploadSubmit()
     {
@@ -469,9 +506,12 @@ class AdminModel
 
 
 
+
         //
         //Ab hier: Fotos speichern
         //
+
+
 
 
         //letzte vergeben id in products speichern, um fotos zu produkten zuordnen zu können
@@ -524,6 +564,13 @@ class AdminModel
 
     }
 
+
+
+
+
+
+
+
     //Produkt löschen, bilder bleiben noch bestehen
     public function deleteProduct($id)
     {
@@ -539,6 +586,11 @@ class AdminModel
             echo "Fehler beim Löschen: " . $stmt->error;
         }
     }
+
+
+
+
+
 
 
     //user funktionen
@@ -661,7 +713,7 @@ class AdminModel
             "ii",
             $status,
             $order_id
-            
+
         );
 
 
@@ -680,7 +732,8 @@ class AdminModel
 
 
 
-    public function updateUserStatus($user_id, $status_id){
+    public function updateUserStatus($user_id, $status_id)
+    {
 
         $sql = "UPDATE user
                 SET role_id = ? 
@@ -694,7 +747,7 @@ class AdminModel
             "ii",
             $status_id,
             $user_id
-            
+
         );
 
 
