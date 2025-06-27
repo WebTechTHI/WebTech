@@ -1,4 +1,5 @@
 <?php
+//MICHAEL PIETSCH
 $category = $_GET['category'] ?? '';
 
 //lädt die per ajax gesendeten daten aus javascript

@@ -1,5 +1,5 @@
 <?php
-
+//MICHAEL PIETSCH
 require_once __DIR__ . '/../../../model/AdminModel.php';
 
   //dekodiert produkt jason objekt aus javascript alterProductLooadView.js, 
