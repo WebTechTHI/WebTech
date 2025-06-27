@@ -49,7 +49,7 @@ class RegistrationController
                         $cartModel = new CartModel();
 
                       
-                        
+                        //MergecookieCartWithDBCart ist in CartModel drinnen
                         $cartModel->mergeCookieCartWithDbCart($_SESSION['user']['user_id'], $cookieCart);
 
                     
