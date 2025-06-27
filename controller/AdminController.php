@@ -115,6 +115,17 @@ class AdminController
                 break;
 
 
+            //Ändert den Verechtigungsstatus in der Datenbank
+            case 'updateUserStatus':
+
+                $data = json_decode(file_get_contents("php://input"), true);
+                $user_id = (int) $data['id'];
+                $status_id = (int) $data['value'];
+
+                $model->updateUserStatus($user_id, $status_id);
+
+                break;
+
 
             //Orderliste anzeigen
             case "orderList":
@@ -137,10 +148,15 @@ class AdminController
                 break;
 
 
-            //speichert änderungen an einer bestellung
-            case 'orderStatusChange':
+            //Ändert den bestellstatus in der datenbank
+            case 'updateOrderStatus':
 
-                $model->changeOrderStatus($_GET('order-id'), $_GET['status']);
+                $data = json_decode(file_get_contents("php://input"), true);
+                $order_id = (int) $data['id'];
+                $status_id = (int) $data['value'];
+
+                $model->updateOrderStatus($order_id, $status_id);
+
                 break;
 
             //Admin Startseite (zur Modusauswahl)

@@ -234,16 +234,6 @@
   vertical-align: top;
 }
 
-.financing {
-  font-size: 12px;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.financing span {
-  color: #0c0;
-}
-
 .edit-product {
   display: block;
   background-color: rgb(204, 20, 20);
@@ -262,7 +252,101 @@
 }
 
 
-/*   ------------  Orders  ---------  */
+/* -----------   User-list   ------------------*/
+
+.orders-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+.user {
+  background-color: white;
+  border: 2px solid rgb(185, 185, 185);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: border-color 0.2s ease-in-out;
+  border-bottom: 5px solid rgb(185, 185, 185);
+  max-width:70vw;
+  width:800px;
+}
+
+.user:hover {
+  border-bottom: 5px solid rgb(199, 18, 18);
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 16px;
+  margin:40px;
+  margin-bottom:70px;
+}
+
+.info-label{
+  margin:12px;
+  display:flex;
+  flex-direction:column;
+
+}
+
+.address-wrapper{
+  display:flex;
+  flex-direction:row;
+  gap: 2px;
+}
+
+.address{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+} 
+
+.user-status-more{
+  display:flex;
+  flex-direction:row;
+  font-size: 14px;
+  justify-content: space-between;
+  align-items: center;
+  gap:12px;
+  margin: 6px 0 0 0;
+}
+
+.user-status-more label {
+  font-weight: bold;
+  font-size:16px;
+}
+
+.user-status-more select {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background-color: transparent;
+  border:none;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.user-status-more option:hover, .user-status-more select:hover, .user-status-more select:focus{
+  background-color: rgb(188, 23, 23);
+  color:white
+}
+
+
+
+/*   ------------  Orders-list  ---------  */
 
 .orders-wrapper {
   display: flex;
@@ -290,8 +374,6 @@
   justify-content: space-between;
   font-weight: bold;
   font-size: 16px;
-  color: var(--red);
-  border-bottom: 1px solid var(--border);
   padding-bottom: 10px;
   margin-bottom: 15px;
 }
@@ -306,15 +388,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  color: var(--text-light);
   font-size: 14px;
 }
 
-.order-status-more {
+.order-status-more, .user-status-more{
   display:flex;
   flex-direction:row;
   font-size: 14px;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
   gap:12px;
   margin: 6px 0 0 0;
@@ -340,7 +421,9 @@
   padding: 4px 7px;
   border-radius: 12px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
-  
+  display:flex;
+  flex-direction:row;
+  align-items: center;
 }
 
 .status-styling:hover{
@@ -372,13 +455,23 @@
   transition: border-color 0.3s ease;
 }
 
-.status-styling:has(select:focus), .status-styling select:focus{ 
-  color:white;
-  background-color:rgb(188, 23, 23);
+.order-status-more option:hover, .order-status-more select:hover, .order-status-more select:focus, .status-styling:has(select:focus){
+  background-color: rgb(188, 23, 23);
+  color:white
 }
 
+.status-more-wrapper{
+  display:flex;
+  flex-direction:row;
+  gap:12px;
+}
 
-
+.status-color{
+  content: '';
+  width: 40px;
+  height:40px;
+  border-radius:100%;
+}
 
 
 /*   ------ Formulare  ---------*/
@@ -417,12 +510,10 @@
 .admin-form h1,
 .admin-form h2 {
   text-align: center;
-  color: var(--headline-color);
   margin-bottom: 5px;
 }
 
 .admin-form label {
-  color: var(--text-color);
   font-weight: bold;
 }
 

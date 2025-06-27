@@ -610,7 +610,7 @@ class AdminModel
     {
 
 
-        $sql = "SELECT orders.* FROM orders JOIN user on orders.user_id = user.user_id";
+        $sql = "SELECT orders.* FROM orders JOIN user on orders.user_id = user.user_id order by order_date desc";
 
         $stmt = $GLOBALS['conn']->prepare($sql);
         $stmt->execute();
@@ -647,10 +647,10 @@ class AdminModel
 
 
     //ändert status einer bestellung
-    public function changeOrderStatus($id,$status)
+    public function updateOrderStatus($order_id, $status)
     {
         $sql = "UPDATE orders 
-                SET status = ? 
+                SET status_id = ? 
                 WHERE order_id = ?";
 
         $stmt = $GLOBALS['conn']->prepare($sql);
@@ -658,9 +658,10 @@ class AdminModel
 
         //Variablen belegen (Values setzen)
         $stmt->bind_param(
-            "si",
-            $id,
-            $status
+            "ii",
+            $status,
+            $order_id
+            
         );
 
 
@@ -678,6 +679,37 @@ class AdminModel
     }
 
 
+
+    public function updateUserStatus($user_id, $status_id){
+
+        $sql = "UPDATE user
+                SET role_id = ? 
+                WHERE user_id = ?";
+
+        $stmt = $GLOBALS['conn']->prepare($sql);
+
+
+        //Variablen belegen (Values setzen)
+        $stmt->bind_param(
+            "ii",
+            $status_id,
+            $user_id
+            
+        );
+
+
+        //Ausführen der SQL abfrage (und hoffen dass es klappt)
+        $stmt->execute();
+
+
+
+        //Feedback zu erfolgreichem / Erfolglosem Upload
+        if ($stmt->affected_rows > 0) {
+            echo "<h1 style=" . "text-align:center" . ">Produkt erfolgreich gespeichert.</h1>";
+        } else {
+            echo "Fehler beim Speichern: " . $stmt->error;
+        }
+    }
 
 
 }
