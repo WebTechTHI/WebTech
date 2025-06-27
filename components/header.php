@@ -1,4 +1,5 @@
 <?php
+//MICHAEL PIETSCH
 // Wenn wir eine Session verwenden, starten wir sie.
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -173,3 +174,6 @@ if (isset($_SESSION['user']['user_id'])) {
 </body>
 
 </html>
+
+
+<?//MICHAEL PIETSCH ENDE ?>
