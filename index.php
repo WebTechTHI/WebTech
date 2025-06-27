@@ -55,6 +55,15 @@ switch ($page) {
         $controller->handleRequest();
         exit;
 
+    case "configurator":
+
+        $action = $_GET['action'];
+
+        require_once "controller/ConfiguratorController.php";
+        $controller = new ConfiguratorController();
+        $controller->handleRequest($action);
+        exit;
+
     case "":
     case "home":
         require_once "controller/HomeController.php";

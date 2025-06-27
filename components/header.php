@@ -141,7 +141,7 @@ if (isset($_SESSION['user']['user_id'])) {
                         </ul>
                     </li>
                     <li>
-                        <a href="/configurator.php">Konfigurator</a>
+                        <a href="index.php?page=configurator&action=configure">Konfigurator</a>
                     </li>
                     <li>
                         <a href="/index.php?page=category&category=angebote">Sale & Aktionen <span

@@ -40,6 +40,7 @@
                         <li><a href="/index.php?page=category&category=monitor">Monitore</a></li>
                         <li><a href="/index.php?page=category&category=maus">Mäuse</a></li>
                         <li><a href="/index.php?page=category&category=tastatur">Tastaturen</a></li>
+                        <li><a href="/index.php?page=configurator&action=configure">PC Konfigurator</a></li>
                     </ul>
                 </div>
 

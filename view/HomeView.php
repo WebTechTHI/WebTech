@@ -30,7 +30,7 @@
                 RTX 5000 Grafikkarten für ultimative Gaming-Power.</p>
             <div class="hero-buttons">
                 <a href="/index.php?page=category" class="hero-btn main-btn">JETZT ENTDECKEN</a>
-                <a href="#" class="hero-btn configure-btn">KONFIGURATOR</a>
+                <a href="/index.php?page=configurator&action=configure" class="hero-btn configure-btn">KONFIGURATOR</a>
             </div>
         </div>
     </section>
@@ -142,7 +142,7 @@
         <!-- Promos Section -->
         <div class="section-wrapper">
             <section class="container">
-                 <div class="section-header">
+                <div class="section-header">
                     <h2 class="section-title">JETZT ENTDECKEN!</h2>
                 </div>
                 <div class="promos">
@@ -152,17 +152,16 @@
                             <p class="main-promo-text">Mit unserem PC-Konfigurator kannst du deinen persönlichen Gaming-
                                 oder
                                 Arbeits-PC nach deinen Wünschen zusammenstellen.</p>
-                            <a href="#" class="hero-btn main-btn">ZUM KONFIGURATOR</a>
+                            <a href="index.php?page=configurator&action=configure" class="hero-btn main-btn">ZUM KONFIGURATOR</a>
                         </div>
                     </div>
 
                     <div class="side-promo">
                         <span class="side-promo-badge">NEU!</span>
-                        <h3 class="side-promo-title">RTX 5000 <span>SERIE</span></h3>
-                        <p class="side-promo-text">Die neuesten Grafikkarten von NVIDIA sind jetzt verfügbar. Sichere
-                            dir jetzt
-                            die Leistung der nächsten Generation.</p>
-                        <a href="#" class="hero-btn main-btn">JETZT ENTDECKEN</a>
+                                <h3 class="side-promo-title">RTX 5000 <span>SERIE</span></h3>
+                                <p class="side-promo-text">Die neuesten Grafikkarten von NVIDIA sind jetzt verfügbar.
+                                    Sichere dir jetzt die Leistung der nächsten Generation.</p>
+                            <a href="index.php?page=category" class="hero-btn main-btn">JETZT ENTDECKEN</a>
                     </div>
                 </div>
             </section>
