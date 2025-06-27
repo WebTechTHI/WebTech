@@ -1,4 +1,5 @@
 <?php
+//RINOR STUBLLA
 require_once __DIR__ . '/../model/ProductModel.php';
 
 class ProductController
@@ -47,4 +48,6 @@ class ProductController
 
         include __DIR__ . '/../view/ProductView.php';
     }
+//RINOR STUBLLA ENDE
+
 }

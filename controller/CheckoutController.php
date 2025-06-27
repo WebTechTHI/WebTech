@@ -1,4 +1,6 @@
 <?php
+//RINOR STUBLLA
+
 
 require_once __DIR__ . '/../db_verbindung.php';
 require_once __DIR__ . '/../model/CartModel.php';
@@ -78,4 +80,7 @@ class CheckoutController
         // --- SEITE ANZEIGEN (GET-Request oder Fehler beim POST) ---
         include __DIR__ . '/../view/CheckoutView.php';
     }
+
+//RINOR STUBLLA ENDE
+
 }

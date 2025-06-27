@@ -1,4 +1,5 @@
 <?php
+//LAURIN SCHNITZER
 // Lädt das Registrierungs-Model
 require_once "model/RegistrationModel.php";
 require_once "model/CartModel.php";
@@ -60,4 +61,6 @@ class RegistrationController
         // Zeigt die View an wenn fertig
         require "view/RegistrationView.php";
     }
+//LAURIN SCHNITZER ENDE
+
 }

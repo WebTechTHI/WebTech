@@ -1,4 +1,5 @@
 <?php
+//LAURIN SCHNITZER
 
 require_once "model/LoginModel.php";
 require_once "model/CartModel.php"; // CartModel hier einbinden, damit wir die Merge-Funktion nutzen können.
@@ -84,4 +85,7 @@ class LoginController
         // Zeige View (immer, egal ob GET oder POST)
         require "view/LoginView.php";
     }
+
+//LAURIN SCHNITZER ENDE
+
 }

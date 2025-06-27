@@ -1,4 +1,7 @@
-<?php require_once 'model/CategoryModel.php';
+<?php 
+//RINOR STUBLLA 
+
+require_once 'model/CategoryModel.php';
 class CategoryController
 {
     public function handleRequest()
@@ -34,4 +37,6 @@ class CategoryController
         // an die View übergeben: 
         include __DIR__ . '/../view/CategoryView.php';
     }
+//RINOR STUBLLA ENDE
+
 }
