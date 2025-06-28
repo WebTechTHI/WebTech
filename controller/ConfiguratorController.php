@@ -30,13 +30,16 @@ class ConfiguratorController
                 $storages = $model->getComponents('storage');
 
 
-                require "view/ConfiguratorView.php";
+                require "view/configurator/ConfiguratorView.php";
                 break;
 
 
 
             case 'configurationSubmit':
-                
+
+                $model->uploadConfiguration();
+                require "view/configurator/ConfigurationSentView.php";
+
                 break;
                 
         }

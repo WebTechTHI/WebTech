@@ -1,68 +1,183 @@
-
 /* MICHAEL PIETSCH */
 
-.page-wrapper{
-    display:flex;
-    flex-direction:column;
-    align-items: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-.configure-form{
-    display:flex;
+
+.page-wrapper {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap:40px;
-    margin:20px 0 70px 0;
-    width:900px;
-    padding:50px 120px;
-    border: 2px dotted rgb(0, 0, 0);
+    margin: 70px 0 0 0;
+}
+
+.headline {
+    font-size: 37px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--config-text-color);
+}
+
+.subtitle-card {
+    background-color: var(--config-card-bg);
+    padding: 20px 70px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.205);
+    border-radius: 22px;
+}
+
+.subtitle {
+    font-size: 18px;
+    white-space: pre-line;
+    text-align: center;
+    color: var(--config-text-color);
+}
+
+.configure-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 55px 0 70px 0;
+    width: 1200px;
+    padding: 50px 120px;
+    border: 3px dotted rgb(73, 73, 73);
     max-width: 80vw;
     box-shadow: 0 0 70px rgba(0, 0, 0, 0.438);
     border-radius: 20px;
 }
 
-.component-wrapper{
-    display:flex;
+.component-wrapper {
+    display: flex;
     flex-direction: row;
-    gap:15px;
-    width:100%;
+    gap: 15px;
+    width: 100%;
 }
 
 .select-wrapper {
-  width: 100%;
-  display:flex;
-  flex-direction: column;
-  gap: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
 }
 
-.select-wrapper label{
-    font-size:20px;
+.select-wrapper label {
+    font-size: 20px;
     text-indent: 12px;
     font-weight: 700;
     text-transform: uppercase;
+    color: var(--config-text-color);
 }
 
-.select-wrapper select {
-    width:85%;
-    font-size:18px;
+.component-select {
+    width: 85%;
+    font-size: 18px;
     padding: 10px;
+    box-shadow: 0 0 15px rgb(0, 0, 0, 0.4);
+    background-color: var(--config-select-bg);
+    border: 2px solid rgb(119, 119, 119);
+    color: var(--config-select-color);
+    border-radius: 11px;
 }
 
-.price-container{
-    content:'';
+.price-container {
+    content: '';
     background-color: rgb(211, 21, 21);
     width: fit-content;
-    font-weight:bold;
-    color:white;
+    font-weight: bold;
+    color: white;
     font-size: 20px;
     text-transform: uppercase;
-    padding:10px;
+    padding: 10px;
     border-radius: 10px;
     text-align: right;
 }
 
-input[type='submit']{
-    font-size:20px;
+/* gesamtpreis */
+.total-container {
+    background-color: rgb(22, 22, 22);
+    display: flex;
+    flex-direction: row;
+    color: white;
+
+    border-top-left-radius: 26px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 26px;
+    margin: 20px 0;
+    font-size: 26px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.411);
+}
+
+.price-tag {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 16px 25px;
+}
+
+.total-amount {
+    background-color: rgb(187, 23, 23);
+    padding: 16px 25px;
+    font-weight: 700;
+    border-top-left-radius: 26px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 26px;
+}
+
+
+input[type='submit'] {
+    margin-top: 20px;
+    font-size: 27px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: rgb(187, 23, 23);
+    color: white;
+    border: 2px white solid;
+    padding: 14px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(116, 1, 1, 0.164);
+    transition: .1s;
+}
+
+input[type='submit']:active {
+    background-color: rgb(156, 18, 18);
+    scale: .95;
+}
+
+/* ------------  configuration submit view --------  */
+
+.submit-body-container {
+    margin:200px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center
+}
+
+
+.back-to-shop {
+    font-size: 20px;
+    color: white;
+    padding: 12px 24px;
+    background-color: rgb(175, 28, 28);
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    width: fit-content;
+}
+
+.back-last-page:hover {
+    color: #f1f1f1;
+    background-color: rgb(136, 23, 23);
+    scale: .95;
 }
 
 /* MICHAEL PIETSCH ENDE */

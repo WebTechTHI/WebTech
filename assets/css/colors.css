@@ -160,6 +160,13 @@
   --pl-show-more-button-bg-color--hover: rgb(183, 28, 6);
   --pl-sale-tag-bg-color: rgb(211, 30, 7);
   --pl-sale-tag-color: rgb(255, 255, 255);
+
+  
+  /* Configurator */
+  --config-select-bg: rgb(228, 228, 228);
+  --config-select-color: rgb(0, 0, 0);
+  --config-text-color: rgb(0, 0, 0);
+  --config-card-bg: white;
 }
 
 /* ===================================== Dark Mode (Überschreibungen) ===================================== */
@@ -287,6 +294,12 @@
   --pl-show-more-button-bg-color--hover: rgb(183, 28, 6);
   --pl-sale-tag-bg-color: rgb(211, 30, 7);
   --pl-sale-tag-color: rgb(255, 255, 255);
+
+  /* Configurator */
+  --config-select-bg: rgb(37, 37, 37);
+  --config-select-color: rgb(255, 255, 255);
+  --config-card-bg:rgb(37, 37, 37);
+  --config-text-color: rgb(255, 255, 255);
 }
 
 /* ===================================== Basis-Elemente (Global gültig) ===================================== */

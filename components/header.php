@@ -65,14 +65,16 @@ if (isset($_SESSION['user']['user_id'])) {
 
 
     <div id="header">
+
         <!-- top header -->
         <div class="top-bar">
             <img class="header-icon" id="themeToggleBtn" alt="toggle-theme-btn" onclick="toggleTheme()">
             <div class="login-user-container">
 
+
                 <!-- Falls ein Admin angemeldet ist, kann dieser auf das Admin-panel zugreifen. -->
+
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role_id'] === 1) { ?>
-                    <!-- Nur diese Zeile ist neu eingefügt von Laurin -->
                     <a href="/index.php?page=admin">
                         <img class="header-icon" src="/assets/images/icons/admin.svg" alt="Admin"
                             title="Adminbereich">
