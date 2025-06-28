@@ -43,6 +43,8 @@ class CheckoutController
         $shippingCost = ($subTotal > 29.99) ? 0 : 4.99;
         $total = $subTotal + $shippingCost;
 
+        
+    // hat der user alle Lieferdaten??
         $hasValidShippingInfo = true;
         if (
             !isset($_SESSION['user']['richtiger_name'])
@@ -51,9 +53,9 @@ class CheckoutController
             || !isset($_SESSION['user']['stadt'])
             || !isset($_SESSION['user']['email'])
         ) {
-            $hasValidShippingInfo = false;
+            $hasValidShippingInfo = false; // user muss ein formular ausfüllen beim besuch der seite da unvollständig
         }
-
+        //user hat auf daten speichern button gedrückt, hier wird die Session aktualisiert und in die Datenbank auch erneuert
         if (isset($_POST['save_shipping_info'])) {
             require_once __DIR__ . '/../model/UserModel.php';
             $userModel = new UserModel();
