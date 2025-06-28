@@ -162,7 +162,7 @@
                                 <h3 class="side-promo-title">RTX 5000 <span>SERIE</span></h3>
                                 <p class="side-promo-text">Die neuesten Grafikkarten von NVIDIA sind jetzt verfügbar.
                                     Sichere dir jetzt die Leistung der nächsten Generation.</p>
-                            <a href="index.php?page=category" class="hero-btn main-btn">JETZT ENTDECKEN</a>
+                            <a href="index.php?page=category&category=pc" class="hero-btn main-btn">JETZT ENTDECKEN</a>
                     </div>
                 </div>
             </section>
@@ -219,6 +219,8 @@
             </section>
         </div>
     </section>
+
+    
     <!-- Newsletter Section -->
     <section class="newsletter">
         <div class="container">
