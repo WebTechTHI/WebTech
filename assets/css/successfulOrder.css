@@ -194,6 +194,46 @@
     color: var(--text-main);
 }
 
+
+.sale-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--item-bg);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.sale-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.sale-details {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.sale-name {
+    font-weight: bold;
+    display: block;
+    color: var(--text-main);
+}
+
+.sale-percent {
+    color: var(--text-muted-2);
+    font-size: 0.9em;
+}
+
+.sale-price {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--text-main);
+}
+
+
 /* Buttons */
 .btn {
     display: inline-block;

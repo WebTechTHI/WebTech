@@ -1,6 +1,6 @@
 <?php
 //RINOR STUBLLA
-require_once 'model/OrderSuccessModel.php'; // Das neue Model
+require_once 'model/OrderSuccessModel.php'; 
 class OrderSuccesController
 {
     public function handleRequest()
@@ -15,20 +15,26 @@ class OrderSuccesController
         $orderId = (int) $_GET['id'];
         $userId = $_SESSION['user']['user_id'];
 
-        // --- Lade die Bestelldaten ---
+        // Bestelldaten laden
         $model = new CheckoutModel();
-        // Die neue Funktion prüft automatisch, ob die Bestellung zum Nutzer gehört.
+        //Bestellung Holen anhand der IDs
         $order = $model->getOrderById($orderId, $userId);
 
         if (!$order) {
             // Bestellung nicht gefunden oder keine Berechtigung
-            // Zeige eine generische Fehlerseite oder leite um.
             echo "<h1>Bestellung nicht gefunden.</h1>";
             exit;
         }
 
+   
+        //falls ein Coupon existiert, dann alle infos über den Coupon holen
+        if (isset($order['coupon_id']) && $order['coupon_id'] != null){
+            $coupon = $model->getCoupon($order['coupon_id']);
+        }
+
+        //status holen für bestellung (z.B ausstehend)
         $orderStatus = $model->getStatus($order['status_name']);
-        // --- Übergib die Daten an die View ---
+       
         include __DIR__ . '/../view/OrderSuccessView.php';
     }
 }

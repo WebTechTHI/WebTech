@@ -9,7 +9,7 @@ class CheckoutModel
     {
         global $conn;
 
-        // 1. Hole die Kopfdaten der Bestellung
+        // Kopfdaten der Bestellung holen
         $sqlOrder = "SELECT o.*, s.status_name 
                     FROM orders o 
                     JOIN order_status s ON o.status_id = s.order_status_id 
@@ -26,7 +26,7 @@ class CheckoutModel
             return null;
         }
 
-        // 2. Hole die zugehörigen Artikel
+        // zugehörigen Artikel holen
         $sqlItems = "
             SELECT oi.*, p.name, (SELECT file_path FROM image WHERE product_id = p.product_id ORDER BY sequence_no LIMIT 1) AS image
             FROM order_items oi
@@ -43,12 +43,27 @@ class CheckoutModel
             $items[] = $row;
         }
 
-        // Füge die Artikel-Liste zum Bestell-Array hinzu
+    
         $order['items'] = $items;
 
         return $order;
     }
 
+    //falls ein Coupon existiert, dann alle infos über den Coupon holen
+    public function getCoupon($couponId){
+        global $conn;
+        $sqlCoupon = 'SELECT * FROM coupons where coupon_id = ?';
+        $stmtCoupon = $conn->prepare($sqlCoupon);
+        $stmtCoupon->bind_param('i', $couponId);
+        $stmtCoupon->execute();
+        $resultCoupon = $stmtCoupon->get_result();
+
+        $coupon = $resultCoupon->fetch_assoc();
+
+        return $coupon;
+    }
+
+    //hier werden die datenbank statuse die auf englisch sind auf deutsch übersetzt
     public function getStatus($status) {
     switch ($status) {
         case 'pending':

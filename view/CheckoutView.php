@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>MLR | Kasse</title>
-
-
+    <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/checkoutPage.css">
+    <script src="/assets/javascript/coupon_validation.js"></script>
 </head>
 
 <body>
@@ -47,7 +47,25 @@
                         <span><?= $shippingCost == 0 ? 'Kostenlos' : number_format($shippingCost, 2, ',', '.') . ' €' ?></span>
                     </p>
 
-                    <p class="grand-total"><span>Gesamt:</span> <span><?= number_format($total, 2, ',', '.') ?> €</span>
+                    <p id="original-total-row" class="grand-total">
+                        <span>Gesamt:</span>
+                        <!-- Wir speichern den Originalwert in einem data-Attribut -->
+                        <span id="original-total-amount" data-original-total="<?= $total ?>">
+                            <?= number_format($total, 2, ',', '.') ?> €
+                        </span>
+                    </p>
+
+                    <!-- Diese Zeile ist für den Rabatt (standardmäßig versteckt) -->
+                    <p id="discount-row" style="display: none; color: green;">
+                        <span id="discount-label"></span> 
+                        <span id="discount-amount"></span> 
+                    </p>
+
+                    <!-- Diese Zeile ist für den neuen Gesamtpreis (standardmäßig versteckt) -->
+                    <p id="new-total-row" class="grand-total"
+                        style="display: none; border-top: 1px solid #ccc; padding-top: 10px;">
+                        <span>Neuer Gesamtbetrag:</span>
+                        <span id="new-total-amount"></span>
                     </p>
                 </div>
             </div>
@@ -77,9 +95,12 @@
 
                 <div class="coupons">
                     <h3>Rabattcode eingeben:</h3>
-                    <input type="text" class="discounter-input" placeholder="MLR2025 ">
-                    <button class="dicounter-btn">Einlösen</button>
+                    <input type="text" id="coupon-input" class="discounter-input" placeholder="MLR2025">
+                    <button id="coupon-btn" class="dicounter-btn">Einlösen</button>
+                    <div id="coupon-message" style="margin-top: 10px;"></div>
                 </div>
+
+
                 <div class="payment-methods">
                     <h3>Zahlungsart wählen</h3>
                     <div class="payment-option">
@@ -100,8 +121,10 @@
                     </div>
                 </div>
 
-                
+
                 <form method="POST" action="/index.php?page=checkout">
+                    <input type="hidden" name="applied_coupon_code" id="applied-coupon-code" value="">
+
                     <p class="terms-text">Mit dem Klick auf "Jetzt kostenpflichtig bestellen" gehen Sie einen
                         rechtsverbindlichen Kaufvertrag ein.</p>
                     <button type="submit" class="btn-order-final">Jetzt kostenpflichtig bestellen</button>
@@ -111,6 +134,11 @@
     </main>
 
     <?php include 'components/footer.php'; ?>
+
+    <script>
+
+    </script>
+
 </body>
 
 </html>
