@@ -109,6 +109,8 @@ class CheckoutModel {
         return number_format($number, 2, ',', '.');
     }
 
+
+
     public function getValidCouponByCode($code) {
     global $conn;
 
@@ -131,5 +133,14 @@ class CheckoutModel {
     return $coupon;
 }
 
+public function increaseSales( $productId, $amount ) {
+    global $conn;
+    $sql = 'Update product set sales = ? where product_id = ?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ii', $amount, $productId);
+    $stmt->execute();
+    $stmt->close();
+
+}
 }
 //RINOR STUBLLA ENDE

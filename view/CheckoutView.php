@@ -13,7 +13,50 @@
 <body>
 
     <?php include 'components/header.php'; ?>
+<!-- FALLS JEMAND KEINE VOLLSTÄNDIGEN LIEFERDATEN DANN ERST FORMULAR AUSFÜLLEN-->
+<!-- Im controller wird dann die Session mit richtigen werten aktualisiert und in in die Datenbank eingetragen-->
+<?php if(!$hasValidShippingInfo ):?>
+    <div class="address-update-modal">
+    <h3>Bitte vervollständigen Sie Ihre Lieferdaten</h3>
+    <form method="POST" action="">
+        <div class="form-group">
+            <label for="richtiger_name">Vor und Nachname:</label>
+            <input type="text" id="richtiger_name" name="richtiger_name"
+                value="<?= htmlspecialchars($_SESSION['user']['richtiger_name'] ?? '') ?>"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="straße">Straße:</label>
+            <input type="text" id="straße" name="straße"
+                value="<?= htmlspecialchars($_SESSION['user']['straße'] ?? '') ?>"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="plz">PLZ:</label>
+            <input type="text" id="plz" name="plz"
+                value="<?= htmlspecialchars($_SESSION['user']['plz'] ?? '') ?>"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="stadt">Stadt:</label>
+            <input type="text" id="stadt" name="stadt"
+                value="<?= htmlspecialchars($_SESSION['user']['stadt'] ?? '') ?>"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email"
+                value="<?= htmlspecialchars($_SESSION['user']['email'] ?? '') ?>"
+                required>
+        </div>
+        <button type="submit" name="save_shipping_info" class="btn-save-address">
+            Daten speichern
+        </button>
+    </form>
+</div>
+<?php else: ?>
 
+  
 
     <main class="checkout-page">
         <h1>Bestellung überprüfen</h1>
@@ -132,6 +175,8 @@
             </div>
         </div>
     </main>
+
+    <?php endif; ?>
 
     <?php include 'components/footer.php'; ?>
 

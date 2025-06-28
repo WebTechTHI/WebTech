@@ -43,13 +43,48 @@ class CheckoutController
         $shippingCost = ($subTotal > 29.99) ? 0 : 4.99;
         $total = $subTotal + $shippingCost;
 
+        $hasValidShippingInfo = true;
+        if (
+            !isset($_SESSION['user']['richtiger_name'])
+            || !isset($_SESSION['user']['straße'])
+            || !isset($_SESSION['user']['plz'])
+            || !isset($_SESSION['user']['stadt'])
+            || !isset($_SESSION['user']['email'])
+        ) {
+            $hasValidShippingInfo = false;
+        }
+
+        if (isset($_POST['save_shipping_info'])) {
+            require_once __DIR__ . '/../model/UserModel.php';
+            $userModel = new UserModel();
+
+            $name = trim($_POST['richtiger_name']);
+            $straße = trim($_POST['straße']);
+            $plz = trim($_POST['plz']);
+            $stadt = trim($_POST['stadt']);
+            $email = trim($_POST['email']);
+            $userId = $_SESSION['user']['user_id'];
+
+            $updateSuccess = $userModel->updateUserShippingInfo($userId, $name, $straße,$stadt, $plz, $email );
+
+            if ($updateSuccess) {
+                $_SESSION['user']['richtiger_name'] = $name;
+                $_SESSION['user']['straße'] = $straße;
+                $_SESSION['user']['plz'] = $plz;
+                $_SESSION['user']['stadt'] = $stadt;
+                $_SESSION['user']['email'] = $email;
+                header('Location: /index.php?page=checkout');
+                exit;
+            } else {
+                $error = "Ihre Daten konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.";
+            }
+        }
 
 
-      
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $checkoutModel = new CheckoutModel();
             $finalTotal = $total; // Der ursprüngliche Gesamtbetrag, wird geändert falls couponCode aktiv
-            $coupon = null; 
+            $coupon = null;
 
             // Den gesendeten Gutscheincode aus dem versteckten Feld holen
             $appliedCouponCode = $_POST['applied_coupon_code'] ?? null;
@@ -77,6 +112,9 @@ class CheckoutController
             $orderId = $checkoutModel->createOrder($userId, $cartItems, $finalTotal, $shippingAddress, $couponIdToSave);
 
             if ($orderId) {
+                foreach ($cartItems as $cartItem) {
+                    $checkoutModel->increaseSales($cartItem['product_id'], $cartItem['quantity']);
+                }
                 // Bestellung erfolgreich, jetzt den Warenkorb leeren
                 $checkoutModel->clearUserCart($userId);
                 // Zur "Danke für Ihre Bestellung"-Seite weiterleiten
@@ -88,7 +126,7 @@ class CheckoutController
             }
         }
 
-      
+
         include __DIR__ . '/../view/CheckoutView.php';
     }
 
