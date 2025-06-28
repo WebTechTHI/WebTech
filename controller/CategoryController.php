@@ -1,4 +1,7 @@
-<?php require_once 'model/CategoryModel.php';
+<?php 
+//LAURIN SCHNITZER
+
+require_once 'model/CategoryModel.php';
 class CategoryController
 {
     public function handleRequest()
@@ -34,4 +37,6 @@ class CategoryController
         // an die View übergeben: 
         include __DIR__ . '/../view/CategoryView.php';
     }
+//LAURIN SCHNITZER ENDE
+
 }

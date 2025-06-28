@@ -1,4 +1,5 @@
 <?php
+//MICHAEL PIETSCH
 require_once __DIR__ . '/../model/AdminModel.php';
 
 class AdminController
@@ -167,4 +168,6 @@ class AdminController
         }
 
     }
+//MICHAEL PIETSCH ENDE
+
 }

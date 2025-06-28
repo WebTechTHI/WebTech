@@ -1,4 +1,4 @@
-
+//MICHAEL PIETSCH
 //Abwarten bis dom geladen ist, sonst werden dieelemente nicht gefunden
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -90,3 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 });
+
+//MICHAEL PIETSCH ENDE
+

@@ -1,5 +1,8 @@
+/* LAURIN SCHNITZER */
+
+
 /* =======================
-   🔚 FOOTER-STYLING
+   FOOTER-STYLING
 ======================= */
 footer {
   margin-top: auto;
@@ -27,3 +30,5 @@ footer a:hover {
   color: var(--link-hover-color);
   text-decoration: underline;
 }
+
+/* LAURIN SCHNITZER ENDE */

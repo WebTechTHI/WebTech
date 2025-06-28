@@ -1,3 +1,5 @@
+//MICHAEL PIETSCH 
+
 
 //skript, um die farben der status codes bei der admin bestellubersicht zu ändern
 function changeUserStatus(id) {
@@ -37,3 +39,5 @@ function changeUserStatus(id) {
         })
     });
 }
+
+//MICHAEL PIETSCH ENDE

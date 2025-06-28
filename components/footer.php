@@ -1,3 +1,5 @@
+<? // MICHAEL PEITSCH ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -93,3 +95,5 @@
 </body>
 
 </html>
+
+<? // MICHAEL PEITSCH ENDE ?>

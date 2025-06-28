@@ -1,5 +1,8 @@
+/* Laurin Schnitzer */
+
+
 /* =======================
-   🔝 HEADER-STYLING
+   HEADER-STYLING
 ======================= */
 header {
   display: flex;
@@ -34,3 +37,6 @@ header a {
   margin-left: auto;
   transform: translate(-20%);
 }
+
+/* Laurin Schnitzer Ende*/
+

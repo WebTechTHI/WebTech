@@ -1,4 +1,6 @@
 <?php
+//LAURIN SCHNITZER 
+
 require_once "db_verbindung.php";
 require_once 'userFunctions.php';
 
@@ -53,3 +55,4 @@ class LoginModel
         return getUserData($GLOBALS['conn'], $userId);
     }
 }
+//LAURIN SCHNITZER ENDE

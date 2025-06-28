@@ -1,4 +1,6 @@
 <?php
+//RINOR STUBLLA ENDE
+
 require_once __DIR__ . '/../model/CartModel.php';
 
 class CartController {
@@ -44,4 +46,7 @@ class CartController {
         // Die CartView.php muss nicht geändert werden, da sie einfach nur das $cartItems-Array durchläuft.
         include __DIR__ . '/../view/CartView.php';
     }
+
+//RINOR STUBLLA ENDE
+
 }

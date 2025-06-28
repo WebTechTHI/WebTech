@@ -1,3 +1,6 @@
+/* LAURIN SCHNITZER*/
+
+
 /* ========= Allgemein ========= */
 body { 
   text-align: center;
@@ -349,6 +352,9 @@ label {
  .inputOk { 
   border-color: var(--input-valid) !important;
  }
+
+/* LAURIN SCHNITZER ENDE*/
+
 
 
 

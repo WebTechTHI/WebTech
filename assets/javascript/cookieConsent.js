@@ -1,10 +1,11 @@
-// assets/javascript/cookieConsent.js (FINALE VERSION)
+// RINOR STUBLLA 
+
 document.addEventListener('DOMContentLoaded', () => {
     // Elemente holen
     const banner = document.getElementById('cookie-consent-banner');
     const acceptBtn = document.getElementById('btn-accept-cookies');
     const declineBtn = document.getElementById('btn-decline-cookies');
-    const manageSettingsBtn = document.getElementById('manage-cookie-settings'); // KORREKTUR: Fehlende Deklaration
+    const manageSettingsBtn = document.getElementById('manage-cookie-settings'); 
 
     // Funktion zum Setzen des Consent-Cookies
     const setConsentCookie = (value) => {
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     acceptBtn?.addEventListener('click', () => {
         setConsentCookie('accepted');
         if(banner) banner.style.display = 'none';
-        // WICHTIG: Seite neu laden, damit alles sofort funktioniert
+        // Seite neu laden, damit alles sofort funktioniert
         window.location.reload(); 
     });
 
@@ -37,3 +38,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// RINOR STUBLLA ENDE

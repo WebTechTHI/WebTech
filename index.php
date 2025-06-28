@@ -1,4 +1,5 @@
 <?php
+//LAURIN SCHNIZER
 session_start();
 
 //Prüfen ob page paramenter da is

@@ -1,5 +1,6 @@
 <?php
-// model/CheckoutModel.php
+//RINOR STUBLLA
+
 
 require_once __DIR__ . '/../db_verbindung.php'; // Datenbankverbindung
 class CheckoutModel {
@@ -112,3 +113,4 @@ class CheckoutModel {
         return number_format($number, 2, ',', '.');
     }
 }
+//RINOR STUBLLA ENDE

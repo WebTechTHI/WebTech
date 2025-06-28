@@ -1,6 +1,9 @@
 
 <?php
+//LAURIN SCHNITZER 
+
 class LogoutController{
+  
     public function handleRequest() {
         
         session_unset();     //Inhalte löschen aus der session

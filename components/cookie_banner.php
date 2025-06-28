@@ -1,3 +1,4 @@
+<? // RINOR STUBLLA ?>
 <!-- components/cookie_banner.php -->
 <div id="cookie-consent-banner">
     <div class="cookie-consent-content">

@@ -1,3 +1,5 @@
+// MICHAEL PIETSCH
+
 //Skript zum verschieben horizontalen scrollen des Bestseller Produkt-Karusells auf der Startseite
 document.addEventListener('DOMContentLoaded', function () {              //-----------------------
     const container = document.getElementById('product-container');              //-----------------------
@@ -12,3 +14,5 @@ document.addEventListener('DOMContentLoaded', function () {              //-----
         container.scrollBy({ left: itemWidth * scrollAmount, behavior: 'smooth' });              //-----------------------
     });
 });
+
+// MICHAEL PIETSCH ENDE

@@ -1,3 +1,4 @@
+// LAURIN SCHNITZER
 
 /* Skript für Login */
 function ValidierungLogin() {
@@ -85,6 +86,7 @@ function ValidierungLogin() {
   document.getElementById("usernamelogin").addEventListener("input", ValidierungLogin);
   document.getElementById("userpasswordlogin").addEventListener("input", ValidierungLogin);
   
+// LAURIN SCHNITZER ENDE
 
 
 

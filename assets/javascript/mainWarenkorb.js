@@ -1,3 +1,6 @@
+// RINOR STUBLLA
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const cartContainer = document.querySelector('.cart-container');
   const cartCounter = document.querySelector('.cart-badge');
@@ -131,3 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initiale Berechnung
   recalcSummary();
 });
+
+// RINOR STUBLLA ENDE
+

@@ -1,4 +1,5 @@
 <?php
+//LAURIN SCHNITZER 
 require_once "model/UserModel.php";
 
 class UserController
@@ -86,4 +87,5 @@ class UserController
         require "view/UserView.php";
         exit;
     }
+//LAURIN SCHNITZER ENDE
 }

@@ -1,3 +1,7 @@
+// LAURIN SCHNITZER
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Elemente initialisieren (holen von ProductView auf Produktseite nicht sidebar Warenkorb)
     const mengeInput = document.getElementById("mengenValue");
@@ -265,3 +269,6 @@ function updateQtyValue(operation) {
         mengeInput.value = currentValue - 1; 
     }
 }
+
+
+// LAURIN SCHNITZER ENDE

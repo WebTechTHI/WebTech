@@ -1,4 +1,6 @@
 <?php
+//MICHAEL PIETSCH
+
 require_once "model/ConfiguratorModel.php";
 class ConfiguratorController
 {
@@ -42,4 +44,7 @@ class ConfiguratorController
 
         exit;
     }
+
+//MICHAEL PIETSCH ENDE
+
 }

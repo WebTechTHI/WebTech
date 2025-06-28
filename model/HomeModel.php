@@ -1,4 +1,5 @@
 <?php
+//MICHAEL PIETSCH
 
 require_once "db_verbindung.php";
 require_once "categoryFunctions.php";
@@ -68,4 +69,7 @@ class HomeModel
     {
         return buildSpecifications($product);
     }
+
+//MICHAEL PIETSCH ENDE
+
 }

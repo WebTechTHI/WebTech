@@ -1,3 +1,4 @@
+// MICHAEL PIETSCH
 document.addEventListener("DOMContentLoaded", () => {
     // Array mit den Bildpfaden für den Hero-Bereich
     const heroImages = [
@@ -35,3 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Starte den automatischen Bildwechsel alle 9 Sekunden
     setInterval(changeHeroImage, 6000);
 });
+
+// MICHAEL PIETSCH ENDE
+

@@ -1,5 +1,6 @@
 <?php
-// model/CheckoutModel.php
+//RINOR STUBLLA ENDE
+
 
 require_once __DIR__ . '/../db_verbindung.php'; // Datenbankverbindung
 class CheckoutModel
@@ -69,3 +70,5 @@ class CheckoutModel
     }
 }
 }
+
+//RINOR STUBLLA ENDE

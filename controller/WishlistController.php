@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../model/WishlistModel.php'; // Pfad ggf. anpassen
+//LAURIN SCHNITZER
 
 class WishlistController
 {

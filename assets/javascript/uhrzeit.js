@@ -1,3 +1,6 @@
+// LAURIN SCHNITZER
+
+
 /* Uhrzeit javascript im Header einfügen bei Login Registration und User */
 
 function startLiveClock() {
@@ -23,3 +26,5 @@ function startLiveClock() {
 }
 
 document.addEventListener("DOMContentLoaded", startLiveClock);
+
+// LAURIN SCHNITZER ENDE
