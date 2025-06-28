@@ -1,4 +1,4 @@
-//LAURIN SCHNIZER
+//RINOR STUBLLA
 
 /* Skript zum verschieben des Headers */
 var oldPos = 0;
@@ -35,7 +35,7 @@ function getPriceWOTax(priceWTax) {
 }
 
 
-//LAURIN SCHNIZER ENDE
+//RINOR STUBLLA ENDE
 
 
 
