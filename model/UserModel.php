@@ -50,6 +50,17 @@ class UserModel
         return $result;
     }
 
+  public function updateUserShippingInfo($user_id, $richtiger_name, $straße, $stadt, $plz, $email){
+    global $conn;
+    $sql = "UPDATE user SET richtiger_name = ?, straße = ?, stadt = ?, plz = ?, email = ? WHERE user_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssi", $richtiger_name, $straße, $stadt, $plz, $email, $user_id);
+    $success = $stmt->execute();
+    $stmt->close();
+    return $success; 
+}
+
+
 
 
     // Prüft, ob Username bei anderem User schon existiert

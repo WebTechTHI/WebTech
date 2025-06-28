@@ -19,10 +19,10 @@
 
         <div class="success-card">
             <div class="order-status"><?= $orderStatus ?></div>
-            
+
             <div class="order-center">
                 <div class="success-icon">
-                    
+
                     <img src="/assets/images/haken.svg" alt="Bestellung erfolgreich" />
                 </div>
 
@@ -72,6 +72,20 @@
                                     €</span>
                             </div>
                         <?php endforeach; ?>
+
+                        <!-- FALLS EIN PRODUKT IM SALE IST DANN SOLL DAS HIER ANGEZEIGT WERDEN-->
+                        <?php if (isset($order['coupon_id']) && isset($coupon)): ?>
+                            <div class="sale-item">
+                                <img src="\assets\images\icons\sale-coupon.png" alt="SALE" class="sale-image">
+                                <div class="sale-details">
+                                    <span class="sale-name"><?= htmlspecialchars($coupon['coupon_code']) ?> (Couponcode)</span>
+                                    <span class="sale-percent"><?= $coupon['percent'] ?> %</span>
+                                </div>
+                                <?php $sale = ($order['total_amount'] * 100/ (100-$coupon['percent'])) - $order['total_amount'] ?>
+                                <span class="sale-price">- <?= number_format($sale, 2, ',', '.')?> €</span>
+                            </div>
+                        <?php endif; ?>
+
                     </div>
                 </div>
 

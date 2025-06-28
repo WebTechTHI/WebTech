@@ -5,15 +5,58 @@
 <head>
     <meta charset="UTF-8">
     <title>MLR | Kasse</title>
-
-
+    <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/checkoutPage.css">
+    <script src="/assets/javascript/coupon_validation.js"></script>
 </head>
 
 <body>
 
     <?php include 'components/header.php'; ?>
+<!-- FALLS JEMAND KEINE VOLLSTÄNDIGEN LIEFERDATEN DANN ERST FORMULAR AUSFÜLLEN-->
+<!-- Im controller wird dann die Session mit richtigen werten aktualisiert und in in die Datenbank eingetragen-->
+<?php if(!$hasValidShippingInfo ):?>
+    <div class="address-update-modal">
+    <h3>Bitte vervollständigen Sie Ihre Lieferdaten</h3>
+    <form method="POST" action="">
+        <div class="form-group">
+            <label for="richtiger_name">Vor und Nachname:</label>
+            <input type="text" id="richtiger_name" name="richtiger_name"
+                value="<?= htmlspecialchars($_SESSION['user']['richtiger_name'] ?? '') ?>"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="straße">Straße:</label>
+            <input type="text" id="straße" name="straße"
+                value="<?= htmlspecialchars($_SESSION['user']['straße'] ?? '') ?>"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="plz">PLZ:</label>
+            <input type="text" id="plz" name="plz"
+                value="<?= htmlspecialchars($_SESSION['user']['plz'] ?? '') ?>"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="stadt">Stadt:</label>
+            <input type="text" id="stadt" name="stadt"
+                value="<?= htmlspecialchars($_SESSION['user']['stadt'] ?? '') ?>"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email"
+                value="<?= htmlspecialchars($_SESSION['user']['email'] ?? '') ?>"
+                required>
+        </div>
+        <button type="submit" name="save_shipping_info" class="btn-save-address">
+            Daten speichern
+        </button>
+    </form>
+</div>
+<?php else: ?>
 
+  
 
     <main class="checkout-page">
         <h1>Bestellung überprüfen</h1>
@@ -47,7 +90,25 @@
                         <span><?= $shippingCost == 0 ? 'Kostenlos' : number_format($shippingCost, 2, ',', '.') . ' €' ?></span>
                     </p>
 
-                    <p class="grand-total"><span>Gesamt:</span> <span><?= number_format($total, 2, ',', '.') ?> €</span>
+                    <p id="original-total-row" class="grand-total">
+                        <span>Gesamt:</span>
+                        <!-- Wir speichern den Originalwert in einem data-Attribut -->
+                        <span id="original-total-amount" data-original-total="<?= $total ?>">
+                            <?= number_format($total, 2, ',', '.') ?> €
+                        </span>
+                    </p>
+
+                    <!-- Diese Zeile ist für den Rabatt (standardmäßig versteckt) -->
+                    <p id="discount-row" style="display: none; color: green;">
+                        <span id="discount-label"></span> 
+                        <span id="discount-amount"></span> 
+                    </p>
+
+                    <!-- Diese Zeile ist für den neuen Gesamtpreis (standardmäßig versteckt) -->
+                    <p id="new-total-row" class="grand-total"
+                        style="display: none; border-top: 1px solid #ccc; padding-top: 10px;">
+                        <span>Neuer Gesamtbetrag:</span>
+                        <span id="new-total-amount"></span>
                     </p>
                 </div>
             </div>
@@ -77,9 +138,12 @@
 
                 <div class="coupons">
                     <h3>Rabattcode eingeben:</h3>
-                    <input type="text" class="discounter-input" placeholder="MLR2025 ">
-                    <button class="dicounter-btn">Einlösen</button>
+                    <input type="text" id="coupon-input" class="discounter-input" placeholder="MLR2025">
+                    <button id="coupon-btn" class="dicounter-btn">Einlösen</button>
+                    <div id="coupon-message" style="margin-top: 10px;"></div>
                 </div>
+
+
                 <div class="payment-methods">
                     <h3>Zahlungsart wählen</h3>
                     <div class="payment-option">
@@ -100,8 +164,10 @@
                     </div>
                 </div>
 
-                
+
                 <form method="POST" action="/index.php?page=checkout">
+                    <input type="hidden" name="applied_coupon_code" id="applied-coupon-code" value="">
+
                     <p class="terms-text">Mit dem Klick auf "Jetzt kostenpflichtig bestellen" gehen Sie einen
                         rechtsverbindlichen Kaufvertrag ein.</p>
                     <button type="submit" class="btn-order-final">Jetzt kostenpflichtig bestellen</button>
@@ -110,7 +176,14 @@
         </div>
     </main>
 
+    <?php endif; ?>
+
     <?php include 'components/footer.php'; ?>
+
+    <script>
+
+    </script>
+
 </body>
 
 </html>
