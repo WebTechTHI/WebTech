@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         block.innerHTML = `<div class="meldung-container ${type}">${message}</div>`;
     }
 
-    if (wishlistBtn) {
+    if (wishlistBtn) {          //Falls der Button gefunden wurde, hängen wir eine Click-Funktion dran
         wishlistBtn.addEventListener('click', () => {
             const pid = wishlistBtn.dataset.id;
 
