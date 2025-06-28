@@ -79,7 +79,7 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
             break;
     }
 
-//Filter hier sind erst wichtig wenn auf der Seite Filter ausgewählt wurden um die mit ajax zu laden, dann wird die funktion mit den Filtern aufgerufen
+    //Filter hier sind erst wichtig wenn auf der Seite Filter ausgewählt wurden um die mit ajax zu laden, dann wird die funktion mit den Filtern aufgerufen
     // Filter berücksichtigen
     if (!empty($filters)) {
 
@@ -91,7 +91,7 @@ function getProductsByCategory($conn, $category, $orderBy, $direction, $filters 
 
             // Werte escapen und als SQL-String vorbereiten //======= Wir bereiten die Werte so auf, dass sie sicher in die SQL-Abfrage eingebaut werden können
             $escaped = [];  // In das $escaped-Array schreiben wir die bereinigten (escaped) Filterwerte,
-                            //damit wir sie später sicher in die SQL-Abfrage einbauen können – im richtigen Format für IN (...)
+            //damit wir sie später sicher in die SQL-Abfrage einbauen können – im richtigen Format für IN (...)
             foreach ($values as $v) {
                 $escaped[] = "'" . mysqli_real_escape_string($conn, $v) . "'";
             }
@@ -256,6 +256,9 @@ function buildSpecifications($product)
         if (!empty($product['ram_capacity'])) {
             $specs[] = $product['ram_capacity'] . ' GB ' . ($product['ram_type'] ?? 'RAM');
         }
+        // Der ??-Operator prüft, ob der Wert existiert und nicht null ist – wenn nicht, wird der Standardwert (z. B. 'RAM') verwendet
+        // Nur nötig bei dynamischen Angaben (z. B. RAM-Typ), bei festen Texten wie 'Zoll Display' wird er nicht gebraucht
+
         if (!empty($product['storage_capacity'])) {
             $specs[] = $product['storage_capacity'] . ' GB ' . ($product['storage_type'] ?? 'Storage');
         }
