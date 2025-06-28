@@ -40,6 +40,7 @@ switch ($category) {
 
           <option value="">- keine -</option>
 
+
           <?php foreach ($displays as $display): ?>
             <option value="<?= $display["display_id"] ?>" <?= $display["display_id"] == $product['display_id'] ? 'selected' : ''?>>
               <?= htmlspecialchars($display["brand"] . " " . $display["size_inch"] . "\", " . $display["resolution"] . "p, " .

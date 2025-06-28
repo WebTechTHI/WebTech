@@ -40,6 +40,8 @@ function changeOrderStatus(id) {
             break;
     }
 
+
+    //datenbankajktualisierung
     fetch("/index.php?page=admin&action=updateOrderStatus", {
 
         method: "POST",
