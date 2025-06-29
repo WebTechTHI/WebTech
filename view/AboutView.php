@@ -28,7 +28,14 @@
     <!--Ab Hier Body -->
     <main class="userInfoFormuser">
         <h1 class="formTitle">Impressum</h1>
-        <h4 class="formSubtitle">Informationen Impressum</h4>
+        <h4 class="formSubtitle">Diese Website ist Teil eines studentischen Projekts im Rahmen des Studiengangs
+            Wirtschaftsinformatik an der Technischen Hochschule Ingolstadt.
+            Alle dargestellten Produkte, Preise und Inhalte sind fiktiv und dienen ausschließlich zu Demonstrations- und
+            Lernzwecken. Es handelt sich nicht um ein echtes Unternehmen!
+
+            Bitte geben Sie keine persönlichen Daten ein. Es erfolgt keine echte Verarbeitung, Lieferung oder
+            Abrechnung.
+            Die Seite ist nicht kommerziell und verfolgt keine geschäftlichen Interessen.</h4>
 
         <div>
             <p>Germany Deutschland DE <br> Max Mustermannstraße <br> Deutschland +49 <br><br>
@@ -46,7 +53,7 @@
 
 
     <script src="/assets/javascript/toggleTheme.js"></script>
-    
+
 </body>
 
 </html>

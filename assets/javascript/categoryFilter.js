@@ -34,6 +34,7 @@ function toggleSort() {
 
 //initialize Filter User Interface (initFilterUi) ist dafür da das der Anwenden Button bei Filter nur aktiv ist 
 // wenn mind. 1 Filter geklickt wurde => sonst deaktiviert
+//initialize Filter User Interface
 function initFilterUi() {
 
 
@@ -105,6 +106,8 @@ function applyFilters() {
                     document.querySelector('.products-grid').style.opacity = '1';
                     document.querySelector('.filters').style.opacity = '1';
                  
+
+                    //Checkboxen wieder aktivieren (neu legen)
                     initFilterUi();
                 })
                 .catch(err => {

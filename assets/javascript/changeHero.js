@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         heroImageElement.style.transform = 'translateX(-100%)';
 
         setTimeout(() => {
-            // Berechne den nächsten Index
+            // Berechne den nächsten Index (current 3, heroimage.length 4 und 3+1%4 = 0 also sind wieder am start bzw. zurück zum ersten Bild)
             currentImageIndex = (currentImageIndex + 1) % heroImages.length;
 
             // Setze das neue Bild und platziere es sofort rechts außerhalb
