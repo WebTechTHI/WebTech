@@ -61,8 +61,6 @@
                                         </option>
                                     </select>
                                 </div>
-                                <a class="more"
-                                    href="index.php?page=admin&action=order&order-id=<?= $order['order_id'] ?>">Mehr</a>
                             </div>
 
                         </div>

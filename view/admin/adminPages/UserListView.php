@@ -24,11 +24,13 @@
         <a class="back-last-page" href="/index.php?page=admin">Zurück</a>
 
         <div class="orders-wrapper">
+
+        <!-- Benutzerkarte -->
             <?php foreach ($users as $user): ?>
                 <div class="user">
                     <div class="user-header">
                         <div>Benutzer-ID: #<?= $user['user_id'] ?></div>
-                        <div><?= $user['role_id'] ?></div>
+                        <div><?= $user['role_id'] === 1 ? 'Admin' : 'User' ?></div>
                     </div>
                         <div class="user-info">
                             <div class="user-label-wrapper">
@@ -70,8 +72,6 @@
                                     </option>
                                 </select>
                             </div>
-                            <a class="more"
-                                href="index.php?page=admin&action=user&user-id=<?= $user['user_id'] ?>">Mehr</a>
                         </div>
 
                     </div>
