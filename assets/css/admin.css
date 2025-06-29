@@ -106,7 +106,7 @@
   border-radius: 10%;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
-
+/* Beim ersten Produkt soll keine Linie davor sein --> deswegen bordner none*/
 .product:first-child::after {
   border: none;
 }
