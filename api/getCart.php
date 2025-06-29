@@ -1,4 +1,6 @@
 <?php
+// === Laurin Schnitzer
+
 // API-Endpunkt zum Abrufen des Warenkorbs
 // Liefert entweder die Daten aus der Datenbank (eingeloggter Nutzer) oder aus dem Cookie (Gast)
 // Die Daten werden als JSON zurückgegeben

@@ -1,4 +1,5 @@
 <?php
+//Rinor stubbla
 // API-Endpunkt zum Entfernen eines Artikels aus dem Warenkorb
 // Entfernt entweder den Artikel aus der Datenbank (eingeloggter Nutzer) oder aus dem Cookie (Gast)
 

@@ -1,4 +1,5 @@
 <?php
+//Rinor Stubbla
 // API-Endpunkt zum Hinzufügen oder Aktualisieren eines Artikels im Warenkorb
 // Dieser Endpunkt verarbeitet sowohl eingeloggte Nutzer (Datenbank-Logik) als auch Gäste (Cookie-Logik)
 
