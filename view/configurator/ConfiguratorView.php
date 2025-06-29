@@ -47,7 +47,7 @@
 
                         <?php foreach ($connectors as $connector): ?>
                             <option value="<?= $connector["connectors_id"] ?>" data-price="<?= $connector['price'] ?>">
-                                <?= htmlspecialchars($connector["spec"]) ?>
+                                <?= htmlspecialchars($connector["spec"]) . "  |  " . $connector["price"] . '€' ?>
                             </option>
                         <?php endforeach; ?>
 
@@ -72,7 +72,7 @@
 
                         <?php foreach ($cpus as $cpu): ?>
                             <option value="<?= $cpu["cpu_id"] ?>" data-price="<?= $cpu['price'] ?>">
-                                <?= htmlspecialchars($cpu["model"] . ", " . $cpu["cores"] . " cores, " . $cpu["base_clock_ghz"] . " GHz") ?>
+                                <?= htmlspecialchars($cpu["model"] . ", " . $cpu["cores"] . " cores, " . $cpu["base_clock_ghz"] . " GHz") . "  |  " . $cpu["price"] . '€'  ?>
                             </option>
                         <?php endforeach; ?>
 
@@ -95,7 +95,7 @@
 
                         <?php foreach ($storages as $storage): ?>
                             <option value="<?= $storage["storage_id"] ?>" data-price="<?= $storage['price'] ?>">
-                                <?= htmlspecialchars($storage["brand"] . " " . $storage["capacity_gb"] . "Gb, " . $storage["storage_type"]) ?>
+                                <?= htmlspecialchars($storage["brand"] . " " . $storage["capacity_gb"] . "Gb, " . $storage["storage_type"]) . "  |  " . $storage["price"] . '€'  ?>
                             </option>
                         <?php endforeach; ?>
 
@@ -119,7 +119,7 @@
 
                         <?php foreach ($gpus as $gpu): ?>
                             <option value="<?= $gpu["gpu_id"] ?>" data-price="<?= $gpu['price'] ?>">
-                                <?= htmlspecialchars($gpu["brand"] . " " . $gpu["model"] . ", " . $gpu["vram_gb"] . "Gb") ?>
+                                <?= htmlspecialchars($gpu["brand"] . " " . $gpu["model"] . ", " . $gpu["vram_gb"] . "Gb") . "  |  " . $gpu["price"] . '€'  ?>
                             </option>
                         <?php endforeach; ?>
 
@@ -142,7 +142,7 @@
 
                         <?php foreach ($operatingSystems as $os): ?>
                             <option value="<?= $os["os_id"] ?>" data-price="<?= $os['price'] ?>">
-                                <?= htmlspecialchars($os["name"]) ?>
+                                <?= htmlspecialchars($os["name"]) . "  |  " . $os["price"] . '€'  ?>
                             </option>
                         <?php endforeach; ?>
 
@@ -165,7 +165,7 @@
 
                         <?php foreach ($rams as $ram): ?>
                             <option value="<?= $ram["ram_id"] ?>" data-price="<?= $ram['price'] ?>">
-                                <?= htmlspecialchars($ram["brand"] . " " . $ram["model"] . ", " . $ram["capacity_gb"] . "Gb " . $ram["ram_type"]) ?>
+                                <?= htmlspecialchars($ram["brand"] . " " . $ram["model"] . ", " . $ram["capacity_gb"] . "Gb " . $ram["ram_type"])  . "  |  " . $ram["price"] . '€' ?>
                             </option>
                         <?php endforeach; ?>
 
