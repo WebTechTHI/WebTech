@@ -1,5 +1,5 @@
 <?php
-//RINOR STUBLLA ENDE
+//RINOR STUBLLA
 
 require_once __DIR__ . '/../model/CartModel.php';
 
