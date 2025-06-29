@@ -1,3 +1,15 @@
+<head>
+    <link rel="stylesheet" href="/assets/css/alert.css" />
+</head>
+
+<body>
+  <noscript>
+    <div class="meldung-container meldung-fehler">
+      JavaScript ist deaktiviert. Bitte aktivieren Sie JavaScript in Ihrem Browser, um diese Website korrekt nutzen zu können.
+    </div>
+  </noscript>
+
+
 <?php
 //LAURIN SCHNIZER
 session_start();
